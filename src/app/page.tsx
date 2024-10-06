@@ -1,4 +1,5 @@
 
+import Image from 'next/image'
 import { useLiveQuery } from 'next-sanity/preview'
 
 import Card from '~/app/components/Card'
@@ -16,7 +17,7 @@ export default function IndexPage() {
   return (
     <Container>
       <section>
-        
+        <Image  className="logos__entry" src="/TERRE-2.jpg" alt="" width="500" height="500"/>
       </section>
     </Container>
   )
