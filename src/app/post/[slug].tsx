@@ -1,5 +1,4 @@
 import { PortableText } from '@portabletext/react'
-import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import Image from 'next/image'
 import { useLiveQuery } from 'next-sanity/preview'
 
@@ -13,40 +12,15 @@ import {
   postBySlugQuery,
   postSlugsQuery,
 } from '~/lib/sanity.queries'
-import type { SharedPageProps } from '~/pages/_app'
 import { formatDate } from '~/utils'
 
 interface Query {
   [key: string]: string
 }
 
-export const getStaticProps: GetStaticProps<
-  SharedPageProps & {
-    post: Post
-  },
-  Query
-> = async ({ draftMode = false, params = {} }) => {
-  const client = getClient(draftMode ? { token: readToken } : undefined)
-  const post = await getPost(client, params.slug)
-
-  if (!post) {
-    return {
-      notFound: true,
-    }
-  }
-
-  return {
-    props: {
-      draftMode,
-      token: draftMode ? readToken : '',
-      post,
-    },
-  }
-}
 
 export default function ProjectSlugRoute(
-  props: InferGetStaticPropsType<typeof getStaticProps>,
-) {
+props) {
   const [post] = useLiveQuery(props.post, postBySlugQuery, {
     slug: props.post.slug.current,
   })
