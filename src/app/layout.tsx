@@ -1,9 +1,9 @@
 import './globals.css'
 
 import type { Metadata } from "next";
-import { Cormorant } from "next/font/google";
+import { Barlow } from "next/font/google";
 
-const cormorant = Cormorant({ weight: [ "300", "400", "500", "600", "700" ], style: ["normal", "italic"], subsets: ["latin"], variable: '--font-cormorant' });
+const barlow = Barlow({  variable: '--font-family-barlow',  weight: [ "100", "300", "400", "500", "600", "700" ], style: ["normal", "italic"], subsets: ["latin"],  });
 
 export const metadata: Metadata = {
   title: "Joël Bardeau",
@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable}`}>
+    <html lang="en" className={`${barlow.variable}`}>
       <body className={`h-full`}
     >{children}</body>
     </html>

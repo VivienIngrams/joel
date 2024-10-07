@@ -11,19 +11,19 @@ export default function Container({ children }: { children: React.ReactNode }) {
   const homepage = usePathname() === '/'
 
   return (
-    <div className="w-screen min-h-screen">
+    <div className="w-screen min-h-screen bg-black">
       <Header />
-      <main className="w-full min-h-screen bg-[#190c41]">{children}</main>
+      <main className="w-full font-barlow min-h-screen">{children}</main>
       <footer className="fixed bottom-0 w-full bg-neutral-900/30 px-4 py-3 sm:px-8 sm:pt-5 sm:pb-5">
        
         <p className="hidden md:flex absolute text-[10px] tracking-tight xs:tracking-normal  z-50 leading-loose bottom-5 left-12 text-white">
                 Website by Vivien Ingrams
               </p>
-        <div className="flex flex-col items-center gap-y-2">
+        <div className="flex flex-col items-end gap-y-2">
           <div className="flex gap-x-2 text-neutral-300">
             <Socials />
           </div>
-          <span className="font-khand text-sm text-neutral-100 ">
+          <span className=" text-sm text-neutral-100 ">
             info@joelbardeau.com
           </span>
         </div>

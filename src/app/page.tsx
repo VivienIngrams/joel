@@ -11,7 +11,7 @@ import Container from './components/Container'
 
 export default function HomePage() {
   return (
-    <div className="h-full">
+    <div className="h-full font-barlow">
       <Container>
         <div className="relative ">
           <section className="relative">
