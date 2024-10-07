@@ -11,19 +11,17 @@ import Container from './components/Container'
 
 export default function HomePage() {
   return (
-    <div className="h-full font-barlow">
+    <div className="h-full w-full ">
       <Container>
-        <div className="relative ">
-          <section className="relative">
-            {/* <Image
+        <section className="relative h-screen w-full">
+          <Image
             className="object-cover"
             src="/terre (1).png"
             fill
-            sizes="100vw"
-            alt="Sand"
-          /> */}
-          </section>
-        </div>
+            sizes="100vw "
+            alt=""
+          />
+        </section>
       </Container>
     </div>
   )

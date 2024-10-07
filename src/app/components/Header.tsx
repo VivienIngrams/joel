@@ -1,32 +1,41 @@
 "use client";
 import { Menu,MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const path = usePathname();
+  const isHomePage = path === '/';
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
   return (
-    <nav className="absolute top-0 w-full z-5 mx-auto px-4 sm:px-6 lg:px-8 font-barlow">
-      <div className="flex items-center justify-center h-8 md:h-12">
+    <nav className="absolute top-0 w-full z-50 mx-auto px-4 sm:px-6 lg:px-8 font-barlow">
+      <div
+        className={`flex items-center justify-center ${
+          isHomePage ? "h-16 md:h-32 text-3xl md:text-6xl " : "h-8 md:h-12 text-[22px] md:text-[32px]"
+        }`}
+      >
       <Link
         href="/"
-        className="hover:bg-white/10 px-20 py-1 hover:rounded-2xl text-[22px] md:text-[32px] border-b-gray-500 border-b-[1px]"
+        className="hover:bg-white/10 px-20 py-4 hover:rounded-2xl  border-b-gray-500 border-b-[1px]"
       >
         Joël Bardeau
       </Link>
       </div>
-      <div className="flex items-center justify-center h-8 md:h-12">
+      <div className={`flex items-start justify-center ${
+          isHomePage ? "h-16 md:h-32 text-xl md:text-2xl " : "h-8 md:h-12 text-[22px] md:text-[32px]"
+        }`}>
       
         <div className="flex items-center">
           <div className="hidden md:block">
             <div className=" flex items-baseline space-x-4">
               <Menu as="div" className="relative">
-                <MenuButton className="hover:bg-white/10 px-3 py-2 rounded-md text-[16px] ">
+                <MenuButton className="hover:bg-white/10 px-3 py-2 rounded-md ">
                   Projets
                 </MenuButton>
                 <MenuItems className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg border-[1px] border-gray-600 focus:outline-none">
