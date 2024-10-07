@@ -1,4 +1,4 @@
-import "./globals.css";
+import '~/app/styles/globals.css'
 
 import type { Metadata } from "next";
 import { Cormorant } from "next/font/google";
