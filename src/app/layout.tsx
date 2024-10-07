@@ -1,4 +1,4 @@
-import '~/app/styles/globals.css'
+import './globals.css'
 
 import type { Metadata } from "next";
 import { Cormorant } from "next/font/google";
@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${cormorant.variable}`}>
-      <body className={` h-full bg-black `}
+      <body className={` min-h-screen bg-black`}
     >{children}</body>
     </html>
   );

@@ -17,7 +17,13 @@ export default function IndexPage() {
   return (
     <Container>
       <section>
-        <Image  className="logos__entry" src="/TERRE-2.jpg" alt="" width="500" height="500"/>
+      <Image
+          className="absolute top-0 left-0 right-0 bottom-0 min-h-screen bg-fixed bg-center bg-cover h-full w-full "
+          src="/TERRE-6.jpg"
+          width={1500}
+          height={1000}
+          alt="Sand"
+        />
       </section>
     </Container>
   )
