@@ -3,5 +3,10 @@
 @tailwind utilities;
 
 * {
-  color: white;
+  color: brown;
+}
+
+body {
+
+  margin: 0;
 }

@@ -7,7 +7,7 @@ const cormorant = Cormorant({ weight: [ "300", "400", "500", "600", "700" ], sty
 
 export const metadata: Metadata = {
   title: "Joël Bardeau",
-  description: "Artiste Photographe plasticien",
+  description: "Artiste Photographe Plasticien",
 };
 
 export default function RootLayout({
@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${cormorant.variable}`}>
-      <body className={` `}
+      <body className={`h-full`}
     >{children}</body>
     </html>
   );
