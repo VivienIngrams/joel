@@ -28,62 +28,36 @@ const Header = () => {
       </Link>
       </div>
       <div className={`flex items-start justify-center ${
-          isHomePage ? "h-16 md:h-32 text-xl md:text-2xl " : "h-8 md:h-12 text-[22px] md:text-[32px]"
+          isHomePage ? "h-16 md:h-32 text-xl md:text-2xl " : "h-8 md:h-12 text-lg md:text-xl pt-4"
         }`}>
       
         <div className="flex items-center">
           <div className="hidden md:block">
-            <div className=" flex items-baseline space-x-4">
-              <Menu as="div" className="relative">
-                <MenuButton className="hover:bg-white/10 px-3 py-2 text-white rounded-md ">
-                  Projets
-                </MenuButton>
-                <MenuItems className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg border-[1px] border-gray-600 focus:outline-none">
-                  <div className="py-1">
-                    
-                    
-                    
-                    
-                    <MenuItem>
-                      {({ active }) => (
-                        <Link
-                          href="/project/mirante"
-                          className={`block px-4 py-2 text-md ${
-                             active ?  "bg-black " : ""
-                          }`}
-                        >
-                          Mirante
-                        </Link>
-                      )}
-                    </MenuItem>
-                    <MenuItem>
-                      {({ active }) => (
-                        <Link
-                          href="/project/en-suspension-s"
-                          className={`block px-4 py-2 text-md ${
-                             active ?  "bg-black " : ""
-                          }`}
-                        >
-                          En Suspension-(S)
-                        </Link>
-                      )}
-                    </MenuItem>
-                   
-                  </div>
-                </MenuItems>
-              </Menu>
+            <div className=" flex items-baseline space-x-4">           
               
               <Link
-                href="/project/voyages"
+                href="/oeuvres"
                 className="hover:bg-white/10 px-3 py-2 rounded-md text-md  "
               >
-                Voyages
+                Oeuvres
               </Link>
               <Link
-                href="/bio"
+                href="/livres"
                 className="hover:bg-white/10 px-3 py-2 rounded-md text-md  "
               >
-                Bio
+                Livres
+              </Link>
+              <Link
+                href="/expositions"
+                className="hover:bg-white/10 px-3 py-2 rounded-md text-md  "
+              >
+                Expositions
+              </Link>
+              <Link
+                href="/biography"
+                className="hover:bg-white/10 px-3 py-2 rounded-md text-md  "
+              >
+                Biography
               </Link>
               <Link
                 href="/info"
@@ -128,7 +102,7 @@ const Header = () => {
                 <MenuItem>
                   {({ active }) => (
                     <Link
-                      href="/project/au-cafe"
+                      href="/au-cafe"
                       className={`block px-4 py-2 text-base ${
                         active ?  "bg-black " : ""
                       }`}
@@ -140,7 +114,7 @@ const Header = () => {
                 <MenuItem>
                   {({ active }) => (
                     <Link
-                      href="/project/la-passagere"
+                      href="/la-passagere"
                       className={`block px-4 py-2 text-base ${
                          active ?  "bg-black " : ""
                       }`}
@@ -152,7 +126,7 @@ const Header = () => {
                 <MenuItem>
                   {({ active }) => (
                     <Link
-                      href="/project/interieur"
+                      href="/interieur"
                       className={`block px-4 py-2 text-base ${
                        active ?  "bg-black " : ""
                       }`}
@@ -164,7 +138,7 @@ const Header = () => {
                 <MenuItem>
                   {({ active }) => (
                     <Link
-                      href="/project/sentiment-oceanique"
+                      href="/sentiment-oceanique"
                       className={`block px-4 py-2 text-base ${
                          active ?  "bg-black " : ""
                       }`}
@@ -176,7 +150,7 @@ const Header = () => {
                 <MenuItem>
                   {({ active }) => (
                     <Link
-                      href="/project/mirante"
+                      href="/mirante"
                       className={`block px-4 py-2 text-base ${
                          active ?  "bg-black " : ""
                       }`}
@@ -188,7 +162,7 @@ const Header = () => {
                 <MenuItem>
                   {({ active }) => (
                     <Link
-                      href="/project/en-suspension-s"
+                      href="/en-suspension-s"
                       className={`block px-4 py-2 text-base ${
                          active ?  "bg-black " : ""
                       }`}
@@ -200,7 +174,7 @@ const Header = () => {
                 <MenuItem>
                   {({ active }) => (
                     <Link
-                      href="/project/reveler"
+                      href="/reveler"
                       className={`block px-4 py-2 text-base ${
                          active ?  "bg-black " : ""
                       }`}
@@ -213,13 +187,13 @@ const Header = () => {
             </MenuItems>
           </Menu>
           <Link
-            href="/project/ma-vie-ordinaire"
+            href="/ma-vie-ordinaire"
             className="hover:bg-white/10 block px-3 py-2 rounded-md text-base  "
           >
             Ma vie ordinaire
           </Link>
           <Link
-            href="/project/voyages"
+            href="/voyages"
             className="hover:bg-white/10 block px-3 py-2 rounded-md text-base  "
           >
             Voyages
