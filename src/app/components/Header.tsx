@@ -35,7 +35,7 @@ const Header = () => {
           <div className="hidden md:block">
             <div className=" flex items-baseline space-x-4">
               <Menu as="div" className="relative">
-                <MenuButton className="hover:bg-white/10 px-3 py-2 rounded-md ">
+                <MenuButton className="hover:bg-white/10 px-3 py-2 text-white rounded-md ">
                   Projets
                 </MenuButton>
                 <MenuItems className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg border-[1px] border-gray-600 focus:outline-none">
