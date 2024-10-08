@@ -12,6 +12,7 @@ html {
 }
 
 body {
+  color: white;
   font-family: var(--font-barlow);
   margin: 0;
 }
