@@ -19,6 +19,7 @@ export default async function PostsPage() {
       revalidate: 10, // Revalidate every 10 seconds
     },
   });
+  console.log(posts[0])
 
   // Handle case where no posts are found
   if (!posts || posts.length === 0) {
@@ -31,15 +32,15 @@ export default async function PostsPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {posts.map((post) => (
           <div key={post._id} className="mb-8">
-            {/* Render an array of images */}
+            {/* Render an array of main images */}
             <div className="md:min-h-[60vh] w-full">
               {/* Mobile View */}
               <div className="-mt-12 columns-1 sm:columns-2 md:hidden">
-                {/* {post.images?.map((image: any, index: number) => (
+                {post.mainImages?.map((image: any, index: number) => (
                   <div key={index} className="mx-12 break-inside-avoid">
                     <Link href={`/post/${post.slug.current}`}>
                       <Image
-                        src={urlForImage(image.asset).url() as string}
+                        src={urlForImage(image).url() as string}
                         alt="Gallery Image"
                         width={500}
                         height={500}
@@ -48,27 +49,26 @@ export default async function PostsPage() {
                       />
                     </Link>
                   </div>
-                ))} */}
+                ))}
               </div>
 
               {/* Desktop View */}
               <div className="hidden md:flex md:flex-row md:justify-center md:items-end md:h-[60vh] w-full md:px-[10vw]">
-                {/* {post.images &&
-                  post.images.map((image: any, index: number) => (
-                    <div className="relative h-[95%] w-full my-2" key={index}>
-                      <Link href={`/post/${post.slug.current}`}>
-                        <div className="relative w-full h-full">
-                          <Image
-                            src={urlForImage(image).url() as string}
-                            alt={post.title}
-                            fill
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 30vw"
-                            className="object-contain p-2"
-                          />
-                        </div>
-                      </Link>
-                    </div>
-                  ))} */}
+                {post.mainImages?.map((image: any, index: number) => (
+                  <div className="relative h-[95%] w-full my-2" key={index}>
+                    <Link href={`/post/${post.slug.current}`}>
+                      <div className="relative w-full h-full">
+                        <Image
+                          src={urlForImage(image).url() as string}
+                          alt={post.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 30vw"
+                          className="object-contain p-2"
+                        />
+                      </div>
+                    </Link>
+                  </div>
+                ))}
               </div>
 
               {/* Post Title */}

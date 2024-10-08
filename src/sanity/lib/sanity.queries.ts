@@ -16,9 +16,7 @@ export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][
 
 // Function to fetch a post by its slug
 export async function getPost(client: SanityClient, slug: string): Promise<Post> {
-  return await client.fetch(postBySlugQuery, {
-    slug,
-  });
+  return await client.fetch(postBySlugQuery, { slug });
 }
 
 // Query to fetch all slugs for posts
@@ -34,6 +32,6 @@ export interface Post {
   title?: string;
   slug: Slug;
   excerpt?: string;
-  mainImages?: ImageAsset[]; // Changed from mainImage to mainImages to accommodate the array
+  mainImages?: ImageAsset[]; // Accommodating the array of images
   body: PortableTextBlock[];
 }

@@ -15,7 +15,12 @@ export default async function ProjectPage({ params }: { params: { slug: string }
   const client = getClient({ token: readToken })
 
   // Fetch the post by slug
-  const post: Post | null = await getPost(client, params.slug)
+  const post: Post | null = await getPost(client, params.slug, {
+    cache: 'no-cache',
+    next: {
+      revalidate: 10, // Revalidate every 10 seconds
+    },
+  });
 
   // Handle case where post is not found
   if (!post) {
