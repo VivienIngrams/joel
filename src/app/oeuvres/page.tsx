@@ -10,7 +10,7 @@ import { formatDate } from '~/utils'
 import Container from "../components/Container"
 
 // Fetch data on the server side for all posts
-export default async function ProjectPage() {
+export default async function PostsPage() {
   // Get Sanity client
   const client = getClient({ token: readToken })
 
@@ -24,7 +24,6 @@ export default async function ProjectPage() {
 
   return (
    
-      <Container>
         <div className="md:min-h-[60vh] bg-black w-full md:pt-8">
           
           {/* Render a list of posts */}
@@ -59,7 +58,6 @@ export default async function ProjectPage() {
             ))}
           </div>
         </div>
-      </Container>
-  
+      
   )
 }

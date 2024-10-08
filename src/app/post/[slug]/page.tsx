@@ -8,7 +8,6 @@ import { urlForImage } from '~/sanity/lib/sanity.image'
 import { getPost, type Post,postSlugsQuery } from '~/sanity/lib/sanity.queries'
 import { formatDate } from '~/utils'
 
-import Container from "../../components/Container"
 
 // Fetch data on the server side
 export default async function ProjectPage({ params }: { params: { slug: string } }) {
@@ -24,8 +23,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
   }
 
   return (
-    <div className="min-h-full">
-      <Container>
+  
         <div className="md:min-h-[60vh] w-full md:pt-8">
           
           {/* Mobile */}
@@ -85,8 +83,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
             </div>
           </div>
         </div>
-      </Container>
-    </div>
+      
   )
 }
 

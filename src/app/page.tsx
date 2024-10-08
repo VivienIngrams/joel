@@ -3,16 +3,15 @@ import { useLiveQuery } from 'next-sanity/preview'
 
 import Card from '~/app/components/Card'
 import Header from '~/app/components/Header'
-import { readToken } from '~/sanity/libsanity.api'
-import { getClient } from '~/sanity/libsanity.client'
-import { getPosts, type Post, postsQuery } from '~/sanity/libsanity.queries'
+import { readToken } from '~/sanity/lib/sanity.api'
+import { getClient } from '~/sanity/lib/sanity.client'
+import { getPosts, type Post, postsQuery } from '~/sanity/lib/sanity.queries'
 
 import Container from './components/Container'
 
 export default function HomePage() {
   return (
-    <div className="h-full w-full ">
-      <Container>
+    
         <section className="relative h-screen w-full">
           <Image
             className="object-cover"
@@ -22,8 +21,7 @@ export default function HomePage() {
             alt=""
           />
         </section>
-      </Container>
-    </div>
+    
   )
 }
 
