@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useLiveQuery } from 'next-sanity/preview'; // Ensure you're using this if you're in draft mode
+
 import { getClient } from '~/sanity/lib/sanity.client';
 import { getHomePage } from '~/sanity/lib/sanity.queries';
 

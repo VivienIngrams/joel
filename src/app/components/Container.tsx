@@ -2,10 +2,9 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { FaFacebook, FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaInstagram } from 'react-icons/fa'
 
-import Header from './Header'
-
+import NavMenu from './NavMenu'
 
 export default function Container({ children }: { children: React.ReactNode }) {
   const path = usePathname()
@@ -19,51 +18,77 @@ export default function Container({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="w-screen min-h-screen bg-black font-barlow">
-      <Header />
+      <div
+        className={` flex items-center justify-center  border-b-[1px] border-b-gray-500 mx-[30vw] ${
+          isHomePage
+            ? 'absolute top-0 w-full z-10 h-16 md:h-32 text-3xl md:text-6xl '
+            : 'h-8 md:h-16 text-[22px] md:text-[32px] pb-4'
+        }`}
+      >
+        <Link
+          href="/"
+          className="hover:bg-white/10 px-50 py-8 "
+          style={{
+            paddingBottom: isHomePage ? '8px' : '16px', // Adjust padding based on the page
+            lineHeight: '1.5',
+          }}
+        >
+          Joël Bardeau
+        </Link>
+      </div>
       <main className="w-full font-barlow min-h-screen">{children}</main>
-      <footer className="fixed bottom-0 w-full  px-4 py-3 sm:px-8 sm:pt-5 sm:pb-5">
-       
-        <p className="hidden md:flex absolute text-[11px]  xs:tracking-normal  z-50 leading-loose bottom-5 left-12 ">
-                Website by Vivien Ingrams
-              </p>
+      
+      {/* Footer */}
+      <footer className="fixed bottom-0 w-full bg-black/80 px-4 py-3 sm:px-8 sm:pt-5 sm:pb-5 flex items-center justify-between">
+        <div>
+          <p className="hidden md:flex  text-[11px]  xs:tracking-normal  z-50 leading-loose w-40 pt-6">
+            Website by Vivien Ingrams
+          </p>
+        </div>
+        <NavMenu />
         <div className="flex flex-col items-end gap-y-2">
           <div className="flex gap-x-2 ">
             <Socials />
           </div>
-          <span className=" text-sm  text-white">
-            info@joelbardeau.com
-          </span>
+          <span className=" text-sm  text-white">info@joelbardeau.com</span>
         </div>
-        
       </footer>
     </div>
   )
 }
 
-
 interface Social {
-    label: string;
-    Icon: React.ComponentType<{ className: string }>;
-    href: string;
+  label: string
+  Icon: React.ComponentType<{ className: string }>
+  href: string
 }
-  
-const socialLinks: Social[] = [
-    {label: 'Instagram', Icon: FaInstagram, href: 'https://instagram.com/sakiko.oishi?igshid=YjNmNGQ3MDY='},
-    {label: 'Facebook', Icon: FaFacebook, href: 'https://facebook.com/SakikoOISHI'},
-];
 
- function Socials () {
-    return (
-      <>
-        {socialLinks.map(({label, Icon, href}) => (
-          <Link
-            aria-label={label}
-            className="-m-1.5 rounded-md p-1.5 transition-all duration-300 hover:text-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500  sm:-m-3 sm:p-3"
-            href={href}
-            key={label}>
-            <Icon className="h-5 w-5 align-baseline sm:h-6 sm:w-6" />
-          </Link>
-        ))}
-      </>
-    );
-  };
+const socialLinks: Social[] = [
+  {
+    label: 'Instagram',
+    Icon: FaInstagram,
+    href: 'https://instagram.com/sakiko.oishi?igshid=YjNmNGQ3MDY=',
+  },
+  {
+    label: 'Facebook',
+    Icon: FaFacebook,
+    href: 'https://facebook.com/SakikoOISHI',
+  },
+]
+
+function Socials() {
+  return (
+    <>
+      {socialLinks.map(({ label, Icon, href }) => (
+        <Link
+          aria-label={label}
+          className="-m-1.5 rounded-md p-1.5 transition-all duration-300 hover:text-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500  sm:-m-3 sm:p-3"
+          href={href}
+          key={label}
+        >
+          <Icon className="h-5 w-5 align-baseline sm:h-6 sm:w-6" />
+        </Link>
+      ))}
+    </>
+  )
+}

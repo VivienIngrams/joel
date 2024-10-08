@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
-const Header = () => {
+const NavMenu = () => {
   const [isOpen, setIsOpen] = useState(false)
   const path = usePathname()
   const isHomePage = path === '/'
@@ -14,31 +14,9 @@ const Header = () => {
   }
 
   return (
-    <nav className="absolute top-0 w-full z-50 mx-auto px-4 sm:px-6 lg:px-8 font-barlow">
+    <nav className="w-full z-50 mx-auto px-4 sm:px-6 lg:px-8 font-barlow">
       <div
-        className={`flex items-center justify-center ${
-          isHomePage
-            ? 'h-16 md:h-32 text-3xl md:text-6xl '
-            : 'h-8 md:h-12 text-[22px] md:text-[32px]'
-        }`}
-      >
-        <Link
-          href="/"
-          className="hover:bg-white/10 px-20 py-4  border-b-[1px] border-b-gray-500"
-          style={{
-            paddingBottom: isHomePage ? '8px' : '4px', // Adjust padding based on the page
-            lineHeight: '1.5', // Set consistent line height
-          }}
-        >
-          Joël Bardeau
-        </Link>
-      </div>
-      <div
-        className={`flex items-start justify-center ${
-          isHomePage
-            ? 'h-16 md:h-32 text-xl md:text-2xl '
-            : 'h-8 md:h-12 text-lg md:text-xl pt-4'
-        }`}
+        className={`flex items-start justify-center  text-lg md:text-xl pt-4`}
       >
         <div className="flex items-center">
           <div className="hidden md:block">
@@ -157,7 +135,7 @@ const Header = () => {
             href="/expositions"
             className="hover:bg-white/10 block px-3 py-2  text-base  "
           >
-           Expositions
+            Expositions
           </Link>
           <Link
             href="/biography"
@@ -177,4 +155,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default NavMenu
