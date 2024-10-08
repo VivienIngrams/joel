@@ -5,7 +5,7 @@ import { type SanityClient } from 'next-sanity';
 
 // Query to fetch all posts with defined slugs, ordered by creation date
 export const postsQuery = groq`
-  *[_type == "post" && defined(slug.current)] {
+  *[_type == "post" ] {
     _id,
     _createdAt,
     title,
@@ -18,7 +18,7 @@ export const postsQuery = groq`
 // Function to fetch all posts
 export async function getPosts(client: SanityClient, options = {}): Promise<Post[]> {
   const posts = await client.fetch(postsQuery, options);
-  console.log(posts[2])
+  console.log(posts)
   return posts
 }
 
@@ -28,7 +28,7 @@ export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][
 // Function to fetch a post by its slug
 export async function getPost(client: SanityClient, slug: string, options = {}): Promise<Post> {
   const post = await client.fetch(postBySlugQuery, { slug });
-  console.log(post)
+
   return post
 }
 

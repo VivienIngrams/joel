@@ -8,15 +8,16 @@ import { getPosts, type Post } from '~/sanity/lib/sanity.queries'
 
 // Fetch data on the server side for all posts
 export default async function PostsPage() {
-  // Get Sanity client
-  const client = getClient({ token: readToken })
+  const client = getClient({ token: readToken });
 
-  // Fetch all posts with revalidation
+  // Fetch all posts with a defined revalidation time
   const posts: Post[] = await getPosts(client, {
-        next: {
+    next: {
       revalidate: 10, // Revalidate every 10 seconds
     },
-  })
+  });
+  console.log('Fetched Posts:', posts); 
+
   // Handle case where no posts are found
   if (!posts || posts.length === 0) {
     return <p>No posts found.</p>
@@ -59,7 +60,7 @@ export default async function PostsPage() {
               </div>
 
               {/* Desktop View */}
-              <div className="hidden md:flex md:flex-row md:justify-center md:items-end md:h-[60vh] w-full md:px-[10vw]">
+              <div className="hidden md:flex md:flex-row md:justify-center md:items-start md:h-[60vh] w-full md:px-[10vw]">
                 {post.mainImages?.map((image: any, index: number) => (
                   <div className="relative h-full w-full" key={index}>
                     <Link href={`/post/${post.slug.current}`}>

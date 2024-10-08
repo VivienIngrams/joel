@@ -21,7 +21,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
     <div className="w-screen min-h-screen bg-black font-barlow">
       <Header />
       <main className="w-full font-barlow min-h-screen">{children}</main>
-      <footer className="fixed bottom-0 w-full bg-neutral-900/30 px-4 py-3 sm:px-8 sm:pt-5 sm:pb-5">
+      <footer className="fixed bottom-0 w-full  px-4 py-3 sm:px-8 sm:pt-5 sm:pb-5">
        
         <p className="hidden md:flex absolute text-[11px]  xs:tracking-normal  z-50 leading-loose bottom-5 left-12 ">
                 Website by Vivien Ingrams

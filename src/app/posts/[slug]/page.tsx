@@ -20,6 +20,7 @@ export default async function ProjectPage({
   const post: Post | null = await getPost(client, params.slug, {
     next: {
       revalidate: 10, // Revalidate every 10 seconds
+      cache: 'no-store',
     },
   })
 
