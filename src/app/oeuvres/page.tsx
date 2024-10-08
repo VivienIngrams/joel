@@ -1,117 +1,65 @@
 
 import Image from 'next/image'
 
-import { readToken } from '~/lib/sanity.api'
-import { getClient } from '~/lib/sanity.client'
-import { urlForImage } from '~/lib/sanity.image'
-import {
-  getPost,
-  type Post,
-  postBySlugQuery,
-  postSlugsQuery,
-} from '~/lib/sanity.queries'
+import { readToken } from '~/sanity/lib/sanity.api'
+import { getClient } from '~/sanity/lib/sanity.client'
+import { urlForImage } from '~/sanity/lib/sanity.image'
+import { getPosts, type Post } from '~/sanity/lib/sanity.queries'
 import { formatDate } from '~/utils'
 
-import Container from "../components/Container";
+import Container from "../components/Container"
 
-const client = getClient();
-
-async function getProjectData() {
-  const data = await client.fetch(
-    `
-      *[_type == 'post'=] {}
-      `,
-    {},
-    {
-      next: {
-        revalidate: 10,
-      },
-    }
-  );
-  return data;
-}
-
-
+// Fetch data on the server side for all posts
 export default async function ProjectPage() {
+  // Get Sanity client
+  const client = getClient({ token: readToken })
 
+  // Fetch all posts
+  const posts: Post[] = await getPosts(client)
+
+  // Handle case where no posts are found
+  if (!posts || posts.length === 0) {
+    return <p>No posts found.</p>
+  }
 
   return (
-    <div className="min-h-full">
+   
       <Container>
-      <div className="md:min-h-[60vh] w-full md:pt-8">
-      {/* Mobile */}
-      <div className="-mt-12 columns-1 sm:columns-2 md:hidden">
-        {post.images?.map((image: any, index: number) => (
-          <div key={index} className="mx-12 break-inside-avoid">
-            
+        <div className="md:min-h-[60vh] bg-black w-full md:pt-8">
+          
+          {/* Render a list of posts */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {posts.map((post) => (
+              <div key={post._id} className="mb-8">
+                {post.mainImage && (
+                  <div className="relative w-full h-64 mb-4">
+                    <Image
+                      src={urlForImage(post.mainImage).url() as string}
+                      alt={post.title || 'Post Image'}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
+                      className="object-cover"
+                    />
+                  </div>
+                )}
+
+                {/* Post Title */}
+                <h2 className="text-2xl font-bold">{post.title}</h2>
+
+                {/* Post Excerpt */}
+                <p className="text-gray-700 mt-2">
+                  {post.excerpt || 'No excerpt available.'}
+                </p>
+
+                {/* Post Date */}
+                <p className="mt-4 text-sm text-gray-500">
+                  {formatDate(post._createdAt)}
+                </p>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-
-      {/* Desktop */}
-      <div className="hidden md:flex md:flex-row md:justify-center md:items-end  md:h-[60vh] w-full md:px-[10vw] ">
-        {projectSection.images &&
-          projectSection.images.map((image, index) => (
-            <div className="relative h-[95%] w-full my-2 " key={index}>
-              <Link
-                href={isHomePage ? `/project/${slug}` : urlFor(image).url()}
-              >
-                <div className="relative w-full h-full">
-                  <Image
-                    src={urlFor(image).url() as string}
-                    alt=
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 30vw"
-                    className="object-contain p-2"
-                  />
-                </div>
-              </Link>
-            </div>
-          ))}
-      </div>
-
-      {projectSection.text ? (
-        isHomePage ? (
-          <Link
-            href={`/project/${slug}`}
-            className="md:h-[15vh] flex flex-col items-center justify-center md:mb-32"
-          >
-            <div className="px-4 md:text-center md:max-w-[55vw]">
-              <p className="leading-[18px] lg:leading-[20px] ">
-                {projectSection.text[0]}
-                <span className="text-2xl lg:text-4xl leading-[18px] lg:leading-[20px]  font-serif tracking-tighter">
-                  {projectSection.text[1]}
-                </span>
-                {projectSection.text[2]}
-
-                {projectSection.text[3]}
-
-                {projectSection.text[4]}
-              </p>
-            </div>
-          </Link>
-        ) : (
-          <div className="md:h-[30vh] flex flex-col items-center justify-center py-8">
-            <div className="px-4 md:text-center md:max-w-[55vw]">
-              <p className="leading-[18px] lg:leading-[20px] ">
-                {projectSection.text[0]}
-                <span className="text-2xl lg:text-4xl leading-[18px] lg:leading-[20px]  font-serif tracking-tighter">
-                  {projectSection.text[1]}
-                </span>
-                {projectSection.text[2]}
-
-                {projectSection.text[3]}
-
-                {projectSection.text[4]}
-              </p>
-            </div>
-          </div>
-        )
-      ) : (
-        <div className="md:h-24" />
-      )}
-    </div>
-      </ Container >
-    </div>
-  );
+        </div>
+      </Container>
+  
+  )
 }
