@@ -7,10 +7,10 @@ import { formatDate } from '~/utils'
 export default function Card({ post }: { post: Post }) {
   return (
     <div className="">
-      {post.mainImage ? (
+      {post.mainImages ? (
         <Image
           className=""
-          src={urlForImage(post.mainImage).width(500).height(300).url()}
+          src={urlForImage(post.mainImages[0]).width(500).height(300).url()}
           height={300}
           width={500}
           alt=""

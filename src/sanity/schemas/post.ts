@@ -24,16 +24,21 @@ export default defineType({
       name: 'excerpt',
       title: 'Excerpt',
       type: 'text',
-      rows: 4,
+      
     }),
-    defineField({
-      name: 'mainImage',
-      title: 'Main image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    }),
+    {
+      name: "mainImages",
+      type: "array",
+      title: "Image(s) pour Home Page",
+      of: [
+        {
+          type: "image",
+          options: {
+            hotspot: true,
+          },
+        },
+      ],
+    },
     defineField({
       name: 'body',
       title: 'Body',

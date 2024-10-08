@@ -28,10 +28,10 @@ export default async function ProjectPage({ params }: { params: { slug: string }
           
           {/* Mobile */}
           <div className="-mt-12 columns-1 sm:columns-2 md:hidden">
-            {post.mainImage && (
+            {post.mainImages && (
               <div className="mx-12 break-inside-avoid">
                 <Image
-                  src={urlForImage(post.mainImage).url() as string}
+                  src={urlForImage(post.mainImages[0]).url() as string}
                   alt={post.title || 'Post Image'}
                   width={500}
                   height={300}
@@ -43,11 +43,11 @@ export default async function ProjectPage({ params }: { params: { slug: string }
 
           {/* Desktop */}
           <div className="hidden md:flex md:flex-row md:justify-center md:items-end md:h-[60vh] w-full md:px-[10vw]">
-            {post.mainImage && (
+            {post.mainImages && (
               <div className="relative h-[95%] w-full my-2">
                 <div className="relative w-full h-full">
                   <Image
-                    src={urlForImage(post.mainImage).url() as string}
+                    src={urlForImage(post.mainImages[0]).url() as string}
                     alt={post.title || 'Post Image'}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 30vw"
