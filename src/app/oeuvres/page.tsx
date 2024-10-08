@@ -25,13 +25,16 @@ export default async function PostsPage() {
   }
 
   return (
-    <div className="md:min-h-[60vh] bg-black w-full md:pt-8">
+    <div className="md:min-h-[90vh] bg-black w-full md:pt-32">
       {/* Render a list of posts */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="gap-8">
         {posts.map((post) => (
           <div key={post._id} className="mb-8">
             {/* Render an array of main images */}
-            <div className="md:min-h-[60vh] w-full">
+            <div className="md:min-h-[80vh] w-full">
+              <div className='flex justify-center'>
+                <h1>{post.title}</h1>
+              </div>
               {/* Mobile View */}
               <div className="-mt-12 columns-1 sm:columns-2 md:hidden">
                 {post.mainImages?.map((image: any, index: number) => (
@@ -69,18 +72,13 @@ export default async function PostsPage() {
                 ))}
               </div>
 
-              {/* Post Title */}
-              <h2 className="text-2xl font-bold mt-4">{post.title}</h2>
+           
 
               {/* Post Excerpt */}
               <p className="text-gray-700 mt-2">
-                {post.excerpt || 'No excerpt available.'}
+                {post.excerpt}
               </p>
 
-              {/* Post Date */}
-              <p className="mt-4 text-sm text-gray-500">
-                {formatDate(post._createdAt)}
-              </p>
             </div>
           </div>
         ))}

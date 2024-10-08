@@ -14,3 +14,36 @@ html {
 body {
   margin: 0;
 }
+
+h1 {
+  font-size: 25px; /* Default size for small screens */
+
+  font-weight: 400;
+  
+  @screen md {
+    font-size: 32px; /* Medium screens */
+  }
+  
+  @screen lg {
+    font-size: 35px; /* Large screens */
+  }
+}
+
+
+p {
+  font-size: 14px; /* Default size for small screens */
+  font-weight: 400;
+  line-height: 18px;
+
+   
+  @screen lg {
+    font-size: 15px; /* Large screens */
+    line-height: 20px;
+  }
+
+  @screen 2xl {
+    font-size: 16px; 
+    line-height: 20px;
+
+  }
+}
