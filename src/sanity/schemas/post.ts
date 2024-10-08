@@ -24,20 +24,32 @@ export default defineType({
       name: 'excerpt',
       title: 'Excerpt',
       type: 'text',
-      
     }),
     {
-      name: "mainImages",
-      type: "array",
-      title: "Image(s) pour Home Page",
+      name: 'mainImages',
+      type: 'array',
+      title: 'Image(s) pour Home Page',
       of: [
         {
-          type: "image",
+          type: 'image',
           options: {
             hotspot: true,
           },
         },
       ],
+    },
+    {
+      name: 'layout',
+      title: 'Image Layout',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Portrait', value: 'portrait' },
+          { title: 'Landscape', value: 'landscape' },
+          { title: 'Square', value: 'square' },
+        ],
+        layout: 'radio', // Radio button selection
+      },
     },
     defineField({
       name: 'body',
