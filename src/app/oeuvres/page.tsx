@@ -19,8 +19,6 @@ export default async function PostsPage() {
       revalidate: 10, // Revalidate every 10 seconds
     },
   });
-  console.log(posts[0])
-
   // Handle case where no posts are found
   if (!posts || posts.length === 0) {
     return <p>No posts found.</p>;

@@ -4,19 +4,32 @@ import groq from 'groq';
 import { type SanityClient } from 'next-sanity';
 
 // Query to fetch all posts with defined slugs, ordered by creation date
-export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`;
-
+export const postsQuery = groq`
+  *[_type == "post" && defined(slug.current)] {
+    _id,
+    _createdAt,
+    title,
+    slug,
+    excerpt,
+    mainImages, 
+    body
+  } | order(_createdAt desc)
+`;
 // Function to fetch all posts
 export async function getPosts(client: SanityClient, options = {}): Promise<Post[]> {
-  return await client.fetch(postsQuery, options);
+  const posts = await client.fetch(postsQuery, options);
+  console.log(posts[0])
+  return posts
 }
 
 // Query to fetch a single post by slug
 export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][0]`;
 
 // Function to fetch a post by its slug
-export async function getPost(client: SanityClient, slug: string): Promise<Post> {
-  return await client.fetch(postBySlugQuery, { slug });
+export async function getPost(client: SanityClient, slug: string, options = {}): Promise<Post> {
+  const post = await client.fetch(postBySlugQuery, { slug });
+  console.log(post)
+  return post
 }
 
 // Query to fetch all slugs for posts
