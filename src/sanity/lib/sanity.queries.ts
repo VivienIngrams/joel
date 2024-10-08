@@ -18,7 +18,7 @@ export const postsQuery = groq`
 // Function to fetch all posts
 export async function getPosts(client: SanityClient, options = {}): Promise<Post[]> {
   const posts = await client.fetch(postsQuery, options);
-  console.log(posts[0])
+  console.log(posts[2])
   return posts
 }
 
