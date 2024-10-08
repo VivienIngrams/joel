@@ -23,7 +23,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
           <div className="flex gap-x-2 ">
             <Socials />
           </div>
-          <span className=" text-sm  ">
+          <span className=" text-sm  text-white">
             info@joelbardeau.com
           </span>
         </div>

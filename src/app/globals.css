@@ -8,11 +8,10 @@ html {
 }
 
 * {
-  color: gray;
+  color: rgb(164, 164, 164);
 }
 
 body {
-  color: white;
   font-family: var(--font-barlow);
   margin: 0;
 }

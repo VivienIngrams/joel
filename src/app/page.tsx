@@ -3,9 +3,9 @@ import { useLiveQuery } from 'next-sanity/preview'
 
 import Card from '~/app/components/Card'
 import Header from '~/app/components/Header'
-import { readToken } from '~/lib/sanity.api'
-import { getClient } from '~/lib/sanity.client'
-import { getPosts, type Post, postsQuery } from '~/lib/sanity.queries'
+import { readToken } from '~/sanity/libsanity.api'
+import { getClient } from '~/sanity/libsanity.client'
+import { getPosts, type Post, postsQuery } from '~/sanity/libsanity.queries'
 
 import Container from './components/Container'
 
@@ -77,9 +77,9 @@ export default function HomePage() {
 // import Card from '~/components/Card'
 // import Container from '~/components/Container'
 // import Welcome from '~/components/Welcome'
-// import { readToken } from '~/lib/sanity.api'
-// import { getClient } from '~/lib/sanity.client'
-// import { getPosts, type Post, postsQuery } from '~/lib/sanity.queries'
+// import { readToken } from '~/sanity/libsanity.api'
+// import { getClient } from '~/sanity/libsanity.client'
+// import { getPosts, type Post, postsQuery } from '~/sanity/libsanity.queries'
 // import type { SharedPageProps } from '~/pages/_app'
 
 // export const getStaticProps: GetStaticProps<

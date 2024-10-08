@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
-import { urlForImage } from '~/lib/sanity.image'
-import { type Post } from '~/lib/sanity.queries'
+import { urlForImage } from '~/sanity/libsanity.image'
+import { type Post } from '~/sanity/libsanity.queries'
 import { formatDate } from '~/utils'
 
 export default function Card({ post }: { post: Post }) {
