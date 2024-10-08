@@ -22,7 +22,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
         className={` flex items-center justify-center  ${
           isHomePage
             ? 'absolute top-0 w-full z-10 h-16 md:h-32 text-3xl md:text-6xl '
-            : 'h-8 md:h-16 text-[22px] md:text-[32px] pb-4 mx-[30vw]  border-b-[1px] border-b-gray-500'
+            : 'h-8 md:h-20 text-[22px] md:text-[32px] pb-4 mx-[30vw]  border-b-[1px] border-b-gray-500'
         }`}
       >
         <Link
