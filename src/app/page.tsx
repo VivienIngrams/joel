@@ -1,29 +1,31 @@
-import Image from 'next/image'
-import { useLiveQuery } from 'next-sanity/preview'
+import Image from 'next/image';
+import { useLiveQuery } from 'next-sanity/preview'; // Ensure you're using this if you're in draft mode
+import { getClient } from '~/sanity/lib/sanity.client';
+import { getHomePage } from '~/sanity/lib/sanity.queries';
 
-import Card from '~/app/components/Card'
-import Header from '~/app/components/Header'
-import { readToken } from '~/sanity/lib/sanity.api'
-import { getClient } from '~/sanity/lib/sanity.client'
-import { getPosts, type Post, postsQuery } from '~/sanity/lib/sanity.queries'
+export default async function HomePage() {
+  // Get the Sanity client
+  const client = getClient();
+  
+  // Fetch the home page data
+  const homePageData = await getHomePage(client);
 
-import Container from './components/Container'
-
-export default function HomePage() {
   return (
-    
-        <section className="relative h-screen w-full">
-          <Image
-            className="object-cover"
-            src="/terre (1).png"
-            fill
-            sizes="100vw "
-            alt=""
-          />
-        </section>
-    
-  )
+    <section className="relative h-screen w-full">
+      {/* Use the fetched image data */}
+      {homePageData?.image?.asset?.url && (
+        <Image
+          className="object-cover"
+          src={homePageData.image.asset.url}
+          fill
+          sizes="100vw"
+          alt="Home Page Background"
+        />
+      )}
+    </section>
+  );
 }
+
 
 // import '~/styles/global.css'
 

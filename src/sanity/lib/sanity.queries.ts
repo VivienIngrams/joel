@@ -48,3 +48,21 @@ export interface Post {
   mainImages?: ImageAsset[]; // Accommodating the array of images
   body: PortableTextBlock[];
 }
+
+// Query to fetch the home page data
+export const homePageQuery = groq`
+  *[_type == "home"][0] {
+    image {
+      asset -> {
+        _id,
+        url
+      }
+    }
+  }
+`;
+
+// Function to fetch the home page data
+export async function getHomePage(client: SanityClient, options = {}) {
+  const homePage = await client.fetch(homePageQuery, options);
+  return homePage;
+}
