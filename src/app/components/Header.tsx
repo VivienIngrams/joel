@@ -21,9 +21,13 @@ const Header = () => {
         }`}
       >
       <Link
-        href="/"
-        className="hover:bg-white/10 px-20 py-4 hover:rounded-2xl  border-b-gray-500 border-b-[1px]"
-      >
+          href="/"
+          className="hover:bg-white/10 px-20 py-4 hover:rounded-2xl border-b-[1px] border-b-gray-500"
+          style={{
+            paddingBottom: isHomePage ? "8px" : "4px", // Adjust padding based on the page
+            lineHeight: "1.5", // Set consistent line height
+          }}
+        >
         Joël Bardeau
       </Link>
       </div>

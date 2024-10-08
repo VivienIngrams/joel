@@ -2,6 +2,7 @@ import './globals.css'
 
 import type { Metadata } from "next";
 import { Barlow } from "next/font/google";
+
 import Container from './components/Container';
 
 const barlow = Barlow({  variable: '--font-family-barlow',  weight: [ "100", "300", "400", "500", "600", "700" ], style: ["normal", "italic"], subsets: ["latin"],  });

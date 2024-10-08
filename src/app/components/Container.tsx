@@ -8,7 +8,14 @@ import Header from './Header'
 
 
 export default function Container({ children }: { children: React.ReactNode }) {
-  const homepage = usePathname() === '/'
+  const path = usePathname()
+  const isHomePage = path === '/'
+  const isStudioPage = path.startsWith('/studio') // Check if the path starts with /studio
+
+  if (isStudioPage) {
+    // If it's the /studio path, return only the children without the container
+    return <>{children}</>
+  }
 
   return (
     <div className="w-screen min-h-screen bg-black font-barlow">
