@@ -75,9 +75,9 @@ export default function HomePage() {
 // import Card from '~/components/Card'
 // import Container from '~/components/Container'
 // import Welcome from '~/components/Welcome'
-// import { readToken } from '~/sanity/libsanity.api'
-// import { getClient } from '~/sanity/libsanity.client'
-// import { getPosts, type Post, postsQuery } from '~/sanity/libsanity.queries'
+// import { readToken } from '~/sanity/lib/sanity.api'
+// import { getClient } from '~/sanity/lib/sanity.client'
+// import { getPosts, type Post, postsQuery } from '~/sanity/lib/sanity.queries'
 // import type { SharedPageProps } from '~/pages/_app'
 
 // export const getStaticProps: GetStaticProps<
