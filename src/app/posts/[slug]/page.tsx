@@ -23,8 +23,8 @@ export default async function ProjectPage({
 
   
   return (
-    <div className="md:min-h-[90vh] w-full md:pt-8 flex flex-row">
-     
+    <div className="md:h-[70vh] w-full md:pt-8 flex flex-row   md:mb-16">
+     <PostContent post={post}/>
       {/* Horizontal Scrolling Image Gallery on the Right */}
       <HorizontalGallery mainImages={post.mainImages} />
     </div>
@@ -54,7 +54,7 @@ interface PostContentProps {
 
  function PostContent({ post }: PostContentProps) {
   return (
-    <div className="w-full h-full md:w-1/3 p-4 md:text-left">
+    <div className="w-full h-full ml-6 md:w-1/4 p-4 md:text-left">
       <h1 className="text-2xl font-bold">{post.title}</h1>
       <p className="leading-[18px] lg:leading-[20px] mt-4">
         {post.excerpt || 'No excerpt available.'}

@@ -49,7 +49,7 @@ export default function HorizontalGallery({ mainImages }: HorizontalGalleryProps
               alt="gallery"
               width={800}
               height={600}
-              className="object-cover"
+              className="object-cover p-4"
             />
           </div>
         ))}
