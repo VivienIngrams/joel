@@ -38,7 +38,7 @@ export default async function PostsPage() {
   }
 
   return (
-    <div className="md:min-h-[80vh] bg-black w-full md:pt-16">
+    <div className="md:min-h-[80vh] bg-neutral-900 w-full md:pt-16">
       {/* Render a list of posts */}
       <div className="gap-8">
         {posts.map((post) => {
@@ -94,7 +94,7 @@ export default async function PostsPage() {
                   </div>
                   {/* Overlay for Title */}
                   <div className="opacity-0 absolute inset-0 hover:opacity-100 flex items-center justify-center bg-black bg-opacity-50">
-                    <h1 className="text-white uppercase text-4xl md:text-6xl lg:text-7xl text-center font-thin">
+                    <h1 className="text-white  text-4xl md:text-6xl lg:text-7xl text-center font-thin">
                       {post.title}
                     </h1>
                   </div>

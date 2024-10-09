@@ -17,29 +17,33 @@ export default function Container({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <div className="w-screen min-h-screen bg-black font-barlow">
+    <div className="w-screen min-h-screen font-arsenal">
       <div
-        className={` flex items-center justify-center  ${
+        className={`flex flex-col items-center justify-center pt-8  ${
           isHomePage
-            ? 'absolute top-0 w-full z-10 h-16 md:h-32 text-3xl md:text-6xl '
-            : 'h-8 md:h-20 text-[22px] md:text-[32px] pb-4 mx-[30vw]  border-b-[1px] border-b-gray-500'
+            ? 'absolute top-0 w-full z-10 h-16 md:h-48 text-3xl md:text-5xl '
+            : 'h-8 md:h-20 text-[22px] md:text-[32px] pb-8 bg-gradient-to-b from-black via-black to-neutral-900  '
         }`}
       >
         <Link
-          href="/"
-          className="hover:bg-white/10 px-50 py-8 "
-          style={{
-            paddingBottom: isHomePage ? '8px' : '16px', // Adjust padding based on the page
-            lineHeight: '1.5',
-          }}
+          href={isHomePage ? '/posts' : '/'}
+          className="hover:bg-white/10"
+         
         >
-          Joël Bardeau
+        <h1 className={`${isHomePage && 'uppercase md:text-5xl'} `}> Joël Bardeau</h1> 
+        {isHomePage && (
+          <h2 className="text-white text-xl md:text-2xl font-light text-center">
+            Artiste Photographe Plasticien
+          </h2>
+        )}
         </Link>
+
       </div>
-      <main className="w-full font-barlow min-h-screen">{children}</main>
-      
+
+      <main className="w-full font-arsenal min-h-screen">{children}</main>
+
       {/* Footer */}
-      <footer className="fixed bottom-0 w-full bg-black/80 px-4 py-3 sm:px-8 sm:pt-5 sm:pb-5 flex items-center justify-between">
+      <footer className="fixed bottom-0 w-full bg-gradient-to-b from-transparent via-neutral-900  to-black px-4 py-3 sm:px-8 sm:pt-5 sm:pb-5 flex items-center justify-between">
         <div>
           <p className="hidden md:flex  text-[11px]  xs:tracking-normal  z-50 leading-loose w-40 pt-6">
             Website by Vivien Ingrams
