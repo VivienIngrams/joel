@@ -13,7 +13,8 @@ export default async function PostsPage() {
   // Fetch all posts with a defined revalidation time
   const posts: Post[] = await getPosts(client, {
     next: {
-      revalidate: 1, // Revalidate every second
+      revalidate: 1, 
+      cache: 'no-store',
     },
   })
 
@@ -29,7 +30,7 @@ export default async function PostsPage() {
       case 'portrait':
         return { width: 300, height: 400 } // Portrait dimensions
       case 'landscape':
-        return { width: 400, height: 300 } // Landscape dimensions
+        return { width: 370, height: 300 } // Landscape dimensions
       case 'square':
         return { width: 300, height: 300 } // Square dimensions
       default:
@@ -38,7 +39,7 @@ export default async function PostsPage() {
   }
 
   return (
-    <div className="md:min-h-[80vh] bg-neutral-900 w-full md:pt-16">
+    <div className="md:min-h-[80vh] bg-neutral-900 w-full md:pt-16 font-barlow">
       {/* Render a list of posts */}
       <div className="gap-8">
         {posts.map((post) => {
@@ -58,7 +59,7 @@ export default async function PostsPage() {
                           alt={image.alt || 'Gallery Image'}
                           width={width} // Use dynamic width
                           height={height} // Use dynamic height
-                          className="mt-12 w-full h-auto object-cover"
+                          className="mt-12 w-full h-auto object-contain"
                           loading="lazy"
                         />
                       </Link>
@@ -93,11 +94,13 @@ export default async function PostsPage() {
                     ))}
                   </div>
                   {/* Overlay for Title */}
-                  <div className="opacity-0 absolute inset-0 hover:opacity-100 flex items-center justify-center bg-black bg-opacity-50">
-                    <h1 className="text-white  text-4xl md:text-6xl lg:text-7xl text-center font-thin">
+                  <Link href={`/posts/${post.slug.current}`}>
+                  <div className="opacity-0 absolute inset-0 hover:opacity-100 flex flex-col items-center justify-center bg-neutral-900 bg-opacity-50">
+                    <h1 className="text-white uppercase text-4xl  lg:text-5xl text-center font-thin">
                       {post.title}
                     </h1>
-                  </div>
+                    <p className="text-white  text-center pt-2">{post.excerpt}</p>
+                  </div></Link>
                 </div>
               </div>
             </div>

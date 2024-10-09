@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       fontFamily: {
         arsenal: ['var(--font-family-arsenal)'],
+        barlow: ['var(--font-family-barlow)'],
       },
     },
     plugins: [],

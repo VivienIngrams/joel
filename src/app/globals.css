@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-  font-family: var(--font-arsenal);
+  font-family: var(--font-barlow);
   font-weight: 400;
 }
 
@@ -14,6 +14,47 @@ html {
 body {
   margin: 0;
 }
+
+.react-horizontal-scrolling-menu--wrapper {
+  height: 100%;
+ 
+}
+.react-horizontal-scrolling-menu--inner-wrapper {
+  height: 100%;
+  
+}
+.react-horizontal-scrolling-menu--item {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.react-horizontal-scrolling-menu--scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.react-horizontal-scrolling-menu--scroll-container {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  height: 100% !important;
+} 
+
+.gallery-container {
+  display: flex;           /* Use flexbox layout */
+  overflow-x: hidden;     /* Prevent overflow from showing outside */
+  align-items: center;     /* Center images vertically if needed */
+}
+
+.scroll-menu {
+  display: flex;           /* Ensure the scroll menu itself is also flexible */
+}
+
+.scroll-menu div {
+  flex-shrink: 0;         /* Prevent images from shrinking */
+  margin-right: 10px;     /* Add space between images if needed */
+}
+
 
 h1 {
   font-size: 25px; /* Default size for small screens */
