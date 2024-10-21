@@ -1,76 +1,76 @@
 'use client'
 
-import 'react-horizontal-scrolling-menu/dist/styles.css'
-
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
-import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu'
+import React, { useEffect, useRef } from 'react'
 
 import { urlForImage } from '~/sanity/lib/sanity.image'
-import usePreventBodyScroll from './UsePreventScroll'
 
 interface HorizontalGalleryProps {
   mainImages: any[]
 }
 
-export default function HorizontalGallery({ mainImages }: HorizontalGalleryProps) {
-  const { disableScroll } = usePreventBodyScroll()
-  const [isMobileScreen, setIsMobileScreen] = useState(false)
+export function HorizontalGallery({ mainImages }: HorizontalGalleryProps) {
+    const sectionRef = useRef(null)
+  const triggerRef = useRef(null)
 
+  gsap.registerPlugin(ScrollTrigger)
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobileScreen(window.innerWidth <= 768)
+    // Only apply the animation if the window width is above 768 pixels (non-mobile screens)
+    if (window.innerWidth > 768) {
+      const pin = gsap.fromTo(
+        sectionRef.current,
+        {
+          translateX: 0,
+        },
+        {
+          translateX: '-300vw', // depends on the number of ProjectListItems
+          ease: 'none',
+          duration: 1,
+          scrollTrigger: {
+            trigger: triggerRef.current,
+            start: 'top top',
+            end: '2000 top',
+            scrub: true,
+            pin: true,
+          },
+        },
+      )
+      return () => {
+        // A return function for killing the animation on component unmount
+        pin.kill()
+      }
     }
-
-    // Set initial value
-    handleResize()
-
-    // Attach event listener for window resize
-    window.addEventListener('resize', handleResize)
-
-    // Clean up event listener on component unmount
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
-
+  }, []) // Empty dependency array means this effect runs only on mount
   return (
-    <div onMouseEnter={disableScroll} className="h-[80vh] gallery-container w-full">
-      <ScrollMenu
-        onWheel={onWheel}
-        transitionBehavior="smooth"  // Set smooth behavior
-        transitionDuration={isMobileScreen ? 1500 : 2000}  // Increase duration for smoother scrolling
+    <section
+      ref={triggerRef}
+      className="w-full h-screen overflow-hidden relative"
+    >
+      <div
+        ref={sectionRef}
+        className="flex space-x-4"
+        style={{ width: `${mainImages.length * 70}vw` }} // Dynamically set the width based on number of images
       >
-        {mainImages?.map((image: any, index: number) => (
-          <div key={image._key || index.toString()} style={{ width: '800px', flexShrink: 0 }}>
+        {mainImages.map((image: any, index: number) => (
+          <div
+            key={image._key || index.toString()}
+            className="relative flex-shrink-0 w-[70vw] h-[90vh] my-[5vh]"
+          >
             <Image
               src={urlForImage(image).url() as string}
               title={image.alt || `Image ${index + 1}`}
               alt="gallery"
-              width={800}
-              height={600}
-              className="object-cover p-4"
+              layout="fill"
+              objectFit="cover"
+              className="rounded-md"
             />
           </div>
         ))}
-      </ScrollMenu>
-    </div>
+      </div>
+    </section>
   )
 }
 
-// onWheel handler for ScrollMenu
-function onWheel(apiObj: React.ContextType<typeof VisibilityContext>, ev: React.WheelEvent): void {
-  ev.preventDefault(); // Prevent default scroll behavior
-
-  // Check for horizontal scroll intent
-  if (ev.deltaY !== 0) {
-    // Determine the direction of scroll based on deltaY
-    if (ev.deltaY > 0) {
-      // Scroll right on down scroll
-      apiObj.scrollNext(); // Use default smooth transition
-    } else if (ev.deltaY < 0) {
-      // Scroll left on up scroll
-      apiObj.scrollPrev(); // Use default smooth transition
-    }
-  }
-}
+export default HorizontalGallery

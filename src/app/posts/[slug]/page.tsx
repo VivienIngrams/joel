@@ -1,8 +1,7 @@
+import HorizontalGallery from '~/app/components/HorizontalGallery'
 import { readToken } from '~/sanity/lib/sanity.api'
 import { getClient } from '~/sanity/lib/sanity.client'
 import { getPost, type Post, postSlugsQuery } from '~/sanity/lib/sanity.queries'
-
-import HorizontalGallery from '../../components/HorizontalGallery'
 
 
 // Fetch data on the server side
@@ -23,7 +22,7 @@ export default async function ProjectPage({
 
   
   return (
-    <div className="md:h-[70vh] w-full md:pt-8 flex flex-row   md:mb-16">
+    <div className="md:h-full w-full  flex flex-row   ">
      <PostContent post={post}/>
       {/* Horizontal Scrolling Image Gallery on the Right */}
       <HorizontalGallery mainImages={post.mainImages} />
@@ -54,7 +53,7 @@ interface PostContentProps {
 
  function PostContent({ post }: PostContentProps) {
   return (
-    <div className="w-full h-full ml-6 md:w-1/4 p-4 md:text-left">
+    <div className="fixed top-0 left-0 md:bg-gradient-to-r from-black to-transparent w-full h-full pl-6 md:w-1/4 p-4 md:text-left z-50">
       <h1 className="text-2xl font-bold">{post.title}</h1>
       <p className="leading-[18px] lg:leading-[20px] mt-4">
         {post.excerpt || 'No excerpt available.'}

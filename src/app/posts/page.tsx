@@ -53,7 +53,7 @@ export default async function PostsPage() {
                 <div className="columns-1 sm:columns-2 md:hidden">
                   {post.mainImages?.map((image: any, index: number) => (
                     <div key={index} className="mx-12 break-inside-avoid">
-                      <Link href={`/post/${post.slug.current}`}>
+                      <Link href={`/posts/${post.slug.current}`}>
                         <Image
                           src={urlForImage(image).url() as string}
                           alt={image.alt || 'Gallery Image'}

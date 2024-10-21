@@ -19,10 +19,10 @@ export default function Container({ children }: { children: React.ReactNode }) {
   return (
     <div className="w-screen h-full font-arsenal">
       <div
-        className={`flex flex-col items-center justify-center pt-8  ${
+        className={` flex flex-col items-center justify-center pt-8  ${
           isHomePage
             ? 'absolute top-0 w-full z-10 h-16 md:h-48 text-3xl md:text-5xl '
-            : 'h-8 md:h-20 text-[22px] md:text-[32px] pb-8 bg-gradient-to-b from-black via-black to-neutral-900  '
+            : 'fixed top-0 z-50 h-8 w-full md:h-20 text-[22px] md:text-[32px] pb-8 bg-gradient-to-b from-neutral-950  via-neutral-900/90 to-neutral-transparent '
         }`}
       >
         <Link
@@ -30,7 +30,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
           // className="hover:bg-white/10"
          
         >
-        <h1 className={`${isHomePage ? 'uppercase md:text-5xl' : 'py-4'} text-center `}> Joël Bardeau</h1> 
+        <h1 className={`${isHomePage ? 'uppercase md:text-5xl' : ''} text-center `}> Joël Bardeau</h1> 
         {isHomePage && (
           <h2 className="text-white text-xl md:text-2xl font-light text-center">
             Artiste Photographe Plasticien
@@ -40,7 +40,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
 
       </div>
 
-      <main className="w-full font-arsenal ">{children}</main>
+      <main className="w-full font-arsenal">{children}</main>
 
       {/* Footer */}
       <footer className="fixed bottom-0 w-full bg-gradient-to-b from-transparent via-neutral-900  to-black px-4 pt-24 md:pt-16 pb-4 flex items-end md:items-center justify-between">
