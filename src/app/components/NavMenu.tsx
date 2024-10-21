@@ -1,5 +1,5 @@
 'use client'
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
+
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
@@ -14,9 +14,9 @@ const NavMenu = () => {
   }
 
   return (
-    <nav className="w-full z-50 mx-auto px-4 sm:px-6 lg:px-8 font-arsenal uppercase">
+    <nav className="w-full z-50 mx-auto sm:px-6 lg:px-8 font-arsenal uppercase">
       <div
-        className={`flex items-start justify-center  text-lg md:text-xl pt-4`}
+        className={`flex items-start justify-start md:justify-center  text-lg md:text-xl md:pt-4`}
       >
         <div className="flex items-center">
           <div className="hidden md:block">
@@ -58,14 +58,14 @@ const NavMenu = () => {
           <button
             onClick={toggleMenu}
             type="button"
-            className="inline-flex items-center justify-center p-2 "
+            className="inline-flex  "
             aria-controls="mobile-menu"
             aria-expanded="false"
           >
             <span className="sr-only">Open main menu</span>
             {isOpen ? (
               <svg
-                className="block h-6 w-6"
+                className="block h-6 w-6 mt-12 -ml-2"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +80,7 @@ const NavMenu = () => {
                   {' '}
                   <path
                     d="M19 5L4.99998 19M5.00001 5L19 19"
-                    stroke="#5b2e16"
+                    stroke="#d0cbcb"
                     strokeWidth="1.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -88,35 +88,8 @@ const NavMenu = () => {
                 </g>
               </svg>
             ) : (
-              <svg
-                className="block h-6 w-6"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                <g
-                  id="SVGRepo_tracerCarrier"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></g>
-                <g id="SVGRepo_iconCarrier">
-                  {' '}
-                  <g id="Menu / Menu_Duo_LG">
-                    {' '}
-                    <path
-                      id="Vector"
-                      d="M3 15H21M3 9H21"
-                      stroke="#5b2e16"
-                      strokeWidth="1"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    ></path>{' '}
-                  </g>{' '}
-                </g>
-              </svg>
-            )}
-          </button>
+<svg className="h-16 w-16 -m-2" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="184px" height="184px" viewBox="0 0 100.00 100.00" enable-background="new 0 0 100 100" xmlSpace="preserve" fill="#eee" stroke="#eee"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="1.6"></g><g id="SVGRepo_iconCarrier"> <g id="Download_x5F_25_x25_"> </g> <g id="Download_x5F_50_x25_"> </g> <g id="Download_x5F_75_x25_"> </g> <g id="Download_x5F_100_x25_"> </g> <g id="Upload"> </g> <g id="Next"> </g> <g id="Last"> </g> <g id="OK"> </g> <g id="Fail"> </g> <g id="Add"> </g> <g id="Spinner_x5F_0_x25_"> </g> <g id="Spinner_x5F_25_x25_"> </g> <g id="Spinner_x5F_50_x25_"> </g> <g id="Spinner_x5F_75_x25_"> </g> <g id="Brightest_x5F_25_x25_"> </g> <g id="Brightest_x5F_50_x25_"> </g> <g id="Brightest_x5F_75_x25_"> </g> <g id="Brightest_x5F_100_x25_"> </g> <g id="Reload"> </g> <g id="Forbidden"> </g> <g id="Clock"> </g> <g id="Compass"> </g> <g id="World"> </g> <g id="Speed"> </g> <g id="Microphone"> </g> <g id="Options"> </g> <g id="Chronometer"> </g> <g id="Lock"> </g> <g id="User"> </g> <g id="Position"> </g> <g id="No_x5F_Signal"> </g> <g id="Low_x5F_Signal"> </g> <g id="Mid_x5F_Signal"> </g> <g id="High_x5F_Signal"> </g> <g id="Options_1_"> </g> <g id="Flash"> </g> <g id="No_x5F_Signal_x5F_02"> </g> <g id="Low_x5F_Signal_x5F_02"> </g> <g id="Mid_x5F_Signal_x5F_02"> </g> <g id="High_x5F_Signal_x5F_02"> </g> <g id="Favorite"> </g> <g id="Search"> </g> <g id="Stats_x5F_01"> </g> <g id="Stats_x5F_02"> </g> <g id="Turn_x5F_On_x5F_Off"> </g> <g id="Full_x5F_Height"> </g> <g id="Full_x5F_Width"> </g> <g id="Full_x5F_Screen"> </g> <g id="Compress_x5F_Screen"> </g> <g id="Chat"> </g> <g id="Bluetooth"> </g> <g id="Share_x5F_iOS"> </g> <g id="Share_x5F_Android"> </g> <g id="Love__x2F__Favorite"> </g> <g id="Hamburguer"> <path fill="none" stroke="#ffffff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d=" M33.791,33.604c4.528-4.528,10.462-6.791,16.396-6.791c5.934,0,11.868,2.264,16.396,6.791c4.527,4.527,6.79,10.459,6.791,16.392 c0.001,5.936-2.263,11.872-6.791,16.4c-9.055,9.055-23.737,9.055-32.792,0S24.736,42.659,33.791,33.604z"></path> <g> <line fill="none" stroke="#ffffff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="58.187" y1="50" x2="42.187" y2="50"></line> <line fill="none" stroke="#ffffff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="58.187" y1="42" x2="42.187" y2="42"></line> <line fill="none" stroke="#ffffff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="58.187" y1="58" x2="42.187" y2="58"></line> </g> </g> <g id="Flying"> </g> <g id="Take_x5F_Off"> </g> <g id="Land"> </g> <g id="City"> </g> <g id="Nature"> </g> <g id="Pointer"> </g> <g id="Prize"> </g> <g id="Extract"> </g> <g id="Play"> </g> <g id="Pause"> </g> <g id="Stop"> </g> <g id="Forward"> </g> <g id="Reverse"> </g> <g id="Next_1_"> </g> <g id="Last_1_"> </g> <g id="Empty_x5F_Basket"> </g> <g id="Add_x5F_Basket"> </g> <g id="Delete_x5F_Basket"> </g> <g id="Error_x5F_Basket"> </g> <g id="OK_x5F_Basket"> </g> </g></svg>)}  {/* <svg viewBox="0 0 22 22" className="h-8 w-8 mb-2" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff" stroke-width="0.024"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M3.46447 20.5355C4.92893 22 7.28595 22 12 22C16.714 22 19.0711 22 20.5355 20.5355C22 19.0711 22 16.714 22 12C22 7.28595 22 4.92893 20.5355 3.46447C19.0711 2 16.714 2 12 2C7.28595 2 4.92893 2 3.46447 3.46447C2 4.92893 2 7.28595 2 12C2 16.714 2 19.0711 3.46447 20.5355ZM18.75 16C18.75 16.4142 18.4142 16.75 18 16.75H6C5.58579 16.75 5.25 16.4142 5.25 16C5.25 15.5858 5.58579 15.25 6 15.25H18C18.4142 15.25 18.75 15.5858 18.75 16ZM18 12.75C18.4142 12.75 18.75 12.4142 18.75 12C18.75 11.5858 18.4142 11.25 18 11.25H6C5.58579 11.25 5.25 11.5858 5.25 12C5.25 12.4142 5.58579 12.75 6 12.75H18ZM18.75 8C18.75 8.41421 18.4142 8.75 18 8.75H6C5.58579 8.75 5.25 8.41421 5.25 8C5.25 7.58579 5.58579 7.25 6 7.25H18C18.4142 7.25 18.75 7.58579 18.75 8Z" fill="#ffff"></path> </g></svg>            )} */}
+            </button>
         </div>
       </div>
 

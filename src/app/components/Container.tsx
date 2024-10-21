@@ -27,10 +27,10 @@ export default function Container({ children }: { children: React.ReactNode }) {
       >
         <Link
           href={isHomePage ? '/posts' : '/'}
-          className="hover:bg-white/10"
+          // className="hover:bg-white/10"
          
         >
-        <h1 className={`${isHomePage ? 'uppercase md:text-5xl' : 'pb-4'} `}> Joël Bardeau</h1> 
+        <h1 className={`${isHomePage ? 'uppercase md:text-5xl' : 'py-4'} text-center `}> Joël Bardeau</h1> 
         {isHomePage && (
           <h2 className="text-white text-xl md:text-2xl font-light text-center">
             Artiste Photographe Plasticien
@@ -43,7 +43,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
       <main className="w-full font-arsenal ">{children}</main>
 
       {/* Footer */}
-      <footer className="fixed bottom-0 w-full bg-gradient-to-b from-transparent via-neutral-900  to-black px-4 md:pt-16 pb-4 flex items-center justify-between">
+      <footer className="fixed bottom-0 w-full bg-gradient-to-b from-transparent via-neutral-900  to-black px-4 pt-24 md:pt-16 pb-4 flex items-end md:items-center justify-between">
         <div>
           <p className="hidden md:flex  text-[11px]  xs:tracking-normal  z-50 leading-loose w-40 pt-8">
             Website by Vivien Ingrams
