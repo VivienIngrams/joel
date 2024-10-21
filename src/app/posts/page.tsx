@@ -1,10 +1,11 @@
-import Image from "next/legacy/image"
+import Image from 'next/legacy/image'
 import Link from 'next/link'
 
 import { readToken } from '~/sanity/lib/sanity.api'
 import { getClient } from '~/sanity/lib/sanity.client'
 import { urlForImage } from '~/sanity/lib/sanity.image'
 import { getPosts, type Post } from '~/sanity/lib/sanity.queries'
+import HorizontalGallery from '../components/HorizontalGallery'
 
 // Fetch data on the server side for all posts
 export default async function PostsPage() {
@@ -13,7 +14,7 @@ export default async function PostsPage() {
   // Fetch all posts with a defined revalidation time
   const posts: Post[] = await getPosts(client, {
     next: {
-      revalidate: 1, 
+      revalidate: 1,
       cache: 'no-store',
     },
   })
@@ -43,29 +44,15 @@ export default async function PostsPage() {
       {/* Render a list of posts */}
       <div className="gap-8">
         {posts.map((post) => {
-          const { width, height } = getDimensions(post.layout); // Get dimensions based on layout
+          const { width, height } = getDimensions(post.layout) // Get dimensions based on layout
 
           return (
             <div key={post._id} className="mb-8">
               {/* Post Container */}
               <div className="relative w-full flex flex-col">
                 {/* Mobile View */}
-                <div className="columns-1 sm:columns-2 md:hidden">
-                  {post.mainImages?.map((image: any, index: number) => (
-                    <div key={index} className="mx-12 break-inside-avoid">
-                      <Link href={`/posts/${post.slug.current}`}>
-                        <Image
-                          src={urlForImage(image).url() as string}
-                          alt={image.alt || 'Gallery Image'}
-                          width={width} // Use dynamic width
-                          height={height} // Use dynamic height
-                          className="mt-12 w-full h-auto object-contain"
-                          loading="lazy"
-                        />
-                      </Link>
-                    </div>
-                  ))}
-                </div>
+            
+                <HorizontalGallery mainImages={post.mainImages} />
 
                 {/* Desktop View */}
                 <div className="hidden md:flex md:justify-center mb-12">
@@ -95,12 +82,15 @@ export default async function PostsPage() {
                   </div>
                   {/* Overlay for Title */}
                   <Link href={`/posts/${post.slug.current}`}>
-                  <div className="opacity-0 absolute inset-0 hover:opacity-100 flex flex-col items-center justify-center bg-neutral-900 bg-opacity-50">
-                    <h1 className="text-white uppercase text-4xl  lg:text-5xl text-center font-thin">
-                      {post.title}
-                    </h1>
-                    <p className="text-white  text-center pt-2">{post.excerpt}</p>
-                  </div></Link>
+                    <div className="opacity-0 absolute inset-0 hover:opacity-100 flex flex-col items-center justify-center bg-neutral-900 bg-opacity-50">
+                      <h1 className="text-white uppercase text-4xl  lg:text-5xl text-center font-thin">
+                        {post.title}
+                      </h1>
+                      <p className="text-white  text-center pt-2">
+                        {post.excerpt}
+                      </p>
+                    </div>
+                  </Link>
                 </div>
               </div>
             </div>

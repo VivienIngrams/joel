@@ -17,8 +17,7 @@ export function HorizontalGallery({ mainImages }: HorizontalGalleryProps) {
 
   gsap.registerPlugin(ScrollTrigger)
   useEffect(() => {
-    // Only apply the animation if the window width is above 768 pixels (non-mobile screens)
-    if (window.innerWidth > 768) {
+   
       const pin = gsap.fromTo(
         sectionRef.current,
         {
@@ -41,22 +40,21 @@ export function HorizontalGallery({ mainImages }: HorizontalGalleryProps) {
         // A return function for killing the animation on component unmount
         pin.kill()
       }
-    }
+    
   }, []) // Empty dependency array means this effect runs only on mount
   return (
     <section
       ref={triggerRef}
-      className="w-full h-screen overflow-hidden relative"
+      className="w-full h-full overflow-hidden relative bg-neutral-900"
     >
       <div
         ref={sectionRef}
         className="flex space-x-4"
-        style={{ width: `${mainImages.length * 70}vw` }} // Dynamically set the width based on number of images
       >
         {mainImages.map((image: any, index: number) => (
           <div
             key={image._key || index.toString()}
-            className="relative flex-shrink-0 w-[70vw] h-[90vh] my-[5vh]"
+            className="relative flex-shrink-0 w-[90vw] h-[70vh] my-[15vh]"
           >
             <Image
               src={urlForImage(image).url() as string}

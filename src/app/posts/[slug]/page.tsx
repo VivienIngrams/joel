@@ -22,7 +22,7 @@ export default async function ProjectPage({
 
   
   return (
-    <div className="min-h-full md:h-full w-full  md:flex md:flex-row   ">
+    <div className="h-full w-full  md:flex md:flex-row   ">
      <PostContent post={post}/>
       {/* Horizontal Scrolling Image Gallery on the Right */}
       <HorizontalGallery mainImages={post.mainImages} />
