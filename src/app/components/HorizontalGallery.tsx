@@ -1,47 +1,56 @@
+// HorizontalGallery.tsx
 'use client'
 
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import Image from "next/legacy/image"
+import { usePathname } from 'next/navigation'
 import React, { useEffect, useRef } from 'react'
 
 import { urlForImage } from '~/sanity/lib/sanity.image'
 
 interface HorizontalGalleryProps {
   mainImages: any[]
+  layoutDimensions: { width: number, height: number, mobileHeight: number, marginY: string }[] // New prop type
 }
 
-export function HorizontalGallery({ mainImages }: HorizontalGalleryProps) {
-    const sectionRef = useRef(null)
+export function HorizontalGallery({ mainImages, layoutDimensions }: HorizontalGalleryProps) {
+  const sectionRef = useRef(null)
   const triggerRef = useRef(null)
 
   gsap.registerPlugin(ScrollTrigger)
+
+  const path = usePathname()
+  const isMainPostsPage = path === "/posts"
+
   useEffect(() => {
-   
-      const pin = gsap.fromTo(
-        sectionRef.current,
-        {
-          translateX: 0,
+    // Calculate total width based on the number of images and page type
+    const totalWidth = (isMainPostsPage ? mainImages.length - 1 : mainImages.length) * (window.innerWidth * 0.9)
+
+    const pin = gsap.fromTo(
+      sectionRef.current,
+      {
+        translateX: 0,
+      },
+      {
+        translateX: `-${totalWidth}px`,
+        ease: 'none',
+        duration: 1,
+        scrollTrigger: {
+          trigger: triggerRef.current,
+          start: 'top top',
+          end: `${totalWidth} top`,
+          scrub: true,
+          pin: true,
         },
-        {
-          translateX: '-300vw', // depends on the number of ProjectListItems
-          ease: 'none',
-          duration: 1,
-          scrollTrigger: {
-            trigger: triggerRef.current,
-            start: 'top top',
-            end: '2000 top',
-            scrub: true,
-            pin: true,
-          },
-        },
-      )
-      return () => {
-        // A return function for killing the animation on component unmount
-        pin.kill()
       }
-    
-  }, []) // Empty dependency array means this effect runs only on mount
+    )
+
+    return () => {
+      pin.kill() // Clean up the animation on unmount
+    }
+  }, [mainImages, isMainPostsPage]) // Rerun effect if mainImages change
+
   return (
     <section
       ref={triggerRef}
@@ -49,23 +58,33 @@ export function HorizontalGallery({ mainImages }: HorizontalGalleryProps) {
     >
       <div
         ref={sectionRef}
-        className="flex space-x-4"
+        className="flex pl-2 space-x-4"
       >
-        {mainImages.map((image: any, index: number) => (
-          <div
-            key={image._key || index.toString()}
-            className="relative flex-shrink-0 w-[90vw] h-[70vh] my-[15vh]"
-          >
-            <Image
-              src={urlForImage(image).url() as string}
-              title={image.alt || `Image ${index + 1}`}
-              alt="gallery"
-              layout="fill"
-              objectFit="cover"
-              className="rounded-md"
-            />
-          </div>
-        ))}
+        {mainImages.map((image: any, index: number) => {
+          const { mobileHeight, marginY } = layoutDimensions[index]
+
+          return (
+            <div
+              key={image._key || index.toString()}
+              className="relative flex-shrink-0"
+              style={{
+                width: '90vw',
+                height: mobileHeight,
+                marginTop: marginY,
+                marginBottom: marginY,
+              }}
+            >
+              <Image
+                src={urlForImage(image).url() as string}
+                title={image.alt || `Image ${index + 1}`}
+                alt="gallery"
+                layout="fill"
+                objectFit="cover"
+                className="rounded-md"
+              />
+            </div>
+          )
+        })}
       </div>
     </section>
   )
