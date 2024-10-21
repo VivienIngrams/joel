@@ -101,23 +101,23 @@ const NavMenu = () => {
                 fill="#eee"
                 stroke="#eee"
               >
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                 <g
                   id="SVGRepo_tracerCarrier"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   stroke="#CCCCCC"
-                  stroke-width="1.6"
+                  strokeWidth="1.6"
                 ></g>
                 <g id="SVGRepo_iconCarrier">
                   <g id="Hamburguer">
                     <path
                       fill="none"
                       stroke="#ffffff"
-                      stroke-width="2.1"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-miterlimit="10"
+                      strokeWidth="2.1"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeMiterlimit="10"
                       d=" M33.791,33.604c4.528-4.528,10.462-6.791,16.396-6.791c5.934,0,11.868,2.264,16.396,6.791c4.527,4.527,6.79,10.459,6.791,16.392 c0.001,5.936-2.263,11.872-6.791,16.4c-9.055,9.055-23.737,9.055-32.792,0S24.736,42.659,33.791,33.604z"
                     ></path>{' '}
                     <g>
@@ -125,10 +125,10 @@ const NavMenu = () => {
                       <line
                         fill="none"
                         stroke="#ffffff"
-                        stroke-width="2.1"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-miterlimit="10"
+                        strokeWidth="2.1"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeMiterlimit="10"
                         x1="58.187"
                         y1="50"
                         x2="42.187"
@@ -137,10 +137,10 @@ const NavMenu = () => {
                       <line
                         fill="none"
                         stroke="#ffffff"
-                        stroke-width="2.1"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-miterlimit="10"
+                        strokeWidth="2.1"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeMiterlimit="10"
                         x1="58.187"
                         y1="42"
                         x2="42.187"
@@ -149,10 +149,10 @@ const NavMenu = () => {
                       <line
                         fill="none"
                         stroke="#ffffff"
-                        stroke-width="2.1"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-miterlimit="10"
+                        strokeWidth="2.1"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeMiterlimit="10"
                         x1="58.187"
                         y1="58"
                         x2="42.187"

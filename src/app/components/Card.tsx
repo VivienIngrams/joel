@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from "next/legacy/image"
 
 import { urlForImage } from '~/sanity/lib/sanity.image'
 import { type Post } from '~/sanity/lib/sanity.queries'

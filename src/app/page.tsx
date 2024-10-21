@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import Link from 'next/link'
 import { useLiveQuery } from 'next-sanity/preview' // Ensure you're using this if you're in draft mode
 
@@ -20,7 +20,7 @@ export default async function HomePage() {
           <Image
             className="object-cover"
             src={homePageData.image.asset.url}
-            fill
+            layout="fill"
             sizes="100vw"
             alt="Home Page Background"
           />

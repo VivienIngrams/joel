@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import Link from 'next/link'
 
 import { readToken } from '~/sanity/lib/sanity.api'
@@ -39,7 +39,7 @@ export default async function PostsPage() {
   }
 
   return (
-    <div className="md:min-h-[80vh] bg-neutral-900 w-full md:pt-16 font-barlow">
+    <div className="md:min-h-[80vh] pb-20 bg-neutral-900 w-full pt-16 font-barlow">
       {/* Render a list of posts */}
       <div className="gap-8">
         {posts.map((post) => {
@@ -84,7 +84,7 @@ export default async function PostsPage() {
                             <Image
                               src={urlForImage(image).url() as string}
                               alt={image.alt || post.title}
-                              fill
+                              layout="fill"
                               className="object-cover"
                               loading="lazy" // Ensure lazy loading
                             />
