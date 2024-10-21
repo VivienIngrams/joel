@@ -96,7 +96,7 @@ const NavMenu = () => {
                 width="184px"
                 height="184px"
                 viewBox="0 0 100.00 100.00"
-                enable-background="new 0 0 100 100"
+                enableBackground="new 0 0 100 100"
                 xmlSpace="preserve"
                 fill="#eee"
                 stroke="#eee"
