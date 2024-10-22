@@ -22,7 +22,7 @@ export async function getPosts(
   options = {},
 ): Promise<Post[]> {
   const posts = await client.fetch(postsQuery, options)
-  console.log(posts)
+  // console.log(posts)
   return posts
 }
 
@@ -45,18 +45,17 @@ export const postSlugsQuery = groq`
 *[_type == "post" && defined(slug.current)][].slug.current
 `
 
-// Updated Post interface to include the new mainImages field
-export interface Post {
-  _type: 'post'
-  _id: string
+export type Post = {
+    _type: 'post'
+  _id: string;
+  slug: { current: string; };
   _createdAt: string
-  title?: string
-  slug: Slug
-  excerpt?: string
-  mainImages?: ImageAsset[]
-  layout?: string
+  mainImages: any[]; // Ensure this is required if you always expect it
+  title: string;
+  excerpt: string;
+  layout: string; // Ensure layout is also a string and required
   body: PortableTextBlock[]
-}
+};
 
 // Query to fetch the home page data
 export const homePageQuery = groq`
