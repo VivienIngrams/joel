@@ -1,9 +1,9 @@
 import HorizontalScroll from '~/app/components/HorizontalScroll'
-import ImageGallery from '~/app/components/ImageGallery'
 import PostContent from '~/app/components/PostContent'
 import { readToken } from '~/sanity/lib/sanity.api'
 import { getClient } from '~/sanity/lib/sanity.client'
 import { getPost, type Post } from '~/sanity/lib/sanity.queries'
+import MobileScroll from '~/app/components/MobileImageGallery'
 
 export default async function PostPage({
   params,
@@ -26,16 +26,22 @@ export default async function PostPage({
   }
 
   return (
-    
-      <div className="h-full w-screen md:flex">
-        {/* Post Content on the Left */}
-        <PostContent post={post} />
-
-        {/* Horizontal Scrolling Image Gallery on the Right */}
-        <div className="flex-grow md:pl-4 h-full">
-          <HorizontalScroll mainImages={post.mainImages} layout={post.layout} />
-        </div>
+    <div className="h-full w-screen md:flex">
+      {/* Post Content on the Left */}
+      <PostContent post={post} />
+      {/* // Mobile View */}
+      <div className="h-full w-full md:hidden">
+        <MobileScroll
+          mainImages={post.mainImages}
+          layout={post.layout}
+          slug={post.slug.current}
+          title={post.title}
+        />
       </div>
-  
+      {/* Horizontal Scrolling Image Gallery on the Right */}
+      <div className="hidden md:block md:flex-grow md:pl-4 h-full">
+        <HorizontalScroll mainImages={post.mainImages} layout={post.layout} />
+      </div>
+    </div>
   )
 }

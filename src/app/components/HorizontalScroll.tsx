@@ -26,7 +26,7 @@ export function HorizontalScroll({ mainImages, layout }: HorizontalGalleryProps)
   useEffect(() => {
     // Only execute if window is defined (client-side)
     if (typeof window !== 'undefined') {
-      const height = window.innerHeight * 0.8; // 80% of viewport height
+      const height = window.innerHeight * 0.78; 
       let totalImagesWidth = 0;
 
       // Calculate total width based on layout property
@@ -54,7 +54,7 @@ export function HorizontalScroll({ mainImages, layout }: HorizontalGalleryProps)
 
   useEffect(() => {
     if (dimensions.totalImagesWidth > 0 && typeof window !== 'undefined') {
-      const containerWidth = window.innerWidth * 0.6;
+      const containerWidth = window.innerWidth * 0.7;
       const totalWidth = dimensions.totalImagesWidth - containerWidth;
 
       const pin = gsap.fromTo(
@@ -65,11 +65,11 @@ export function HorizontalScroll({ mainImages, layout }: HorizontalGalleryProps)
           ease: 'none',
           scrollTrigger: {
             trigger: triggerRef.current,
-            start: 'top top',
+            start: 'center center',
             end: `${totalWidth} top`, // Adjust this based on the expected scroll length
             scrub: true,
             pin: true,
-            markers: true, // Remove this in production
+            // markers: true, // Remove this in production
           },
         }
       );
@@ -83,7 +83,7 @@ export function HorizontalScroll({ mainImages, layout }: HorizontalGalleryProps)
   return (
     <section
       ref={triggerRef}
-      className={`w-full h-full overflow-hidden bg-neutral-800 ${!isMainPostsPage ? 'pl-[25vw]' : ''}`}
+      className={`w-full h-full pt-16 overflow-hidden bg-neutral-800 ${!isMainPostsPage ? 'pl-[20vw]' : ''}`}
     >
       <div
         ref={sectionRef}
@@ -96,7 +96,7 @@ export function HorizontalScroll({ mainImages, layout }: HorizontalGalleryProps)
           return (
             <div
               key={image._key || index.toString()}
-              className="relative flex-shrink-0 h-full"
+              className="relative flex-shrink-0"
               style={{
                 width: `${width}px`,
                 height: `${dimensions.height}px`,

@@ -64,7 +64,7 @@ const ImageGallery = ({ mainImages, layout, slug, title }: ImageGalleryProps) =>
   return (
     <div className="md:py-8 w-full">
       <div className="relative flex flex-col">
-        <div className="flex flex-row justify-center mx-auto">
+        <div className="flex flex-row justify-center">
           {mainImages.map((image, index) => (
             <Link key={index} href={`/posts/${slug}`}>
               <div
@@ -87,7 +87,7 @@ const ImageGallery = ({ mainImages, layout, slug, title }: ImageGalleryProps) =>
         </div>
         {/* Overlay for Title */}
         <Link href={`/posts/${slug}`}>
-          <div className="opacity-0 absolute inset-0 hover:opacity-100 flex flex-col items-center justify-center bg-neutral-900 bg-opacity-50 transition-opacity duration-300">
+          <div className="opacity-0 absolute inset-0 hover:opacity-100 flex flex-col items-center justify-center bg-neutral-800 bg-opacity-50 transition-opacity duration-300">
             <h1 className="text-white uppercase text-4xl lg:text-5xl text-center font-thin">
               {title}
             </h1>

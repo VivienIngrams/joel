@@ -45,7 +45,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
       {/* Footer */}
       <footer className="fixed bottom-0 w-full bg-gradient-to-b from-transparent via-neutral-800  to-black px-4 pt-24 md:pt-16 pb-4 flex items-end md:items-center justify-between">
         <div>
-          <p className="hidden md:flex  text-[11px]  xs:tracking-normal  z-50 leading-loose w-40 pt-8">
+          <p className="hidden md:flex  text-[11px] text-neutral-300 xs:tracking-normal  z-55 leading-loose w-40 pt-8">
             Website by Vivien Ingrams
           </p>
         </div>
