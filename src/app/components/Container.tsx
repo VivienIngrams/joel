@@ -17,7 +17,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <div className="w-screen h-full font-arsenal">
+    <div className="max-w-screen h-full font-arsenal">
       <div
         className={` flex flex-col items-center justify-center pt-8  ${
           isHomePage
@@ -40,7 +40,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
 
       </div>
 
-      <main className="w-full font-arsenal">{children}</main>
+      <main className="w-screen font-arsenal">{children}</main>
 
       {/* Footer */}
       <footer className="fixed bottom-0 w-full bg-gradient-to-b from-transparent via-neutral-900  to-black px-4 pt-24 md:pt-16 pb-4 flex items-end md:items-center justify-between">

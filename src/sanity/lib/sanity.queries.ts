@@ -22,7 +22,7 @@ export async function getPosts(
   options = {},
 ): Promise<Post[]> {
   const posts = await client.fetch(postsQuery, options)
-  // console.log(posts)
+
   return posts
 }
 

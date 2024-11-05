@@ -1,80 +1,100 @@
-// ImageGallery.tsx
-'use client'
+'use client';
 
-import HorizontalScroll from '~/app/components/HorizontalScroll'
-import { useEffect, useState } from 'react'
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { urlForImage } from '~/sanity/lib/sanity.image';
 
 interface ImageGalleryProps {
-  mainImages: any[]
-  layout: string
+  mainImages: any[];
+  layout: string;
+  slug: string;
+  title: string;
 }
 
-const ImageGallery = ({ mainImages, layout }: ImageGalleryProps) => {
-  const [dimensions, setDimensions] = useState<any[]>([])
+const ImageGallery = ({ mainImages, layout, slug, title }: ImageGalleryProps) => {
+  const [dimensions, setDimensions] = useState<{ width: number; height: number }[]>([]);
 
-  const getDimensions = (layout: string, imageHeight: number, mobileWidth) => {
+  const getHeightByLayout = (width: number, layout: string) => {
     switch (layout) {
       case 'portrait':
-        return {
-          width: imageHeight * 0.75, // 3:4 aspect ratio
-          height: imageHeight,
-          mobileHeight: mobileWidth * 1.25, // 5:4 ratio for mobile
-          marginY: '10vh',
-        }
+        return width * (4 / 3); // 4:3 aspect ratio for portrait
       case 'landscape':
-        return {
-          width: imageHeight * 1.6, // 16:10 aspect ratio
-          height: imageHeight,
-          mobileHeight: mobileWidth * 0.5, // 16:5 ratio for mobile
-          marginY: '30vh',
-        }
+        return width * (9 / 16); // 16:9 aspect ratio for landscape
       case 'square':
-        return {
-          width: imageHeight, // 1:1 aspect ratio
-          height: imageHeight,
-          mobileHeight: mobileWidth,
-          marginY: '25vh',
-        }
       default:
-        return {
-          width: imageHeight * 1.5, // 3:2 aspect ratio for default
-          height: imageHeight,
-          mobileHeight: mobileWidth * 1.1, // Slightly taller for mobile
-          marginY: '25vh',
-        }
+        return width; // 1:1 aspect ratio for square or default
     }
-  }
+  };
 
   useEffect(() => {
-    const handleResize = () => {
-      const imageHeight = window.innerHeight * 0.75 // Get the window height on client side
-      const mobileWidth = window.innerWidth * 0.9
-      const newDimensions = mainImages.map(() =>
-        getDimensions(layout, imageHeight, mobileWidth),
-      )
-      setDimensions(newDimensions)
-    }
+    const calculateDimensions = () => {
+      const windowWidth = window.innerWidth -150; 
 
-    // Set initial dimensions
-    handleResize()
+      const numberOfImages = mainImages.length;
+     
 
-    // Add event listener for window resize
-    window.addEventListener('resize', handleResize)
+      // Calculate width and height for each image
 
-    // Cleanup the event listener on unmount
+      const imageWidth = Math.floor(windowWidth / numberOfImages); // Width of each image
+
+      const newDimensions = mainImages.map((_, index) => {
+        const width = imageWidth; // Each image gets the calculated width
+        const height = getHeightByLayout(width, layout); // Get height based on layout
+        return { width, height };
+      });
+
+      setDimensions(newDimensions);
+    };
+
+    calculateDimensions();
+    window.addEventListener('resize', calculateDimensions);
+    
     return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [mainImages, layout])
+      window.removeEventListener('resize', calculateDimensions);
+    };
+  }, [mainImages, layout]);
 
   // Ensure dimensions are not empty before rendering
   if (dimensions.length === 0) {
-    return null // or a loading spinner
+    return null; // or a loading spinner
   }
 
   return (
-    <HorizontalScroll mainImages={mainImages} layoutDimensions={dimensions} />
-  )
-}
+    <div className="md:py-8 w-full">
+      <div className="relative flex flex-col">
+        <div className="flex flex-row justify-center mx-auto">
+          {mainImages.map((image, index) => (
+            <Link key={index} href={`/posts/${slug}`}>
+              <div
+                className="relative px-2"
+                style={{
+                  width: `${dimensions[index].width}px`,
+                  height: `${dimensions[index].height}px`,
+                }}
+              >
+                <Image
+                  src={urlForImage(image).url() as string}
+                  alt={image.alt || title}
+                  layout="fill"
+                  className="object-cover border-black border-2"
+                  loading="lazy" // Ensure lazy loading
+                />
+              </div>
+            </Link>
+          ))}
+        </div>
+        {/* Overlay for Title */}
+        <Link href={`/posts/${slug}`}>
+          <div className="opacity-0 absolute inset-0 hover:opacity-100 flex flex-col items-center justify-center bg-neutral-900 bg-opacity-50 transition-opacity duration-300">
+            <h1 className="text-white uppercase text-4xl lg:text-5xl text-center font-thin">
+              {title}
+            </h1>
+          </div>
+        </Link>
+      </div>
+    </div>
+  );
+};
 
-export default ImageGallery
+export default ImageGallery;

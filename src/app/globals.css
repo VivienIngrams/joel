@@ -50,10 +50,6 @@ body {
   display: flex;           /* Ensure the scroll menu itself is also flexible */
 }
 
-.scroll-menu div {
-  flex-shrink: 0;         /* Prevent images from shrinking */
-  margin-right: 10px;     /* Add space between images if needed */
-}
 
 
 h1 {
