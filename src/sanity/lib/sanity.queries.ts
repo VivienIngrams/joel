@@ -53,7 +53,7 @@ export type Post = {
   mainImages: any[]; // Ensure this is required if you always expect it
   title: string;
   excerpt: string;
-  layout: string; // Ensure layout is also a string and required
+  layout: 'portrait' | 'square' | 'landscape';
   body: PortableTextBlock[]
 };
 

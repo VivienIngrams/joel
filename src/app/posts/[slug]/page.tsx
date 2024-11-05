@@ -5,7 +5,11 @@ import { readToken } from '~/sanity/lib/sanity.api'
 import { getClient } from '~/sanity/lib/sanity.client'
 import { getPost, type Post } from '~/sanity/lib/sanity.queries'
 
-export default async function PostPage({ params }: { params: { slug: string } }) {
+export default async function PostPage({
+  params,
+}: {
+  params: { slug: string }
+}) {
   const client = getClient({ token: readToken })
 
   // Fetch the post by slug
@@ -22,14 +26,16 @@ export default async function PostPage({ params }: { params: { slug: string } })
   }
 
   return (
-    <div className="h-full w-screen md:flex">
-      {/* Post Content on the Left */}
-      <PostContent post={post} />
-      
-      {/* Horizontal Scrolling Image Gallery on the Right */}
-      <div className="flex-grow md:pl-4 md:w-3/4">
-        <HorizontalScroll mainImages={post.mainImages} layout={post.layout}/>
+    
+      <div className="h-full w-screen md:flex">
+        {/* Post Content on the Left */}
+        <PostContent post={post} />
+
+        {/* Horizontal Scrolling Image Gallery on the Right */}
+        <div className="flex-grow md:pl-4 h-full">
+          <HorizontalScroll mainImages={post.mainImages} layout={post.layout} />
+        </div>
       </div>
-    </div>
+  
   )
 }

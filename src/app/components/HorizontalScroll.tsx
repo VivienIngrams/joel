@@ -1,74 +1,84 @@
-'use client'
+'use client';
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Image from 'next/legacy/image';
 import { usePathname } from 'next/navigation';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+
 import { urlForImage } from '~/sanity/lib/sanity.image';
 
 interface HorizontalGalleryProps {
   mainImages: any[];
-  layout: string; // Define the layout type as a string
+  layout: 'portrait' | 'landscape' | 'square'; // Define the layout type as a specific string union
 }
 
 export function HorizontalScroll({ mainImages, layout }: HorizontalGalleryProps) {
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const triggerRef = useRef<HTMLDivElement | null>(null);
+  const [dimensions, setDimensions] = useState({ height: 0, totalImagesWidth: 0 });
 
   gsap.registerPlugin(ScrollTrigger);
 
   const path = usePathname();
   const isMainPostsPage = path === '/posts';
 
-  // Define the height based on the window's height
-  const height = window.innerHeight * 0.8; // 80% of viewport height
-  let totalImagesWidth = 0;
+  useEffect(() => {
+    // Only execute if window is defined (client-side)
+    if (typeof window !== 'undefined') {
+      const height = window.innerHeight * 0.8; // 80% of viewport height
+      let totalImagesWidth = 0;
 
-  // Calculate width based on the layout property for each image
-  const imageWidths = mainImages.map(() => {
-    let width;
-    switch (layout) {
-      case 'portrait':
-        width = height * (3 / 4); // 3:4 aspect ratio
-        break;
-      case 'landscape':
-        width = height * (16 / 9); // 16:9 aspect ratio
-        break;
-      case 'square':
-      default:
-        width = height; // 1:1 aspect ratio for square or default
-        break;
+      // Calculate total width based on layout property
+      const imageWidths = mainImages.map(() => {
+        let width;
+        switch (layout) {
+          case 'portrait':
+            width = height * (3 / 4); // 3:4 aspect ratio
+            break;
+          case 'landscape':
+            width = height * (16 / 9); // 16:9 aspect ratio
+            break;
+          case 'square':
+          default:
+            width = height; // 1:1 aspect ratio for square or default
+            break;
+        }
+        totalImagesWidth += width;
+        return width;
+      });
+
+      setDimensions({ height, totalImagesWidth });
     }
-    totalImagesWidth += width; // Accumulate the total width for scrolling
-    return width;
-  });
+  }, [mainImages, layout]);
 
   useEffect(() => {
-    const containerWidth = window.innerWidth * 0.75; // Adjust this as needed
-    const totalWidth = totalImagesWidth - containerWidth;
+    if (dimensions.totalImagesWidth > 0 && typeof window !== 'undefined') {
+      const containerWidth = window.innerWidth * 0.6;
+      const totalWidth = dimensions.totalImagesWidth - containerWidth;
 
-    const pin = gsap.fromTo(
-      sectionRef.current,
-      { translateX: 0 },
-      {
-        translateX: `-${totalWidth}px`,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: triggerRef.current,
-          start: 'top top',
-          end: `${totalWidth} top`, // Adjust this based on the expected scroll length
-          scrub: true,
-          pin: true,
-          markers: true, // Remove this in production
-        },
-      }
-    );
+      const pin = gsap.fromTo(
+        sectionRef.current,
+        { translateX: 0 },
+        {
+          translateX: `-${totalWidth}px`,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: triggerRef.current,
+            start: 'top top',
+            end: `${totalWidth} top`, // Adjust this based on the expected scroll length
+            scrub: true,
+            pin: true,
+            markers: true, // Remove this in production
+          },
+        }
+      );
 
-    return () => {
-      pin.kill();
-    };
-  }, [totalImagesWidth]);
+      return () => {
+        pin.kill();
+      };
+    }
+  }, [dimensions]);
 
   return (
     <section
@@ -78,18 +88,18 @@ export function HorizontalScroll({ mainImages, layout }: HorizontalGalleryProps)
       <div
         ref={sectionRef}
         className="flex pl-2 space-x-4 pb-24"
-        style={{ width: `${totalImagesWidth}px` }}
+        style={{ width: `${dimensions.totalImagesWidth}px` }}
       >
         {mainImages.map((image, index) => {
-          const width = imageWidths[index]; // Use the calculated width
+          const width = dimensions.height * (layout === 'portrait' ? (3 / 4) : layout === 'landscape' ? (16 / 9) : 1);
 
           return (
             <div
               key={image._key || index.toString()}
-              className="relative flex-shrink-0 my-20"
+              className="relative flex-shrink-0 h-full"
               style={{
                 width: `${width}px`,
-                height: `${height}px`,
+                height: `${dimensions.height}px`,
               }}
             >
               <Image
@@ -98,6 +108,7 @@ export function HorizontalScroll({ mainImages, layout }: HorizontalGalleryProps)
                 alt={image.alt || `Image ${index + 1}`}
                 layout="fill"
                 objectFit="cover"
+                className='mt-24'
               />
             </div>
           );
