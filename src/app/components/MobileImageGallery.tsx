@@ -54,9 +54,9 @@ const MobileImageGallery = ({ mainImages, layout, slug, title }: ImageGalleryPro
 
   return (
     <div className="w-full overflow-x-auto"> {/* Enable horizontal scrolling */}
-      <div className="flex flex-row"> {/* Flex container for images */}
+      <div className="flex flex-row space-x-2"> {/* Flex container for images */}
         {mainImages.map((image, index) => (
-          <div key={index} className="relative flex-shrink-0">
+          <div key={index} className="relative flex-shrink-0 ">
             {/* Clickable Image */}
             <div
               style={{
@@ -69,7 +69,7 @@ const MobileImageGallery = ({ mainImages, layout, slug, title }: ImageGalleryPro
                 src={urlForImage(image).url() as string}
                 alt={image.alt || title}
                 layout="fill"
-                className="object-cover border-black border-2"
+                className="object-cover "
                 loading="lazy" // Ensure lazy loading
               />
             </div>
