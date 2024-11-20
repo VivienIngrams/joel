@@ -27,7 +27,7 @@ const MobileImageGallery = ({ mainImages, layout, slug, title }: ImageGalleryPro
         return width; // 1:1 aspect ratio for square or default
     }
   };
-
+//  width difers depending on layout, portrait 0.8, landscape 0.95, square 0.7
   useEffect(() => {
     const calculateDimensions = () => {
       const windowWidth = window.innerWidth * 0.8; // Set width to 80vw
