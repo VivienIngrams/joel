@@ -23,7 +23,7 @@ export default defineType({
     defineField({
       name: 'excerpt',
       title: 'Excerpt',
-      type: 'text',
+      type: 'blockContent',
     }),
     {
       name: 'mainImages',
@@ -51,11 +51,19 @@ export default defineType({
         layout: 'radio', // Radio button selection
       },
     },
-    defineField({
-      name: 'body',
-      title: 'Body',
-      type: 'blockContent',
-    }),
+    {
+      name: 'images',
+      type: 'array',
+      title: 'All images',
+      of: [
+        {
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+        },
+      ],
+    },
   ],
   preview: {
     select: {

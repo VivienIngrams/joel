@@ -29,7 +29,7 @@ export default async function PostsPage() {
           {/* Show on mobile screens */}
           <div className="py-8 md:hidden">
             <MobileImageGallery 
-              mainImages={post.mainImages} 
+              images={post.mainImages} 
               layout={post.layout} 
               slug={post.slug.current} 
               title={post.title} 
@@ -38,7 +38,7 @@ export default async function PostsPage() {
           {/* Show on desktop screens */}
           <div className="hidden md:block">
             <ImageGallery 
-              mainImages={post.mainImages} 
+              images={post.mainImages} 
               layout={post.layout} 
               slug={post.slug.current} 
               title={post.title} 

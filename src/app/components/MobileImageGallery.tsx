@@ -7,13 +7,13 @@ import { useEffect, useState } from 'react';
 import { urlForImage } from '~/sanity/lib/sanity.image';
 
 interface ImageGalleryProps {
-  mainImages: any[];
+  images: any[];
   layout: string;
   slug: string;
   title: string;
 }
 
-const MobileImageGallery = ({ mainImages, layout, slug, title }: ImageGalleryProps) => {
+const MobileImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) => {
   const [dimensions, setDimensions] = useState<{ width: number; height: number }[]>([]);
   const [isOverlayVisible, setOverlayVisible] = useState(false); // State to manage overlay visibility
 
@@ -32,7 +32,7 @@ const MobileImageGallery = ({ mainImages, layout, slug, title }: ImageGalleryPro
   useEffect(() => {
     const calculateDimensions = () => {
       const windowWidth = window.innerWidth * 0.8; // Set width to 80vw
-      const newDimensions = mainImages.map(() => {
+      const newDimensions = images.map(() => {
         const width = windowWidth; // Each image will take up 80vw
         const height = getHeightByLayout(width, layout); // Calculate height based on layout
         return { width, height };
@@ -47,7 +47,7 @@ const MobileImageGallery = ({ mainImages, layout, slug, title }: ImageGalleryPro
     return () => {
       window.removeEventListener('resize', calculateDimensions);
     };
-  }, [mainImages, layout]);
+  }, [images, layout]);
 
   if (dimensions.length === 0) {
     return null; // or a loading spinner
@@ -56,7 +56,7 @@ const MobileImageGallery = ({ mainImages, layout, slug, title }: ImageGalleryPro
   return (
     <div className="w-full overflow-x-auto"> {/* Enable horizontal scrolling */}
       <div className="flex flex-row space-x-2"> {/* Flex container for images */}
-        {mainImages.map((image, index) => (
+        {images.map((image, index) => (
           <div key={index} className="relative flex-shrink-0 ">
             {/* Clickable Image */}
             <div

@@ -13,7 +13,7 @@ export const postsQuery = groq`
     excerpt,
     mainImages, 
     layout,
-    body
+    images,
   } | order(_createdAt desc)
 `
 // Function to fetch all posts
@@ -27,7 +27,15 @@ export async function getPosts(
 }
 
 // Query to fetch a single post by slug
-export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][0]`
+export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][0] {
+  _id,
+  title,
+ excerpt,
+  slug,
+  layout,
+  images
+}
+`
 
 // Function to fetch a post by its slug
 export async function getPost(
@@ -52,9 +60,9 @@ export type Post = {
   _createdAt: string
   mainImages: any[]; // Ensure this is required if you always expect it
   title: string;
-  excerpt: string;
+  excerpt: PortableTextBlock[];
   layout: 'portrait' | 'square' | 'landscape';
-  body: PortableTextBlock[]
+  images: any[];
 };
 
 // Query to fetch the home page data

@@ -7,14 +7,14 @@ import { useEffect, useState } from 'react'
 import { urlForImage } from '~/sanity/lib/sanity.image'
 
 interface ImageGalleryProps {
-  mainImages: any[]
+  images: any[]
   layout: string
   slug: string
   title: string
 }
 
 const ImageGallery = ({
-  mainImages,
+  images,
   layout,
   slug,
   title,
@@ -39,13 +39,13 @@ const ImageGallery = ({
     const calculateDimensions = () => {
       const windowWidth = window.innerWidth - 150
 
-      const numberOfImages = mainImages.length
+      const numberOfImages = images.length
 
       // Calculate width and height for each image
 
       const imageWidth = Math.floor(windowWidth / numberOfImages) // Width of each image
 
-      const newDimensions = mainImages.map((_, index) => {
+      const newDimensions = images.map((_, index) => {
         const width = imageWidth // Each image gets the calculated width
         const height = getHeightByLayout(width, layout) // Get height based on layout
         return { width, height }
@@ -60,7 +60,7 @@ const ImageGallery = ({
     return () => {
       window.removeEventListener('resize', calculateDimensions)
     }
-  }, [mainImages, layout])
+  }, [images, layout])
 
   // Ensure dimensions are not empty before rendering
   if (dimensions.length === 0) {
@@ -73,7 +73,7 @@ const ImageGallery = ({
         <div
           className="flex flex-row justify-center space-x-2"
         >
-          {mainImages.map((image, index) => (
+          {images.map((image, index) => (
             <Link key={index} href={`/posts/${slug}`}>
               <div
                 className="relative px-2"

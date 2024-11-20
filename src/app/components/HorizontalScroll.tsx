@@ -5,15 +5,16 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import Image from 'next/legacy/image'
 import { usePathname } from 'next/navigation'
 import React, { useEffect, useRef, useState } from 'react'
+
 import { urlForImage } from '~/sanity/lib/sanity.image'
 
 interface HorizontalGalleryProps {
-  mainImages: any[]
+  images: any[]
   layout: 'portrait' | 'landscape' | 'square'
 }
 
 export function HorizontalScroll({
-  mainImages,
+  images,
   layout,
 }: HorizontalGalleryProps) {
   const sectionRef = useRef<HTMLDivElement | null>(null)
@@ -34,7 +35,7 @@ export function HorizontalScroll({
       const height = window.innerHeight * 0.78
       let totalImagesWidth = 0
 
-      const imageWidths = mainImages.map(() => {
+      const imageWidths = images.map(() => {
         let width
         switch (layout) {
           case 'portrait':
@@ -54,7 +55,7 @@ export function HorizontalScroll({
 
       setDimensions({ height, totalImagesWidth })
     }
-  }, [mainImages, layout])
+  }, [images, layout])
 
   useEffect(() => {
     if (dimensions.totalImagesWidth > 0 && typeof window !== 'undefined') {
@@ -113,7 +114,7 @@ export function HorizontalScroll({
         className="flex pl-2 space-x-4 pb-24"
         style={{ width: `${dimensions.totalImagesWidth}px` }}
       >
-        {mainImages.map((image, index) => {
+        {images.map((image, index) => {
           const width =
             dimensions.height *
             (layout === 'portrait'
