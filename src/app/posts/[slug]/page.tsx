@@ -24,13 +24,13 @@ export default async function PostPage({
   if (!post) {
     return <p>No post found.</p>
   }
-console.log(post)
+console.log(post.images[0])
   return (
     <div className="min-h-[80vh] md:h-full w-screen flex flex-col justify-center md:justify-start md:flex-row">
       {/* Post Content on the Left */}
       <PostContent post={post} />
       {/* // Mobile View */}
-      <div className="h-full w-full md:hidden mb-20">
+      {/* <div className="h-full w-full md:hidden mb-20">
         <MobileScroll
           images={post.images}
           layout={post.layout}
@@ -38,10 +38,10 @@ console.log(post)
           title={post.title}
 
         />
-      </div>
+      </div> */}
       {/* Horizontal Scrolling Image Gallery on the Right */}
       <div className="hidden md:block md:flex-grow md:pl-4 h-full">
-        <HorizontalScroll images={post.images} layout={post.layout} />
+        <HorizontalScroll images={post.images}   />
       </div>
     </div>
   )

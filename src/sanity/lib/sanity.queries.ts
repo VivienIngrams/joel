@@ -27,14 +27,18 @@ export async function getPosts(
 }
 
 // Query to fetch a single post by slug
-export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][0] {
-  _id,
-  title,
- excerpt,
-  slug,
-  layout,
-  images
-}
+export const postBySlugQuery = groq`
+  *[_type == "post" && slug.current == $slug][0] {
+    _id,
+    title,
+    excerpt,
+    slug,
+    layout,
+    images[]{
+      ...,
+      "aspectRatio": asset->metadata.dimensions.aspectRatio
+    }
+  }
 `
 
 // Function to fetch a post by its slug

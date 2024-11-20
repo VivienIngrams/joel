@@ -9,14 +9,10 @@ import React, { useEffect, useRef, useState } from 'react'
 import { urlForImage } from '~/sanity/lib/sanity.image'
 
 interface HorizontalGalleryProps {
-  images: any[]
-  layout: 'portrait' | 'landscape' | 'square'
+  images: any[] // Expecting images with dimensions and aspectRatio
 }
 
-export function HorizontalScroll({
-  images,
-  layout,
-}: HorizontalGalleryProps) {
+export function HorizontalScroll({ images }: HorizontalGalleryProps) {
   const sectionRef = useRef<HTMLDivElement | null>(null)
   const triggerRef = useRef<HTMLDivElement | null>(null)
   const [dimensions, setDimensions] = useState({
@@ -32,30 +28,21 @@ export function HorizontalScroll({
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const height = window.innerHeight * 0.78
+      const height = window.innerHeight * 0.78 // Set the fixed height for all images
       let totalImagesWidth = 0
 
-      const imageWidths = images.map(() => {
-        let width
-        switch (layout) {
-          case 'portrait':
-            width = height * (3 / 4) // 3:4 aspect ratio
-            break
-          case 'landscape':
-            width = height * (16 / 9) // 16:9 aspect ratio
-            break
-          case 'square':
-          default:
-            width = height // 1:1 aspect ratio for square or default
-            break
-        }
-        totalImagesWidth += width
-        return width
+      // Calculate the total width of all images based on their aspect ratio and the fixed height
+      images.forEach((image) => {
+        const { aspectRatio } = image // We already have the aspect ratio directly in the image object
+
+        const imgWidth = height * aspectRatio // Calculate width based on height and aspect ratio
+
+        totalImagesWidth += imgWidth
       })
 
       setDimensions({ height, totalImagesWidth })
     }
-  }, [images, layout])
+  }, [images])
 
   useEffect(() => {
     if (dimensions.totalImagesWidth > 0 && typeof window !== 'undefined') {
@@ -115,21 +102,16 @@ export function HorizontalScroll({
         style={{ width: `${dimensions.totalImagesWidth}px` }}
       >
         {images.map((image, index) => {
-          const width =
-            dimensions.height *
-            (layout === 'portrait'
-              ? 3 / 4
-              : layout === 'landscape'
-              ? 16 / 9
-              : 1)
+          const { aspectRatio } = image // Get the aspectRatio directly from the image object
+          const imgWidth = dimensions.height * aspectRatio // Calculate width based on aspect ratio and height
 
           return (
             <div
               key={image._key || index.toString()}
               className="relative flex-shrink-0 cursor-pointer"
               style={{
-                width: `${width}px`,
-                height: `${dimensions.height}px`,
+                width: `${imgWidth}px`,
+                height: `${dimensions.height}px`, // Use the fixed height for all images
               }}
               onClick={() =>
                 setSelectedImage(urlForImage(image).url() as string)
@@ -140,7 +122,7 @@ export function HorizontalScroll({
                 title={image.alt || `Image ${index + 1}`}
                 alt={image.alt || `Image ${index + 1}`}
                 layout="fill"
-                objectFit="cover"
+                objectFit="contain" // Use objectFit contain to maintain aspect ratio
                 className="mt-24"
               />
             </div>

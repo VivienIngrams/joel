@@ -22,7 +22,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
         className={` flex flex-col items-center justify-center pt-8  ${
           isHomePage
             ? 'absolute top-0 w-full z-10 h-16 md:h-48 text-3xl md:text-5xl '
-            : 'fixed top-0 z-50 h-8 w-full md:h-20 text-[22px] md:text-[32px] pb-8 bg-gradient-to-b from-neutral-950  via-neutral-900 to-neutral-transparent '
+            : 'fixed top-0 z-50 h-8 w-full md:h-20 text-[22px] md:text-[32px] pb-8 bg-gradient-to-b from-neutral-950  via-neutral-900/90 to-neutral-transparent '
         }`}
       >
         <Link
