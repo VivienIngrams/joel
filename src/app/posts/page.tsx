@@ -10,11 +10,12 @@ export default async function PostsPage() {
 
   const posts: Post[] = await getPosts(client, {
     next: {
-      revalidate: 2,
+      revalidate: 60,
       cache: 'no-store',
     },
   });
-console.log(posts)
+
+
   // Handle case where no posts are found
   if (!posts || posts.length === 0) {
     return <p>No posts found.</p>;

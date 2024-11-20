@@ -1,9 +1,9 @@
 import HorizontalScroll from '~/app/components/HorizontalScroll'
+import MobileScroll from '~/app/components/MobileImageGallery'
 import PostContent from '~/app/components/PostContent'
 import { readToken } from '~/sanity/lib/sanity.api'
 import { getClient } from '~/sanity/lib/sanity.client'
 import { getPost, type Post } from '~/sanity/lib/sanity.queries'
-import MobileScroll from '~/app/components/MobileImageGallery'
 
 export default async function PostPage({
   params,
@@ -15,8 +15,8 @@ export default async function PostPage({
   // Fetch the post by slug
   const post: Post | null = await getPost(client, params.slug, {
     next: {
-      revalidate: 1, // Revalidate every second
-      cache: 'no-store',
+      revalidate: 2, // Revalidate every second
+ 
     },
   })
 
@@ -26,11 +26,11 @@ export default async function PostPage({
   }
 
   return (
-    <div className="h-full w-screen md:flex">
+    <div className="min-h-[80vh] md:h-full w-screen flex flex-col justify-center md:justify-start md:flex-row">
       {/* Post Content on the Left */}
       <PostContent post={post} />
       {/* // Mobile View */}
-      <div className="h-full w-full md:hidden">
+      <div className="h-full w-full md:hidden mb-20">
         <MobileScroll
           mainImages={post.mainImages}
           layout={post.layout}
