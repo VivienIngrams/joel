@@ -24,7 +24,7 @@ export default async function PostPage({
   if (!post) {
     return <p>No post found.</p>
   }
-console.log(post.images[0])
+  console.log(post.images[0])
   return (
     <div className="min-h-[80vh] md:h-full w-screen flex flex-col justify-center md:justify-start md:flex-row">
       {/* Post Content on the Left */}
@@ -33,14 +33,13 @@ console.log(post.images[0])
       <div className="h-full w-full md:hidden mb-20">
         <MobileScroll
           images={post.images}
-            slug={post.slug.current}
+          slug={post.slug.current}
           title={post.title}
-
         />
       </div>
       {/* Horizontal Scrolling Image Gallery on the Right */}
       <div className="hidden md:block md:flex-grow md:pl-4 h-full">
-        <HorizontalScroll images={post.images}   />
+        <HorizontalScroll images={post.images} />
       </div>
     </div>
   )
