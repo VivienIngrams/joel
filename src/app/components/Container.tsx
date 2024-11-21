@@ -61,10 +61,15 @@ export default function Container({ children }: { children: React.ReactNode }) {
           </p>
         </div>
         <NavMenu />
-        <div className='w-[280px]'>
+        <div className="w-[280px]">
           {!isInfoPage && (
             <div className="flex items-end gap-x-4">
-              <span className=" text-sm  text-white">info@joelbardeau.com</span>
+              <Link
+                href="mailto:info@joelbardeau.com"
+                className=" text-sm  text-white  hover:text-neutral-400"
+              >
+                info@joelbardeau.com{' '}
+              </Link>
               <div className="flex gap-x-2 ">
                 <Socials />
               </div>
@@ -89,24 +94,24 @@ const socialLinks: Social[] = [
     href: 'https://instagram.com/sakiko.oishi?igshid=YjNmNGQ3MDY=',
   },
   {
-    label: 'Facebook',
-    Icon: FaFacebook,
-    href: 'https://facebook.com/SakikoOISHI',
-  },
-  {
     label: 'Youtube',
     Icon: FaYoutube,
     href: 'https://www.youtube.com/@TheJbbrava',
   },
+  {
+    label: 'Facebook',
+    Icon: FaFacebook,
+    href: 'https://facebook.com/SakikoOISHI',
+  },
 ]
 
-function Socials() {
+export function Socials() {
   return (
     <>
       {socialLinks.map(({ label, Icon, href }) => (
         <Link
           aria-label={label}
-          className="-m-1.5 rounded-md p-1.5 transition-all duration-300 hover:text-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500  sm:-m-3 sm:p-3"
+          className="-m-1.5 rounded-md p-1.5 transition-all duration-300 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500  sm:-m-3 sm:p-3"
           href={href}
           key={label}
         >
