@@ -16,7 +16,7 @@ const NavMenu = () => {
   return (
     <nav className="w-full z-50 mx-auto sm:px-6 lg:px-8 font-arsenal uppercase">
       <div
-        className={`flex items-start justify-start md:justify-center  text-lg md:text-xl md:pt-4`}
+        className={`flex items-start justify-start md:justify-center  text-lg md:text-xl `}
       >
         <div className="flex items-center">
           <div className="hidden md:block">
@@ -27,7 +27,7 @@ const NavMenu = () => {
               >
                 Oeuvres
               </Link>
-              <Link
+              {/* <Link
                 href="/livres"
                 className="hover:bg-white/10 px-3 py-2  text-md  "
               >
@@ -44,7 +44,7 @@ const NavMenu = () => {
                 className="hover:bg-white/10 px-3 py-2  text-md  "
               >
                 Biography
-              </Link>
+              </Link> */}
               <Link
                 href="/info"
                 className="hover:bg-white/10 px-3 py-2  text-md  "

@@ -22,7 +22,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
         className={` flex flex-col items-center justify-center pt-8  ${
           isHomePage
             ? 'absolute top-0 w-full z-10 h-16 md:h-48 text-3xl md:text-5xl '
-            : 'fixed top-0 z-50 h-8 w-full md:h-20 text-[22px] md:text-[32px] pb-8 bg-gradient-to-b from-neutral-950  via-neutral-900/90 to-neutral-transparent '
+            : 'fixed top-0 z-50 h-8 w-full md:h-16 text-[22px] md:text-[32px] pb-8 bg-gradient-to-t from-transparent via-black  to-black '
         }`}
       >
         <Link
@@ -43,18 +43,18 @@ export default function Container({ children }: { children: React.ReactNode }) {
       <main className="w-screen font-arsenal">{children}</main>
 
       {/* Footer */}
-      <footer className="fixed bottom-0 w-full bg-gradient-to-b from-transparent via-neutral-800  to-black px-4 pt-24 md:pt-16 pb-4 flex items-end md:items-center justify-between">
+      <footer className="fixed bottom-0 w-full md:h-20 md:pb-6 bg-gradient-to-b from-transparent via-black  to-black px-4 pt-20 md:pt-10 pb-2 flex items-end md:items-center justify-between">
         <div>
-          <p className="hidden md:flex  text-[10px] text-neutral-400 xs:tracking-normal  z-55 leading-loose w-40 pt-8">
+          <p className="hidden md:flex  text-[10px] text-neutral-400 xs:tracking-normal  z-55 leading-loose w-40 pt-2">
             Website by Vivien Ingrams
           </p>
         </div>
         <NavMenu />
-        <div className="flex flex-col items-end gap-y-2">
+        <div className="flex items-end gap-x-4">
+          <span className=" text-sm  text-white">info@joelbardeau.com</span>
           <div className="flex gap-x-2 ">
             <Socials />
           </div>
-          <span className=" text-sm  text-white">info@joelbardeau.com</span>
         </div>
       </footer>
     </div>

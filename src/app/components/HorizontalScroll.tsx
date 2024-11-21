@@ -98,7 +98,7 @@ export function HorizontalScroll({ images }: HorizontalGalleryProps) {
     >
       <div
         ref={sectionRef}
-        className="flex pl-2 space-x-4 pb-24"
+        className="flex pl-2 space-x-8 pb-[75px]"
         style={{ width: `${dimensions.totalImagesWidth}px` }}
       >
         {images.map((image, index) => {
@@ -108,7 +108,7 @@ export function HorizontalScroll({ images }: HorizontalGalleryProps) {
           return (
             <div
               key={image._key || index.toString()}
-              className="relative flex-shrink-0 cursor-pointer"
+              className="relative flex-shrink-0 cursor-pointer  border-black  md:border-[3px]"
               style={{
                 width: `${imgWidth}px`,
                 height: `${dimensions.height}px`, // Use the fixed height for all images
@@ -122,8 +122,8 @@ export function HorizontalScroll({ images }: HorizontalGalleryProps) {
                 title={image.alt || `Image ${index + 1}`}
                 alt={image.alt || `Image ${index + 1}`}
                 layout="fill"
-                objectFit="contain" // Use objectFit contain to maintain aspect ratio
-                className="mt-24"
+                objectFit="cover" // Use objectFit contain to maintain aspect ratio
+                className="mt-24 "
               />
             </div>
           )

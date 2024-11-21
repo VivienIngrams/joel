@@ -71,7 +71,7 @@ const ImageGallery = ({
     <div className="md:py-8 w-full">
       <div className="relative flex flex-col">
         <div
-          className="flex flex-row justify-center space-x-2"
+          className="flex flex-row justify-center space-x-5"
         >
           {images.map((image, index) => (
             <Link key={index} href={`/posts/${slug}`}>
@@ -86,7 +86,7 @@ const ImageGallery = ({
                   src={urlForImage(image).url() as string}
                   alt={image.alt || title}
                   layout="fill"
-                  className="object-cover "
+                  className="object-cover border-black border-[3px] "
                   loading="lazy" // Ensure lazy loading
                 />
               </div>

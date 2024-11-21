@@ -1,5 +1,5 @@
 import HorizontalScroll from '~/app/components/HorizontalScroll'
-import MobileScroll from '~/app/components/MobileImageGallery'
+import MobileScroll from '~/app/components/MobileScroll'
 import PostContent from '~/app/components/PostContent'
 import { readToken } from '~/sanity/lib/sanity.api'
 import { getClient } from '~/sanity/lib/sanity.client'
@@ -30,15 +30,14 @@ console.log(post.images[0])
       {/* Post Content on the Left */}
       <PostContent post={post} />
       {/* // Mobile View */}
-      {/* <div className="h-full w-full md:hidden mb-20">
+      <div className="h-full w-full md:hidden mb-20">
         <MobileScroll
           images={post.images}
-          layout={post.layout}
-          slug={post.slug.current}
+            slug={post.slug.current}
           title={post.title}
 
         />
-      </div> */}
+      </div>
       {/* Horizontal Scrolling Image Gallery on the Right */}
       <div className="hidden md:block md:flex-grow md:pl-4 h-full">
         <HorizontalScroll images={post.images}   />
