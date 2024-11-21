@@ -14,7 +14,7 @@ const NavMenu = () => {
   }
 
   return (
-    <nav className="w-full z-50 mx-auto sm:px-6 lg:px-8 font-arsenal uppercase">
+    <nav className="w-full z-50 mx-auto sm:px-6 md:pl-24 font-arsenal uppercase">
       <div
         className={`flex items-start justify-start md:justify-center  text-lg md:text-xl `}
       >
@@ -25,15 +25,15 @@ const NavMenu = () => {
                 href="/posts"
                 className="hover:bg-white/10 px-3 py-2  text-md  "
               >
-                Oeuvres
-              </Link>
-              {/* <Link
-                href="/livres"
-                className="hover:bg-white/10 px-3 py-2  text-md  "
-              >
-                Livres
+               Galerie
               </Link>
               <Link
+                href="/videos"
+                className="hover:bg-white/10 px-3 py-2  text-md  "
+              >
+                Videos
+              </Link>
+              {/* <Link
                 href="/expositions"
                 className="hover:bg-white/10 px-3 py-2  text-md  "
               >
@@ -178,19 +178,19 @@ const NavMenu = () => {
             href="/posts"
             className="hover:bg-white/10 block px-3 py-2  text-base  "
           >
-            Oeuvres
+            Galerie
           </Link>
-          <Link
+          {/* <Link
             href="/expositions"
             className="hover:bg-white/10 block px-3 py-2  text-base  "
           >
             Expositions
-          </Link>
+          </Link> */}
           <Link
-            href="/biography"
+            href="/videos"
             className="hover:bg-white/10 block px-3 py-2  text-base  "
           >
-            Biography
+            Videos
           </Link>
           <Link
             href="/info"

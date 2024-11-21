@@ -30,19 +30,23 @@ export function HorizontalScroll({ images }: HorizontalGalleryProps) {
     if (typeof window !== 'undefined') {
       const height = window.innerHeight * 0.78 // Set the fixed height for all images
       let totalImagesWidth = 0
-
+  
       // Calculate the total width of all images based on their aspect ratio and the fixed height
       images.forEach((image) => {
         const { aspectRatio } = image // We already have the aspect ratio directly in the image object
-
+  
         const imgWidth = height * aspectRatio // Calculate width based on height and aspect ratio
-
         totalImagesWidth += imgWidth
       })
-
+  
+      // Add 32px spacing between each photo, for (n-1) spaces between n images
+      const totalSpacing = (images.length - 1) * 32 // 32px for each space
+      totalImagesWidth += totalSpacing // Add spacing to total width
+  
       setDimensions({ height, totalImagesWidth })
     }
   }, [images])
+  
 
   useEffect(() => {
     if (dimensions.totalImagesWidth > 0 && typeof window !== 'undefined') {

@@ -2,13 +2,16 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { FaFacebook, FaInstagram } from 'react-icons/fa'
+import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa'
+import { TbArrowBackUp } from 'react-icons/tb'
 
 import NavMenu from './NavMenu'
 
 export default function Container({ children }: { children: React.ReactNode }) {
   const path = usePathname()
   const isHomePage = path === '/'
+  const isPostsPage = path === '/posts'
+  const isInfoPage = path === '/info'
   const isStudioPage = path.startsWith('/studio') // Check if the path starts with /studio
 
   if (isStudioPage) {
@@ -25,36 +28,48 @@ export default function Container({ children }: { children: React.ReactNode }) {
             : 'fixed top-0 z-50 h-8 w-full md:h-16 text-[22px] md:text-[32px] pb-8 bg-gradient-to-t from-transparent via-black  to-black '
         }`}
       >
+        {!isHomePage && !isPostsPage && (
+          <Link href="/posts" className="h-8 absolute top-4 left-4">
+            <TbArrowBackUp size="1.5rem" />
+          </Link>
+        )}
         <Link
           href={isHomePage ? '/posts' : '/'}
           // className="hover:bg-white/10"
-         
         >
-        <h1 className={`${isHomePage ? 'uppercase md:text-5xl' : ''} text-center `}> Joël Bardeau</h1> 
-        {isHomePage && (
-          <h2 className="text-white text-xl md:text-2xl font-light text-center">
-            Artiste Photographe Plasticien
-          </h2>
-        )}
+          <h1
+            className={`${isHomePage ? 'uppercase md:text-5xl' : ''} text-center `}
+          >
+            {' '}
+            Joël Bardeau
+          </h1>
+          {isHomePage && (
+            <h2 className="text-white text-xl md:text-2xl font-light text-center">
+              Artiste Photographe Plasticien
+            </h2>
+          )}
         </Link>
-
       </div>
 
       <main className="w-screen font-arsenal">{children}</main>
 
       {/* Footer */}
-      <footer className="fixed bottom-0 w-full md:h-20 md:pb-6 bg-gradient-to-b from-transparent via-black  to-black px-4 pt-20 md:pt-10 pb-2 flex items-end md:items-center justify-between">
+      <footer className="fixed bottom-0 w-full md:h-16 md:pb-6 bg-gradient-to-b from-transparent via-black  to-black px-4 pt-20 md:pt-6 pb-2 flex items-end md:items-center justify-between">
         <div>
           <p className="hidden md:flex  text-[10px] text-neutral-400 xs:tracking-normal  z-55 leading-loose w-40 pt-2">
             Website by Vivien Ingrams
           </p>
         </div>
         <NavMenu />
-        <div className="flex items-end gap-x-4">
-          <span className=" text-sm  text-white">info@joelbardeau.com</span>
-          <div className="flex gap-x-2 ">
-            <Socials />
-          </div>
+        <div className='w-[280px]'>
+          {!isInfoPage && (
+            <div className="flex items-end gap-x-4">
+              <span className=" text-sm  text-white">info@joelbardeau.com</span>
+              <div className="flex gap-x-2 ">
+                <Socials />
+              </div>
+            </div>
+          )}
         </div>
       </footer>
     </div>
@@ -77,6 +92,11 @@ const socialLinks: Social[] = [
     label: 'Facebook',
     Icon: FaFacebook,
     href: 'https://facebook.com/SakikoOISHI',
+  },
+  {
+    label: 'Youtube',
+    Icon: FaYoutube,
+    href: 'https://www.youtube.com/@TheJbbrava',
   },
 ]
 
