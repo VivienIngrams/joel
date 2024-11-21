@@ -77,7 +77,7 @@ export default async function HomePage() {
 // import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 // import { useLiveQuery } from 'next-sanity/preview'
 
-// import Card from '~/components/Card'
+
 // import Container from '~/components/Container'
 // import Welcome from '~/components/Welcome'
 // import { readToken } from '~/sanity/lib/sanity.api'
