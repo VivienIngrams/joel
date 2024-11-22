@@ -14,29 +14,31 @@ const NavMenu = () => {
   }
 
   return (
-    <nav className="w-full z-50 mx-auto sm:px-6 md:pl-24 font-arsenal uppercase">
+    <nav className="w-full z-50 mx-auto sm:px-6 md:pl-24 font-light font-barlow tracking-tight uppercase">
       <div
-        className={isHomePage? `text-blue-950` : `flex items-start justify-start md:justify-center  text-lg md:text-xl `}
+        className={`flex items-start justify-start md:justify-center text-lg md:text-xl ${
+          isHomePage ? 'text-blue-950 font-normal' : ''
+        }`}
       >
         <div className="flex items-center">
           <div className="hidden md:block">
             <div className=" flex items-baseline space-x-4">
               <Link
                 href="/posts"
-                className="hover:bg-white/10 rounded-md px-3 py-2  text-md  "
+                className="hover:bg-white/10 rounded-md px-3   text-md  "
               >
                 Galerie
               </Link>
               <Link
                 href="/videos"
-                className="hover:bg-white/10 rounded-md px-3 py-2  text-md  "
+                className="hover:bg-white/10 rounded-md px-3  text-md  "
               >
                 Videos
               </Link>
 
               <Link
                 href="/info"
-                className="hover:bg-white/10 rounded-md px-3 py-2  text-md  "
+                className="hover:bg-white/10 rounded-md px-3  "
               >
                 Info
               </Link>
