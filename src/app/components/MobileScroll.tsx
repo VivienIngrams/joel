@@ -13,13 +13,12 @@ interface ImageGalleryProps {
 }
 
 const MobileScroll = ({ images, slug, title }: ImageGalleryProps) => {
- 
   const [containerHeight, setContainerHeight] = useState(0);
   const [isOverlayVisible, setOverlayVisible] = useState(false);
 
   useEffect(() => {
     const calculateHeight = () => {
-      const height = window.innerHeight * 0.78; // Set the height to 78% of the window height (or any fixed value)
+      const height = window.innerHeight * 0.5; // Fixed height: 50% of the window height
       setContainerHeight(height);
     };
 
@@ -39,8 +38,8 @@ const MobileScroll = ({ images, slug, title }: ImageGalleryProps) => {
     <div className="w-full overflow-x-auto"> {/* Enable horizontal scrolling */}
       <div className="flex flex-row space-x-4"> {/* Flex container for images */}
         {images.map((image, index) => {
-          const { aspectRatio } = image.aspectRatio; // Get the aspectRatio directly from the image object
-          const imgWidth = containerHeight * aspectRatio; // Calculate width based on aspect ratio and height
+          const aspectRatio = image.aspectRatio || 1; // Fallback to 1:1 if aspectRatio is missing
+          const imgWidth = containerHeight * aspectRatio; // Calculate width based on aspect ratio and fixed height
 
           return (
             <div key={index} className="relative flex-shrink-0">
@@ -48,7 +47,7 @@ const MobileScroll = ({ images, slug, title }: ImageGalleryProps) => {
               <div
                 style={{
                   width: `${imgWidth}px`, // Set width to the calculated width
-                  height: `${containerHeight}px`, // Use the fixed container height
+                  height: `${containerHeight}px`, // Fixed height
                 }}
                 onClick={() => setOverlayVisible((prev) => !prev)} // Toggle overlay visibility
               >
@@ -56,7 +55,7 @@ const MobileScroll = ({ images, slug, title }: ImageGalleryProps) => {
                   src={urlForImage(image).url() as string}
                   alt={image.alt || title}
                   layout="fill"
-                  className="object-cover"
+                  className="object-cover border-[#060b18] border-2"
                   loading="lazy" // Ensure lazy loading
                 />
               </div>
@@ -64,7 +63,7 @@ const MobileScroll = ({ images, slug, title }: ImageGalleryProps) => {
               {/* Overlay for Title */}
               {isOverlayVisible && (
                 <div
-                  className="absolute inset-0 flex items-center justify-center bg-neutral-800 bg-opacity-70 transition-opacity duration-300"
+                  className="absolute inset-0 flex items-center justify-center bg-[#091129] bg-opacity-70 transition-opacity duration-300"
                   onClick={(e) => {
                     e.stopPropagation(); // Prevent click from bubbling up
                     setOverlayVisible(false); // Close overlay

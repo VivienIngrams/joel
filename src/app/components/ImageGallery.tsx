@@ -86,7 +86,7 @@ const ImageGallery = ({
                   src={urlForImage(image).url() as string}
                   alt={image.alt || title}
                   layout="fill"
-                  className="object-cover border-black border-[3px] "
+                  className="object-cover border-[#060b18]   border-[3px] "
                   loading="lazy" // Ensure lazy loading
                 />
               </div>
@@ -95,8 +95,8 @@ const ImageGallery = ({
         </div>
         {/* Overlay for Title */}
         <Link href={`/posts/${slug}`}>
-          <div className="opacity-0 absolute inset-0 hover:opacity-100 flex flex-col items-center justify-center bg-neutral-800 bg-opacity-50 transition-opacity duration-300">
-            <h1 className="text-white uppercase text-4xl lg:text-5xl text-center font-thin">
+          <div className="opacity-0 absolute inset-0 hover:opacity-100 flex flex-col items-center justify-center bg-[#091129] bg-opacity-50 transition-opacity duration-300">
+            <h1 className="text-white uppercase underline underline-offset-4 decoration-1 text-4xl lg:text-5xl text-center font-thin">
               {title}
             </h1>
           </div>

@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${barlow.variable} ${arsenal.variable}`}>
-      <body className={`h-full bg-neutral-800 font-barlow`}
+      <body className={`h-full bg-[#091129] font-barlow`}
     >
       <Container>{children}</Container></body>
     </html>

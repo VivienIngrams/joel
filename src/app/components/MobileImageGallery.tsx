@@ -70,7 +70,7 @@ const MobileImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) 
                 src={urlForImage(image).url() as string}
                 alt={image.alt || title}
                 layout="fill"
-                className="object-cover "
+                className="object-cover border-[#060b18]  border-2"
                 loading="lazy" // Ensure lazy loading
               />
             </div>
@@ -78,14 +78,14 @@ const MobileImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) 
             {/* Overlay for Title */}
             {isOverlayVisible && (
               <div 
-                className="absolute inset-0 flex items-center justify-center bg-neutral-800 bg-opacity-70 transition-opacity duration-300"
+                className="absolute inset-0 flex items-center justify-center bg-[#091129] bg-opacity-70 transition-opacity duration-300"
                 onClick={(e) => {
                   e.stopPropagation(); // Prevent click from bubbling up
                   setOverlayVisible(false); // Close overlay
                 }}
               >
                 <Link href={`/posts/${slug}`}>
-                  <h1 className="text-white uppercase text-2xl lg:text-3xl text-center font-thin">
+                  <h1 className="text-white uppercase underline underline-offset-2 decoration-1 text-2xl lg:text-3xl text-center font-thin">
                     {title}
                   </h1>
                 </Link>

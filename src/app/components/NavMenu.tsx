@@ -16,7 +16,7 @@ const NavMenu = () => {
   return (
     <nav className="w-full z-50 mx-auto sm:px-6 md:pl-24 font-arsenal uppercase">
       <div
-        className={`flex items-start justify-start md:justify-center  text-lg md:text-xl `}
+        className={isHomePage? `text-blue-950` : `flex items-start justify-start md:justify-center  text-lg md:text-xl `}
       >
         <div className="flex items-center">
           <div className="hidden md:block">

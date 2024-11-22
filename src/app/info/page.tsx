@@ -5,7 +5,7 @@ import { Socials } from '../components/Container'
 
 export default function InfoPage() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white px-6 py-12">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-[#091129] text-white px-6 py-12">
       <h1 className="text-3xl md:text-5xl font-bold mb-4">Contact</h1>
       <p className="text-lg md:text-xl text-center max-w-2xl mb-8">
         This platform is designed to showcase the art, creativity, and vision of

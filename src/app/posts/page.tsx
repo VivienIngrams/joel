@@ -10,7 +10,7 @@ export default async function PostsPage() {
 
   const posts: Post[] = await getPosts(client, {
     next: {
-      revalidate: 60,
+      revalidate: 10,
       cache: 'no-store',
     },
   });
@@ -22,7 +22,7 @@ export default async function PostsPage() {
   }
 
   return (
-    <div className="h-full md:min-h-[80vh] pb-20 bg-neutral-800 w-screen pt-16 font-barlow">
+    <div className="h-full md:min-h-[80vh] pb-20 bg-[#091129] w-screen pt-16 font-barlow">
       {/* Render ImageGallery for each post */}
       {posts.map((post) => (
         <div key={post._id}>
