@@ -96,7 +96,7 @@ const ImageGallery = ({
         {/* Overlay for Title */}
         <Link href={`/posts/${slug}`}>
           <div className="opacity-0 absolute inset-0 hover:opacity-100 flex flex-col items-center justify-center bg-[#091129] bg-opacity-50 transition-opacity duration-300">
-            <h1 className="text-white uppercase underline underline-offset-4 decoration-1 text-4xl lg:text-5xl text-center font-thin">
+            <h1 className="text-white uppercase underline underline-offset-4 decoration-1 text-3xl lg:text-4xl text-center font-thin">
               {title}
             </h1>
           </div>

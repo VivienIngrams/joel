@@ -21,58 +21,55 @@ export default function Container({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="max-w-screen h-full font-arsenal">
-  <div
-    className={`${
-      isHomePage
-        ? 'absolute top-0 left-0 w-full z-10 h-16 md:h-48 text-[#091129] bg-transparent pl-4 pt-4 md:pl-8 md:pt-8' // Dark blue, aligned left
-        : 'fixed top-0 z-50 h-8 w-full md:h-16 text-[22px] md:text-[32px] pb-8 bg-gradient-to-t from-transparent via-[#091129] to-[#091129] flex flex-col items-center justify-center pt-8'
-    }`}
-  >
-    {!isHomePage && !isPostsPage && (
-      <Link href="/posts" className="h-8 absolute top-4 left-4">
-        <TbArrowBackUp size="1.5rem" />
-      </Link>
-    )}
-    <Link href={isHomePage ? '/posts' : '/'}>
-      <h1
+      <div
         className={`${
-          isHomePage ? 'uppercase md:text-5xl' : ''
-        } ${isHomePage ? '' : 'text-center'}`} // Left-aligned for homepage, center for others
+          isHomePage
+            ? 'absolute top-0 left-0 w-full z-10 h-16 md:h-48 text-blue-950 bg-transparent pl-4 pt-4 md:pl-8 md:pt-8' // Dark blue, aligned left
+            : 'fixed top-0 z-50 h-8 w-full md:h-16 text-[22px] md:text-[32px] pb-8 bg-gradient-to-t from-transparent via-[#091129] to-[#091129] flex flex-col items-center justify-center pt-8'
+        }`}
       >
-        Joël Bardeau
-      </h1>
-      {isHomePage && (
-        <h2 className="text-[#091129] text-xl md:text-2xl font-light">
-          Artiste Photographe Plasticien
-        </h2>
-      )}
-    </Link>
-  </div>
-
+        {!isHomePage && !isPostsPage && (
+          <Link href="/posts" className="h-8 absolute top-4 left-4">
+            <TbArrowBackUp size="1.5rem" />
+          </Link>
+        )}
+        <Link href={isHomePage ? '/posts' : '/'}>
+          <h1
+            className={`${isHomePage ? 'uppercase md:text-5xl ' : ' text-center'}`}
+          >
+            Joël Bardeau
+          </h1>
+          {isHomePage && (
+            <h2 className="text-blue-950 text-xl md:text-2xl font-light">
+              Artiste Photographe Plasticien
+            </h2>
+          )}
+        </Link>
+      </div>
 
       <main className="w-screen font-arsenal">{children}</main>
 
       {/* Footer */}
       <footer
-        className={`fixed bottom-0 w-full md:h-16 md:pb-6 px-4 pt-20 md:pt-6 pb-2 flex items-end md:items-center justify-between ${
+        className={`fixed bottom-0 w-full md:h-16 md:pb-6 px-4 pt-10 md:pt-6 pb-4 flex items-end md:items-center justify-between ${
           isHomePage
-            ? 'bg-transparent text-[#091129]' // Transparent background with dark blue text on the homepage
+            ? ' md:bg-transparent md:text-[#091129]' // Transparent background with dark blue text on the homepage
             : 'bg-gradient-to-b from-transparent via-[#091129] to-[#091129] text-white'
         }`}
       >
         <div>
           <p
-            className={`hidden md:flex xs:tracking-normal z-55 leading-loose w-40 pt-2 ${
+            className={`hidden  md:flex text-[#091129] xs:tracking-normal z-55 leading-loose w-[150px] pt-2 ${
               isHomePage
-                ? 'text-[#f9f3b8] text-xs -ml-2 -mb-5 font-light font-barlow'
-                : 'text-neutral-400  text-[10px]'
-            }`}
+                && 'text-[#f9f3b8]  text-xs -ml-2 -mb-5 font-light font-barlow'
+              
+            }  ${isInfoPage && 'text-neutral-300 text-[11px] '}`}
           >
             Website by Vivien Ingrams
           </p>
         </div>
         <NavMenu />
-        <div className="w-[280px]">
+        <div className="w-[350px]">
           {!isInfoPage && !isHomePage && (
             <div className="flex items-end gap-x-4">
               <Link
@@ -104,7 +101,7 @@ const socialLinks: Social[] = [
   {
     label: 'Instagram',
     Icon: FaInstagram,
-    href: 'https://instagram.com/sakiko.oishi?igshid=YjNmNGQ3MDY=',
+    href: 'https://www.instagram.com/joel.bardeau.photo',
   },
   {
     label: 'Youtube',
@@ -114,7 +111,7 @@ const socialLinks: Social[] = [
   {
     label: 'Facebook',
     Icon: FaFacebook,
-    href: 'https://facebook.com/SakikoOISHI',
+    href: 'https://www.facebook.com/joel.bardeau.photo',
   },
 ]
 
@@ -122,14 +119,16 @@ export function Socials() {
   return (
     <>
       {socialLinks.map(({ label, Icon, href }) => (
-        <Link
-          aria-label={label}
-          className="-m-1.5 rounded-md p-1.5 transition-all duration-300 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-orange-500  sm:-m-3 sm:p-3"
-          href={href}
-          key={label}
-        >
-          <Icon className="h-5 w-5 align-baseline sm:h-6 sm:w-6" />
-        </Link>
+     <Link
+     aria-label={label}
+     className="-m-1.5 rounded-md  transition-all duration-300  sm:-m-3 sm:p-3"
+     href={href}
+     key={label}
+     target="_blank"
+     rel="noopener noreferrer"
+   >
+     <Icon className="h-5 w-5 align-baseline sm:h-6 sm:w-6" />
+   </Link>
       ))}
     </>
   )

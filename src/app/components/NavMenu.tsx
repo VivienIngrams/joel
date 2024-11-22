@@ -14,10 +14,10 @@ const NavMenu = () => {
   }
 
   return (
-    <nav className="w-full z-50 mx-auto sm:px-6 md:pl-24 font-light font-barlow tracking-tight uppercase">
+    <nav className="w-full z-50 mx-auto sm:px-6 md:pl-24 font-barlow tracking-tight uppercase">
       <div
-        className={`flex items-start justify-start md:justify-center text-lg md:text-xl ${
-          isHomePage ? 'text-blue-950 font-normal' : ''
+        className={`flex items-start justify-start md:justify-center text-lg  ${
+          isHomePage ? 'text-blue-950 md:text-3xl font-normal md:pb-16' : 'md:text-xl font-light '
         }`}
       >
         <div className="flex items-center">
@@ -56,7 +56,7 @@ const NavMenu = () => {
             <span className="sr-only">Open main menu</span>
             {isOpen ? (
               <svg
-                className="block h-6 w-6 mt-12 -ml-2"
+                className="block h-6 w-6 -mb-20 -ml-2"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +71,7 @@ const NavMenu = () => {
                   {' '}
                   <path
                     d="M19 5L4.99998 19M5.00001 5L19 19"
-                    stroke="#d0cbcb"
+                    stroke="#ffffff"
                     strokeWidth="1.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -97,7 +97,7 @@ const NavMenu = () => {
                   id="SVGRepo_tracerCarrier"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  stroke="#CCCCCC"
+                  stroke="#ffffff"
                   strokeWidth="1.6"
                 ></g>
                 <g id="SVGRepo_iconCarrier">
@@ -159,26 +159,26 @@ const NavMenu = () => {
       </div>
 
       <div
-        className={`${isOpen ? 'block' : 'hidden'} md:hidden`}
+        className={`${isOpen ? 'block bg-gradient-to-b from-transparent via-[#091129] to-[#091129] w-screen pt-12 -ml-4 -mb-4' : 'hidden'} md:hidden`}
         id="mobile-menu"
         onClick={toggleMenu}
       >
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <div className="text-white px-2 pt-2 pb-3 space-y-1 sm:px-3">
           <Link
             href="/posts"
-            className="hover:bg-white/10 rounded-md block px-3 py-2  text-base  "
+            className=" block px-3 py-2  text-base  "
           >
             Galerie
           </Link>
           <Link
             href="/videos"
-            className="hover:bg-white/10 rounded-md block px-3 py-2  text-base  "
+            className=" block px-3 py-2  text-base  "
           >
             Videos
           </Link>
           <Link
             href="/info"
-            className="hover:bg-white/10 rounded-md block px-3 py-2  text-base  "
+            className=" block px-3 py-2  text-base  "
           >
             Info
           </Link>

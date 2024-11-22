@@ -1,4 +1,4 @@
-import Image from "next/legacy/image"
+import Image from 'next/legacy/image'
 import Link from 'next/link'
 import { useLiveQuery } from 'next-sanity/preview' // Ensure you're using this if you're in draft mode
 
@@ -12,10 +12,10 @@ export default async function HomePage() {
   // Fetch the home page data
   const homePageData = await getHomePage(client, {
     next: {
-      revalidate: 60,
+      revalidate: 10,
       cache: 'no-store',
     },
-  });
+  })
 
   return (
     <section className="relative h-screen w-full">
@@ -23,7 +23,7 @@ export default async function HomePage() {
       {homePageData?.image?.asset?.url && (
         <Link href="/posts">
           <Image
-            className="object-cover"
+            className="object-cover object-[12%] md:object-bottom"
             src={homePageData.image.asset.url}
             layout="fill"
             sizes="100vw"

@@ -55,7 +55,7 @@ const MobileImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) 
 
   return (
     <div className="w-full overflow-x-auto"> {/* Enable horizontal scrolling */}
-      <div className="flex flex-row space-x-2"> {/* Flex container for images */}
+      <div className="flex flex-row space-x-4 pl-4"> {/* Flex container for images */}
         {images.map((image, index) => (
           <div key={index} className="relative flex-shrink-0 ">
             {/* Clickable Image */}

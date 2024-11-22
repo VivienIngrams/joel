@@ -15,7 +15,7 @@ export default async function PostPage({
   // Fetch the post by slug
   const post: Post | null = await getPost(client, params.slug, {
     next: {
-      revalidate: 5, // Revalidate every second
+      revalidate: 10, // Revalidate every second
       cache: 'no-store',
     },
   })
@@ -24,7 +24,7 @@ export default async function PostPage({
   if (!post) {
     return <p>No post found.</p>
   }
-  console.log(post.images[0])
+
   return (
     <div className="min-h-[80vh] md:h-full w-screen flex flex-col justify-center md:justify-start md:flex-row">
       {/* Post Content on the Left */}
