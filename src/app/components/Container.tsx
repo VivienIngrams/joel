@@ -69,7 +69,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
           </p>
         </div>
         <NavMenu />
-        <div className="w-[350px]">
+        <div className="md:w-[350px]">
           {!isInfoPage && !isHomePage && (
             <div className="flex items-end gap-x-4">
               <Link
@@ -121,7 +121,7 @@ export function Socials() {
       {socialLinks.map(({ label, Icon, href }) => (
      <Link
      aria-label={label}
-     className="-m-1.5 rounded-md  transition-all duration-300  sm:-m-3 sm:p-3"
+     className=" rounded-md  transition-all duration-300  sm:-m-3 sm:p-3"
      href={href}
      key={label}
      target="_blank"
