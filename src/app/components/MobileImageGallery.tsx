@@ -20,14 +20,17 @@ const MobileImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) 
   const getHeightByLayout = (width: number, layout: string) => {
     switch (layout) {
       case 'portrait':
-        return width * (4 / 3); // 4:3 aspect ratio for portrait
+        return width * (4 / 3) // 4:3 aspect ratio for portrait
       case 'landscape':
-        return width * (9 / 16); // 16:9 aspect ratio for landscape
+        return width * (9 / 12)
+      case 'panorama':
+        return width * (9 / 18) // 16:9 aspect ratio for landscape
       case 'square':
       default:
-        return width; // 1:1 aspect ratio for square or default
+        return width // 1:1 aspect ratio for square or default
     }
-  };
+  }
+  
 //  width difers depending on layout, portrait 0.8, landscape 0.95, square 0.7
   useEffect(() => {
     const calculateDimensions = () => {

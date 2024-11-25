@@ -28,7 +28,9 @@ const ImageGallery = ({
       case 'portrait':
         return width * (4 / 3) // 4:3 aspect ratio for portrait
       case 'landscape':
-        return width * (9 / 16) // 16:9 aspect ratio for landscape
+        return width * (9 / 12)
+      case 'panorama':
+        return width * (9 / 18) // 16:9 aspect ratio for landscape
       case 'square':
       default:
         return width // 1:1 aspect ratio for square or default

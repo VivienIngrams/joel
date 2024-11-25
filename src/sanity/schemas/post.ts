@@ -44,9 +44,10 @@ export default defineType({
       type: 'string',
       options: {
         list: [
+          { title: 'Square', value: 'square' },
           { title: 'Portrait', value: 'portrait' },
           { title: 'Landscape', value: 'landscape' },
-          { title: 'Square', value: 'square' },
+          { title: 'Panorama', value: 'panorama' },
         ],
         layout: 'radio', // Radio button selection
       },

@@ -44,11 +44,11 @@ const videoList = [
               key={index}
               className="flex flex-col items-center"
             >
-              <div className="relative w-[360px] h-[215px] xl:w-[550px] xl:h-[350px] overflow-hidden border-[#060b18]  md:border-[3px]">
+              <div className="relative w-[300px] h-[200px] xl:w-[550px] xl:h-[350px] overflow-hidden border-[#060b18]  md:border-[3px]">
                 <Image
                   src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
                   alt={video.title}
-                  className="w-full h-full object-cover px-4 md:px-0"
+                  className="w-full h-full object-cover md:px-0"
                   width={300}
                   height={200}
                 />
