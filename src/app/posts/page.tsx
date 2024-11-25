@@ -10,7 +10,7 @@ export default async function PostsPage() {
 
   const posts: Post[] = await getPosts(client, {
     next: {
-      revalidate: 2,
+      revalidate: 1,
       cache: 'no-store',
     },
   });
@@ -25,7 +25,7 @@ export default async function PostsPage() {
     "publiees",
     "projets",
   ];
-
+ 
   // Sort posts succinctly
   const sortedPosts = posts.sort((a, b) => 
     customOrder.indexOf(a.slug.current) - customOrder.indexOf(b.slug.current) ||

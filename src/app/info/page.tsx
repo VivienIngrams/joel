@@ -9,8 +9,7 @@ export default function InfoPage() {
     <div className="min-h-screen flex flex-col items-center justify-center bg-[#091129] text-white px-6 py-12">
       <h1 className="text-3xl md:text-5xl uppercase font-thin font-barlow mb-4">Contact</h1>
       <p className="text-lg md:text-xl text-center max-w-2xl mb-8">
-        This platform is designed to showcase the art, creativity, and vision of
-        Joël Bardeau, a talented artist, photographer, and plastician.
+   
       </p>
       <Link
         href="mailto:info@joelbardeau.com"

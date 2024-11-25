@@ -5,7 +5,7 @@ import { type SanityClient } from 'next-sanity'
 
 // Query to fetch all posts with defined slugs, ordered by creation date
 export const postsQuery = groq`
-  *[_type == "post" ] {
+  *[_type == "post" && slug.current in ["survol", "hors-d-age", "autoportraits", "moi-vu-par-elles-eux", "derision", "publiees", "projets"]] {
     _id,
     _createdAt,
     title,
@@ -13,15 +13,36 @@ export const postsQuery = groq`
     excerpt,
     mainImages, 
     layout,
-    images,
-  } | order(_createdAt desc)
+  } | order(
+    _createdAt desc
+  )
 `
+
 // Function to fetch all posts
 export async function getPosts(
   client: SanityClient,
   options = {},
 ): Promise<Post[]> {
   const posts = await client.fetch(postsQuery, options)
+
+  return posts
+}
+export const publieesPostsQuery = groq`
+  *[_type == "post" && slug.current in ["mathilde", "johanna", "delphine"]] {
+    _id,
+    _createdAt,
+    title,
+    slug,
+    excerpt,
+    mainImages, 
+    layout,
+  } | order(_createdAt desc)
+`
+export async function getPublieesPosts(
+  client: SanityClient,
+  options = {},
+): Promise<Post[]> {
+  const posts = await client.fetch(publieesPostsQuery, options)
 
   return posts
 }
@@ -33,7 +54,6 @@ export const postBySlugQuery = groq`
     title,
     excerpt,
     slug,
-    layout,
     images[]{
       ...,
       "aspectRatio": asset->metadata.dimensions.aspectRatio
