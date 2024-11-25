@@ -15,9 +15,24 @@ export default async function PostsPage() {
     },
   });
 
+  // Define custom slug order
+  const customOrder = [
+    "survol",
+    "hors-d-age",
+    "autoportraits",
+    "moi-vu-par-elles-eux",
+    "derision",
+    "publiees",
+    "projets",
+  ];
 
-  // Handle case where no posts are found
-  if (!posts || posts.length === 0) {
+  // Sort posts succinctly
+  const sortedPosts = posts.sort((a, b) => 
+    customOrder.indexOf(a.slug.current) - customOrder.indexOf(b.slug.current) ||
+    new Date(b._createdAt).getTime() - new Date(a._createdAt).getTime()
+  );
+
+  if (!sortedPosts || sortedPosts.length === 0) {
     return <p>No posts found.</p>;
   }
 
