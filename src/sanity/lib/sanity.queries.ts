@@ -43,6 +43,25 @@ export async function getPublieesPosts(
   options = {},
 ): Promise<Post[]> {
   const posts = await client.fetch(publieesPostsQuery, options)
+  return posts
+}
+export const projetsPostsQuery = groq`
+  *[_type == "post" && slug.current in ["dante-extraits", "vibrations", "memento"]] {
+    _id,
+    _createdAt,
+    title,
+    slug,
+    excerpt,
+    mainImages, 
+    layout,
+  } | order(_createdAt desc)
+`
+
+export async function getProjetsPosts(
+  client: SanityClient,
+  options = {},
+): Promise<Post[]> {
+  const posts = await client.fetch(projetsPostsQuery, options)
 
   return posts
 }
