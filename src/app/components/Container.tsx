@@ -13,6 +13,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
   const isPostsPage = path === '/posts'
   const isInfoPage = path === '/info'
 
+ const isProjetsPage = ['/posts/projets',  '/posts/publiees'].includes(path)
  const isPublieesSousPage = ['/posts/mathilde', '/posts/delphine', '/posts/johanna'].includes(path)
  const isProjetsSousPage = ['/posts/memento', '/posts/vibrations', '/posts/dante-extraits'].includes(path)
   const isStudioPage = path.startsWith('/studio') // Check if the path starts with /studio
@@ -31,6 +32,11 @@ export default function Container({ children }: { children: React.ReactNode }) {
             : 'fixed top-0 z-50 h-8 w-full md:h-16 text-[22px] md:text-[32px] pb-8 bg-gradient-to-t from-transparent via-[#091129] to-[#091129] flex flex-col items-center justify-center pt-8'
         }`}
       >
+        {isProjetsPage && (
+          <Link href="/posts" className="h-8 absolute top-4 left-4">
+            <TbArrowBackUp size="1.5rem" /> 
+          </Link>
+        )}
         {isPublieesSousPage && (
           <Link href="/posts/publiees" className="h-8 absolute top-4 left-4">
             <TbArrowBackUp size="1.5rem" /> 
