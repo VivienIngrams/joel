@@ -64,9 +64,9 @@ export type Post = {
   _createdAt: string
   mainImages: any[]; // Ensure this is required if you always expect it
   title: string;
-  excerpt: PortableTextBlock[];
+  excerpt?: PortableTextBlock[];
   layout: 'portrait' | 'square' | 'landscape';
-  images: any[];
+  images?: any[];
 };
 
 // Query to fetch the home page data

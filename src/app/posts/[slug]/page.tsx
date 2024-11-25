@@ -4,6 +4,7 @@ import PostContent from '~/app/components/PostContent'
 import { readToken } from '~/sanity/lib/sanity.api'
 import { getClient } from '~/sanity/lib/sanity.client'
 import { getPost, type Post } from '~/sanity/lib/sanity.queries'
+import { notFound } from 'next/navigation';
 
 export default async function PostPage({
   params,
@@ -19,6 +20,7 @@ export default async function PostPage({
       cache: 'no-store',
     },
   })
+
 
   // Handle case where no post is found
   if (!post) {
