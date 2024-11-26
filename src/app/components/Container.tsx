@@ -67,7 +67,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
         </Link>
       </div>
 
-      <main className="w-screen font-arsenal">{children}</main>
+      <main className="w-full font-arsenal">{children}</main>
 
       {/* Footer */}
       <footer
