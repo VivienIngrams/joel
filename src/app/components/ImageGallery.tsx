@@ -89,11 +89,11 @@ const ImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) => {
 
       {/* Title Section */}
       <div
-        className="-mt-4 mb-16 mx-auto bg-gradient-to-t from-transparent via-black/30 to-black/50"
+        className="-mt-4 mb-16 mx-auto bg-gradient-to-t from-transparent via-black/20 to-black/40"
         style={{ width: `${dimensions[0].container}px` }}
       >
         <Link href={`/posts/${slug}`}>
-          <h1 className="text-white uppercase text-3xl lg:text-4xl text-center font-thin">
+          <h1 className="text-white uppercase text-3xl lg:text-4xl text-center font-thin pb-4">
             {title}
           </h1>
         </Link>
