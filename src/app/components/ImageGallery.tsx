@@ -1,111 +1,99 @@
-'use client'
+'use client';
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
-import { urlForImage } from '~/sanity/lib/sanity.image'
+import { urlForImage } from '~/sanity/lib/sanity.image';
 
 interface ImageGalleryProps {
-  images: any[]
-  layout: string
-  slug: string
-  title: string
+  images: any[];
+  layout: string;
+  slug: string;
+  title: string;
 }
 
-const ImageGallery = ({
-  images,
-  layout,
-  slug,
-  title,
-}: ImageGalleryProps) => {
-  const [dimensions, setDimensions] = useState<
-    { width: number; height: number }[]
-  >([])
+const ImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) => {
+  const [dimensions, setDimensions] = useState<{ width: number; height: number }[]>([]);
 
   const getHeightByLayout = (width: number, layout: string) => {
     switch (layout) {
       case 'portrait':
-        return width * (4 / 3) // 4:3 aspect ratio for portrait
+        return width * (4 / 3); // 4:3 aspect ratio
       case 'landscape':
-        return width * (9 / 12)
+        return width * (9 / 12);
       case 'panorama':
-        return width * (9 / 18) // 16:9 aspect ratio for landscape
+        return width * (9 / 18); // 16:9 aspect ratio
       case 'square':
       default:
-        return width // 1:1 aspect ratio for square or default
+        return width; // 1:1 aspect ratio
     }
-  }
+  };
 
   useEffect(() => {
     const calculateDimensions = () => {
-      const windowWidth = window.innerWidth - 150
+      const windowWidth = window.innerWidth - 150; // Space for padding/margins
+      const numberOfImages = images.length;
 
-      const numberOfImages = images.length
+      // Calculate precise width per image by dividing container width evenly
+      const imageWidth = windowWidth / numberOfImages;
 
-      // Calculate width and height for each image
+      const newDimensions = images.map(() => {
+        const width = imageWidth; // Set precise width for each image
+        const height = getHeightByLayout(width, layout); // Calculate height
+        return { width, height };
+      });
 
-      const imageWidth = Math.floor(windowWidth / numberOfImages) // Width of each image
+      setDimensions(newDimensions);
+    };
 
-      const newDimensions = images.map((_, index) => {
-        const width = imageWidth // Each image gets the calculated width
-        const height = getHeightByLayout(width, layout) // Get height based on layout
-        return { width, height }
-      })
-
-      setDimensions(newDimensions)
-    }
-
-    calculateDimensions()
-    window.addEventListener('resize', calculateDimensions)
+    calculateDimensions();
+    window.addEventListener('resize', calculateDimensions);
 
     return () => {
-      window.removeEventListener('resize', calculateDimensions)
-    }
-  }, [images, layout])
+      window.removeEventListener('resize', calculateDimensions);
+    };
+  }, [images, layout]);
 
-  // Ensure dimensions are not empty before rendering
   if (dimensions.length === 0) {
-    return null // or a loading spinner
+    return null; // or a loading spinner
   }
 
   return (
-    <div className="md:py-8 w-full">
-      <div className="relative flex flex-col">
-        <div
-          className="flex flex-row justify-center space-x-5"
-        >
-          {images.map((image, index) => (
-            <Link key={index} href={`/posts/${slug}`}>
-              <div
-                className="relative px-2"
-                style={{
-                  width: `${dimensions[index].width}px`,
-                  height: `${dimensions[index].height}px`,
-                }}
-              >
-                <Image
-                  src={urlForImage(image).url() as string}
-                  alt={image.alt || title}
-                  layout="fill"
-                  className="object-cover border-[#060b18]   border-[3px] "
-                  loading="lazy" // Ensure lazy loading
-                />
-              </div>
-            </Link>
-          ))}
-        </div>
-        {/* Overlay for Title */}
+    <div className="w-full">
+      {/* Image Gallery */}
+      <div className="flex justify-center space-x-5 mb-4">
+        {images.map((image, index) => (
+          <Link key={index} href={`/posts/${slug}`}>
+            <div
+              className="relative"
+              style={{
+                width: `${dimensions[index].width}px`, // Precise width
+                height: `${dimensions[index].height}px`, // Calculated height
+              }}
+            >
+              <Image
+                src={urlForImage(image).url() as string}
+                alt={image.alt || title}
+                layout="fill"
+                className="object-cover border-[#060b18] border-2"
+                loading="lazy"
+              />
+            </div>
+          </Link>
+        ))}
+      </div>
+
+      {/* Title Section */}
+      <div className="-mt-4 mb-12 w-[95vw] mx-auto bg-gradient-to-t from-transparent via-black/30 to-black/50">
         <Link href={`/posts/${slug}`}>
-          <div className="opacity-0 absolute inset-0 hover:opacity-100 flex flex-col items-center justify-center bg-[#091129] bg-opacity-50 transition-opacity duration-300">
-            <h1 className="text-white uppercase underline underline-offset-4 decoration-1 text-3xl lg:text-4xl text-center font-thin">
-              {title}
-            </h1>
-          </div>
+          <h1 className="text-white uppercase text-3xl lg:text-4xl text-center font-thin">
+            {title}
+          </h1>
         </Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ImageGallery
+export default ImageGallery;

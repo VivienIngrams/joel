@@ -16,6 +16,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
  const isProjetsPage = ['/posts/projets',  '/posts/publiees'].includes(path)
  const isPublieesSousPage = ['/posts/mathilde', '/posts/delphine', '/posts/johanna'].includes(path)
  const isProjetsSousPage = ['/posts/memento', '/posts/vibrations', '/posts/dante-extraits'].includes(path)
+  const isSousPage = path.startsWith('/posts/') // Check if the path starts with /posts/
   const isStudioPage = path.startsWith('/studio') // Check if the path starts with /studio
 
   if (isStudioPage) {
@@ -47,6 +48,11 @@ export default function Container({ children }: { children: React.ReactNode }) {
             <TbArrowBackUp size="1.5rem" />
           </Link>
         )}
+        {isSousPage && !isProjetsSousPage && !isPublieesSousPage && (
+          <Link href="/posts" className="h-8 absolute top-4 left-4">
+            <TbArrowBackUp size="1.5rem" />
+          </Link>
+        )}
         <Link href={isHomePage ? '/posts' : '/'}>
           <h1
             className={`${isHomePage ? 'uppercase md:text-5xl ' : ' text-center'}`}
@@ -73,9 +79,9 @@ export default function Container({ children }: { children: React.ReactNode }) {
       >
         <div>
           <p
-            className={`hidden  md:flex text-[#091129] xs:tracking-normal z-55 leading-loose w-[150px] pt-2 ${
+            className={`hidden  md:flex text-[#091129] -mb-5 xs:tracking-normal z-55 leading-loose w-[150px] pt-2 ${
               isHomePage
-                && 'text-[#f9f3b8]  text-xs -ml-2 -mb-5 font-light font-barlow'
+                && 'text-[#f9f3b8]  text-xs -ml-2  font-light font-barlow'
               
             }  ${isInfoPage && 'text-neutral-300 text-[11px] '}`}
           >

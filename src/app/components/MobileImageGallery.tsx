@@ -15,23 +15,21 @@ interface ImageGalleryProps {
 
 const MobileImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) => {
   const [dimensions, setDimensions] = useState<{ width: number; height: number }[]>([]);
-  const [isOverlayVisible, setOverlayVisible] = useState(false); // State to manage overlay visibility
 
   const getHeightByLayout = (width: number, layout: string) => {
     switch (layout) {
       case 'portrait':
-        return width * (4 / 3) // 4:3 aspect ratio for portrait
+        return width * (4 / 3); // 4:3 aspect ratio for portrait
       case 'landscape':
-        return width * (9 / 12)
+        return width * (9 / 12);
       case 'panorama':
-        return width * (9 / 18) // 16:9 aspect ratio for landscape
+        return width * (9 / 18); // 16:9 aspect ratio for landscape
       case 'square':
       default:
-        return width // 1:1 aspect ratio for square or default
+        return width; // 1:1 aspect ratio for square or default
     }
-  }
-  
-//  width difers depending on layout, portrait 0.8, landscape 0.95, square 0.7
+  };
+
   useEffect(() => {
     const calculateDimensions = () => {
       const windowWidth = window.innerWidth * 0.8; // Set width to 80vw
@@ -57,48 +55,44 @@ const MobileImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) 
   }
 
   return (
-    <div className="w-full overflow-x-auto"> {/* Enable horizontal scrolling */}
-      <div className="flex flex-row space-x-4 "> {/* Flex container for images */}
-        {images.map((image, index) => (
-          <div key={index} className="relative flex-shrink-0 ">
-            {/* Clickable Image */}
-            <div
-              style={{
-                width: `${dimensions[index].width}px`, // Set width to the calculated width
-                height: `${dimensions[index].height}px`, // Set height to the calculated height
-              }}
-              onClick={() => setOverlayVisible(prev => !prev)} // Toggle overlay visibility
-            >
-              <Image
-                src={urlForImage(image).url() as string}
-                alt={image.alt || title}
-                layout="fill"
-                className="object-cover border-[#060b18]  border-2"
-                loading="lazy" // Ensure lazy loading
-              />
-            </div>
+    <div className="w-full">
 
-            {/* Overlay for Title */}
-            {isOverlayVisible && (
-              <div 
-                className="absolute inset-0 flex items-center justify-center bg-[#091129] bg-opacity-70 transition-opacity duration-300"
-                onClick={(e) => {
-                  e.stopPropagation(); // Prevent click from bubbling up
-                  setOverlayVisible(false); // Close overlay
+      {/* Image Gallery */}
+      <div className="w-full overflow-x-auto"> {/* Enable horizontal scrolling */}
+        <div className="flex flex-row space-x-4"> {/* Flex container for images */} 
+          {images.map((image, index) => (
+            <Link key={index} href={`/posts/${slug}`} className="relative flex-shrink-0">
+              <div
+                style={{
+                  width: `${dimensions[index].width}px`, // Set width to the calculated width
+                  height: `${dimensions[index].height}px`, // Set height to the calculated height
                 }}
               >
-                <Link href={`/posts/${slug}`}>
-                  <h1 className="text-white uppercase underline underline-offset-2 decoration-1 text-2xl lg:text-3xl text-center font-thin">
-                    {title}
-                  </h1>
-                </Link>
+                <Image
+                  src={urlForImage(image).url() as string}
+                  alt={image.alt || title}
+                  layout="fill"
+                  className="object-cover border-[#060b18] border-2"
+                  loading="lazy" // Ensure lazy loading
+                />
               </div>
-            )}
-          </div>
-        ))}
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* Title Section */}
+      <div className="-mt-1 z-60 w-full bg-gradient-to-t from-transparent via-black/30 to-black/50">
+        <Link href={`/posts/${slug}`}>
+          <h1 className="text-white uppercase text-2xl lg:text-3xl text-center font-thin">
+            {title}
+          </h1>
+        </Link>
       </div>
     </div>
   );
 };
 
 export default MobileImageGallery;
+
+
