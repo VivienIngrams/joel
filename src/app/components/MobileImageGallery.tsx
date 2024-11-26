@@ -58,8 +58,8 @@ const MobileImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) 
     <div className="w-full">
 
       {/* Image Gallery */}
-      <div className="w-full overflow-x-auto"> {/* Enable horizontal scrolling */}
-        <div className="flex flex-row space-x-4"> {/* Flex container for images */} 
+      <div className="w-full overflow-x-auto "> {/* Enable horizontal scrolling */}
+        <div className="flex flex-row space-x-6 "> {/* Flex container for images */} 
           {images.map((image, index) => (
             <Link key={index} href={`/posts/${slug}`} className="relative flex-shrink-0">
               <div
@@ -72,7 +72,7 @@ const MobileImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) 
                   src={urlForImage(image).url() as string}
                   alt={image.alt || title}
                   layout="fill"
-                  className="object-cover border-[#060b18] border-2"
+                  className="object-cover border-white border-[1.5px]"
                   loading="lazy" // Ensure lazy loading
                 />
               </div>
@@ -82,9 +82,9 @@ const MobileImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) 
       </div>
 
       {/* Title Section */}
-      <div className="-mt-1 z-60 w-full bg-gradient-to-t from-transparent via-black/30 to-black/50">
+      <div className="-mt-1 z-60 w-full">
         <Link href={`/posts/${slug}`}>
-          <h1 className="text-white uppercase text-2xl lg:text-3xl text-center font-thin">
+          <h1 className="text-white uppercase text-2xl lg:text-3xl text-center font-light">
             {title}
           </h1>
         </Link>

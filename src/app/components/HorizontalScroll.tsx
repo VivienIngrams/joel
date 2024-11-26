@@ -98,7 +98,7 @@ export function HorizontalScroll({ images }: HorizontalGalleryProps) {
   return (
     <section
       ref={triggerRef}
-      className={`w-full h-full pt-16 overflow-hidden bg-[#091129] ${!isMainPostsPage ? 'pl-[20vw] 2xl:pl-[20vw]' : ''}`}
+      className={`w-full h-full pt-16 overflow-hidden bg-[#818895] ${!isMainPostsPage ? 'pl-[25vw] 2xl:pl-[23vw]' : ''}`}
     >
       <div
         ref={sectionRef}
@@ -112,7 +112,7 @@ export function HorizontalScroll({ images }: HorizontalGalleryProps) {
           return (
             <div
               key={image._key || index.toString()}
-              className="relative flex-shrink-0 cursor-pointer  border-[#060b18]  md:border-[3px]"
+              className="relative flex-shrink-0 cursor-pointer  border-white  md:border-2"
               style={{
                 width: `${imgWidth}px`,
                 height: `${dimensions.height}px`, // Use the fixed height for all images
@@ -137,7 +137,7 @@ export function HorizontalScroll({ images }: HorizontalGalleryProps) {
       {/* Modal for viewing the image in full */}
       {selectedImage && (
         <div
-          className="fixed top-0 left-0 w-screen h-screen z-[99999] flex items-center justify-center bg-[#091129]/90"
+          className="fixed top-0 left-0 w-screen h-screen z-[99999] flex items-center justify-center bg-[#818895]/90"
           style={{ overflow: 'hidden' }} // Prevent scrolling inside modal
           onClick={handleClickOutside} // Close modal if clicked outside the image
         >
@@ -152,7 +152,7 @@ export function HorizontalScroll({ images }: HorizontalGalleryProps) {
               objectFit="contain"
             />
             <button
-              className="z-[99999] absolute top-20 right-5 text-white bg-[#091129] bg-opacity-50 rounded-full p-2 hover:bg-opacity-70"
+              className="z-[99999] absolute top-20 right-5 text-white bg-[#818895] bg-opacity-50 rounded-full p-2 hover:bg-opacity-70"
               onClick={() => setSelectedImage(null)} // Close modal
             >
               ✕

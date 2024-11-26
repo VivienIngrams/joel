@@ -17,7 +17,7 @@ const NavMenu = () => {
     <nav className="w-full z-50 mx-auto sm:px-6 md:pl-24 font-barlow tracking-tight uppercase">
       <div
         className={`flex items-start justify-start md:justify-center text-lg  ${
-          isHomePage ? 'text-blue-950 md:text-3xl font-normal md:pb-16' : 'md:text-xl font-light '
+          isHomePage ? 'text-orange-950 md:text-5xl font-normal md:pb-20 md:pl-48 ' : 'md:text-xl font-light '
         }`}
       >
         <div className="flex items-center">
@@ -27,7 +27,7 @@ const NavMenu = () => {
                 href="/posts"
                 className="hover:bg-white/10 rounded-md px-3   text-md  "
               >
-                Galerie
+                Galérie
               </Link>
               <Link
                 href="/videos"
@@ -159,7 +159,7 @@ const NavMenu = () => {
       </div>
 
       <div
-        className={`${isOpen ? 'block bg-gradient-to-b from-transparent via-[#091129] to-[#091129] w-screen pt-12 -ml-4 -mb-4' : 'hidden'} md:hidden`}
+        className={`${isOpen ? 'block bg-gradient-to-b from-transparent via-[#818895] to-[#818895] w-screen pt-12 -ml-4 -mb-4' : 'hidden'} md:hidden`}
         id="mobile-menu"
         onClick={toggleMenu}
       >
@@ -168,7 +168,7 @@ const NavMenu = () => {
             href="/posts"
             className=" block px-3 py-2  text-base  "
           >
-            Galerie
+            Galérie
           </Link>
           <Link
             href="/videos"

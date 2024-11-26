@@ -39,8 +39,8 @@ export default async function PostsPage() {
   }
 
   return (
-    <div className="h-full md:min-h-[80vh] pb-20 bg-[#091129] max-w-screen pt-16 font-barlow">
-      <h1 className="text-3xl md:text-5xl uppercase  font-thin font-barlow pl-4 md:pl-10 mb-12">
+    <div className="h-full md:min-h-[80vh] pb-20 bg-[#818895] max-w-screen pt-16 font-barlow">
+      <h1 className="text-3xl md:text-5xl uppercase  font-light font-barlow pl-4 md:pl-20 md:mb-12">
         Galérie
       </h1>
 
@@ -48,7 +48,7 @@ export default async function PostsPage() {
       {posts.map((post) => (
         <div key={post._id}>
           {/* Show on mobile screens */}
-          <div className="py-8 md:hidden">
+          <div className="py-6 md:hidden">
             <MobileImageGallery
               images={post.mainImages}
               layout={post.layout}

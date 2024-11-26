@@ -36,8 +36,8 @@ const ImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) => {
     const calculateDimensions = () => {
       const windowWidth = window.innerWidth
       const numberOfImages = images.length
-      const containerWidth = windowWidth - 100 // Padding
-      const marginsWidth = (numberOfImages - 1) * 20 // Total margins between images
+      const containerWidth = windowWidth - 150 // Padding
+      const marginsWidth = (numberOfImages - 1) * 64 // Total margins between images
 
       const imageWidth = (containerWidth - marginsWidth) / numberOfImages
 
@@ -65,7 +65,7 @@ const ImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) => {
   return (
     <div className="mx-auto max-w-full">
       {/* Image Gallery */}
-      <div className="flex justify-center space-x-5 mb-4 max-w-full">
+      <div className="flex justify-center space-x-16 mb-4 max-w-full">
         {images.map((image, index) => (
           <Link key={index} href={`/posts/${slug}`}>
             <div
@@ -79,7 +79,7 @@ const ImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) => {
                 src={urlForImage(image).url() as string}
                 alt={image.alt || title}
                 layout="fill"
-                className="object-cover border-[#060b18] border-2"
+                className="object-cover border-white border-2"
                 loading="lazy"
               />
             </div>
@@ -87,13 +87,13 @@ const ImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) => {
         ))}
       </div>
 
-      {/* Title Section */}
+      {/* Title Section */} 
       <div
-        className="-mt-4 mb-16 mx-auto bg-gradient-to-t from-transparent via-black/20 to-black/40"
+        className="-mt-4 mb-16 mx-auto "
         style={{ width: `${dimensions[0].container}px` }}
       >
         <Link href={`/posts/${slug}`}>
-          <h1 className="text-white uppercase text-3xl lg:text-4xl text-center font-thin pb-4">
+          <h1 className="text-white uppercase text-3xl lg:text-4xl text-center font-light pb-4">
             {title}
           </h1>
         </Link>
