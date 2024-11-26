@@ -36,7 +36,7 @@ const ImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) => {
     const calculateDimensions = () => {
       const windowWidth = window.innerWidth
       const numberOfImages = images.length
-      const containerWidth = windowWidth - 60 // Padding
+      const containerWidth = windowWidth - 100 // Padding
       const marginsWidth = (numberOfImages - 1) * 20 // Total margins between images
 
       const imageWidth = (containerWidth - marginsWidth) / numberOfImages
@@ -89,7 +89,7 @@ const ImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) => {
 
       {/* Title Section */}
       <div
-        className="-mt-4 mb-12 mx-auto bg-gradient-to-t from-transparent via-black/30 to-black/50"
+        className="-mt-4 mb-16 mx-auto bg-gradient-to-t from-transparent via-black/30 to-black/50"
         style={{ width: `${dimensions[0].container}px` }}
       >
         <Link href={`/posts/${slug}`}>

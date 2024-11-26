@@ -40,7 +40,7 @@ export default async function PostsPage() {
 
   return (
     <div className="h-full md:min-h-[80vh] pb-20 bg-[#091129] max-w-screen pt-16 font-barlow">
-      <h1 className="text-3xl md:text-5xl uppercase  font-thin font-barlow pl-4 md:pl-14 mb-6">
+      <h1 className="text-3xl md:text-5xl uppercase  font-thin font-barlow pl-4 md:pl-10 mb-12">
         Galérie
       </h1>
 
