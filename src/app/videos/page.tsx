@@ -32,7 +32,7 @@ const videoList = [
   const StaticVideos: React.FC = () => {
     return (
       <div className="min-h-screen py-24 w-full flex flex-col items-center justify-center gap-y-8">
-        <h2 className="self-center text-2xl md:text-4xl font-barlow font-light uppercase text-white">
+        <h2 className="self-center text-2xl md:text-4xl  font-light uppercase text-white">
           Videos
         </h2>
         <div className="grid w-full grid-cols-1 lg:grid-cols-2 gap-y-8 ">

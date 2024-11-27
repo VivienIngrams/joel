@@ -20,8 +20,10 @@ export default async function PostsPage() {
     'survol',
     'hors-d-age',
     'autoportraits',
+    "respiration",
     'moi-vu-par-elles-eux',
     'derision',
+    'respiration2',
     'publiees',
     'projets',
   ]
@@ -39,8 +41,8 @@ export default async function PostsPage() {
   }
 
   return (
-    <div className="h-full md:min-h-[80vh] pb-20 bg-[#818895] max-w-screen pt-16 font-barlow">
-      <h1 className="text-3xl md:text-5xl uppercase  font-light font-barlow pl-4 md:pl-20 md:mb-12">
+    <div className="h-full md:min-h-[80vh] pb-20 bg-[#818895] max-w-screen pt-16 ">
+      <h1 className="text-3xl md:text-5xl uppercase  font-light  pl-4 md:pl-20 md:mb-12">
         Galérie
       </h1>
 

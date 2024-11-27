@@ -28,7 +28,7 @@ export default defineType({
     {
       name: 'mainImages',
       type: 'array',
-      title: 'Image(s) pour Home Page',
+      title: 'Image(s) pour Posts Page',
       of: [
         {
           type: 'image',

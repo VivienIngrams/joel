@@ -6,13 +6,17 @@ export default defineType({
   type: 'document',
   fields: [
     {
-      name: 'image',
-      type: 'image',
-      title: 'Image pour Home Page',
-
-      options: {
-        hotspot: true,
-      },
+      name: 'mainImages',
+      type: 'array',
+      title: 'Image(s) pour Home Page',
+      of: [
+        {
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+        },
+      ],
     },
   ],
 })

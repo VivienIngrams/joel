@@ -63,15 +63,11 @@ export default function Container({ children }: { children: React.ReactNode }) {
         )}
         <Link href={isHomePage ? '/posts' : '/'}>
           <h1
-            className={`${isHomePage ? 'uppercase md:text-5xl ' : ' text-center'}`}
+            className={`${isHomePage ? 'hidden' : ' text-center'}`}
           >
             Joël Bardeau
           </h1>
-          {isHomePage && (
-            <h2 className="text-blue-900 text-xl md:text-2xl font-light">
-              Artiste Photographe Plasticien
-            </h2>
-          )}
+         
         </Link>
       </div>
 
@@ -89,7 +85,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
           <p
             className={`hidden  md:flex text-[#818895] -mb-5 xs:tracking-normal z-55 leading-loose w-[150px] pt-2 ${
               isHomePage &&
-              'text-[#f9f3b8]  text-xs -ml-2  font-light font-barlow'
+              'md:hidden '
             }  ${isInfoPage && 'text-neutral-300 text-[11px] '}`}
           >
             Website by Vivien Ingrams

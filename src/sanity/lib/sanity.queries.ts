@@ -5,7 +5,7 @@ import { type SanityClient } from 'next-sanity'
 
 // Query to fetch all posts with defined slugs, ordered by creation date
 export const postsQuery = groq`
-  *[_type == "post" && slug.current in ["survol", "hors-d-age", "autoportraits", "moi-vu-par-elles-eux", "derision", "publiees", "projets"]] {
+  *[_type == "post" && slug.current in ["survol", "hors-d-age", "respiration", "respiration2", "autoportraits", "moi-vu-par-elles-eux", "derision", "publiees", "projets"]] {
     _id,
     _createdAt,
     title,
@@ -111,7 +111,7 @@ export type Post = {
 // Query to fetch the home page data
 export const homePageQuery = groq`
   *[_type == "home"][0] {
-    image {
+    mainImages[] {
       asset -> {
         _id,
         url

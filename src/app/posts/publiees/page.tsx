@@ -16,9 +16,9 @@ export default async function PublieesPage() {
   });
 
   return (
-    <div className="h-full md:min-h-[80vh] pb-20 bg-[#818895] w-screen pt-16 font-barlow">
+    <div className="h-full md:min-h-[80vh] pb-20 bg-[#818895] w-screen pt-16 ">
       {/* Render ImageGallery for each post */}
-      <h1 className="text-3xl md:text-5xl uppercase  font-light font-barlow ml-4 md:ml-20 md:mb-12">Publiées</h1>
+      <h1 className="text-3xl md:text-5xl uppercase  font-light  ml-4 md:ml-20 md:mb-12">Publiées</h1>
 
       {posts.map((post) => (
         <div key={post._id}>

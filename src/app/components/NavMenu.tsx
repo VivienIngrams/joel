@@ -14,10 +14,10 @@ const NavMenu = () => {
   }
 
   return (
-    <nav className="w-full z-50 mx-auto sm:px-6 md:pl-24 font-barlow tracking-tight uppercase">
+    <nav className="w-full z-50 mx-auto sm:px-6 md:pl-24 tracking-tight uppercase">
       <div
         className={`flex items-start justify-start md:justify-center text-lg  ${
-          isHomePage ? 'text-orange-950 md:text-5xl font-normal md:pb-20 md:pl-48 ' : 'md:text-xl font-light '
+          isHomePage ? 'hidden' : 'md:text-2xl tracking-wide font-light '
         }`}
       >
         <div className="flex items-center">
