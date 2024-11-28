@@ -98,7 +98,7 @@ export function HorizontalScroll({ images }: HorizontalGalleryProps) {
   return (
     <section
       ref={triggerRef}
-      className={`w-full h-full pt-16 overflow-hidden bg-[#818895] ${!isMainPostsPage ? 'pl-[25vw] 2xl:pl-[23vw]' : ''}`}
+      className={`w-full h-full pt-16 overflow-hidden bg-[#818895] ${!isMainPostsPage ? 'pl-[27vw] 2xl:pl-[25vw]' : ''}`}
     >
       <div
         ref={sectionRef}

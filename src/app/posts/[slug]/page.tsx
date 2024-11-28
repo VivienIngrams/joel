@@ -1,10 +1,11 @@
+import { notFound } from 'next/navigation';
+
 import HorizontalScroll from '~/app/components/HorizontalScroll'
 import MobileScroll from '~/app/components/MobileScroll'
 import PostContent from '~/app/components/PostContent'
 import { readToken } from '~/sanity/lib/sanity.api'
 import { getClient } from '~/sanity/lib/sanity.client'
 import { getPost, type Post } from '~/sanity/lib/sanity.queries'
-import { notFound } from 'next/navigation';
 
 export default async function PostPage({
   params,
@@ -16,11 +17,11 @@ export default async function PostPage({
   // Fetch the post by slug
   const post: Post | null = await getPost(client, params.slug, {
     next: {
-      revalidate: 10, // Revalidate every second
-      cache: 'no-store',
+      revalidate: 5, // Revalidate every second
+
     },
   })
-
+console.log(post.excerpt)
 
   // Handle case where no post is found
   if (!post) {

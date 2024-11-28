@@ -1,6 +1,6 @@
 import { PortableText } from '@portabletext/react'
 import { PortableTextBlock } from '@portabletext/types'
-import Link from 'next/link'
+
 
 
 interface PostContentProps {
@@ -16,7 +16,7 @@ function PostContent({ post }: PostContentProps) {
      
       <div className='md:h-[80vh] flex flex-col justify-start md:justify-center'>
         {/* Title */}
-        <h1 className="text-3xl md:text-4xl tracking-tighter font-light  uppercase md:-mt-4">{post.title}</h1>
+        <h1 className="text-3xl md:text-4xl tracking-tighter font-light uppercase md:-mt-4">{post.title}</h1>
 
         {/* Excerpt */}
         {post.excerpt && (
