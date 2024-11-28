@@ -12,6 +12,10 @@ module.exports = {
         arsenal: ['var(--font-family-arsenal)'],
         barlow: ['var(--font-family-barlow)'],
       },
+        backgroundImage: {
+          'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        
+      },
     },
     plugins: [],
   },

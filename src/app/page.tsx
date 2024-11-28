@@ -20,24 +20,28 @@ export default async function HomePage() {
   })
 
   return (
-    <section className="relative h-screen w-full flex flex-col justify-center items-center">
+    <section className="relative h-[calc(100vh)] w-full  flex flex-col justify-center p-[20px] items-start  pl-[300px]">
     {/* Display the age verification popup component */}
     <Verification />
   
-    {/* Only show the background image if the user is over 18 */}
-    <Slider images={homePageData?.mainImages} />
+    {/* Content container */}
+    <div className="relative flex-1 w-full border-white border-2 shadow-lg flex overflow-hidden">
+      {/* Slider */}
+      <div className="w-full h-full">
+        <Slider images={homePageData?.mainImages} />
+      </div>
+    </div>
   
-    {/* Centered text at the middle of the screen */}
-    <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center ">
-      <div className='border-2 border-white p-4'>
+    {/* Title and Subtitle in left margin */}
+    <div className="absolute top-1/2 left-2 transform -translate-y-1/2">
       <Link href={'/posts'}>
-        <h1 className="uppercase text-white text-5xl md:text-8xl  ">
+        <h1 className="uppercase text-white text-5xl md:text-7xl">
           Joël Bardeau
         </h1>
-        <h2 className="text-white text-3xl md:text-5xl font-light">
+        <h2 className="text-white text-xl md:text-4xl font-light">
           Artiste Photographe Plasticien
         </h2>
-      </Link></div>
+      </Link>
     </div>
   </section>
   
