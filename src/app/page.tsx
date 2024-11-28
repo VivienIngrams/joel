@@ -20,7 +20,7 @@ export default async function HomePage() {
   })
 
   return (
-    <section className="relative h-[calc(100vh)] w-full  flex flex-col justify-center p-[20px] items-start  pl-[300px]">
+    <section className="relative h-[calc(100vh)] w-full  flex flex-col justify-start md:justify-center p-12 md:p-[20px] items-start  md:pl-[230px]">
     {/* Display the age verification popup component */}
     <Verification />
   
@@ -33,13 +33,13 @@ export default async function HomePage() {
     </div>
   
     {/* Title and Subtitle in left margin */}
-    <div className="absolute top-1/2 left-2 transform -translate-y-1/2">
-      <Link href={'/posts'}>
-        <h1 className="uppercase text-white text-5xl md:text-7xl">
+    <div className="absolute bottom-0 md:top-1/2 md:left-2 md:transform md:-translate-y-1/2">
+      <Link href={'/posts'} className=''>
+        <h1 className="uppercase text-white text-5xl md:text-8xl ">
           Joël Bardeau
         </h1>
-        <h2 className="text-white text-xl md:text-4xl font-light">
-          Artiste Photographe Plasticien
+        <h2 className="text-white text-xl md:text-lg font-light">
+          Artiste Auteur
         </h2>
       </Link>
     </div>

@@ -43,7 +43,7 @@ export default async function PostsPage() {
   return (
     <div className="h-full md:min-h-[80vh] pb-20 bg-[#818895] max-w-screen pt-16 ">
       <h1 className="text-3xl md:text-5xl uppercase  font-light  pl-4 md:pl-20 md:mb-12">
-        Galérie
+        Galeries
       </h1>
 
       {/* Render ImageGallery for each post */}

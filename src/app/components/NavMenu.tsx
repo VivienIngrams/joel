@@ -27,7 +27,7 @@ const NavMenu = () => {
                 href="/posts"
                 className="hover:bg-white/10 rounded-md px-3   text-md  "
               >
-                Galérie
+                Galeries
               </Link>
               <Link
                 href="/videos"
@@ -168,7 +168,7 @@ const NavMenu = () => {
             href="/posts"
             className=" block px-3 py-2  text-base  "
           >
-            Galérie
+            Galeries
           </Link>
           <Link
             href="/videos"
