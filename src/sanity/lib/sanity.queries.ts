@@ -120,3 +120,20 @@ export async function getHomePage(client: SanityClient, options = {}) {
   const homePage = await client.fetch(homePageQuery, options)
   return homePage
 }
+
+
+// Function to fetch the home page data
+export async function getDelphinePage(client: SanityClient, options = {}) {
+  const delphinePage = await client.fetch(delphineQuery, options)
+  return delphinePage
+}
+// Query to fetch the home page data
+export const delphineQuery = groq`
+ *[_type == "post" && slug.current in ["delphine"]][0] {
+    _id,
+    title,
+    slug,
+    excerpt,
+
+  } 
+`
