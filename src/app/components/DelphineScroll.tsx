@@ -1,0 +1,256 @@
+'use client'
+
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+import Image from 'next/legacy/image'
+import React, { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
+import { urlForImage } from '~/sanity/lib/sanity.image'
+
+interface HorizontalGalleryProps {
+  images: any[]
+  title: string
+}
+
+export function DelphineScroll({ images, title }: HorizontalGalleryProps) {
+  const sectionRef = useRef<HTMLDivElement | null>(null)
+  const triggerRef = useRef<HTMLDivElement | null>(null)
+  const [dimensions, setDimensions] = useState({
+    height: 0,
+    totalImagesWidth: 0,
+  })
+  const [isOverlayVisible, setOverlayVisible] = useState(false)
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+
+  gsap.registerPlugin(ScrollTrigger)
+
+  // Set dimensions of images based on aspect ratio
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const height = window.innerHeight * 0.78
+      let totalImagesWidth = 0
+
+      images.forEach((image) => {
+        const { aspectRatio } = image
+        const imgWidth = height * aspectRatio
+        totalImagesWidth += imgWidth
+      })
+
+      const totalSpacing = (images.length - 1) * 32
+      totalImagesWidth += totalSpacing
+      setDimensions({ height, totalImagesWidth })
+    }
+  }, [images])
+
+  // GSAP scroll logic
+  useEffect(() => {
+    if (dimensions.totalImagesWidth > 0 && typeof window !== 'undefined') {
+      const containerWidth = window.innerWidth * 0.7
+      const totalWidth = dimensions.totalImagesWidth - containerWidth
+
+      const pin = gsap.fromTo(
+        sectionRef.current,
+        { translateX: 0 },
+        {
+          translateX: `-${totalWidth}px`,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: triggerRef.current,
+            start: 'center center',
+            end: `${totalWidth} top`,
+            scrub: true,
+            pin: true,
+          },
+        },
+      )
+
+      return () => {
+        pin.kill()
+      }
+    }
+  }, [dimensions])
+
+  const closeModal = () => {
+    setOverlayVisible(false)
+    setSelectedImage(null)
+  }
+
+  const handleClickOutside = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      closeModal()
+    }
+  }
+
+  // Modal rendered via React Portal
+  const Modal = () =>
+    isOverlayVisible && selectedImage
+      ? createPortal(
+          <div
+            className="fixed top-0 left-0 w-screen h-screen z-[99999] flex items-center justify-center bg-black/80"
+            style={{
+              isolation: 'isolate',
+              backdropFilter: 'blur(5px)',
+            }}
+            onClick={handleClickOutside}
+          >
+            <div className="relative w-auto h-auto max-w-[90vw] max-h-[99vh] flex items-center justify-center">
+              <Image
+                src={selectedImage}
+                alt={title}
+                layout="intrinsic"
+                width={1200}
+                height={800}
+                objectFit="contain"
+              />
+              <button
+                className="absolute top-5 -right-12 text-white border-[1px] rounded-full p-1 px-2 hover:bg-[#818895]"
+                onClick={closeModal}
+              >
+                ✕
+              </button>
+            </div>
+          </div>,
+          document.body // Render modal at root level
+        )
+      : null
+
+  return (
+    <>
+      <Modal />
+      <section
+        ref={triggerRef}
+        className="w-full h-full pt-16 overflow-hidden bg-[#818895] pl-[27vw] 2xl:pl-[25vw]"
+      >
+        <div
+          ref={sectionRef}
+          className="flex pl-2 space-x-8 pb-[75px]"
+          style={{ width: `${dimensions.totalImagesWidth}px` }}
+        >
+          {images.map((image, index) => {
+            const { aspectRatio } = image
+            const imgWidth = dimensions.height * aspectRatio
+
+            return (
+              <div
+                key={image._key || index.toString()}
+                className="relative flex-shrink-0 cursor-pointer shadow-lg shadow-gray-500 border-white md:border-2"
+                style={{
+                  width: `${imgWidth}px`,
+                  height: `${dimensions.height}px`,
+                }}
+                onClick={() => {
+                  setSelectedImage(urlForImage(image).url() as string)
+                  setOverlayVisible(true)
+                }}
+              >
+                <Image
+                  src={urlForImage(image).url() as string}
+                  alt={title}
+                  layout="fill"
+                  className="mt-24 object-cover"
+                />
+              </div>
+            )
+          })}
+        </div>
+      </section>
+    </>
+  )
+}
+
+interface ImageGalleryProps {
+    images: any[]; // Expecting images with `dimensions` including `aspectRatio`
+    title: string;
+  }
+
+
+
+export const DelphineMobileScroll = ({ images,  title }: ImageGalleryProps) => {
+  const [containerHeight, setContainerHeight] = useState(0);
+  const [isOverlayVisible, setOverlayVisible] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null); // Track selected image
+
+  useEffect(() => {
+    const calculateHeight = () => {
+      const height = window.innerHeight * 0.5; // Fixed height: 50% of the window height
+      setContainerHeight(height);
+    };
+
+    calculateHeight();
+    window.addEventListener('resize', calculateHeight);
+
+    return () => {
+      window.removeEventListener('resize', calculateHeight);
+    };
+  }, []);
+
+  if (containerHeight === 0) {
+    return null; // or a loading spinner
+  }
+
+  const closeModal = () => {
+    setOverlayVisible(false);
+    setSelectedImage(null);
+  };
+
+  return (
+    <div className="w-full overflow-x-auto"> {/* Enable horizontal scrolling */}
+      <div className="flex flex-row space-x-4"> {/* Flex container for images */}
+        {images.map((image, index) => {
+          const aspectRatio = image.aspectRatio || 1; // Fallback to 1:1 if aspectRatio is missing
+          const imgWidth = containerHeight * aspectRatio; // Calculate width based on aspect ratio and fixed height
+
+          return (
+            <div key={index} className="relative flex-shrink-0">
+              {/* Clickable Image */}
+              <div
+                style={{
+                  width: `${imgWidth}px`, // Set width to the calculated width
+                  height: `${containerHeight}px`, // Fixed height
+                }}
+                onClick={() => {
+                  setSelectedImage(urlForImage(image).url() as string);
+                  setOverlayVisible(true); // Open modal
+                }}
+              >
+                <Image
+                  src={urlForImage(image).url() as string}
+                  alt={image.title}
+                  layout="fill"
+                  className="object-cover shadow-lg shadow-gray-500 border-white border-[1.5px]"
+                  loading="lazy" // Ensure lazy loading
+                />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Modal */}
+      {isOverlayVisible && selectedImage && (
+        <div
+          className="fixed top-0 left-0 w-screen h-screen z-[9999] flex items-center justify-center bg-black/80"
+          onClick={closeModal} // Close modal on click outside the image
+        >
+          <div className="relative w-auto h-auto max-w-[90vw] max-h-[90vh] flex items-center justify-center">
+            <Image
+              src={selectedImage}
+              alt="Full View"
+              layout="intrinsic"
+              width={800}
+              height={600}
+              className=""
+              objectFit="contain"
+            />
+            <button
+              className="absolute -top-12 right-0 text-white  p-2 hover:bg-opacity-70"
+              onClick={closeModal}
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
