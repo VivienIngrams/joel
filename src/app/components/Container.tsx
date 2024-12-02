@@ -42,38 +42,42 @@ export default function Container({ children }: { children: React.ReactNode }) {
             : 'fixed top-0 z-50 h-8 w-full md:h-16 text-[22px] md:text-[32px] pb-8 bg-gradient-to-t from-transparent via-[#818895] to-[#818895] flex flex-col items-center justify-center pt-8'
         }`}
       >
-        {isProjetsPage && !isProjetsSousPage && !isPublieesSousPage && (
-          <Link href="/posts" className="h-12 absolute top-3 md:top-4 left-4">
-            <IoIosArrowRoundBack className="text-white text-[2.5rem] md:text-[3.5rem]" />
-          </Link>
-        )}
+        {isProjetsPage && !isPublieesSousPage && !isProjetsSousPage && (
+  <Link href="/posts" className="h-12 absolute top-3 md:top-4 left-4">
+    <IoIosArrowRoundBack className="text-white text-[2.5rem] md:text-[3.5rem]" />
+  </Link>
+)}
 
-        {isPublieesSousPage && (
-          <Link
-            href="/posts/publiees"
-            className="h-12 absolute top-3 md:top-4 left-3 md:left-5"
-          >
-            <IoIosArrowRoundBack className="text-white text-[2.5rem] md:text-[3.5rem]" />
-          </Link>
-        )}
+{isPublieesSousPage && !isProjetsSousPage && (
+  <Link
+    href="/posts/publiees"
+    className="h-12 absolute top-3 md:top-4 left-3 md:left-5"
+  >
+    <IoIosArrowRoundBack className="text-white text-[2.5rem] md:text-[3.5rem]" />
+  </Link>
+)}
 
-        {isProjetsSousPage && (
-          <Link
-            href="/posts/projets"
-            className="h-12 absolute top-3 md:top-4 left-3 md:left-5"
-          >
-            <IoIosArrowRoundBack className="text-white text-[2.5rem] md:text-[3.5rem]" />
-          </Link>
-        )}
+{isProjetsSousPage && !isPublieesSousPage && (
+  <Link
+    href="/posts/projets"
+    className="h-12 absolute top-3 md:top-4 left-3 md:left-5"
+  >
+    <IoIosArrowRoundBack className="text-white text-[2.5rem] md:text-[3.5rem]" />
+  </Link>
+)}
 
-        {isSousPage && !isProjetsSousPage && !isPublieesSousPage && (
-          <Link
-            href="/posts"
-            className="h-10 absolute top-3 md:top-4 left-3 md:left-5"
-          >
-            <IoIosArrowRoundBack className="text-white text-[2.5rem] md:text-[3.5rem]" />
-          </Link>
-        )}
+{isSousPage &&
+  !isProjetsSousPage &&
+  !isPublieesSousPage &&
+  !isProjetsPage && (
+    <Link
+      href="/posts"
+      className="h-10 absolute top-3 md:top-4 left-3 md:left-5"
+    >
+      <IoIosArrowRoundBack className="text-white text-[2.5rem] md:text-[3.5rem]" />
+    </Link>
+  )}
+
         <Link href={isHomePage ? '/posts' : '/'}>
           <h1 className={`${isHomePage ? 'hidden' : ' text-center'}`}>
             Joël Bardeau

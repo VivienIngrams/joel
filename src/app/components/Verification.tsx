@@ -1,10 +1,12 @@
-'use client';
+'use client'
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation'; // Correct import for App Router
 
 const Verification = () => {
   const [showPopup, setShowPopup] = useState(true);
   const [message, setMessage] = useState('');
+  const router = useRouter(); // Hook for navigation
 
   // Check if the user has already confirmed their age
   useEffect(() => {
@@ -20,6 +22,10 @@ const Verification = () => {
       setShowPopup(false); // Close the popup
     } else {
       setMessage('This website is only for individuals 18 years or older.');
+      // Redirect to another page (e.g., home or restricted access)
+      setTimeout(() => {
+        router.push('/'); // Redirect to home page (or another page)
+      }, 2000); // Give the message time to display before redirecting
     }
   };
 
@@ -54,4 +60,3 @@ const Verification = () => {
 };
 
 export default Verification;
-

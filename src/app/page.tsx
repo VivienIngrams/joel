@@ -12,8 +12,7 @@ export default async function HomePage() {
 
   const homePageData = await getHomePage(client, {
     next: {
-      revalidate: 1,
-      cache: 'no-store',
+      revalidate: 60,
     },
   });
 

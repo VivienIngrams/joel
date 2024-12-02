@@ -166,19 +166,19 @@ const NavMenu = () => {
         <div className="text-white px-2 pt-2 pb-3 space-y-1 sm:px-3">
           <Link
             href="/posts"
-            className=" block px-3 py-2  text-base  "
+            className=" block px-3 py-2  text-xl  "
           >
             Galeries
           </Link>
           <Link
             href="/videos"
-            className=" block px-3 py-2  text-base  "
+            className=" block px-3 py-2  text-xl  "
           >
             Videos
           </Link>
           <Link
             href="/info"
-            className=" block px-3 py-2  text-base  "
+            className=" block px-3 py-2  text-xl  "
           >
             Info
           </Link>
