@@ -79,7 +79,7 @@ const ImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) => {
                 src={urlForImage(image).url() as string}
                 alt={image.alt || title}
                 layout="fill"
-                className="object-cover border-white border-2"
+                className="object-cover shadow-lg shadow-gray-500 border-white border-2"
                 loading="lazy"
               />
             </div>
@@ -93,7 +93,7 @@ const ImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) => {
         style={{ width: `${dimensions[0].container}px` }}
       >
         <Link href={`/posts/${slug}`}>
-          <h1 className="text-white uppercase text-3xl lg:text-4xl text-center font-light pb-4">
+          <h1 className="text-white uppercase font-barlow font-light text-3xl lg:text-4xl text-center  pb-4">
             {title}
           </h1>
         </Link>

@@ -1,9 +1,9 @@
-import createImageUrlBuilder from '@sanity/image-url'
+import imageUrlBuilder from '@sanity/image-url'
 import type { Image } from 'sanity'
 
 import { dataset, projectId } from '~/sanity/lib/sanity.api'
 
-const imageBuilder = createImageUrlBuilder({
+const imageBuilder = imageUrlBuilder({
   projectId: projectId || '',
   dataset: dataset || '',
 })
@@ -14,5 +14,5 @@ export const urlForImage = (source: Image) => {
     return undefined
   }
 
-  return imageBuilder?.image(source).auto('format')
+  return imageBuilder?.image(source).auto('format').fit('crop')
 }

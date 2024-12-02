@@ -62,7 +62,7 @@ const MobileScroll = ({ images, slug, title }: ImageGalleryProps) => {
                   src={urlForImage(image).url() as string}
                   alt={image.alt || title}
                   layout="fill"
-                  className="object-cover border-white border-[1.5px]"
+                  className="object-cover shadow-lg shadow-gray-500 border-white border-[1.5px]"
                   loading="lazy" // Ensure lazy loading
                 />
               </div>

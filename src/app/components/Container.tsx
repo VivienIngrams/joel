@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa'
-import { TbArrowBackUp } from 'react-icons/tb'
+import { IoIosArrowRoundBack } from 'react-icons/io'
 
 import NavMenu from './NavMenu'
 
@@ -24,7 +24,8 @@ export default function Container({ children }: { children: React.ReactNode }) {
     '/posts/vibrations',
     '/posts/dante-extraits',
   ].includes(path)
-  const isSousPage = path.startsWith('/posts/') // Check if the path starts with /posts/
+  const isSousPage =
+    path.startsWith('/posts/') && !isProjetsSousPage && !isPublieesSousPage // Exclude Projets and Publiees subpages
   const isStudioPage = path.startsWith('/studio') // Check if the path starts with /studio
 
   if (isStudioPage) {
@@ -37,37 +38,46 @@ export default function Container({ children }: { children: React.ReactNode }) {
       <div
         className={`${
           isHomePage
-            ? 'absolute top-0 left-0 w-full z-10 h-16 md:h-48 text-blue-900 bg-transparent pl-4 pt-4 md:pl-8 md:pt-8' // Dark blue, aligned left
+            ? 'absolute top-0 left-0 w-full z-10 h-16 md:h-48 bg-transparent pl-4 pt-4 md:pl-8 md:pt-8' // Dark blue, aligned left
             : 'fixed top-0 z-50 h-8 w-full md:h-16 text-[22px] md:text-[32px] pb-8 bg-gradient-to-t from-transparent via-[#818895] to-[#818895] flex flex-col items-center justify-center pt-8'
         }`}
       >
-        {isProjetsPage && (
-          <Link href="/posts" className="h-12 absolute top-2 left-2">
-            <TbArrowBackUp className="text-white text-[1.8rem] md:text-[2.8rem]" />
+        {isProjetsPage && !isProjetsSousPage && !isPublieesSousPage && (
+          <Link href="/posts" className="h-12 absolute top-3 md:top-4 left-4">
+            <IoIosArrowRoundBack className="text-white text-[2.5rem] md:text-[3.5rem]" />
           </Link>
         )}
+
         {isPublieesSousPage && (
-          <Link href="/posts/publiees" className="h-12 absolute top-2 left-2">
-            <TbArrowBackUp className="text-white text-[1.8rem] md:text-[2.8rem]" />
+          <Link
+            href="/posts/publiees"
+            className="h-12 absolute top-3 md:top-4 left-3 md:left-5"
+          >
+            <IoIosArrowRoundBack className="text-white text-[2.5rem] md:text-[3.5rem]" />
           </Link>
         )}
+
         {isProjetsSousPage && (
-          <Link href="/posts/projets" className="h-12 absolute top-2 left-2">
-            <TbArrowBackUp className="text-white text-[1.8rem] md:text-[2.8rem]" />
+          <Link
+            href="/posts/projets"
+            className="h-12 absolute top-3 md:top-4 left-3 md:left-5"
+          >
+            <IoIosArrowRoundBack className="text-white text-[2.5rem] md:text-[3.5rem]" />
           </Link>
         )}
+
         {isSousPage && !isProjetsSousPage && !isPublieesSousPage && (
-          <Link href="/posts" className="h-10 absolute top-2 left-2">
-            <TbArrowBackUp className="text-white text-[1.8rem] md:text-[2.8rem]" />
+          <Link
+            href="/posts"
+            className="h-10 absolute top-3 md:top-4 left-3 md:left-5"
+          >
+            <IoIosArrowRoundBack className="text-white text-[2.5rem] md:text-[3.5rem]" />
           </Link>
         )}
         <Link href={isHomePage ? '/posts' : '/'}>
-          <h1
-            className={`${isHomePage ? 'hidden' : ' text-center'}`}
-          >
+          <h1 className={`${isHomePage ? 'hidden' : ' text-center'}`}>
             Joël Bardeau
           </h1>
-         
         </Link>
       </div>
 
@@ -84,8 +94,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
         <div>
           <p
             className={`hidden  md:flex text-[#818895] -mb-5 xs:tracking-normal z-55 leading-loose w-[150px] pt-2 ${
-              isHomePage &&
-              'md:hidden '
+              isHomePage && 'md:hidden '
             }  ${isInfoPage && 'text-neutral-300 text-[11px] '}`}
           >
             Website by Vivien Ingrams

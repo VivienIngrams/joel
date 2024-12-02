@@ -8,7 +8,7 @@ export default function InfoPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-[#818895] text-white px-6 py-12">
        <Link
-        href="mailto:info@joelbardeau.com" className="text-3xl md:text-5xl uppercase font-light  mb-4">Contact</Link>
+        href="mailto:info@joelbardeau.com" className="text-3xl md:text-5xl uppercase font-light font-barlow mb-4">Contact</Link>
       <p className="text-lg md:text-xl text-center max-w-2xl mb-8">
    
       </p>

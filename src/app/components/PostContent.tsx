@@ -16,11 +16,11 @@ function PostContent({ post }: PostContentProps) {
      
       <div className='md:h-[80vh] flex flex-col justify-start md:justify-center'>
         {/* Title */}
-        <h1 className="text-3xl md:text-4xl tracking-tighter font-light uppercase md:-mt-4">{post.title}</h1>
+        <h1 className="text-3xl font-barlow  md:text-4xl tracking-tighter font-light uppercase md:-mt-4">{post.title}</h1>
 
         {/* Excerpt */}
         {post.excerpt && (
-          <div className=" mt-2">
+          <div className=" mt-3">
             <PortableText value={post.excerpt} />
           </div>
         )}

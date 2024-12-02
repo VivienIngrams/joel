@@ -72,7 +72,7 @@ const MobileImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) 
                   src={urlForImage(image).url() as string}
                   alt={image.alt || title}
                   layout="fill"
-                  className="object-cover border-white border-[1.5px]"
+                  className="object-cover shadow-lg shadow-gray-500 border-white border-[1.5px]"
                   loading="lazy" // Ensure lazy loading
                 />
               </div>
@@ -82,9 +82,9 @@ const MobileImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) 
       </div>
 
       {/* Title Section */}
-      <div className="-mt-1 z-60 w-full">
+      <div className=" z-60 w-full">
         <Link href={`/posts/${slug}`}>
-          <h1 className="text-white uppercase text-2xl lg:text-3xl text-center font-light">
+          <h1 className="text-white uppercase font-barlow text-2xl lg:text-3xl text-center font-light">
             {title}
           </h1>
         </Link>

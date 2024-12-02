@@ -6,6 +6,7 @@ html {
 
   font-weight: 400;
   color: white;
+  font-family: var(--font-barlow);
 }
 
 body {

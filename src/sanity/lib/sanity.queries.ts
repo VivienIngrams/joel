@@ -111,12 +111,7 @@ export type Post = {
 // Query to fetch the home page data
 export const homePageQuery = groq`
   *[_type == "home"][0] {
-    mainImages[] {
-      asset -> {
-        _id,
-        url
-      }
-    }
+    mainImages[] 
   }
 `
 

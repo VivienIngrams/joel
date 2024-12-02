@@ -112,7 +112,7 @@ export function HorizontalScroll({ images }: HorizontalGalleryProps) {
           return (
             <div
               key={image._key || index.toString()}
-              className="relative flex-shrink-0 cursor-pointer  border-white  md:border-2"
+              className="relative flex-shrink-0 cursor-pointer  shadow-lg shadow-gray-500 border-white  md:border-2"
               style={{
                 width: `${imgWidth}px`,
                 height: `${dimensions.height}px`, // Use the fixed height for all images
