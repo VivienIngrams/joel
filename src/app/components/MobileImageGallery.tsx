@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -58,8 +58,8 @@ const MobileImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) 
     <div className="w-full">
 
       {/* Image Gallery */}
-      <div className="w-full overflow-x-auto "> {/* Enable horizontal scrolling */}
-        <div className="flex flex-row space-x-6 "> {/* Flex container for images */} 
+      <div className="w-full overflow-x-auto"> {/* Enable horizontal scrolling */}
+        <div className="flex flex-row ml-4 space-x-8"> {/* Flex container for images */} 
           {images.map((image, index) => (
             <Link key={index} href={`/posts/${slug}`} className="relative flex-shrink-0">
               <div
@@ -81,12 +81,18 @@ const MobileImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) 
         </div>
       </div>
 
-      {/* Title Section */}
-      <div className=" z-60 w-full">
+      {/* Title Section with custom middle line */}
+      <div className="relative text-center mx-4 mt-2 mb-6">
         <Link href={`/posts/${slug}`}>
-          <h1 className="text-white uppercase font-barlow text-2xl lg:text-3xl text-center font-light">
-            {title}
-          </h1>
+          <div className="relative">
+            {/* White Line Spanning Full Width */}
+            <span className="absolute left-0 right-0 bottom-1/2 transform  bg-white h-[1px] z-5"></span>
+
+            {/* Title with Grey Background covering only text width */}
+            <h1 className="text-white uppercase font-barlow text-2xl lg:text-3xl font-light inline-block relative z-6 px-1  bg-[#818895]">
+              {title}
+            </h1>
+          </div>
         </Link>
       </div>
     </div>
@@ -94,5 +100,4 @@ const MobileImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) 
 };
 
 export default MobileImageGallery;
-
 

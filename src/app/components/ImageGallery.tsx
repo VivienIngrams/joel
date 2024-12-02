@@ -79,7 +79,7 @@ const ImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) => {
                 src={urlForImage(image).url() as string}
                 alt={image.alt || title}
                 layout="fill"
-                className="object-cover shadow-lg shadow-gray-500 border-white border-2"
+                className="object-cover shadow-md shadow-gray-500 border-white border-2"
                 loading="lazy"
               />
             </div>
@@ -87,15 +87,21 @@ const ImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) => {
         ))}
       </div>
 
-      {/* Title Section */} 
+      {/* Title Section with custom middle line */}
       <div
-        className="-mt-4 mb-16 mx-auto "
+        className="-mt-4 mb-16 mx-auto relative"
         style={{ width: `${dimensions[0].container}px` }}
       >
         <Link href={`/posts/${slug}`}>
-          <h1 className="text-white uppercase font-barlow font-light text-3xl lg:text-4xl text-center  pb-4">
-            {title}
-          </h1>
+          <div className="relative text-center">
+            {/* White Line Spanning Full Width */}
+            <span className="absolute left-0 right-0 bottom-1/2 transform translate-y-6px] bg-white h-[1px] z-5"></span>
+
+            {/* Title with Grey Background covering only text width */}
+            <h1 className="text-white uppercase font-barlow font-light text-3xl lg:text-4xl inline-block relative z-11 px-1 my-4 bg-[#818895]">
+              {title}
+            </h1>
+          </div>
         </Link>
       </div>
     </div>
@@ -103,3 +109,4 @@ const ImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) => {
 }
 
 export default ImageGallery
+

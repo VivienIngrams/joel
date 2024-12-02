@@ -14,7 +14,7 @@ export default function InfoPage() {
       </p>
       <Link
         href="mailto:info@joelbardeau.com"
-        className="text-lg md:text-xl text-center max-w-2xl mb-8  hover:text-neutral-500"
+        className="text-xl md:text-xl text-center max-w-2xl mb-8  hover:text-neutral-500"
       >
         info@joelbardeau.com
       </Link>

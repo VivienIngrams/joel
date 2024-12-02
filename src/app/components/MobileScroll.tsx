@@ -6,11 +6,10 @@ import { urlForImage } from '~/sanity/lib/sanity.image';
 
 interface ImageGalleryProps {
   images: any[]; // Expecting images with `dimensions` including `aspectRatio`
-  slug: string;
   title: string;
 }
 
-const MobileScroll = ({ images, slug, title }: ImageGalleryProps) => {
+const MobileScroll = ({ images,  title }: ImageGalleryProps) => {
   const [containerHeight, setContainerHeight] = useState(0);
   const [isOverlayVisible, setOverlayVisible] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null); // Track selected image
@@ -60,7 +59,7 @@ const MobileScroll = ({ images, slug, title }: ImageGalleryProps) => {
               >
                 <Image
                   src={urlForImage(image).url() as string}
-                  alt={image.alt || title}
+                  alt={image.title}
                   layout="fill"
                   className="object-cover shadow-lg shadow-gray-500 border-white border-[1.5px]"
                   loading="lazy" // Ensure lazy loading

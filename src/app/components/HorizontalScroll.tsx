@@ -3,51 +3,46 @@
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import Image from 'next/legacy/image'
-import { usePathname } from 'next/navigation'
 import React, { useEffect, useRef, useState } from 'react'
-
+import { createPortal } from 'react-dom'
 import { urlForImage } from '~/sanity/lib/sanity.image'
 
 interface HorizontalGalleryProps {
-  images: any[] // Expecting images with dimensions and aspectRatio
+  images: any[]
+  title: string
 }
 
-export function HorizontalScroll({ images }: HorizontalGalleryProps) {
+export function HorizontalScroll({ images, title }: HorizontalGalleryProps) {
   const sectionRef = useRef<HTMLDivElement | null>(null)
   const triggerRef = useRef<HTMLDivElement | null>(null)
   const [dimensions, setDimensions] = useState({
     height: 0,
     totalImagesWidth: 0,
   })
+  const [isOverlayVisible, setOverlayVisible] = useState(false)
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
 
   gsap.registerPlugin(ScrollTrigger)
 
-  const path = usePathname()
-  const isMainPostsPage = path === '/posts'
-
+  // Set dimensions of images based on aspect ratio
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const height = window.innerHeight * 0.78 // Set the fixed height for all images
+      const height = window.innerHeight * 0.78
       let totalImagesWidth = 0
-  
-      // Calculate the total width of all images based on their aspect ratio and the fixed height
+
       images.forEach((image) => {
-        const { aspectRatio } = image // We already have the aspect ratio directly in the image object
-  
-        const imgWidth = height * aspectRatio // Calculate width based on height and aspect ratio
+        const { aspectRatio } = image
+        const imgWidth = height * aspectRatio
         totalImagesWidth += imgWidth
       })
-  
-      // Add 32px spacing between each photo, for (n-1) spaces between n images
-      const totalSpacing = (images.length - 1) * 32 // 32px for each space
-      totalImagesWidth += totalSpacing // Add spacing to total width
-  
+
+      const totalSpacing = (images.length - 1) * 32
+      totalImagesWidth += totalSpacing
       setDimensions({ height, totalImagesWidth })
     }
   }, [images])
-  
 
+  // GSAP scroll logic
   useEffect(() => {
     if (dimensions.totalImagesWidth > 0 && typeof window !== 'undefined') {
       const containerWidth = window.innerWidth * 0.7
@@ -66,7 +61,7 @@ export function HorizontalScroll({ images }: HorizontalGalleryProps) {
             scrub: true,
             pin: true,
           },
-        }
+        },
       )
 
       return () => {
@@ -75,92 +70,91 @@ export function HorizontalScroll({ images }: HorizontalGalleryProps) {
     }
   }, [dimensions])
 
-  // Close the modal if clicked outside the image
+  const closeModal = () => {
+    setOverlayVisible(false)
+    setSelectedImage(null)
+  }
+
   const handleClickOutside = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
-      setSelectedImage(null)
+      closeModal()
     }
   }
 
-  useEffect(() => {
-    // Disable scroll when modal is open
-    if (selectedImage) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'auto'
-    }
-
-    return () => {
-      document.body.style.overflow = 'auto'
-    }
-  }, [selectedImage])
+  // Modal rendered via React Portal
+  const Modal = () =>
+    isOverlayVisible && selectedImage
+      ? createPortal(
+          <div
+            className="fixed top-0 left-0 w-screen h-screen z-[99999] flex items-center justify-center bg-black/80"
+            style={{
+              isolation: 'isolate',
+              backdropFilter: 'blur(5px)',
+            }}
+            onClick={handleClickOutside}
+          >
+            <div className="relative w-auto h-auto max-w-[90vw] max-h-[99vh] flex items-center justify-center">
+              <Image
+                src={selectedImage}
+                alt={title}
+                layout="intrinsic"
+                width={1200}
+                height={800}
+                objectFit="contain"
+              />
+              <button
+                className="absolute top-5 -right-12 text-white border-[1px] rounded-full p-1 px-2 hover:bg-[#818895]"
+                onClick={closeModal}
+              >
+                ✕
+              </button>
+            </div>
+          </div>,
+          document.body // Render modal at root level
+        )
+      : null
 
   return (
-    <section
-      ref={triggerRef}
-      className={`w-full h-full pt-16 overflow-hidden bg-[#818895] ${!isMainPostsPage ? 'pl-[27vw] 2xl:pl-[25vw]' : ''}`}
-    >
-      <div
-        ref={sectionRef}
-        className="flex pl-2 space-x-8 pb-[75px]"
-        style={{ width: `${dimensions.totalImagesWidth}px` }}
+    <>
+      <Modal />
+      <section
+        ref={triggerRef}
+        className="w-full h-full pt-16 overflow-hidden bg-[#818895] pl-[27vw] 2xl:pl-[25vw]"
       >
-        {images.map((image, index) => {
-          const { aspectRatio } = image // Get the aspectRatio directly from the image object
-          const imgWidth = dimensions.height * aspectRatio // Calculate width based on aspect ratio and height
-
-          return (
-            <div
-              key={image._key || index.toString()}
-              className="relative flex-shrink-0 cursor-pointer  shadow-lg shadow-gray-500 border-white  md:border-2"
-              style={{
-                width: `${imgWidth}px`,
-                height: `${dimensions.height}px`, // Use the fixed height for all images
-              }}
-              onClick={() =>
-                setSelectedImage(urlForImage(image).url() as string)
-              } // Open modal on click
-            >
-              <Image
-                src={urlForImage(image).url() as string}
-                title={image.alt || `Image ${index + 1}`}
-                alt={image.alt || `Image ${index + 1}`}
-                layout="fill"
-                objectFit="cover" // Use objectFit contain to maintain aspect ratio
-                className="mt-24 "
-              />
-            </div>
-          )
-        })}
-      </div>
-
-      {/* Modal for viewing the image in full */}
-      {selectedImage && (
         <div
-          className="fixed top-0 left-0 w-screen h-screen z-[99999] flex items-center justify-center bg-[#818895]/90"
-          style={{ overflow: 'hidden' }} // Prevent scrolling inside modal
-          onClick={handleClickOutside} // Close modal if clicked outside the image
+          ref={sectionRef}
+          className="flex pl-2 space-x-8 pb-[75px]"
+          style={{ width: `${dimensions.totalImagesWidth}px` }}
         >
-          <div className="relative w-auto h-auto max-w-[90vw] max-h-[99vh] flex items-center justify-center">
-            <Image
-              src={selectedImage}
-              alt="Full View"
-              layout="intrinsic"
-              width={1200}
-              height={800}
-              className="rounded-lg"
-              objectFit="contain"
-            />
-            <button
-              className="z-[99999] absolute top-20 right-5 text-white bg-[#818895] bg-opacity-50 rounded-full p-2 hover:bg-opacity-70"
-              onClick={() => setSelectedImage(null)} // Close modal
-            >
-              ✕
-            </button>
-          </div>
+          {images.map((image, index) => {
+            const { aspectRatio } = image
+            const imgWidth = dimensions.height * aspectRatio
+
+            return (
+              <div
+                key={image._key || index.toString()}
+                className="relative flex-shrink-0 cursor-pointer shadow-lg shadow-gray-500 border-white md:border-2"
+                style={{
+                  width: `${imgWidth}px`,
+                  height: `${dimensions.height}px`,
+                }}
+                onClick={() => {
+                  setSelectedImage(urlForImage(image).url() as string)
+                  setOverlayVisible(true)
+                }}
+              >
+                <Image
+                  src={urlForImage(image).url() as string}
+                  alt={title}
+                  layout="fill"
+                  className="mt-24 object-cover"
+                />
+              </div>
+            )
+          })}
         </div>
-      )}
-    </section>
+      </section>
+    </>
   )
 }
 

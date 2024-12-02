@@ -110,7 +110,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
             <div className="flex items-end gap-x-4">
               <Link
                 href="mailto:info@joelbardeau.com"
-                className={`text-sm hover:text-neutral-400 ${
+                className={`text-sm lg:text-lg hover:text-neutral-400 ${
                   isHomePage ? 'text-[#818895]' : 'text-white'
                 }`}
               >

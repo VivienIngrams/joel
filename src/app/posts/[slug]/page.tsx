@@ -17,11 +17,11 @@ export default async function PostPage({
   // Fetch the post by slug
   const post: Post | null = await getPost(client, params.slug, {
     next: {
-      revalidate: 5, // Revalidate every second
+      revalidate: 1, // Revalidate every second
 
     },
   })
-console.log(post.excerpt)
+
 
   // Handle case where no post is found
   if (!post) {
@@ -36,13 +36,12 @@ console.log(post.excerpt)
       <div className="h-full w-full md:hidden mb-20">
         <MobileScroll
           images={post.images}
-          slug={post.slug.current}
           title={post.title}
         />
       </div>
       {/* Horizontal Scrolling Image Gallery on the Right */}
       <div className="hidden md:block md:flex-grow md:pl-4 h-full">
-        <HorizontalScroll images={post.images} />
+        <HorizontalScroll images={post.images} title={post.title}/>
       </div>
     </div>
   )
