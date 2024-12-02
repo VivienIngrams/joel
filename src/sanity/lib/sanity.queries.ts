@@ -134,6 +134,9 @@ export const delphineQuery = groq`
     title,
     slug,
     excerpt,
-
+    images[]{
+      ...,
+      "aspectRatio": asset->metadata.dimensions.aspectRatio
+    }
   } 
 `
