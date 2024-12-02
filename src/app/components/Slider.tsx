@@ -20,15 +20,21 @@ export default function Slider({ images }: SliderProps): JSX.Element {
     return () => clearInterval(interval);
   }, [nextSlide]);
 
+  const currentImage = images[currentIndex];
+  const hotspot = currentImage?.hotspot || { x: 0.5, y: 0.5 }; // Default to center
+
+  const objectPosition = `${hotspot.x * 100}% ${hotspot.y * 100}%`; 
+
   return (
     <div className="relative w-full h-full">
-      {/* Background Image */}
       <Image
-        src={urlForImage(images[currentIndex]).url() }
+        src={urlForImage(currentImage).url() || ''}
         alt={`Slider Image ${currentIndex + 1}`}
         fill
-        sizes="100vw"
         className="object-cover transition-all duration-500 ease-in-out"
+        style={{
+          objectPosition, // Dynamically set based on hotspot
+        }}
       />
     </div>
   );
