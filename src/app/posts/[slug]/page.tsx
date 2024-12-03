@@ -17,21 +17,29 @@ export default async function PostPage({
   // Fetch the post by slug
   const post: Post | null = await getPost(client, params.slug, {
     next: {
-      revalidate: 1, // Revalidate every second
+      revalidate: 1, 
+      cache: 'no-store',
 
     },
   })
 
-
+console.log(post)
   // Handle case where no post is found
   if (!post) {
     return <p>No post found.</p>
   }
 
   return (
-    <div className="min-h-[80vh] md:h-full w-screen flex flex-col justify-center md:justify-start md:flex-row">
-      {/* Post Content on the Left */}
-      <PostContent post={post} />
+    <>
+       
+     
+      <div className="h-screen w-screen flex flex-col items-center justify-center bg-[#818895] text-white px-6 py-12">
+       
+       
+       <PostContent post={post} />
+     </div>
+    <div className="relative min-h-[80vh] md:h-full w-screen flex flex-col justify-center md:justify-start md:flex-row">
+ 
       {/* // Mobile View */}
       <div className="h-full w-full md:hidden mb-20">
         <MobileScroll
@@ -40,9 +48,10 @@ export default async function PostPage({
         />
       </div>
       {/* Horizontal Scrolling Image Gallery on the Right */}
-      <div className="hidden md:block md:flex-grow md:pl-4 h-full">
+      <div className="hidden overflow-hidden md:block md:flex-grow md:pl-4 h-full">
         <HorizontalScroll images={post.images} title={post.title}/>
       </div>
     </div>
+    </>
   )
 }

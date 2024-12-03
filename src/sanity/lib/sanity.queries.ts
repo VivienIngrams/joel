@@ -7,7 +7,7 @@ import { type SanityClient } from 'next-sanity'
 export const postsQuery = groq`
   *[_type == "post" && slug.current in ["survol", "hors-d-age", "respiration", "respiration2", "autoportraits", "moi-vu-par-elles-eux", "derision", "publiees", "projets"]] {
     _id,
-    _createdAt,
+   
     title,
     slug,
     excerpt,
