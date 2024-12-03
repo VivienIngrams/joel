@@ -18,11 +18,10 @@ export default async function PostPage({
   const post: Post | null = await getPost(client, params.slug, {
     next: {
       revalidate: 1,
-      cache: 'no-store',
+      
     },
   })
 
-  console.log(post)
   // Handle case where no post is found
   if (!post) {
     return <p>No post found.</p>
@@ -30,7 +29,7 @@ export default async function PostPage({
 
   return (
     <>
-      <div className="md:h-screen w-screen flex flex-col items-center justify-center bg-[#818895] text-white px-6 py-12">
+      <div className="md:h-screen md:w-full flex flex-col items-center justify-center bg-[#818895] text-white px-6 md:px-0 py-12">
         <PostContent post={post} />
       </div>
       <div className="relative  md:h-full w-screen flex flex-col justify-center md:justify-start md:flex-row">

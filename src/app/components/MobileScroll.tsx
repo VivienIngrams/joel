@@ -47,7 +47,7 @@ const MobileScroll = ({ images,  title }: ImageGalleryProps) => {
           return (
             <div key={index} className="relative flex-shrink-0">
               {/* Clickable Image */}
-              <div
+              <div className="relative flex-shrink-0"
                 style={{
                   width: `${imgWidth}px`, // Set width to the calculated width
                   height: `${containerHeight}px`, // Fixed height
@@ -59,8 +59,9 @@ const MobileScroll = ({ images,  title }: ImageGalleryProps) => {
               >
                 <Image
                   src={urlForImage(image).url() as string}
-                  alt={image.title}
-                  layout="fill"
+                  alt={title}
+                  sizes="100vw"
+                  fill
                   className="object-cover shadow-lg shadow-gray-500 border-white border-[1.5px]"
                   loading="lazy" // Ensure lazy loading
                 />
@@ -80,8 +81,7 @@ const MobileScroll = ({ images,  title }: ImageGalleryProps) => {
             <Image
               src={selectedImage}
               alt="Full View"
-              layout="intrinsic"
-              width={800}
+                         width={800}
               height={600}
               className=""
               objectFit="contain"

@@ -51,7 +51,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
 {isPublieesSousPage && !isProjetsSousPage && (
   <Link
     href="/posts/publiees"
-    className="h-12 absolute top-3 md:top-4 left-3 md:left-5"
+    className="h-12 absolute top-3 md:top-4 left-3 md:left-4"
   >
     <IoIosArrowRoundBack className="text-white text-[2.5rem] md:text-[3.5rem]" />
   </Link>
@@ -72,7 +72,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
   !isProjetsPage && (
     <Link
       href="/posts"
-      className="h-10 absolute top-3 md:top-4 left-3 md:left-5"
+      className="h-10 absolute top-3 md:top-4 left-3 md:left-4"
     >
       <IoIosArrowRoundBack className="text-white text-[2.5rem] md:text-[3.5rem]" />
     </Link>

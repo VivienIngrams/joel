@@ -5,12 +5,10 @@ import { type SanityClient } from 'next-sanity'
 
 // Query to fetch all posts with defined slugs, ordered by creation date
 export const postsQuery = groq`
-  *[_type == "post" && slug.current in ["survol", "hors-d-age", "respiration", "respiration2", "autoportraits", "moi-vu-par-elles-eux", "derision", "publiees", "projets"]] {
+  *[_type == "post" && slug.current in ["survol", "hors-d-age", "respiration", "nature", "autoportraits", "moi-vu-par-elles-eux", "derision", "publiees", "projets"]] {
     _id,
-   
     title,
     slug,
-    excerpt,
     mainImages, 
     layout,
   } | order(
@@ -97,16 +95,16 @@ export const postSlugsQuery = groq`
 `
 
 export type Post = {
-    _type: 'post'
-  _id: string;
-  slug: { current: string; };
+  _type: 'post'
+  _id: string
+  slug: { current: string }
   _createdAt: string
-  mainImages: any[]; // Ensure this is required if you always expect it
-  title: string;
-  excerpt?: PortableTextBlock[];
-  layout: 'portrait' | 'square' | 'landscape';
-  images?: any[];
-};
+  mainImages: any[] // Ensure this is required if you always expect it
+  title: string
+  excerpt?: PortableTextBlock[]
+  layout: 'portrait' | 'square' | 'landscape'
+  images?: any[]
+}
 
 // Query to fetch the home page data
 export const homePageQuery = groq`
@@ -120,7 +118,6 @@ export async function getHomePage(client: SanityClient, options = {}) {
   const homePage = await client.fetch(homePageQuery, options)
   return homePage
 }
-
 
 // Function to fetch the home page data
 export async function getDelphinePage(client: SanityClient, options = {}) {

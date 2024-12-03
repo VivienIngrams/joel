@@ -10,8 +10,8 @@ export default async function PostsPage() {
 
   const posts: Post[] = await getPosts(client, {
     next: {
-      revalidate: 10,
-      cache: 'no-store',
+      revalidate: 1,
+
     },
   })
 
@@ -23,7 +23,7 @@ export default async function PostsPage() {
     "respiration",
     'moi-vu-par-elles-eux',
     'derision',
-    'respiration2',
+    'nature',
     'publiees',
     'projets',
   ]
@@ -41,7 +41,7 @@ export default async function PostsPage() {
   }
 
   return (
-    <div className="h-full md:min-h-[80vh] pb-20 bg-[#818895] max-w-screen pt-16 ">
+    <div className="h-full md:min-h-[80vh] pb-20 bg-[#818895] max-w-full pt-16 ">
       <h1 className="text-3xl md:text-5xl font-barlow uppercase font-light  pl-4 md:pl-16 md:mb-8">
         Galeries
       </h1>
