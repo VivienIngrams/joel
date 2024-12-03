@@ -9,9 +9,8 @@ export default async function DelphinePage() {
 
   const post = await getDelphinePage(client, {
     next: {
-      revalidate: 5,
-      
-    },
+      revalidate: 1,
+          },
   })
  
   return (
