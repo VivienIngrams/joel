@@ -1,5 +1,5 @@
 import {
-  DelphineMobileScroll,
+
   DelphineScroll,
 } from '~/app/components/DelphineScroll'
 import PostContent from '~/app/components/PostContent'
@@ -18,18 +18,18 @@ export default async function DelphinePage() {
 
   return (
     <>
-      <div className="md:h-screen md:w-full flex flex-col items-center justify-center bg-[#818895] text-white px-6 md:px-0 py-12">
+      <div className="md:h-screen md:w-full flex flex-col items-center justify-center bg-[#818895] text-white px-6 md:px-0 pt-12">
         <PostContent post={post} />
       </div>
-      <div className="relative  md:h-full w-screen flex flex-col justify-center md:justify-start md:flex-row">
+     
         {/* // Mobile View */}
-        <div className="h-full w-full md:hidden mb-20">
+        {/* <div className="h-full w-full md:hidden mb-20">
           <DelphineMobileScroll images={post.images} title={post.title} />
-        </div>
+        </div> */}
         {/* Horizontal Scrolling Image Gallery on the Right */}
-        <div className="hidden  overflow-hidden  md:block md:flex-grow md:pl-4 h-full">
+        <div className="overflow-hidden md:flex-grow md:pl-4 h-full">
           <DelphineScroll images={post.images} title={post.title} />
-        </div>
+        
       </div>
     </>
   )
