@@ -73,7 +73,7 @@ const MobileImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) 
                   alt={image.alt || title}
                   fill
                   sizes="80vw"
-                  className="object-cover shadow-lg shadow-gray-500 border-white border-[1.5px]"
+                  className="object-cover shadow-lg shadow-gray-500  border-[1.5px]"
                   loading="lazy" // Ensure lazy loading
                 />
               </div>

@@ -80,7 +80,7 @@ const ImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) => {
                 alt={image.alt || title}
                 fill
                 sizes="25vw"
-                className="object-cover shadow-md shadow-gray-500 border-white border-2"
+                className="object-cover shadow-md shadow-gray-500  border-2"
                 loading="lazy"
               />
             </div>

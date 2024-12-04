@@ -25,7 +25,7 @@ export default async function HomePage() {
       <Link href="/posts" className="block relative h-[100vh] w-full">
         <section className="relative h-full w-full flex flex-col justify-start md:justify-center p-4 items-start overflow-x-hidden overflow-y-hidden">
           {/* Content Container */}
-          <div className="relative flex-1 w-full border-white border-2 shadow-lg shadow-gray-500 flex overflow-hidden max-w-full h-full">
+          <div className="relative flex-1 w-full  border-2 shadow-lg shadow-gray-500 flex overflow-hidden max-w-full h-full">
             {/* Slider */}
             <div className="w-full h-full">
               <Slider images={homePageData?.mainImages} />
