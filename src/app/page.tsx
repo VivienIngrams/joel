@@ -23,7 +23,7 @@ export default async function HomePage() {
 
       {/* Content and Link to Posts */}
       <Link href="/posts" className="block relative h-[100vh] w-full">
-        <section className="relative h-full w-full flex flex-col justify-start md:justify-center p-4 items-start pb-[110px] md:pb-[110px] overflow-x-hidden overflow-y-hidden">
+        <section className="relative h-full w-full flex flex-col justify-start md:justify-center p-4 items-start overflow-x-hidden overflow-y-hidden">
           {/* Content Container */}
           <div className="relative flex-1 w-full border-white border-2 shadow-lg shadow-gray-500 flex overflow-hidden max-w-full h-full">
             {/* Slider */}

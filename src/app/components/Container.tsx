@@ -39,7 +39,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
         className={`${
           isHomePage
             ? 'absolute top-0 left-0 w-full z-10 h-16 md:h-48 bg-transparent pl-4 pt-4 md:pl-8 md:pt-8' // Dark blue, aligned left
-            : 'fixed top-0 z-50 h-8 w-full md:h-16 text-[22px] md:text-[32px] pb-8 bg-gradient-to-t from-transparent via-[#818895] to-[#818895] flex flex-col items-center justify-center pt-8'
+            : 'fixed top-0 z-50 h-8 w-full md:h-16 text-[22px] md:text-[32px] pb-8 bg-gradient-to-t from-transparent via-[#4b5563] to-[#4b5563] flex flex-col items-center justify-center pt-8'
         }`}
       >
         {isProjetsPage && !isPublieesSousPage && !isProjetsSousPage && (
@@ -91,13 +91,13 @@ export default function Container({ children }: { children: React.ReactNode }) {
       <footer
         className={`fixed bottom-0 w-full md:h-16 md:pb-6 px-4 pt-10 md:pt-6 pb-4 flex items-end md:items-center justify-between ${
           isHomePage
-            ? ' md:bg-transparent md:text-[#818895]' // Transparent background with dark blue text on the homepage
-            : 'bg-gradient-to-b from-transparent via-[#818895] to-[#818895] text-white'
+            ? ' md:bg-transparent md:text-[#4b5563]' // Transparent background with dark blue text on the homepage
+            : 'bg-gradient-to-b from-transparent via-[#4b5563] to-[#4b5563] text-white'
         }`}
       >
         <div>
           <p
-            className={`hidden  md:flex text-[#818895] -mb-5 xs:tracking-normal z-55 leading-loose w-[150px] pt-2 ${
+            className={`hidden  md:flex text-[#4b5563] -mb-5 xs:tracking-normal z-55 leading-loose w-[150px] pt-2 ${
               isHomePage && 'md:hidden '
             }  ${isInfoPage && 'text-neutral-300 text-[11px] '}`}
           >
@@ -111,7 +111,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
               <Link
                 href="mailto:info@joelbardeau.com"
                 className={`text-sm lg:text-lg hover:text-neutral-400 ${
-                  isHomePage ? 'text-[#818895]' : 'text-white'
+                  isHomePage ? 'text-[#4b5563]' : 'text-white'
                 }`}
               >
                 info@joelbardeau.com{' '}

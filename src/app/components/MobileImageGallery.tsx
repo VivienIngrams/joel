@@ -90,7 +90,7 @@ const MobileImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) 
             <span className="absolute left-0 right-0 bottom-1/2 transform  bg-white h-[1px] z-5"></span>
 
             {/* Title with Grey Background covering only text width */}
-            <h1 className="text-white upper  text-2xl lg:text-3xl font-light inline-block relative z-6 px-1  bg-[#818895]">
+            <h1 className="text-white upper  text-2xl lg:text-3xl font-light inline-block relative z-6 px-1  bg-[#4b5563]">
               {title}
             </h1>
           </div>

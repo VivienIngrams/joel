@@ -99,7 +99,7 @@ const ImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) => {
             <span className="absolute left-0 right-0 bottom-1/2 transform translate-y-6px] bg-white h-[1px] z-5"></span>
 
             {/* Title with Grey Background covering only text width */}
-            <h1 className="text-white upper  font-light text-3xl lg:text-4xl inline-block relative z-11 px-1 my-4 bg-[#818895]">
+            <h1 className="text-white upper  font-light text-3xl lg:text-4xl inline-block relative z-11 px-1 my-4 bg-[#4b5563]">
               {title}
             </h1>
           </div>

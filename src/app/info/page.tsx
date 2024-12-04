@@ -6,7 +6,7 @@ import { Socials } from '../components/Container'
 
 export default function InfoPage() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-[#818895] text-white px-6 py-12">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-[#4b5563] text-white px-6 py-12">
        <Link
         href="mailto:info@joelbardeau.com" className="text-3xl md:text-5xl upper font-light  mb-4">Contact</Link>
       <p className="text-lg md:text-xl text-center max-w-2xl mb-8">

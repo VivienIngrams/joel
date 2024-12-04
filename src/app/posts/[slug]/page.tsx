@@ -29,7 +29,7 @@ export default async function PostPage({
 
   return (
     <>
-      <div className="md:h-screen md:w-full flex flex-col items-center justify-center bg-[#818895] text-white px-6 md:px-0 py-12">
+      <div className="md:h-screen md:w-full flex flex-col items-center justify-center bg-[#4b5563] text-white px-6 md:px-0 py-12">
         <PostContent post={post} />
       </div>
       <div className="relative  md:h-full w-screen flex flex-col justify-center md:justify-start md:flex-row">

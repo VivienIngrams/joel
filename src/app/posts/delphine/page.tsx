@@ -32,7 +32,7 @@ export default async function DelphinePage() {
 
   return (
     <>
-      <div className="md:h-screen md:w-full flex flex-col items-center justify-center bg-[#818895] text-white px-6 md:px-0 py-12">
+      <div className="md:h-screen md:w-full flex flex-col items-center justify-center bg-[#4b5563] text-white px-6 md:px-0 py-12">
         <PostContent post={post} />
       </div>
 
@@ -46,7 +46,7 @@ export default async function DelphinePage() {
           <HorizontalScroll images={firstPart} title={post.title} />
         </div>
       </div>
-      <div className="md:h-screen md:w-full flex flex-col items-center justify-center bg-[#818895] text-white px-6 md:px-0 py-12">
+      <div className="md:h-screen md:w-full flex flex-col items-center justify-center bg-[#4b5563] text-white px-6 md:px-0 py-12">
         <div className="mt-3 md:mt-16 hidden md:block text-xl text-justify max-w-[450px] mb-8">
           <p className="mb-2">
             On se pose souvent sur le résultat mais se pose t&apos;on sur le
@@ -81,7 +81,7 @@ export default async function DelphinePage() {
           <HorizontalScroll images={secondPart} title={post.title} />
         </div>
       </div>
-      <div className="md:h-screen md:w-full flex flex-col items-center justify-center bg-[#818895] text-white px-6 md:px-0 py-12">
+      <div className="md:h-screen md:w-full flex flex-col items-center justify-center bg-[#4b5563] text-white px-6 md:px-0 py-12">
         <div className="mt-3 md:mt-16 hidden md:block text-xl text-justify max-w-[450px] mb-8">
           <p className="mb-2">
             Un premier travail photographique, réalisé en juin 2022, donne lieu
@@ -111,7 +111,7 @@ export default async function DelphinePage() {
         </div>
       </div>
 
-      <div className="md:h-screen md:w-full flex flex-col items-center justify-center bg-[#818895] text-white px-6 md:px-0 py-12">
+      <div className="md:h-screen md:w-full flex flex-col items-center justify-center bg-[#4b5563] text-white px-6 md:px-0 py-12">
         <div className="mt-3 md:mt-16 hidden md:block text-xl text-justify max-w-[450px] mb-8">
           <p className="mb-2">
             Plus qu&apos;un photographe, j&apos;avais l&apos;attitude d&apos;une
@@ -148,7 +148,7 @@ export default async function DelphinePage() {
         </div>
       </div>
 
-      <div className="md:h-screen md:w-full flex flex-col items-center justify-center bg-[#818895] text-white px-6 md:px-0 py-12">
+      <div className="md:h-screen md:w-full flex flex-col items-center justify-center bg-[#4b5563] text-white px-6 md:px-0 py-12">
         <div className="mt-3 md:mt-16 hidden md:block text-xl text-justify max-w-[450px] mb-8">
           <p className="mb-2">
             Chaque prise de vue sera suivie par une réflexion plastique et
