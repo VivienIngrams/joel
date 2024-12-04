@@ -147,6 +147,7 @@ export function HorizontalScroll({ images, title }: HorizontalGalleryProps) {
                   src={urlForImage(image).url() as string}
                   alt={title}
                   layout="fill"
+                  sizes="100vw"
                   className="mt-24 object-cover"
                 />
               </div>

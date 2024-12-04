@@ -78,7 +78,8 @@ const ImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) => {
               <Image
                 src={urlForImage(image).url() as string}
                 alt={image.alt || title}
-                layout="fill"
+                fill
+                sizes="25vw"
                 className="object-cover shadow-md shadow-gray-500 border-white border-2"
                 loading="lazy"
               />
@@ -98,7 +99,7 @@ const ImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) => {
             <span className="absolute left-0 right-0 bottom-1/2 transform translate-y-6px] bg-white h-[1px] z-5"></span>
 
             {/* Title with Grey Background covering only text width */}
-            <h1 className="text-white uppercase font-barlow font-light text-3xl lg:text-4xl inline-block relative z-11 px-1 my-4 bg-[#818895]">
+            <h1 className="text-white upper  font-light text-3xl lg:text-4xl inline-block relative z-11 px-1 my-4 bg-[#818895]">
               {title}
             </h1>
           </div>

@@ -79,7 +79,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
   )}
 
         <Link href={isHomePage ? '/posts' : '/'}>
-          <h1 className={`${isHomePage ? 'hidden' : ' text-center'}`}>
+          <h1 className={`${isHomePage ? 'hidden' : 'uppercase text-center'}`}>
             Joël Bardeau
           </h1>
         </Link>

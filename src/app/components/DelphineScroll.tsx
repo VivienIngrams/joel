@@ -15,60 +15,35 @@ interface HorizontalGalleryProps {
 export function DelphineScroll({ images, title }: HorizontalGalleryProps) {
   const sectionRef = useRef<HTMLDivElement | null>(null)
   const triggerRef = useRef<HTMLDivElement | null>(null)
-  const [dimensions, setDimensions] = useState({
-    height: 0,
-    totalImagesWidth: 0,
-  })
+
   const [isOverlayVisible, setOverlayVisible] = useState(false)
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
 
   gsap.registerPlugin(ScrollTrigger)
-
-  // Set dimensions of images based on aspect ratio
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const height = window.innerHeight * 0.78
-      let totalImagesWidth = 0
-
-      images.forEach((image) => {
-        const { aspectRatio } = image
-        const imgWidth = height * aspectRatio
-        totalImagesWidth += imgWidth
-      })
-
-      const totalSpacing = (images.length - 1) * 32
-      totalImagesWidth += totalSpacing
-      setDimensions({ height, totalImagesWidth })
-    }
-  }, [images])
-
+  const height = window.innerHeight * 0.78
+  const width = window.innerWidth * 0.6
   // GSAP scroll logic
   useEffect(() => {
-    if (dimensions.totalImagesWidth > 0 && typeof window !== 'undefined') {
-      const containerWidth = window.innerWidth * 0.7
-      const totalWidth = dimensions.totalImagesWidth - containerWidth
-
-      const pin = gsap.fromTo(
-        sectionRef.current,
-        { translateX: 0 },
-        {
-          translateX: `-${totalWidth}px`,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: triggerRef.current,
-            start: 'center center',
-            end: `${totalWidth} top`,
-            scrub: true,
-            pin: true,
-          },
+    const pin = gsap.fromTo(
+      sectionRef.current,
+      { translateX: 0 },
+      {
+        translateX: `-1000px`,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: triggerRef.current,
+          start: 'center center',
+          end: `1000 top`,
+          scrub: true,
+          pin: true,
         },
-      )
+      },
+    )
 
-      return () => {
-        pin.kill()
-      }
+    return () => {
+      pin.kill()
     }
-  }, [dimensions])
+  }, [])
 
   const closeModal = () => {
     setOverlayVisible(false)
@@ -99,7 +74,7 @@ export function DelphineScroll({ images, title }: HorizontalGalleryProps) {
                 alt={title}
                 layout="intrinsic"
                 width={1200}
-                height={800}
+                height={height}
                 objectFit="contain"
               />
               <button
@@ -110,7 +85,7 @@ export function DelphineScroll({ images, title }: HorizontalGalleryProps) {
               </button>
             </div>
           </div>,
-          document.body // Render modal at root level
+          document.body, // Render modal at root level
         )
       : null
 
@@ -121,37 +96,71 @@ export function DelphineScroll({ images, title }: HorizontalGalleryProps) {
         ref={triggerRef}
         className="w-full h-full pt-16 overflow-hidden bg-[#818895] pl-[27vw] 2xl:pl-[25vw]"
       >
-        <div
-          ref={sectionRef}
-          className="flex pl-2 space-x-8 pb-[75px]"
-          style={{ width: `${dimensions.totalImagesWidth}px` }}
-        >
-          {images.map((image, index) => {
-            const { aspectRatio } = image
-            const imgWidth = dimensions.height * aspectRatio
-
-            return (
-              <div
-                key={image._key || index.toString()}
-                className="relative flex-shrink-0 cursor-pointer shadow-lg shadow-gray-500 border-white md:border-2"
-                style={{
-                  width: `${imgWidth}px`,
-                  height: `${dimensions.height}px`,
-                }}
-                onClick={() => {
-                  setSelectedImage(urlForImage(image).url() as string)
-                  setOverlayVisible(true)
-                }}
-              >
-                <Image
-                  src={urlForImage(image).url() as string}
-                  alt={title}
-                  layout="fill"
-                  className="mt-24 object-cover"
-                />
+        <div ref={sectionRef} className="flex pl-2 space-x-8 pb-[75px]">
+          <div
+            className={`relative flex-shrink-0 cursor-pointer h-[700px] w-[1000px]`}
+            style={{
+              width: `${width}px`,
+              height: `${height}px`,
+            }}
+            onClick={() => {
+              setSelectedImage(urlForImage(images[0]).url() as string)
+              setOverlayVisible(true)
+            }}
+          >
+            <div className="flex flex-col items-center justify-center h-full">
+              <div className="max-w-md">
+                <p className='mb-2'>A l’épreuve de nos corps</p>
+                <p>
+                  Le travail débuté mi février avait pour objet un corps
+                  inconnu, parfois peu identifiable vu par le prisme de l’écran.
+                  Ce travail extrêmement proche de ma sensibilité au départ,
+                  s&apos;est peu à peu étiolé. J&apos;ai pris conscience que le
+                  maintien à distance qu&apos;était l&apos;écran et qui me
+                  rassurait au départ, ne me convenait plus et n&apos;apportait
+                  plus à mon travail matière à toucher une forme de vérité
+                  plastique et graphique. J&apos;avais besoin de plus. La
+                  résidence d&apos;artiste proposée à La Maison Jaune m&apos;a
+                  permis de reprendre ce travail avec un autre rapport au corps
+                  de l&apos;autre et l&apos;étude de son expression intime via
+                  des séances photo réalisées en studio.{' '}
+                </p>
               </div>
-            )
-          })}
+            </div>
+          </div>
+          <div
+            className={`relative flex-shrink-0 cursor-pointer h-[700px] w-[1000px]`}
+            style={{
+              width: `${width}px`,
+              height: `${height}px`,
+            }}
+            onClick={() => {
+              setSelectedImage(urlForImage(images[0]).url() as string)
+              setOverlayVisible(true)
+            }}
+          >
+            <div className="relative h-1/3 w-1/4">
+              <Image
+                src={urlForImage(images[0]).url() as string}
+                alt={title}
+                layout="fill"
+                className=" object-cover"
+              />
+            </div>
+          </div>
+          <div
+            className={`relative flex-shrink-0 cursor-pointer h-[700px] w-[1000px]`}
+            style={{
+              width: `${width}px`,
+              height: `${height}px`,
+            }}
+            onClick={() => {
+              setSelectedImage(urlForImage(images[0]).url() as string)
+              setOverlayVisible(true)
+            }}
+          >
+            <div className="relative h-1/3 w-1/4"></div>
+          </div>
         </div>
       </section>
     </>
@@ -159,74 +168,46 @@ export function DelphineScroll({ images, title }: HorizontalGalleryProps) {
 }
 
 interface ImageGalleryProps {
-    images: any[]; // Expecting images with `dimensions` including `aspectRatio`
-    title: string;
-  }
+  images: any[] // Expecting images with `dimensions` including `aspectRatio`
+  title: string
+}
 
-
-
-export const DelphineMobileScroll = ({ images,  title }: ImageGalleryProps) => {
-  const [containerHeight, setContainerHeight] = useState(0);
-  const [isOverlayVisible, setOverlayVisible] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null); // Track selected image
-
-  useEffect(() => {
-    const calculateHeight = () => {
-      const height = window.innerHeight * 0.5; // Fixed height: 50% of the window height
-      setContainerHeight(height);
-    };
-
-    calculateHeight();
-    window.addEventListener('resize', calculateHeight);
-
-    return () => {
-      window.removeEventListener('resize', calculateHeight);
-    };
-  }, []);
-
-  if (containerHeight === 0) {
-    return null; // or a loading spinner
-  }
+export const DelphineMobileScroll = ({ images, title }: ImageGalleryProps) => {
+  const [isOverlayVisible, setOverlayVisible] = useState(false)
+  const [selectedImage, setSelectedImage] = useState<string | null>(null) // Track selected image
 
   const closeModal = () => {
-    setOverlayVisible(false);
-    setSelectedImage(null);
-  };
+    setOverlayVisible(false)
+    setSelectedImage(null)
+  }
 
   return (
-    <div className="w-full overflow-x-auto"> {/* Enable horizontal scrolling */}
-      <div className="flex flex-row space-x-4"> {/* Flex container for images */}
-        {images.map((image, index) => {
-          const aspectRatio = image.aspectRatio || 1; // Fallback to 1:1 if aspectRatio is missing
-          const imgWidth = containerHeight * aspectRatio; // Calculate width based on aspect ratio and fixed height
-
-          return (
-            <div key={index} className="relative flex-shrink-0">
-              {/* Clickable Image */}
-              <div className="relative flex-shrink-0"
-                style={{
-                  width: `${imgWidth}px`, // Set width to the calculated width
-                  height: `${containerHeight}px`, // Fixed height
-                }}
-                onClick={() => {
-                  setSelectedImage(urlForImage(image).url() as string);
-                  setOverlayVisible(true); // Open modal
-                }}
-              >
-                <Image
-                  src={urlForImage(image).url() as string}
-                  alt={title}
-                  sizes="100vw"
-                  layout='fill'
-                  className="object-cover shadow-lg shadow-gray-500 border-white border-[1.5px]"
-                  loading="lazy" // Ensure lazy loading
-                />
-              </div>
-            </div>
-          );
-        })}
+    <div className="w-full overflow-x-auto">
+      {' '}
+      {/* Enable horizontal scrolling */}
+      <div className="flex flex-row space-x-4">
+        {' '}
+        {/* Flex container for images */}
+        <div className="relative flex-shrink-0">
+          {/* Clickable Image */}
+          <div
+            className="relative flex-shrink-0 w-32 h-32"
+            onClick={() => {
+              setSelectedImage(urlForImage(images[0]).url() as string)
+              setOverlayVisible(true) // Open modal
+            }}
+          >
+            <Image
+              src={urlForImage(images[0]).url() as string}
+              alt={title}
+              sizes="100vw"
+              layout="fill"
+              className="object-cover shadow-lg shadow-gray-500 border-white border-[1.5px]"
+              loading="lazy" // Ensure lazy loading
+            />
+          </div>
+        </div>
       </div>
-
       {/* Modal */}
       {isOverlayVisible && selectedImage && (
         <div
@@ -237,7 +218,7 @@ export const DelphineMobileScroll = ({ images,  title }: ImageGalleryProps) => {
             <Image
               src={selectedImage}
               alt="Full View"
-                         width={800}
+              width={800}
               height={600}
               className=""
               objectFit="contain"
@@ -252,5 +233,5 @@ export const DelphineMobileScroll = ({ images,  title }: ImageGalleryProps) => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}

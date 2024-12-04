@@ -34,7 +34,7 @@ export default async function HomePage() {
 
           {/* Title and Subtitle */}
           <div className="absolute bottom-6 md:bottom-2 inset-x-0 text-center px-4 pointer-events-none">
-            <h1 className="uppercase text-white max-[360px]:text-[48px] text-[50px] md:text-[70px] -mb-2 md:mb-[-16px] break-words leading-tight">
+            <h1 className="upper text-white max-[360px]:text-[48px] text-[50px] md:text-[70px] -mb-2 md:mb-[-16px] break-words leading-tight">
               Joël Bardeau
             </h1>
             <h2 className="text-white text-2xl md:text-3xl font-light leading-normal">
