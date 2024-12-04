@@ -62,7 +62,7 @@ const MobileScroll = ({ images,  title }: ImageGalleryProps) => {
                   alt={title}
                   sizes="80vw"
                   fill
-                  className="object-cover shadow-lg shadow-gray-500  border-[1.5px]"
+                  className="object-cover shadow-lg shadow-gray-800 "
                   loading="lazy" // Ensure lazy loading
                 />
               </div>

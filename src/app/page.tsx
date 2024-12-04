@@ -25,7 +25,7 @@ export default async function HomePage() {
       <Link href="/posts" className="block relative h-[100vh] w-full">
         <section className="relative h-full w-full flex flex-col justify-start md:justify-center p-4 items-start overflow-x-hidden overflow-y-hidden">
           {/* Content Container */}
-          <div className="relative flex-1 w-full  border-2 shadow-lg shadow-gray-500 flex overflow-hidden max-w-full h-full">
+          <div className="relative flex-1 w-full  shadow-lg shadow-gray-800 flex overflow-hidden max-w-full h-full">
             {/* Slider */}
             <div className="w-full h-full">
               <Slider images={homePageData?.mainImages} />
@@ -33,11 +33,11 @@ export default async function HomePage() {
           </div>
 
           {/* Title and Subtitle */}
-          <div className="absolute bottom-6 md:bottom-2 inset-x-0 text-center px-4 pointer-events-none">
-            <h1 className="upper text-white max-[360px]:text-[48px] text-[50px] md:text-[70px] -mb-2 md:mb-[-16px] break-words leading-tight">
+          <div className="absolute left-4 top-12  inset-x-0  px-4 pointer-events-none">
+            <h1 className=" text-left text-white text-[50px] md:text-[60px] uppercase break-words leading-tight">
               Joël Bardeau
             </h1>
-            <h2 className="text-white text-2xl md:text-3xl font-light leading-normal">
+            <h2 className="text-white text-2xl md:text-3xl font-light leading-normal -mt-2">
               Artiste Auteur
             </h2>
           </div>

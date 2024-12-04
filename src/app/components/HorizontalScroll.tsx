@@ -103,7 +103,7 @@ export function HorizontalScroll({ images, title }: HorizontalGalleryProps) {
                 objectFit="contain"
               />
               <button
-                className="absolute top-5 -right-12 text-white border-[1px] rounded-full p-1 px-2 hover:bg-[#4b5563]"
+                className="absolute top-5 -right-12 text-white  rounded-full p-1 px-2 hover:bg-[#4b5563]"
                 onClick={closeModal}
               >
                 ✕
@@ -133,7 +133,7 @@ export function HorizontalScroll({ images, title }: HorizontalGalleryProps) {
             return (
               <div
                 key={image._key || index.toString()}
-                className="relative flex-shrink-0 cursor-pointer shadow-lg shadow-gray-500  md:border-2"
+                className="relative flex-shrink-0 cursor-pointer shadow-lg shadow-gray-800  "
                 style={{
                   width: `${imgWidth}px`,
                   height: `${dimensions.height}px`,
