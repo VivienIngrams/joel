@@ -18,6 +18,7 @@ export default async function PostPage({
   const post: Post | null = await getPost(client, params.slug, {
     next: {
       revalidate: 2,
+      cache:   'no-store',
           },
   })
 

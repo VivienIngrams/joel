@@ -20,10 +20,10 @@ export default async function PostsPage() {
     'survol',
     'hors-d-age',
     'autoportraits',
-    "respiration",
-    'moi-vu-par-elles-eux',
+    "nature",
     'derision',
-    'nature',
+    'moi-vu-par-elles-eux',
+    'respiration',
     'publiees',
     'projets',
   ]

@@ -84,7 +84,7 @@ export async function getPost(
   slug: string,
   options = {},
 ): Promise<Post> {
-  const post = await client.fetch(postBySlugQuery, { slug })
+  const post = await client.fetch(postBySlugQuery, { slug }, options)
 
   return post
 }

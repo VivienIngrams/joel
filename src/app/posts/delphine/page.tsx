@@ -14,7 +14,7 @@ export default async function DelphinePage() {
   })
  
   return (
-    <div className="min-h-[80vh] md:h-full w-screen flex flex-col justify-center md:justify-start md:flex-row">
+    <div className="min-h-[80vh] md:h-full w-screen flex flex-col justify-center md:justify-start md:flex-row px-6 md:px-0 py-12">
     {/* Post Content on the Left */}
     <PostContent post={post} />
     {/* // Mobile View */}
