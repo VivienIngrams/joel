@@ -17,7 +17,7 @@ export default async function ProjetsPage() {
   return (
     <div className="h-full md:min-h-[80vh] pb-20 bg-[#4b5563] max-w-[98vw] pt-16 ">
       <h1 className="text-3xl md:text-5xl uppercase  font-light  ml-4 md:ml-20 md:mb-12">
-        Séries en cours
+        Projets actuels
       </h1>
 
       {/* Render ImageGallery for each post */}

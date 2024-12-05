@@ -16,7 +16,7 @@ export default function Slider({ images }: SliderProps): JSX.Element {
   }, [images.length]);
 
   useEffect(() => {
-    const interval = setInterval(nextSlide, 3000);
+    const interval = setInterval(nextSlide, 2000);
     return () => clearInterval(interval);
   }, [nextSlide]);
 

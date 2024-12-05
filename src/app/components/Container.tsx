@@ -38,8 +38,8 @@ export default function Container({ children }: { children: React.ReactNode }) {
       <div
         className={`${
           isHomePage
-            ? 'absolute top-0 left-0 w-full z-10 h-16 md:h-48 bg-transparent pl-4 pt-4 md:pl-8 md:pt-8' // Dark blue, aligned left
-            : 'fixed top-0 z-50 h-8 w-full md:h-16 text-[22px] md:text-[32px] pb-8 bg-gradient-to-t from-transparent via-[#4b5563] to-[#4b5563] flex flex-col items-center justify-center pt-8'
+            ? 'hidden' 
+            : 'fixed top-0 z-50 h-8 w-full md:h-16 pb-16 pt-6 bg-gradient-to-t from-transparent via-[#4b5563] to-[#4b5563] flex flex-col items-center justify-center'
         }`}
       >
         {isProjetsPage && !isPublieesSousPage && !isProjetsSousPage && (
@@ -79,8 +79,8 @@ export default function Container({ children }: { children: React.ReactNode }) {
   )}
 
         <Link href={isHomePage ? '/posts' : '/'}>
-          <h1 className={`${isHomePage ? 'hidden' : 'uppercase text-center'}`}>
-            Joël Bardeau
+          <h1 className={`${isHomePage ? 'hidden' : 'uppercase text-xl md:text-2xl text-center'}`}>
+           <span className='text-2xl  md:text-[33px] tracking-[-0.4rem]'>J</span> oël <span className='text-2xl md:text-[33px] tracking-[-0.05rem]'>B</span>ardeau
           </h1>
         </Link>
       </div>
@@ -110,7 +110,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
             <div className="flex items-end gap-x-4">
               <Link
                 href="mailto:info@joelbardeau.com"
-                className={`text-sm lg:text-lg hover:text-neutral-400 ${
+                className={`text-sm lg:text-md hover:text-neutral-400 ${
                   isHomePage ? 'text-[#4b5563]' : 'text-white'
                 }`}
               >
