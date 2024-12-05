@@ -32,22 +32,32 @@ export default async function DelphinePage() {
 
   return (
     <>
+      <div className="md:h-screen md:w-full flex flex-col items-center justify-center bg-[#4b5563] text-white  md:px-0 py-12">
+        <PostContent post={post} />   <div className="relative md:h-full w-screen flex flex-col justify-center md:justify-start md:flex-row">
+          {/* Mobile View - First Part of Images */}
+          <div className="h-full w-full md:hidden mb-20">
+            <MobileScroll images={firstPart} title={post.title} />
+          </div>
+          {/* Horizontal Scrolling Image Gallery on the Right - First Part */}
+          <div className="hidden overflow-hidden md:block md:flex-grow md:pl-4 h-full">
+            <HorizontalScroll images={firstPart} title={post.title} />
+          </div>
+        </div>{' '}</div>
+        
+     
+        <div className="relative md:h-full w-screen md:mt-32 flex flex-col justify-center md:justify-start md:flex-row">
+          {/* Mobile View - First Part of Images */}
+          <div className="h-full w-full md:hidden mb-20">
+            <MobileScroll images={firstPart} title={post.title} />
+          </div>
+          {/* Horizontal Scrolling Image Gallery on the Right - First Part */}
+          <div className="hidden overflow-hidden md:block md:flex-grow md:pl-4 h-full">
+            <HorizontalScroll images={firstPart} title={post.title} />
+          </div>
+        </div>{' '}
+      
       <div className="md:h-screen md:w-full flex flex-col items-center justify-center bg-[#4b5563] text-white px-6 md:px-0 py-12">
-        <PostContent post={post} />
-      </div>
-
-      <div className="relative md:h-full w-screen flex flex-col justify-center md:justify-start md:flex-row">
-        {/* Mobile View - First Part of Images */}
-        <div className="h-full w-full md:hidden mb-20">
-          <MobileScroll images={firstPart} title={post.title} />
-        </div>
-        {/* Horizontal Scrolling Image Gallery on the Right - First Part */}
-        <div className="hidden overflow-hidden md:block md:flex-grow md:pl-4 h-full">
-          <HorizontalScroll images={firstPart} title={post.title} />
-        </div>
-      </div>
-      <div className="md:h-screen md:w-full flex flex-col items-center justify-center bg-[#4b5563] text-white px-6 md:px-0 py-12">
-        <div className="mt-3 md:mt-16 hidden md:block text-xl text-justify max-w-[450px] mb-8">
+        <div className="mt-3 md:mt-16 text-xl text-justify max-w-[450px] mb-8">
           <p className="mb-2">
             On se pose souvent sur le résultat mais se pose t&apos;on sur le
             moment du faire, sur l&apos;instant ? À quoi penses tu ? Que ressens
@@ -71,6 +81,7 @@ export default async function DelphinePage() {
           </p>
         </div>
       </div>
+
       <div className="relative md:h-full w-screen flex flex-col justify-center md:justify-start md:flex-row">
         {/* Mobile View - Second Part of Images */}
         <div className="h-full w-full md:hidden mb-20">
@@ -82,7 +93,7 @@ export default async function DelphinePage() {
         </div>
       </div>
       <div className="md:h-screen md:w-full flex flex-col items-center justify-center bg-[#4b5563] text-white px-6 md:px-0 py-12">
-        <div className="mt-3 md:mt-16 hidden md:block text-xl text-justify max-w-[450px] mb-8">
+        <div className="mt-3 md:mt-16 block text-xl text-justify max-w-[450px] mb-8">
           <p className="mb-2">
             Un premier travail photographique, réalisé en juin 2022, donne lieu
             à des corps objets ou des morceaux de corps, des sorties de champ,
