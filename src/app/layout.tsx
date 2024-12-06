@@ -11,7 +11,7 @@ const oswald = Oswald({  variable: '--font-family-oswald',  weight: [  "400",  "
 
 export const metadata: Metadata = {
   title: "Joël Bardeau",
-  description: "Artiste Photographe Plasticien",
+  description: "Artiste Auteur",
 };
 
 export default function RootLayout({
