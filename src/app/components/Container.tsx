@@ -80,7 +80,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
 
         <Link href={isHomePage ? '/posts' : '/'}>
           <h1 className={`${isHomePage ? 'hidden' : 'uppercase text-xl md:text-2xl text-center'}`}>
-           <span className='text-2xl  md:text-[33px] tracking-[-0.4rem]'>J</span> oël <span className='text-2xl md:text-[33px] tracking-[-0.05rem]'>B</span>ardeau
+           <span className='text-2xl  md:text-[33px] tracking-[-0.3rem] md:tracking-[-0.4rem]'>J</span> oël <span className='text-2xl md:text-[33px] tracking-[-0.05rem]'>B</span>ardeau
           </h1>
         </Link>
       </div>

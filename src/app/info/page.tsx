@@ -7,16 +7,16 @@ import { Socials } from '../components/Container'
 export default function InfoPage() {
   return (
     <div className="min-h-screen md:grid md:grid-cols-3 bg-[#4b5563] text-white md:mx-[10vw]">
-      <div className="min-h-screen flex flex-col items-center justify-center px-6   py-12">
+      <div className="md:min-h-screen flex flex-col md:items-center md:justify-center px-6   md:py-12">
         <Link
           href="mailto:info@joelbardeau.com"
-          className="text-3xl md:text-5xl upper font-light  mb-4 md:mb-8"
+          className="text-3xl md:text-5xl font-light mt-16 mb-4 md:mt-0"
         >
           Contact
         </Link>
         <Link
           href="mailto:info@joelbardeau.com"
-          className="text-xl md:text-xl text-center max-w-2xl mb-4 md:mb-8  hover:text-neutral-500"
+          className="text-xl md:text-xl md:text-center max-w-2xl mb-4 md:mb-8  hover:text-neutral-500"
         >
           info@joelbardeau.com
         </Link>
@@ -25,10 +25,10 @@ export default function InfoPage() {
           <Socials />
         </div>
       </div>
-      <div className="min-h-screen flex flex-col items-center justify-center px-6   py-12">
+      <div className="md:min-h-screen flex flex-col items-center md:justify-center p-6">
 
       <div className='bg-black h-40 w-24'></div></div>
-      <div className="min-h-screen flex flex-col items-center justify-center text-lg md:text-xl text-justify max-w-2xl px-6 md:px-16 py-12">
+      <div className="md:min-h-screen flex flex-col items-center justify-center text-lg md:text-xl text-justify max-w-2xl px-6 pb-16 md:px-16 md:py-12">
         <p className=" mb-4">
           Jeune homme j&apos;ai suivi les cours classiques de dessin aux
           Beaux-Arts et pratiqué assidûment la photographie argentique. Puis une
@@ -38,7 +38,7 @@ export default function InfoPage() {
           Aujourd&apos;hui plus de 30 expositions au compteur, mes travaux sont
           présents aux murs de nombreux collectionneurs.
         </p>
-        <p className="italic mb-4">
+        <p className="italic mb-4 text-center">
           « Ma démarche est tournée principalement vers l&apos;humain. Au travers de
           son enveloppe j&apos;aime chercher et creuser le MOI des êtres. Mon travail
           en autoportraits est une forme d&apos;introspection à la fois thérapeutique

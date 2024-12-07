@@ -61,7 +61,7 @@ const MobileImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) 
       <div className="w-full overflow-x-auto"> {/* Enable horizontal scrolling */}
         <div className="flex flex-row ml-4 overflow-y-scroll no-scrollbar space-x-8"> {/* Flex container for images */} 
           {images.map((image, index) => (
-            <Link key={index} href={`/posts/${slug}`} className="relative flex-shrink-0">
+            <Link key={image._id} href={`/posts/${slug}`} className="relative flex-shrink-0">
               <div
                 style={{
                   width: `${dimensions[index].width}px`, // Set width to the calculated width

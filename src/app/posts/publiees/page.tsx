@@ -10,8 +10,8 @@ export default async function PublieesPage() {
 
   const posts: Post[] = await getPublieesPosts(client, {
     next: {
-      revalidate: 1,
-      cache: 'no-store'
+      revalidate: 10,
+  
           },
   });
 

@@ -67,7 +67,7 @@ const ImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) => {
       {/* Image Gallery */}
       <div className="flex justify-center space-x-16 mb-4 max-w-full">
         {images.map((image, index) => (
-          <Link key={index} href={`/posts/${slug}`}>
+          <Link key={image._id} href={`/posts/${slug}`}>
             <div
               className="relative"
               style={{

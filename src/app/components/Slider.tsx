@@ -16,7 +16,7 @@ export default function Slider({ images }: SliderProps): JSX.Element {
   }, [images.length]);
 
   useEffect(() => {
-    const interval = setInterval(nextSlide, 2000);
+    const interval = setInterval(nextSlide, 3000);
     return () => clearInterval(interval);
   }, [nextSlide]);
 
@@ -31,7 +31,7 @@ export default function Slider({ images }: SliderProps): JSX.Element {
         src={urlForImage(currentImage).url() || ''}
         alt={`Slider Image ${currentIndex + 1}`}
         fill
-        className="object-cover transition-all duration-500 ease-in-out"
+        className="object-cover transition-all duration-800 ease-in-out"
         style={{
           objectPosition, // Dynamically set based on hotspot
         }}
