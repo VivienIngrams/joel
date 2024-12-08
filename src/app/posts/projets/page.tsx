@@ -10,7 +10,7 @@ export default async function ProjetsPage() {
 
   const posts: Post[] = await getProjetsPosts(client, {
     next: {
-      revalidate: 5,
+      revalidate: 30,
     },
   })
 

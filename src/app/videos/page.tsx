@@ -37,9 +37,9 @@ const videoList = [
   const StaticVideos: React.FC = () => {
     return (
       <div className="min-h-screen py-24 w-full md:w-[85vw] mx-auto flex flex-col items-center justify-center gap-y-8">
-        <h2 className="self-center text-2xl md:text-4xl  upper  text-white">
-          Videos
-        </h2>
+      <h1 className="text-3xl md:text-5xl  w-full text-left uppercase font-light  pl-4 md:pl-16 md:mb-8">
+      Videos
+        </h1>
         <div className="grid w-full grid-cols-1 lg:grid-cols-2 gap-y-8 ">
           {videoList.map((video, index) => (
             <a
@@ -58,7 +58,7 @@ const videoList = [
                   height={200}
                 />
               </div>
-              <p className="mt-2 text-white text-center text-sm lg:text-lg capitalize">{video.title}</p>
+              <p className="mt-2 text-white text-center text-sm lg:text-xl ">{video.title}</p>
             </a>
           ))}
         </div>

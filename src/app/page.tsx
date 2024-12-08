@@ -12,10 +12,11 @@ export default async function HomePage() {
 
   const homePageData = await getHomePage(client, {
     next: {
-      revalidate: 1,
+      revalidate: 30,
+      cache: 'no-store',
     },
   })
-
+console.log(homePageData)
   return (
     <>
       {/* Age Verification Popup */}
