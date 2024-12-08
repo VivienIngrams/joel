@@ -76,3 +76,9 @@ p {
     line-height: 22px;
   }
 }
+ h2 {
+  font-size: larger;
+ }
+h4 {
+  font-weight: bold;
+}

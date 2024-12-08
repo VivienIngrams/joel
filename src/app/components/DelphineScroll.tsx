@@ -11,28 +11,29 @@ interface HorizontalGalleryProps {
   images: any[]
   title: string
 }
-const textBoxIndices = [0, 1, 2, 3, 6, 9, 12, 13, 16, 22]
+const textBoxIndices = [0, 1, 2, 3, 6, 9, 12, 13, 16, 22, 23]
 const textBoxTexts = [
   {
-    content: `<p>
-        Résidence artistique </p>
-        <p>
-        La Maison Jaune Résidence d’Artistes  </p>
-         <p>
-         Juin - Octobre 2022
-        </p>
+    content: `<h1>Delphine  Alliens
+         </h1>
+      
+        <h2>
+         La Maison Jaune Résidence d&apos;Artistes  </h2>  <h3></h3>
+         <h4>
+          Résidence artistique, Juin - Octobre 2022
+        </h4>
      <p className="">
        
-        Présentation de ce travail au Pavillon Blanc, centre d’art Colomiers en
-        Septembre et à La Maison Jaune en Octobre
+        Présentation de ce travail au Pavillon Blanc, centre d&apos;art Colomiers, et à La Maison Jaune
       </p>`,
-    className: 'text-black',
+    className: 'text-left text-black p-8',
   },
 
   {
     content: `<p>
         A l’épreuve de nos corps 
         </p>
+        <br/>
         <p> Le travail débuté mi février avait pour objet un corps inconnu,
         parfois peu identifiable vu par le prisme de l’écran. Ce travail extrêmement proche de ma
         sensibilité au départ, s'est peu à peu étiolé. J’ai pris conscience que le maintien à
@@ -42,21 +43,25 @@ const textBoxTexts = [
         travail avec un autre rapport au corps de l'autre et l’étude de son expression intime via des
         séances photo réalisées en studio.
       </p>`,
-    className: 'text-box-highlight',
+    className: 'mx-16',
   },
   {
     content: `
-        <div class="text-box-large">
+        <div>
           <p>
             On se pose souvent sur le résultat mais se pose t&apos;on sur le moment du faire, sur
             l&apos;instant ? À quoi penses tu ? Que ressens tu ? De quoi as tu envie ? Est-ce que tu as
-            peur? Montrer son corps comme confession intime. Et tenter de retranscrire l&apos;instant
+            peur? 
+          </p>
+          <p>
+             Montrer son corps comme confession intime. Et tenter de retranscrire l&apos;instant
             photographique, l&apos;instant graphique, le vrai de cet instant.
           </p>
+
           
         </div>
       `,
-    className: 'text-box-large',
+    className: 'px-24',
   },
   {
     content: `
@@ -66,6 +71,7 @@ const textBoxTexts = [
             du modèle. À quel moment le modèle ne joue plus ? À quel moment le modèle donne à voir une
             vérité ? A quel moment l&apos;acte de résistance de ce corps tombe .
           </p>
+          <br/>
           <p>
            Le corps du modèle face au corps sensoriel
 et au regard de l'artiste peintre
@@ -73,17 +79,18 @@ Le corps comme obstacle au dévoilement
 de la vérité et le corps comme exposition
 totale de cette même vérité. 
           </p>
+          <br/>
           <p>
             Le dessin sera une description de cet instant
 si il a lieu. 
           </p>
         </div>
       `,
-    className: 'space-y-8',
+    className: 'mx-12',
   },
   {
     content: `
-        <div class="text-box-simple">
+       
           <p>
             Un premier travail photographique, réalisé en juin 2022, donne lieu à des corps objets ou
             des morceaux de corps, des sorties de champ, corps coupés, corps imaginés où le cadrage
@@ -94,25 +101,31 @@ si il a lieu.
           <p>
             Je tiens au non décor puisque mon travail se concentre sur ce
 corps de l'autre sans artifice, nu ou pas.
+
+
+          </p>
+          <p>
+            
 J'ai commencé les séances photo par des postures que j'avais
 déjà réalisées.
 
           </p>
-        </div>
+          <br/>
+          <br/>
+          <br/>
+          <p>Puis, j’ai pensé que je voulais tronquer ces corps</p>
+       
       `,
-    className: 'text-box-simple',
-  },
-  {
-    content: `<p>Puis, j’ai pensé que je voulais tronquer ces corps</p>`,
-    className: 'text-box-minimal',
-  },
-  {
-    content: 'pour ne retenir que des ensembles forme. ',
     className: '',
   },
   {
     content: `
-        <div class="text-box-exploration">
+   <p>pour ne retenir que des ensembles forme.</p>`,
+    className: 'flex flex-col space-between',
+  },
+  
+  {
+    content: `
           <p>
             Plus qu&apos;un photographe, j&apos;avais l&apos;attitude d&apos;une exploratrice de ce
             corps que je voulais faire parler. La proximité des prises de vue s&apos;est peu à peu
@@ -126,28 +139,36 @@ Ensuite, la réflexion du peintre.
              Cette intrusion à ce corps a amené le modèle à se confier soit par la parole, soit
 par les gestes, soit par la sensibilité et l'émotion. Une forme courte de vérité
 offerte par l'artiste modèle à l'artiste plasticienne.
+</p> <p>
 Ensuite, la réflexion du peintre. 
           </p>
-        </div>
       `,
-    className: 'text-box-exploration',
+    className: '',
   },
   {
     content: `
     <p>Carnet de dessins sur les intimités de Joël</p>
+      
+      `,
+    className: '',
+  },
+  {
+    content: `
         <p>
           Ce que j&apos;avais initié sans trop en avoir conscience, c&apos;est l&apos;évocation de ce
           corps représenté en pleine puissance évocatrice. Une sorte de mémoire sensorielle qui
           instinctivement se révélait au geste pictural.
         </p>
-        <p>La résidence me permet de pleinement y travailler.
+        <br/>
+        <p>La résidence me permet de pleinement y travailler.</p>
+        <br/> <p>
 (5 juillet 2022, 4h30)</p>
       `,
-    className: 'text-box-memorial',
+    className: '',
   },
   {
     content: `
-        <div class="text-box-reflection">
+        <div class="">
           <p>
             Chaque prise de vue sera suivie par une réflexion plastique et graphique sur papier où le
             dessin, le découpage, le collage plastique et photographique, la peinture sera une réponse
@@ -158,26 +179,26 @@ le temps effacera, d’autres évocations apparaitront en moi.
           </p>
         </div>
       `,
-    className: 'text-box-reflection',
+    className: '',
   },
   {
     content: `
-        <div class="text-box-reflection">
+        <div class="">
           <p>
-            J’ai marché, j’ai beaucoup marché, j’ai marché
+            J&apos;ai marché, j&apos;ai beaucoup marché, j&apos;ai marché
 tous les jours. Pour me sortir la tête de ce corps
-qui n’est pas à moi. Je l’étudie, je le transforme,
+qui n&apos;est pas à moi. Je l&apos;étudie, je le transforme,
 je le mémoire. 
           </p>
           <p>
-           Oui je le mémoire, c’est plus fort que je le
+           Oui je le mémoire, c&apos;est plus fort que je le
 souvenir. 
           </p>
           <p>
-            Je souvenir c’est garder un peu une trace
-quelque part. Je mémoire c’est prendre
-possession, c’est revivre le temps de ce corps,
-c’est de la folie. 
+            Je souvenir c&apos;est garder un peu une trace
+quelque part. Je mémoire c&apos;est prendre
+possession, c&apos;est revivre le temps de ce corps,
+c&apos;est de la folie. 
 
           </p>
           <p>
@@ -185,7 +206,7 @@ c’est de la folie.
           </p>
         </div>
       `,
-    className: 'text-box-reflection',
+    className: '',
   },
   {
     content: `
@@ -196,10 +217,12 @@ c’est de la folie.
         </p>
         <p>
         Ces cylindres de papier qui cachent encore un peu du regard
-l’instant photographique, fragile. 
-        </p>
+l&apos;instant photographique, fragile. 
+        </p><p>
+        Proposition de présentation
+des intimités de Joël</p>
       `,
-    className: 'text-box-final',
+    className: '',
   },
 ]
 
@@ -218,27 +241,34 @@ export function DelphineScroll({ images, title }: HorizontalGalleryProps) {
   // Set dimensions of images based on aspect ratio
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const height = window.innerHeight * 0.78
-      let totalImagesWidth = 0
-
+      const height = window.innerHeight * 0.78; // Base height for images
+      let totalImagesWidth = 0;
+  
       images.forEach((image, index) => {
-        const { aspectRatio } = image
-        const imgWidth = height * aspectRatio
-
-        // Add extra width for the white section
-        if (textBoxIndices.includes(index)) {
-          totalImagesWidth += height // White section same height as images
+        const { aspectRatio } = image;
+  
+        if (aspectRatio) {
+          const imgWidth = height * aspectRatio;
+          totalImagesWidth += imgWidth;
+        } else {
+          console.warn(`Image at index ${index} is missing an aspectRatio`);
         }
-
-        totalImagesWidth += imgWidth
-      })
-
-      const totalSpacing = (images.length - 1) * 32
-      totalImagesWidth += totalSpacing
-      setDimensions({ height, totalImagesWidth })
+  
+        // Add space for text box if index is in textBoxIndices
+        if (textBoxIndices.includes(index)) {
+          totalImagesWidth += height;
+        }
+      });
+  
+      // Add spacing between images and text boxes
+      const totalSpacing = (images.length + 9) * 32; // Space between items
+      totalImagesWidth += totalSpacing;
+  
+      setDimensions({ height, totalImagesWidth });
     }
-  }, [images])
-
+  }, [images]);
+  
+  console.log(images.length)
   // GSAP scroll logic
   useEffect(() => {
     if (dimensions.totalImagesWidth > 0 && typeof window !== 'undefined') {
@@ -277,7 +307,9 @@ export function DelphineScroll({ images, title }: HorizontalGalleryProps) {
       closeModal()
     }
   }
+  console.log('Total Images Width:', dimensions.totalImagesWidth);
 
+  
   // Modal rendered via React Portal
   const Modal = () =>
     isOverlayVisible && selectedImage
@@ -356,9 +388,10 @@ export function DelphineScroll({ images, title }: HorizontalGalleryProps) {
                 {/* Render a text box if the current index is in textBoxIndices */}
                 {shouldInsertTextBox && (
                   <div
-                    className="flex items-center justify-center bg-white text-black p-8 text-justify shadow-lg shadow-gray-800"
+                    className="flex items-center justify-center text-black p-8 text-justify "
                     style={{
-                      width: `${dimensions.height * 2}px`,
+                      
+                      width: `${dimensions.height}px`,
                       height: `${dimensions.height}px`,
                     }}
                   >

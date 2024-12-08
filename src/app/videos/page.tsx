@@ -1,32 +1,37 @@
 import Image from "next/image"
-
 const videoList = [
   {
-    title: "là où poussent les ailes d’anges",
-    id: "ql8bKZfIcVk",
-    url: "https://youtu.be/ql8bKZfIcVk",
+    title: "CHAMAN VIKING",
+    id: "RULS7nkOx20",
+    url: "https://youtu.be/RULS7nkOx20",
   },
   {
-    title: "plénitude",
-    id: "7FupdWkZ3s8",
-    url: "https://youtu.be/7FupdWkZ3s8",
+    title: "IMMORTALEM",
+    id: "JT6pAMuWLCs",
+    url: "https://youtu.be/JT6pAMuWLCs",
   },
   {
-    title: "ivresse de mes rêves",
+    title: "PLENITUDE",
+    id: "vr-43dDHWSA",
+    url: "https://youtu.be/vr-43dDHWSA",
+  },
+  {
+    title: "INCERTITUDE(S)",
+    id: "cYWReS_za7Y",
+    url: "https://youtu.be/cYWReS_za7Y",
+  },
+  {
+    title: "IVRESSE DE MES REVES",
     id: "lCEXIr0WWEc",
     url: "https://youtu.be/lCEXIr0WWEc",
   },
   {
-    title: "immortalem",
-    id: "oCNbfM6ANBE",
-    url: "https://youtu.be/oCNbfM6ANBE",
-  },
-  {
-    title: "hypnokinetic",
+    title: "HYPNOKINETIC",
     id: "1NGeiLDDWzo",
     url: "https://youtu.be/1NGeiLDDWzo",
   },
-]
+];
+
 
   
   const StaticVideos: React.FC = () => {

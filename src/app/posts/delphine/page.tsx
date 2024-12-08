@@ -12,9 +12,10 @@ export default async function DelphinePage() {
   const client = getClient({ token: readToken })
   const post = await getDelphinePage(client, {
     next: {
-      revalidate: 1,
+      revalidate: 5,
     },
   })
+ 
   return (
     <div className="min-h-[80vh] md:h-full w-screen flex flex-col justify-center md:justify-start md:flex-row">
       {/* Right arrow in corner */}
@@ -33,8 +34,8 @@ export default async function DelphinePage() {
           <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
           <g
             id="SVGRepo_tracerCarrier"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           ></g>
           <g id="SVGRepo_iconCarrier">
             {' '}
