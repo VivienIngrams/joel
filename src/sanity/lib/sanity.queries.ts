@@ -127,8 +127,7 @@ export async function getDelphinePage(client: SanityClient, options = {}) {
 // Query to fetch the home page data
 export const delphineQuery = groq`
  *[_type == "post" && slug.current in ["delphine"]][0] {
-  
-    title,
+      title,
     slug,
     excerpt,
     images[]{

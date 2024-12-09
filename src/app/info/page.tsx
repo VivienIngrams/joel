@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 
 import { Socials } from '../components/Container'
 
@@ -27,7 +28,10 @@ export default function InfoPage() {
       </div>
       <div className="md:min-h-screen flex flex-col items-center md:justify-center p-6">
 
-      <div className='bg-black h-40 w-24'></div></div>
+     
+     
+        <Image
+        src="/joel portrait.jpg"  height="600" width="300" alt="Portrait Joel"/></div>
       <div className="md:min-h-screen flex flex-col items-center justify-center text-lg md:text-xl text-justify max-w-2xl px-6 pb-16 md:px-16 md:py-12">
         <p className=" mb-4">
           Jeune homme j&apos;ai suivi les cours classiques de dessin aux

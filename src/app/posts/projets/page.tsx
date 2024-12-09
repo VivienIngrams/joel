@@ -10,7 +10,7 @@ export default async function ProjetsPage() {
 
   const posts: Post[] = await getProjetsPosts(client, {
     next: {
-      revalidate: 30,
+      revalidate: 100,
     },
   })
 
@@ -32,6 +32,7 @@ export default async function ProjetsPage() {
               title={post.title}
             />
           </div>
+          
           {/* Show on desktop screens */}
           <div className="hidden md:block">
             <ImageGallery
