@@ -79,7 +79,7 @@ const ImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) => {
                 src={urlForImage(image).url() as string}
                 alt={image.alt || title}
                 fill
-                sizes="25vw"
+                sizes="50vw"
                 className="object-cover shadow-md shadow-gray-800 "
                 loading="lazy"
               />
