@@ -12,7 +12,7 @@ interface HorizontalGalleryProps {
   images: any[]
   title: string
 }
-const textBoxIndices = [0, 1, 2, 5, 6, 8, 9, 11, 13, 15, 20]
+const textBoxIndices = [0, 1, 2, 5, 6, 8, 9, 11, 13, 15, 20, 22]
 
 export function DelphineScroll({ images, title }: HorizontalGalleryProps) {
   const sectionRef = useRef<HTMLDivElement | null>(null)
@@ -56,7 +56,7 @@ export function DelphineScroll({ images, title }: HorizontalGalleryProps) {
     }
   }, [images]);
   
-  console.log(images.length)
+ 
   // GSAP scroll logic
   useEffect(() => {
     if (dimensions.totalImagesWidth > 0 && typeof window !== 'undefined') {
@@ -95,7 +95,7 @@ export function DelphineScroll({ images, title }: HorizontalGalleryProps) {
       closeModal()
     }
   }
-  console.log('Total Images Width:', dimensions.totalImagesWidth);
+
 
   
   // Modal rendered via React Portal
@@ -155,8 +155,8 @@ export function DelphineScroll({ images, title }: HorizontalGalleryProps) {
               <React.Fragment key={index}>
                 {/* Render the image */}
                 <div
-                  className="relative flex-shrink-0 cursor-pointer shadow-lg shadow-gray-800"
-                  style={{
+                  className="flex-shrink-0 cursor-pointer shadow-lg shadow-gray-800"
+                  style={{ position: "relative",
                     width: `${imgWidth}px`,
                     height: `${dimensions.height}px`,
                   }}
@@ -176,7 +176,7 @@ export function DelphineScroll({ images, title }: HorizontalGalleryProps) {
                 {/* Render a text box if the current index is in textBoxIndices */}
                 {shouldInsertTextBox && (
                   <div
-                    className="flex items-center justify-center text-gray-400 p-8 text-justify "
+                    className="flex items-center justify-center text-white p-8 text-justify "
                     style={{
                       
                       width: `${dimensions.height}px`,
@@ -198,103 +198,5 @@ export function DelphineScroll({ images, title }: HorizontalGalleryProps) {
         </div>
       </section>
     </>
-  )
-}
-
-interface ImageGalleryProps {
-  images: any[] // Expecting images with `dimensions` including `aspectRatio`
-  title: string
-}
-
-export const DelphineMobileScroll = ({ images, title }: ImageGalleryProps) => {
-  const [containerHeight, setContainerHeight] = useState(0)
-  const [isOverlayVisible, setOverlayVisible] = useState(false)
-  const [selectedImage, setSelectedImage] = useState<string | null>(null) // Track selected image
-
-  useEffect(() => {
-    const calculateHeight = () => {
-      const height = window.innerHeight * 0.5 // Fixed height: 50% of the window height
-      setContainerHeight(height)
-    }
-
-    calculateHeight()
-    window.addEventListener('resize', calculateHeight)
-
-    return () => {
-      window.removeEventListener('resize', calculateHeight)
-    }
-  }, [])
-
-  if (containerHeight === 0) {
-    return null // or a loading spinner
-  }
-
-  const closeModal = () => {
-    setOverlayVisible(false)
-    setSelectedImage(null)
-  }
-
-  return (
-    <div className="w-full overflow-x-auto">
-      {' '}
-      {/* Enable horizontal scrolling */}
-      <div className="flex flex-row space-x-4">
-        {' '}
-        {/* Flex container for images */}
-        {images.map((image, index) => {
-          const aspectRatio = image.aspectRatio || 1 // Fallback to 1:1 if aspectRatio is missing
-          const imgWidth = containerHeight * aspectRatio // Calculate width based on aspect ratio and fixed height
-
-          return (
-            <div key={index} className="relative flex-shrink-0">
-              {/* Clickable Image */}
-              <div
-                style={{
-                  width: `${imgWidth}px`, // Set width to the calculated width
-                  height: `${containerHeight}px`, // Fixed height
-                }}
-                onClick={() => {
-                  setSelectedImage(urlForImage(image).url() as string)
-                  setOverlayVisible(true) // Open modal
-                }}
-              >
-                <Image
-                  src={urlForImage(image).url() as string}
-                  alt={image.title}
-                  layout="fill"
-                  className="object-cover shadow-lg shadow-gray-800 "
-                  loading="lazy" // Ensure lazy loading
-                />
-              </div>
-            </div>
-          )
-        })}
-      </div>
-      {/* Modal */}
-      {isOverlayVisible && selectedImage && (
-        <div
-          className="fixed top-0 left-0 w-screen h-screen z-[9999] flex items-center justify-center bg-black/80"
-          onClick={closeModal} // Close modal on click outside the image
-        >
-          <div className="relative w-auto h-auto max-w-[90vw] max-h-[90vh] flex items-center justify-center">
-            <Image
-              src={selectedImage}
-              alt="Full View"
-              layout="intrinsic"
-              width={800}
-              height={600}
-              className=""
-              objectFit="contain"
-            />
-            <button
-              className="absolute -top-12 right-0 text-white  p-2 hover:bg-opacity-70"
-              onClick={closeModal}
-            >
-              ✕
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
   )
 }

@@ -29,7 +29,7 @@ export default async function PostPage({
   return (
     <div className="min-h-[80vh] md:h-full w-screen flex flex-col justify-center md:justify-start md:flex-row">
       {/* Right arrow in corner */}
-      <div className="hidden md:flex absolute bottom-[15%] left-[28%] h-16 w-20 flex-col items-center justify-center z-40">
+      <div className="hidden md:flex absolute bottom-[15%] left-[31%] h-16 w-20 flex-col items-center justify-center z-40">
         <div className="pb-2 text-2xl">scroll</div>
         <svg
           fill="#ffffff"

@@ -64,39 +64,15 @@ const ImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) => {
 
   return (
     <div className="mx-auto max-w-full">
-      {/* Image Gallery */}
-      <div className="flex justify-center space-x-16 mb-4 max-w-full">
-        {images.map((image, index) => (
-          <Link key={image._id} href={`/posts/${slug}`}>
-            <div
-              className="relative"
-              style={{
-                width: `${dimensions[index].width}px`,
-                height: `${dimensions[index].height}px`,
-              }}
-            >
-              <Image
-                src={urlForImage(image).url() as string}
-                alt={image.alt || title}
-                fill
-                sizes="50vw"
-                className="object-cover shadow-md shadow-gray-800 "
-                loading="lazy"
-              />
-            </div>
-          </Link>
-        ))}
-      </div>
-
       {/* Title Section with custom middle line */}
       <div
-        className="-mt-4 mb-16 mx-auto relative"
+        className="-mb-2 mt-16 mx-auto relative"
         style={{ width: `${dimensions[0].container}px` }}
       >
         <Link href={`/posts/${slug}`}>
           <div className="relative text-center">
             {/* White Line Spanning Full Width */}
-            <span className="absolute left-0 right-0 bottom-1/2 transform translate-y-6px] bg-white h-[1px] z-5"></span>
+            <span className="absolute left-0 right-0 bottom-1/2 transform translate-y-2px] bg-white h-[1px] z-5"></span>
 
             {/* Title with Grey Background covering only text width */}
             <h1 className="text-white upper  font-light text-3xl lg:text-4xl inline-block relative z-11 px-1 my-4 bg-[#4b5563]">
@@ -105,6 +81,31 @@ const ImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) => {
           </div>
         </Link>
       </div>
+      {/* Image Gallery */}
+      <div className="flex justify-center space-x-16 mb-4 max-w-full">
+        {images.map((image, index) => (
+          <Link key={index} href={`/posts/${slug}`}>
+            <div
+             
+              style={{ position: "relative",
+                width: `${dimensions[index].width}px`,
+                height: `${dimensions[index].height}px`,
+              }}
+            >
+              <Image
+                src={urlForImage(image).url() as string}
+                alt={image.alt || title}
+                fill
+                sizes="90vw"
+                className="object-cover shadow-md shadow-gray-800 "
+                loading="lazy"
+              />
+            </div>
+          </Link>
+        ))}
+      </div>
+
+      
     </div>
   )
 }

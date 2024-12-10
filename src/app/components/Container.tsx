@@ -96,13 +96,14 @@ export default function Container({ children }: { children: React.ReactNode }) {
         }`}
       >
         <div>
+          <Link href="https://vivieningrams.com">
           <p
             className={`hidden  md:flex text-[#4b5563] -mb-5 xs:tracking-normal z-55 leading-loose w-[150px] pt-2 ${
               isHomePage && 'md:hidden '
             }  ${isInfoPage && 'text-neutral-300 text-[11px] '}`}
           >
             Website by Vivien Ingrams
-          </p>
+          </p></Link>
         </div>
         <NavMenu />
         <div className="md:w-[350px]">

@@ -59,11 +59,25 @@ const MobileImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) 
 
       {/* Image Gallery */}
       <div className="w-full overflow-x-auto"> {/* Enable horizontal scrolling */}
-        <div className="flex flex-row ml-4 overflow-y-scroll no-scrollbar space-x-8"> {/* Flex container for images */} 
+         {/* Title Section with custom middle line */}
+      <div className="relative text-center ml-4 mt-6 ">
+        <Link href={`/posts/${slug}`}>
+          <div className="relative">
+            {/* White Line Spanning Full Width */}
+            <span className="absolute left-0 right-0 bottom-1/2 transform  bg-white h-[1px] z-5"></span>
+
+            {/* Title with Grey Background covering only text width */}
+            <h1 className="text-white upper  text-2xl lg:text-3xl font-light inline-block relative z-6 px-1  bg-[#4b5563]">
+              {title}
+            </h1>
+          </div>
+        </Link>
+      </div>
+        <div className=" flex flex-row ml-4 overflow-y-scroll no-scrollbar space-x-8"> {/* Flex container for images */} 
           {images.map((image, index) => (
-            <Link key={image._id} href={`/posts/${slug}`} className="relative flex-shrink-0">
+            <Link key={index} href={`/posts/${slug}`}>
               <div
-                style={{
+                style={{ position: "relative",
                   width: `${dimensions[index].width}px`, // Set width to the calculated width
                   height: `${dimensions[index].height}px`, // Set height to the calculated height
                 }}
@@ -82,20 +96,7 @@ const MobileImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) 
         </div>
       </div>
 
-      {/* Title Section with custom middle line */}
-      <div className="relative text-center mx-4 mt-2 mb-6">
-        <Link href={`/posts/${slug}`}>
-          <div className="relative">
-            {/* White Line Spanning Full Width */}
-            <span className="absolute left-0 right-0 bottom-1/2 transform  bg-white h-[1px] z-5"></span>
-
-            {/* Title with Grey Background covering only text width */}
-            <h1 className="text-white upper  text-2xl lg:text-3xl font-light inline-block relative z-6 px-1  bg-[#4b5563]">
-              {title}
-            </h1>
-          </div>
-        </Link>
-      </div>
+     
     </div>
   );
 };

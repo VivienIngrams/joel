@@ -1,9 +1,9 @@
 import Image from "next/image"
 const videoList = [
   {
-    title: "CHAMAN VIKING",
-    id: "RULS7nkOx20",
-    url: "https://youtu.be/RULS7nkOx20",
+    title: "INCERTITUDE(S)",
+    id: "cYWReS_za7Y",
+    url: "https://youtu.be/cYWReS_za7Y",
   },
   {
     title: "IMMORTALEM",
@@ -11,20 +11,22 @@ const videoList = [
     url: "https://youtu.be/JT6pAMuWLCs",
   },
   {
-    title: "PLENITUDE",
-    id: "vr-43dDHWSA",
-    url: "https://youtu.be/vr-43dDHWSA",
-  },
-  {
-    title: "INCERTITUDE(S)",
-    id: "cYWReS_za7Y",
-    url: "https://youtu.be/cYWReS_za7Y",
-  },
-  {
     title: "IVRESSE DE MES REVES",
     id: "lCEXIr0WWEc",
     url: "https://youtu.be/lCEXIr0WWEc",
   },
+  {
+    title: "CHAMAN VIKING",
+    id: "RULS7nkOx20",
+    url: "https://youtu.be/RULS7nkOx20",
+  },
+  {
+    title: "PLENITUDE",
+    id: "vr-43dDHWSA",
+    url: "https://youtu.be/vr-43dDHWSA",
+  },
+ 
+  
   {
     title: "HYPNOKINETIC",
     id: "1NGeiLDDWzo",

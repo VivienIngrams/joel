@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import ImageGallery from '~/app/components/ImageGallery'
 import MobileImageGallery from '~/app/components/MobileImageGallery'
 import { readToken } from '~/sanity/lib/sanity.api'
@@ -11,7 +12,6 @@ export default async function PostsPage() {
   const posts: Post[] = await getPosts(client, {
     next: {
       revalidate: 300,
-
     },
   })
 
@@ -19,13 +19,13 @@ export default async function PostsPage() {
   const customOrder = [
     'survol',
     'hors-d-age',
-    'autoportraits',
-    "nature",
     'derision',
-    'moi-vu-par-elles-eux',
     'respiration',
+    'moi-vu-par-elles-eux',
+    'autoportraits',
     'publiees',
     'projets',
+   
   ]
 
   // Sort posts succinctly
@@ -42,15 +42,26 @@ export default async function PostsPage() {
 
   return (
     <div className="h-full md:min-h-[80vh] pb-20 bg-[#4b5563] max-w-full pt-16 ">
-      <h1 className="text-3xl md:text-5xl  uppercase font-light  pl-4 md:pl-16 md:mb-8">
-        Galeries
-      </h1>
+      {/* Top Menu with Post Titles */}
+      <nav className=" text-white pt-4 px-4  top-0 z-60 ">
+        <ul className="flex flex-col md:flex-row md:flex-wrap gap-x-7 justify-center ">
+          {sortedPosts.map((post) => (
+            <li key={post._id}>
+              <Link href={`/posts/${post.slug.current}`}
+                className="hover:underline leading-4  md:text-xl ">
+                  {post.title}
+               
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
       {/* Render ImageGallery for each post */}
-      {posts.map((post) => (
+      {sortedPosts.map((post) => (
         <div key={post._id}>
           {/* Show on mobile screens */}
-          <div className="py-6 md:hidden">
+          <div className="pb-6 md:hidden">
             <MobileImageGallery
               images={post.mainImages}
               layout={post.layout}

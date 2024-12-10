@@ -35,18 +35,23 @@ export default function InfoPage() {
       <div className="md:min-h-screen flex flex-col items-center justify-center text-lg md:text-xl text-justify max-w-2xl px-6 pb-16 md:px-16 md:py-12">
         <p className=" mb-4">
           Jeune homme j&apos;ai suivi les cours classiques de dessin aux
-          Beaux-Arts et pratiqué assidûment la photographie argentique. Puis une
+          Beaux-Arts et pratiqué assidûment la photographie argentique.</p>
+          <p className=" mb-4"> Puis une
           carrière dans le monde médico-chirurgical.
         </p>
         <p className=" mb-4">
           Aujourd&apos;hui plus de 30 expositions au compteur, mes travaux sont
           présents aux murs de nombreux collectionneurs.
         </p>
-        <p className="italic mb-4 text-center">
-          « Ma démarche est tournée principalement vers l&apos;humain. Au travers de
-          son enveloppe j&apos;aime chercher et creuser le MOI des êtres. Mon travail
+        <p className="italic ">
+          «Ma démarche est tournée principalement vers l&apos;humain. 
+          </p> <p className="italic ">
+          Au travers de
+          son enveloppe j&apos;aime chercher et creuser le MOI des êtres. 
+          </p> <p className="italic ">
+          Mon travail
           en autoportraits est une forme d&apos;introspection à la fois thérapeutique
-          et artistique ».
+          et artistique».
         </p>
       </div>
     </div>
