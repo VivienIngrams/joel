@@ -58,8 +58,8 @@ export default defineType({
     }),
     
       defineArrayMember({
-        title: 'Block',
-        type: 'block',
+       name: 'break',
+       type: 'break'
     })
   ],
 })
