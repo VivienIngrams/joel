@@ -10,18 +10,18 @@ export default async function PublieesPage() {
 
   const posts: Post[] = await getPublieesPosts(client, {
     next: {
-      revalidate: 60,
+      revalidate: 300,
   
           },
   });
 
   return (
-    <div className="h-full md:min-h-[80vh] pb-20 bg-[#4b5563] max-w-[98vw] pt-16 ">
+    <div className="h-full md:min-h-[80vh] pb-20 bg-[#545964] max-w-[98vw] pt-16 ">
       {/* Render ImageGallery for each post */}
       <h1 className="text-3xl md:text-5xl  font-light  uppercase ml-4 md:ml-20 md:mb-12">Souvenirs marquants</h1>
 
-      {posts.map((post) => (
-        <div key={post._id}>
+      {posts.map((post, index) => (
+        <div key={index}>
           {/* Show on mobile screens */}
           <div className="py-8 md:hidden">
             <MobileImageGallery 

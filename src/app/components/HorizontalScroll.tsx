@@ -103,7 +103,7 @@ export function HorizontalScroll({ images, title }: HorizontalGalleryProps) {
                 objectFit="contain"
               />
               <button
-                className="absolute top-5 -right-12 text-white  rounded-full p-1 px-2 hover:bg-[#4b5563]"
+                className="absolute top-5 -right-12 text-white  rounded-full p-1 px-2 hover:bg-[#545964]"
                 onClick={closeModal}
               >
                 ✕
@@ -119,7 +119,7 @@ export function HorizontalScroll({ images, title }: HorizontalGalleryProps) {
       <Modal />
       <section
         ref={triggerRef}
-        className="w-full h-full pt-16 overflow-hidden bg-[#4b5563] pl-[28vw]"
+        className="w-full h-full pt-16 overflow-hidden bg-[#545964] pl-[28vw]"
       >
         <div
           ref={sectionRef}

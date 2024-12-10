@@ -1,7 +1,7 @@
 
 export const textBoxTexts = [
   {
-    content: `<h1>Delphine  Alliens
+    content: `<h1>Le corps est une écriture
          </h1>
       
         <h2>
@@ -13,7 +13,7 @@ export const textBoxTexts = [
        
         Présentation de ce travail au Pavillon Blanc, centre d&apos;art Colomiers, et à La Maison Jaune
       </p>`,
-    className: 'text-left  md:p-8',
+    className: 'text-left  md:pb-12',
   },
 
   {

@@ -9,14 +9,14 @@ export default async function DelphinePage() {
   const client = getClient({ token: readToken })
   const post = await getDelphinePage(client, {
     next: {
-      revalidate: 60,
+      revalidate: 300,
     },
   })
 
   return (
     <div className="min-h-[80vh] md:h-full w-screen flex flex-col justify-center md:justify-start md:flex-row pt-1 pr-4">
       {/* Right arrow in corner */}
-      <div className="hidden md:flex absolute bottom-[15%] left-[28%] h-16 w-20 flex-col items-center justify-center z-40">
+      <div className="hidden md:flex absolute bottom-[15%] left-[30%] h-16 w-20 flex-col items-center justify-center z-40">
         <div className="pb-2 text-2xl">scroll</div>
         <svg
           fill="#ffffff"

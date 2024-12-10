@@ -136,7 +136,7 @@ export function DelphineScroll({ images, title }: HorizontalGalleryProps) {
       <Modal />
       <section
         ref={triggerRef}
-        className="w-full h-full pt-16 overflow-hidden bg-[#4b5563] pl-[26vw]"
+        className="w-full h-full pt-16 overflow-hidden bg-[#545964] pl-[28vw]"
       >
         <div
           ref={sectionRef}

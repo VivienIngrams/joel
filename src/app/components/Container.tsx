@@ -39,7 +39,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
         className={`${
           isHomePage
             ? 'hidden' 
-            : 'fixed top-0 z-50 h-8 w-full md:h-16 pb-16 pt-6 bg-gradient-to-t from-transparent via-[#4b5563] to-[#4b5563] flex flex-col items-center justify-center'
+            : 'fixed top-0 z-50 h-8 w-full md:h-16 pb-16 pt-6 bg-gradient-to-t from-transparent via-[#545964] to-[#545964] flex flex-col items-center justify-center'
         }`}
       >
         {isProjetsPage && !isPublieesSousPage && !isProjetsSousPage && (
@@ -91,14 +91,14 @@ export default function Container({ children }: { children: React.ReactNode }) {
       <footer
         className={`fixed bottom-0 w-full md:h-16 md:pb-6 px-4 pt-10 md:pt-6 pb-4 flex items-end md:items-center justify-between ${
           isHomePage
-            ? ' md:bg-transparent md:text-[#4b5563]' // Transparent background with dark blue text on the homepage
-            : 'bg-gradient-to-b from-transparent via-[#4b5563] to-[#4b5563] text-white'
+            ? ' md:bg-transparent md:text-[#545964]' // Transparent background with dark blue text on the homepage
+            : 'bg-gradient-to-b from-transparent via-[#545964] to-[#545964] text-white'
         }`}
       >
         <div>
           <Link href="https://vivieningrams.com">
           <p
-            className={`hidden  md:flex text-[#4b5563] -mb-5 xs:tracking-normal z-55 leading-loose w-[150px] pt-2 ${
+            className={`hidden  md:flex text-[#545964] -mb-5 xs:tracking-normal z-55 leading-loose w-[150px] pt-2 ${
               isHomePage && 'md:hidden '
             }  ${isInfoPage && 'text-neutral-300 text-[11px] '}`}
           >
@@ -112,7 +112,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
               <Link
                 href="mailto:info@joelbardeau.com"
                 className={`text-sm lg:text-md hover:text-neutral-400 ${
-                  isHomePage ? 'text-[#4b5563]' : 'text-white'
+                  isHomePage ? 'text-[#545964]' : 'text-white'
                 }`}
               >
                 info@joelbardeau.com{' '}

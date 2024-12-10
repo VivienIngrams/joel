@@ -44,21 +44,21 @@ const Verification = () => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-[#4b5563] p-6 rounded-md text-center max-w-xs sm:max-w-sm w-full mx-4">
+      <div className="bg-[#545964] p-6 rounded-md text-center max-w-xs sm:max-w-sm w-full mx-4">
         <h2 className="text-xl md:text-3xl font-bold mb-4">Avertissement</h2>
         <p className="mb-4">Ce site contient des images de nudité.</p>
         <p className="mb-4 font-bold">Avez-vous plus de 18 ans ?</p>
         <div className="flex flex-col sm:flex-row justify-around">
           {showYesButton && (
             <button
-              className="bg-white text-[#4b5563] py-2 px-6 m-2 rounded"
+              className="bg-white text-[#545964] py-2 px-6 m-2 rounded"
               onClick={() => handleAgeConfirmation(true)}
             >
               <span className="font-bold">Oui,</span> j&apos;ai plus de 18 ans
             </button>
           )}
           <button
-            className="bg-[#454648] text-[#4b5563] py-2 px-6 m-2 rounded"
+            className="bg-[#454648] text-[#545964] py-2 px-6 m-2 rounded"
             onClick={() => handleAgeConfirmation(false)}
           >
             <span className="font-bold">Non,</span> j&apos;ai moins de 18 ans

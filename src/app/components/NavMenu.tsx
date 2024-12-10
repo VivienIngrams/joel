@@ -159,7 +159,7 @@ const NavMenu = () => {
       </div>
 
       <div
-        className={`${isOpen ? 'block bg-gradient-to-b from-transparent via-[#4b5563] to-[#4b5563] w-screen pt-12 -ml-4 -mb-4' : 'hidden'} md:hidden`}
+        className={`${isOpen ? 'block bg-gradient-to-b from-transparent via-[#545964] to-[#545964] w-screen pt-12 -ml-4 -mb-4' : 'hidden'} md:hidden`}
         id="mobile-menu"
         onClick={toggleMenu}
       >
