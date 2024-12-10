@@ -65,6 +65,13 @@ export default defineType({
         },
       ],
     },
+    {
+      name: 'subtitles',
+      title: 'Subtitles',
+      type: 'array',
+      of: [{ type: 'string' }], // Array of strings
+      description: 'Optional subtitles for images. Each subtitle corresponds to an image in the same order.',
+    },
   ],
   preview: {
     select: {

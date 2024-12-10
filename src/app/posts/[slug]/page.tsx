@@ -17,10 +17,10 @@ export default async function PostPage({
   // Fetch the post by slug
   const post: Post | null = await getPost(client, params.slug, {
     next: {
-      revalidate: 300,
+      revalidate: 30,
     },
   })
-
+console.log(post.subtitles)
   // Handle case where no post is found
   if (!post) {
     return <p>No post found.</p>
@@ -71,7 +71,7 @@ export default async function PostPage({
       </div>
       {/* Horizontal Scrolling Image Gallery on the Right */}
       <div className="hidden md:block md:flex-grow md:pl-4 h-full">
-        <HorizontalScroll images={post.images} title={post.title} />
+        <HorizontalScroll images={post.images} title={post.title} subtitles={post.subtitles}/>
       </div>
     </div>
   )

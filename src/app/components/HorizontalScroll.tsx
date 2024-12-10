@@ -10,9 +10,10 @@ import { urlForImage } from '~/sanity/lib/sanity.image'
 interface HorizontalGalleryProps {
   images: any[]
   title: string
+  subtitles?: string[] // Optional subtitles array
 }
 
-export function HorizontalScroll({ images, title }: HorizontalGalleryProps) {
+export function HorizontalScroll({ images, title, subtitles }: HorizontalGalleryProps) {
   const sectionRef = useRef<HTMLDivElement | null>(null)
   const triggerRef = useRef<HTMLDivElement | null>(null)
   const [dimensions, setDimensions] = useState({
@@ -103,7 +104,7 @@ export function HorizontalScroll({ images, title }: HorizontalGalleryProps) {
                 objectFit="contain"
               />
               <button
-                className="absolute top-5 -right-12 text-white  rounded-full p-1 px-2 hover:bg-[#545964]"
+                className="absolute top-5 -right-12 text-white rounded-full p-1 px-2 hover:bg-[#545964]"
                 onClick={closeModal}
               >
                 ✕
@@ -133,7 +134,7 @@ export function HorizontalScroll({ images, title }: HorizontalGalleryProps) {
             return (
               <div
                 key={image._key || index.toString()}
-                className="relative flex-shrink-0 cursor-pointer shadow-lg shadow-gray-800  "
+                className="relative flex-shrink-0 cursor-pointer shadow-lg shadow-gray-800"
                 style={{
                   width: `${imgWidth}px`,
                   height: `${dimensions.height}px`,
@@ -150,6 +151,11 @@ export function HorizontalScroll({ images, title }: HorizontalGalleryProps) {
                   sizes="100vw"
                   className="mt-24 object-cover"
                 />
+                {subtitles && subtitles[index] && (
+                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-black/10 text-white text-center uppercase text-2xl p-2 ">
+                    {subtitles[index]}
+                  </div>
+                )}
               </div>
             )
           })}

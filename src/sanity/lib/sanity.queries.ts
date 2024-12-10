@@ -10,6 +10,7 @@ export const postsQuery = groq`
     title,
     slug,
     mainImages, 
+   
     layout,
   } | order(
     _createdAt desc
@@ -50,6 +51,7 @@ export const projetsPostsQuery = groq`
     title,
     slug,
     excerpt,
+     subtitles,
     mainImages, 
     layout,
   } | order(_createdAt desc)
@@ -71,6 +73,7 @@ export const postBySlugQuery = groq`
     title,
     excerpt,
     slug,
+    subtitles,
     images[]{
       ...,
       "aspectRatio": asset->metadata.dimensions.aspectRatio
@@ -101,6 +104,7 @@ export type Post = {
   _createdAt: string
   mainImages: any[] // Ensure this is required if you always expect it
   title: string
+  subtitles?: string[]
   excerpt?: PortableTextBlock[]
   layout: 'portrait' | 'square' | 'landscape'
   images?: any[]
