@@ -1,9 +1,11 @@
+import Link
+ from 'next/link';
+
 import ImageGallery from '~/app/components/ImageGallery';
 import MobileImageGallery from '~/app/components/MobileImageGallery';
 import { readToken } from '~/sanity/lib/sanity.api';
 import { getClient } from '~/sanity/lib/sanity.client';
 import { getPublieesPosts, type Post } from '~/sanity/lib/sanity.queries';
-
 // Fetch data on the server side for all posts
 export default async function PublieesPage() {
   const client = getClient({ token: readToken });
@@ -17,8 +19,22 @@ export default async function PublieesPage() {
 
   return (
     <div className="h-full md:min-h-[80vh] pb-20 bg-[#545964] max-w-[98vw] pt-16 ">
+      {/* Top Menu with Post Titles */}
+      <nav className=" text-white pt-4 px-4 top-0 z-60 ">
+        <ul className="flex flex-col md:flex-row md:flex-wrap gap-x-7 justify-center ">
+          {posts.map((post, index) => (
+            <li key={index}>
+              <Link href={`/posts/${post.slug.current}`}
+                className="hover:underline leading-4  md:text-xl ">
+                  {post.title}
+               
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
       {/* Render ImageGallery for each post */}
-      <h1 className="text-3xl md:text-5xl  font-light  uppercase ml-4 md:ml-20 md:mb-12">Souvenirs marquants</h1>
+
 
       {posts.map((post, index) => (
         <div key={index}>

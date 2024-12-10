@@ -37,7 +37,7 @@ export function HorizontalScroll({ images, title, subtitles }: HorizontalGallery
         totalImagesWidth += imgWidth
       })
 
-      const totalSpacing = (images.length - 1) * 32
+      const totalSpacing = (images.length - 1) * 64
       totalImagesWidth += totalSpacing
       setDimensions({ height, totalImagesWidth })
     }
@@ -124,7 +124,7 @@ export function HorizontalScroll({ images, title, subtitles }: HorizontalGallery
       >
         <div
           ref={sectionRef}
-          className="flex pl-2 space-x-8 pb-[75px]"
+          className="flex pl-2 space-x-16 pb-[75px]"
           style={{ width: `${dimensions.totalImagesWidth}px` }}
         >
           {images.map((image, index) => {

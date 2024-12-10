@@ -39,7 +39,7 @@ const MobileScroll = ({ images,  title }: ImageGalleryProps) => {
 
   return (
     <div className="w-full overflow-x-auto"> {/* Enable horizontal scrolling */}
-      <div className="flex flex-row ml-4  overflow-y-scroll no-scrollbar space-x-8"> {/* Flex container for images */}
+      <div className="flex flex-row ml-4  overflow-y-scroll no-scrollbar space-x-12"> {/* Flex container for images */}
         {images.map((image, index) => {
           const aspectRatio = image.aspectRatio || 1; // Fallback to 1:1 if aspectRatio is missing
           const imgWidth = containerHeight * aspectRatio; // Calculate width based on aspect ratio and fixed height
