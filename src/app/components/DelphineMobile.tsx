@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Image from 'next/legacy/image'
 import { createPortal } from 'react-dom'
 import { urlForImage } from '~/sanity/lib/sanity.image'
@@ -15,7 +15,7 @@ const textBoxIndices = [0, 1, 2, 5, 6, 8, 9, 11, 13, 15, 20, 22]
 
 export const DelphineMobileScroll = ({ images, title }: ImageGalleryProps) => {
   const [isOverlayVisible, setOverlayVisible] = useState(false)
-  const [selectedImage, setSelectedImage] = useState<string | null>(null) // Track selected image
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
 
   const closeModal = () => {
     setOverlayVisible(false)
@@ -28,7 +28,6 @@ export const DelphineMobileScroll = ({ images, title }: ImageGalleryProps) => {
     }
   }
 
-  // Modal rendered via React Portal
   const Modal = () =>
     isOverlayVisible && selectedImage
       ? createPortal(
@@ -59,22 +58,26 @@ export const DelphineMobileScroll = ({ images, title }: ImageGalleryProps) => {
 
   return (
     <div className="w-full flex flex-col space-y-6 p-4 overflow-y-auto">
-      {/* Render Images and Text Boxes */}
       {images.map((image, index) => {
         const shouldInsertTextBox = textBoxIndices.includes(index)
+        const textBoxIndex = textBoxIndices.indexOf(index)
+
+        console.log('Image index:', index)
+        console.log('Should Insert TextBox:', shouldInsertTextBox)
+        console.log('TextBox Content:', textBoxTexts[textBoxIndex]?.content)
 
         return (
-          <div key={index}>
-            {/* Render the Image */}
+          <div key={`gallery-item-${index}`}>
+            {/* Render Image */}
             <div
-              className="relative flex-shrink-0 cursor-pointer shadow-md shadow-gray-700  overflow-hidden"
+              className="relative flex-shrink-0 cursor-pointer shadow-md shadow-gray-700 overflow-hidden"
               style={{
-                aspectRatio: `${image.aspectRatio || 1}/1`, // Maintain aspect ratio
+                aspectRatio: `${image.aspectRatio || 1}/1`,
                 height: 'auto',
               }}
               onClick={() => {
                 setSelectedImage(urlForImage(image).url() as string)
-                setOverlayVisible(true) // Open modal
+                setOverlayVisible(true)
               }}
             >
               <Image
@@ -82,17 +85,17 @@ export const DelphineMobileScroll = ({ images, title }: ImageGalleryProps) => {
                 alt={image.title}
                 layout="fill"
                 className="object-cover"
-                loading="lazy" // Ensure lazy loading
+                loading="lazy"
               />
             </div>
 
-            {/* Render Text Box if index is in textBoxIndices */}
-            {shouldInsertTextBox && (
+            {/* Conditionally Render Text Box */}
+            {shouldInsertTextBox && textBoxTexts[textBoxIndex]?.content && (
               <div className="mt-4 text-white text-justify">
                 <div
-                  className={textBoxTexts[index]?.className || 'text-base'}
+                  className={textBoxTexts[textBoxIndex]?.className || 'text-base'}
                   dangerouslySetInnerHTML={{
-                    __html: textBoxTexts[index]?.content || '',
+                    __html: textBoxTexts[textBoxIndex]?.content,
                   }}
                 />
               </div>

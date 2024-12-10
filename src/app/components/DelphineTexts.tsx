@@ -52,7 +52,7 @@ export const textBoxTexts = [
   },
   {
     content: `
-        <div class="text-box-large">
+        <div class="">
         <p>
             Ici il sera question de réintroduire la question de l&apos;humanité ou de la déshumanisation
             du modèle. À quel moment le modèle ne joue plus ? À quel moment le modèle donne à voir une
@@ -76,7 +76,7 @@ si il a lieu.
     className: 'mx-12',
   },
   {
-    content: `
+    content: `<div>
        
           <p>
             Un premier travail photographique réalisé en juin 2022 donne lieu à des corps objets ou
@@ -100,13 +100,13 @@ déjà réalisées.
           <br/>
           <br/>
           <br/>
-          <p>Puis, j&apos;ai pensé que je voulais tronquer ces corps pour ne retenir que des ensembles forme.</p>
+          <p>Puis, j&apos;ai pensé que je voulais tronquer ces corps pour ne retenir que des ensembles forme.</p></div>
       `,
     className: '',
   },
 
   {
-    content: `
+    content: `<div>
           <p>
             Plus qu&apos;un photographe j&apos;avais l&apos;attitude d&apos;une exploratrice de ce
             corps que je voulais faire parler. La proximité des prises de vue s&apos;est peu à peu
@@ -115,19 +115,19 @@ déjà réalisées.
 par les gestes, soit par la sensibilité et l'émotion. Une forme courte de vérité
 offerte par l'artiste modèle à l'artiste plasticienne.
 Ensuite, la réflexion du peintre. 
-          </p>
+          </p></div>
           `,
     className: '',
   },
   {
-    content: `
+    content: `<div>
     <h2>Carnet de dessins sur les intimités de Joël</h2>
-      
+      </div>
       `,
     className: 'text-center',
   },
   {
-    content: `
+    content: `<div>
         <p>
           Ce que j&apos;avais initié sans trop en avoir conscience c&apos;est l&apos;évocation de ce
           corps représenté en pleine puissance évocatrice. Une sorte de mémoire sensorielle qui
@@ -136,7 +136,7 @@ Ensuite, la réflexion du peintre.
         <br/>
         <p>La résidence me permet de pleinement y travailler.</p>
         <br/> <p>
-(5 juillet 2022, 4h30)</p>
+(5 juillet 2022, 4h30)</p></div>
       `,
     className: '',
   },
@@ -183,26 +183,26 @@ c&apos;est de la folie.
     className: '',
   },
   {
-    content: `
+    content: `<div>
         <p>
           Comment rendre compte de cet instant de communion de confession et de sincérité. L&apos;idée
           ici n&apos;étant pas de réaliser une copie d&apos;une photographie mais bien de donner à
-          voir l&apos;instant de vérité du corps <span class="h4">mise à nu.</span>
+          voir l&apos;instant de vérité du corps «mise à nu».
         </p>
         <p>
         Ces cylindres de papier qui cachent encore un peu du regard
 l&apos;instant photographique, fragile. 
 </br>
         </p>
-        
+        </div>
       `,
     className: '',
   },
   {
-    content: `
+    content: `<div>
         <h2>
         Proposition de présentation
-des intimités de Joël</h2>
+des intimités de Joël</h2></div>
       `,
     className: 'text-center',
   },
