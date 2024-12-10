@@ -42,7 +42,7 @@ export default defineType({
       title: 'Hard Break',
       type: 'object',
       name: 'hardBreak',
-      
+      fields: [],
       preview: {
         prepare() {
           return {
