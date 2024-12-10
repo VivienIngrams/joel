@@ -1,4 +1,5 @@
 import { defineArrayMember, defineType } from 'sanity'
+import React from 'react'
 
 /**
  * This is the schema definition for the rich text fields used for
@@ -10,6 +11,7 @@ import { defineArrayMember, defineType } from 'sanity'
  *    type: 'blockContent'
  *  }
  */
+
 export default defineType({
   title: 'Block Content',
   name: 'blockContent',
@@ -57,9 +59,5 @@ export default defineType({
       },
     }),
     
-      defineArrayMember({
-       name: 'break',
-       type: 'break'
-    })
   ],
 })
