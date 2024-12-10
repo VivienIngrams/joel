@@ -62,10 +62,6 @@ export const DelphineMobileScroll = ({ images, title }: ImageGalleryProps) => {
         const shouldInsertTextBox = textBoxIndices.includes(index)
         const textBoxIndex = textBoxIndices.indexOf(index)
 
-        console.log('Image index:', index)
-        console.log('Should Insert TextBox:', shouldInsertTextBox)
-        console.log('TextBox Content:', textBoxTexts[textBoxIndex]?.content)
-
         return (
           <div key={`gallery-item-${index}`}>
             {/* Render Image */}

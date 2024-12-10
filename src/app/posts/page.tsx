@@ -11,7 +11,7 @@ export default async function PostsPage() {
 
   const posts: Post[] = await getPosts(client, {
     next: {
-      revalidate: 300,
+      revalidate: 30,
     },
   })
 
@@ -43,10 +43,10 @@ export default async function PostsPage() {
   return (
     <div className="h-full md:min-h-[80vh] pb-20 bg-[#4b5563] max-w-full pt-16 ">
       {/* Top Menu with Post Titles */}
-      <nav className=" text-white pt-4 px-4  top-0 z-60 ">
+      <nav className=" text-white pt-4 px-4 top-0 z-60 ">
         <ul className="flex flex-col md:flex-row md:flex-wrap gap-x-7 justify-center ">
-          {sortedPosts.map((post) => (
-            <li key={post._id}>
+          {sortedPosts.map((post, index) => (
+            <li key={index}>
               <Link href={`/posts/${post.slug.current}`}
                 className="hover:underline leading-4  md:text-xl ">
                   {post.title}

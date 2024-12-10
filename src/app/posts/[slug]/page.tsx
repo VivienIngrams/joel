@@ -17,7 +17,7 @@ export default async function PostPage({
   // Fetch the post by slug
   const post: Post | null = await getPost(client, params.slug, {
     next: {
-      revalidate: 60,
+      revalidate: 100,
     },
   })
 
@@ -44,8 +44,8 @@ export default async function PostPage({
           <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
           <g
             id="SVGRepo_tracerCarrier"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           ></g>
           <g id="SVGRepo_iconCarrier">
             {' '}
