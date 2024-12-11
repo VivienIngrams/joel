@@ -11,7 +11,7 @@ export default function InfoPage() {
       <div className="md:min-h-screen flex flex-col md:items-center md:justify-center px-6   md:py-12">
         <Link
           href="mailto:info@joelbardeau.com"
-          className="text-3xl md:text-5xl font-light mt-16 mb-4 md:mt-0"
+          className="text-3xl md:text-5xl font-light mt-20 mb-4 md:mt-0"
         >
           Contact
         </Link>
