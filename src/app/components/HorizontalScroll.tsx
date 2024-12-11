@@ -37,7 +37,7 @@ export function HorizontalScroll({ images, title, subtitles }: HorizontalGallery
         totalImagesWidth += imgWidth
       })
 
-      const totalSpacing = (images.length - 1) * 64
+      const totalSpacing = (images.length) * 64
       totalImagesWidth += totalSpacing
       setDimensions({ height, totalImagesWidth })
     }
