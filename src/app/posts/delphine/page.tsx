@@ -9,7 +9,7 @@ export default async function DelphinePage() {
   const client = getClient({ token: readToken })
   const post = await getDelphinePage(client, {
     next: {
-      revalidate: 300,
+      revalidate: 6000,
     },
   })
 
