@@ -32,7 +32,7 @@ export default function InfoPage() {
      
         <Image
         src="/joel portrait.jpg"  height="600" width="300" alt="Portrait Joel"/></div>
-      <div className="md:min-h-screen flex flex-col items-center justify-center text-lg md:text-xl text-justify max-w-2xl px-6 pb-16 md:px-16 md:py-12">
+      <div className="md:min-h-screen flex flex-col items-center justify-center text-lg md:text-xl text-left max-w-2xl px-6 pb-16 md:px-16 md:py-12">
         <p className=" mb-4">
           Jeune homme j&apos;ai suivi les cours classiques de dessin aux
           Beaux-Arts et pratiqué assidûment la photographie argentique.</p>
