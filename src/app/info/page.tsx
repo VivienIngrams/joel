@@ -10,13 +10,15 @@ export default function InfoPage() {
     <div className="min-h-screen md:grid md:grid-cols-3 bg-[#545964] text-white md:mx-[10vw]">
       <div className="md:min-h-screen flex flex-col md:items-center md:justify-center px-6   md:py-12">
         <Link
-          href="mailto:info@joelbardeau.com"
+          href="mailto:info@joelbardeau.com"  target="_blank"
+                  rel="noopener noreferrer"
           className="text-3xl md:text-5xl font-light mt-20 mb-4 md:mt-0"
         >
           Contact
         </Link>
         <Link
-          href="mailto:info@joelbardeau.com"
+          href="mailto:info@joelbardeau.com"  target="_blank"
+                  rel="noopener noreferrer"
           className="text-xl md:text-xl md:text-center max-w-2xl mb-4 md:mb-8  hover:text-neutral-500"
         >
           info@joelbardeau.com
