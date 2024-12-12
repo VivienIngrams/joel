@@ -8,7 +8,7 @@ import { Socials } from '../components/Container'
 export default function InfoPage() {
   return (
     <div className="min-h-screen md:grid md:grid-cols-3 bg-[#545964] text-white md:mx-[10vw]">
-      <div className="md:min-h-screen flex flex-col md:items-center md:justify-center px-6  md:ml-[50%] md:py-12">
+      <div className="md:min-h-screen flex flex-col md:items-center md:justify-center px-6  md:ml-[30%] md:py-12">
         <Link
           href="mailto:info@joelbardeau.com"
           target="_blank"
