@@ -51,7 +51,7 @@ const Verification = () => {
         <div className="flex flex-col sm:flex-row justify-around">
           {showYesButton && (
             <button
-              className="bg-white text-gray-500 py-2 px-6 m-2 rounded"
+              className="bg-gray-200 text-gray-600 py-2 px-6 m-2 rounded"
               onClick={() => handleAgeConfirmation(true)}
             >
               <span className="font-bold">Oui,</span> j&apos;ai plus de 18 ans

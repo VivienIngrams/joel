@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        arsenal: ['var(--font-family-arsenal)'],
+        ubuntu: ['var(--font-family-ubuntu)'],
         barlow: ['var(--font-family-barlow)'],
       },
         backgroundImage: {

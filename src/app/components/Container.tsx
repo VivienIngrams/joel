@@ -35,12 +35,12 @@ export default function Container({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <div className="max-w-screen h-full font-arsenal">
+    <div className="max-w-screen h-full font-ubuntu">
       <div
         className={`${
           isHomePage
             ? 'hidden' 
-            : 'fixed  top-0 z-50 h-8 w-full md:h-16 pb-4 pt-6 bg-white flex flex-col items-center justify-center'
+            : 'fixed  top-0 z-50 h-12 w-full md:h-16 pb-4 pt-6 bg-white flex flex-col items-center justify-center'
         }`}
       >
         {isProjetsPage && !isPublieesSousPage && !isProjetsSousPage && (
@@ -101,7 +101,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
           <p
             className={`  text-gray-500 hover:text-black xs:tracking-normal z-55 leading-loose w-[150px] pt-2 ${
               isHomePage && ' '
-            }  ${isInfoPage ?  'absolute right-0 md:left-4 bottom-0 block h-10 w-30 text-neutral-300 text-[12px] ' : 'hidden'}`}
+            }  ${isInfoPage ?  'absolute right-0 md:left-4 bottom-0 block h-10 w-30 text-neutral-400 text-[12px] ' : 'hidden'}`}
           >
             Website by Vivien Ingrams
           </p></Link>
