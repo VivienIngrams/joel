@@ -1,33 +1,33 @@
 'use client'
 
-import Link from 'next/link'
 import Image from 'next/image'
+import Link from 'next/link'
+import { AiOutlineMail } from "react-icons/ai";
 
 import { Socials } from '../components/Container'
 
 export default function InfoPage() {
   return (
-    <div className="min-h-screen md:grid md:grid-cols-3 bg-[#545964] text-white md:mx-[10vw]">
+    <div className="min-h-screen md:grid md:grid-cols-3 bg-white text-gray-500 md:mx-[10vw]">
       <div className="md:min-h-screen flex flex-col md:items-center md:justify-center px-6  md:ml-[30%] md:py-12">
         <Link
           href="mailto:info@joelbardeau.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-3xl md:text-5xl font-light mt-20 mb-4 md:mt-0"
+          className="text-3xl md:text-5xl font-light mt-20 mb-4 md:mt-0 hover:text-black"
         >
           Contact
         </Link>
-        <Link
-          href="mailto:info@joelbardeau.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-xl md:text-xl md:text-center max-w-2xl mb-4 md:mb-8  hover:text-neutral-500"
-        >
-          info@joelbardeau.com
-        </Link>
+        
 
         <div className="flex items-end gap-x-4">
           <Socials />
+          <Link
+                href="mailto:info@joelbardeau.com"
+                className={` hover:text-neutral-400`}
+              >
+              <AiOutlineMail className="text-gray-500 text-[20px] md:text-[24px]" />
+              </Link>
         </div>
       </div>
       <div className="flex items-center justify-start md:justify-center">

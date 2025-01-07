@@ -60,7 +60,7 @@ const videoList = [
                   height={200}
                 />
               </div>
-              <p className="mt-2 text-white text-center text-sm lg:text-xl ">{video.title}</p>
+              <p className="mt-2 text-gray-500 text-center text-sm lg:text-xl ">{video.title}</p>
             </a>
           ))}
         </div>

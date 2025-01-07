@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { AiOutlineMail } from "react-icons/ai";
 import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa'
 import { IoIosArrowRoundBack } from 'react-icons/io'
 
@@ -39,12 +40,12 @@ export default function Container({ children }: { children: React.ReactNode }) {
         className={`${
           isHomePage
             ? 'hidden' 
-            : 'fixed top-0 z-50 h-8 w-full md:h-16 pb-16 pt-6 bg-gradient-to-t from-transparent via-[#545964] to-[#545964] flex flex-col items-center justify-center'
+            : 'fixed  top-0 z-50 h-8 w-full md:h-16 pb-16 pt-6 bg-gradient-to-t from-transparent via-white to-white flex flex-col items-center justify-center'
         }`}
       >
         {isProjetsPage && !isPublieesSousPage && !isProjetsSousPage && (
   <Link href="/posts" className="h-12 absolute top-3 md:top-4 left-4">
-    <IoIosArrowRoundBack className="text-white text-[2.5rem] md:text-[3.5rem]" />
+    <IoIosArrowRoundBack className="text-gray-500 hover:text-black text-[2.5rem] md:text-[3.5rem]" />
   </Link>
 )}
 
@@ -53,7 +54,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
     href="/posts/publiees"
     className="h-12 absolute top-3 md:top-4 left-3 md:left-4"
   >
-    <IoIosArrowRoundBack className="text-white text-[2.5rem] md:text-[3.5rem]" />
+    <IoIosArrowRoundBack className="text-gray-500 hover:text-black text-[2.5rem] md:text-[3.5rem]" />
   </Link>
 )}
 
@@ -62,7 +63,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
     href="/posts/projets"
     className="h-12 absolute top-3 md:top-4 left-3 md:left-5"
   >
-    <IoIosArrowRoundBack className="text-white text-[2.5rem] md:text-[3.5rem]" />
+    <IoIosArrowRoundBack className="text-gray-500 hover:text-black text-[2.5rem] md:text-[3.5rem]" />
   </Link>
 )}
 
@@ -74,13 +75,13 @@ export default function Container({ children }: { children: React.ReactNode }) {
       href="/posts"
       className="h-10 absolute top-3 md:top-4 left-3 md:left-4"
     >
-      <IoIosArrowRoundBack className="text-white text-[2.5rem] md:text-[3.5rem]" />
+      <IoIosArrowRoundBack className="text-gray-500 hover:text-black text-[2.5rem] md:text-[3.5rem]" />
     </Link>
   )}
 
         <Link href={isHomePage ? '/posts' : '/'}>
-          <h1 className={`${isHomePage ? 'hidden' : 'uppercase text-xl md:text-2xl text-center'}`}>
-           <span className='text-2xl  md:text-[33px] tracking-[-0.3rem] md:tracking-[-0.4rem]'>J</span> oël <span className='text-2xl md:text-[33px] tracking-[-0.05rem]'>B</span>ardeau
+          <h1 className={`${isHomePage ? 'hidden' : 'text-gray-500 hover:text-black uppercase text-2xl md:text-3xl text-center'}`}>
+           <span className='text-3xl  md:text-[38px] tracking-[-0.4rem] md:tracking-[-0.4rem]'>J</span> oël <span className='text-3xl md:text-[38px] tracking-[-0.05rem]'>B</span>ardeau
           </h1>
         </Link>
       </div>
@@ -91,35 +92,37 @@ export default function Container({ children }: { children: React.ReactNode }) {
       <footer
         className={`fixed bottom-0 w-full md:h-16 md:pb-6 px-4 pt-10 md:pt-6 pb-4 flex items-end md:items-center justify-between ${
           isHomePage
-            ? ' md:bg-transparent md:text-[#545964]' // Transparent background with dark blue text on the homepage
-            : 'bg-gradient-to-b from-transparent via-[#545964] to-[#545964] text-white'
+            ? ' md:bg-transparent md:text-gray-500' // Transparent background with dark blue text on the homepage
+            : 'bg-gradient-to-b from-transparent via-white to-white text-gray-500'
         }`}
       >
         <div>
           <Link href="https://vivieningrams.com">
           <p
-            className={`hidden  md:flex text-[#545964] -mb-5 xs:tracking-normal z-55 leading-loose w-[150px] pt-2 ${
-              isHomePage && 'md:hidden '
-            }  ${isInfoPage && 'text-neutral-300 text-[11px] '}`}
+            className={`  text-gray-500 hover:text-black xs:tracking-normal z-55 leading-loose w-[150px] pt-2 ${
+              isHomePage && ' '
+            }  ${isInfoPage ?  'absolute right-0 md:left-4 bottom-0 block h-10 w-30 text-neutral-300 text-[12px] ' : 'hidden'}`}
           >
             Website by Vivien Ingrams
           </p></Link>
         </div>
         <NavMenu />
-        <div className="md:w-[350px]">
+        
+        <div className="z-50">
           {!isInfoPage && !isHomePage && (
-            <div className="flex items-end gap-x-4">
-              <Link
-                href="mailto:info@joelbardeau.com"
-                className={`text-sm lg:text-md hover:text-neutral-400 ${
-                  isHomePage ? 'text-[#545964]' : 'text-white'
-                }`}
-              >
-                info@joelbardeau.com{' '}
-              </Link>
+            <div className="flex items-end gap-x-2">
               <div className="flex gap-x-2">
                 <Socials />
               </div>
+              <Link
+                href="mailto:info@joelbardeau.com"
+                className={` ${
+                  isHomePage ? 'hidden' : 'block'
+                }`}
+              >
+              <AiOutlineMail className="text-gray-500 hover:text-black text-[20px] md:text-[24px]" />
+              </Link>
+              
             </div>
           )}
         </div>
@@ -158,7 +161,7 @@ export function Socials() {
       {socialLinks.map(({ label, Icon, href }) => (
         <Link
           aria-label={label}
-          className=" rounded-md  transition-all duration-300  sm:-m-3 sm:p-3 hover:text-neutral-400"
+          className=" rounded-md  transition-all duration-300  sm:-m-3 sm:p-3 hover:text-black"
           href={href}
           key={label}
           target="_blank"

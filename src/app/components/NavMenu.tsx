@@ -14,31 +14,31 @@ const NavMenu = () => {
   }
 
   return (
-    <nav className="w-full z-50 mx-auto sm:px-6 md:pl-32 tracking-tight uppercase">
+    <nav className="absolute w-full z-50   tracking-tight uppercase">
       <div
-        className={`flex items-start justify-start md:justify-center text-lg  ${
+        className={`w-full flex items-start justify-start md:justify-center text-lg  ${
           isHomePage ? 'hidden' : 'md:text-2xl tracking-wide font-light '
         }`}
       >
         <div className="flex items-center">
           <div className="hidden md:block">
-            <div className=" flex items-baseline space-x-4">
+            <div className=" flex items-baseline ">
               <Link
                 href="/posts"
-                className="hover:bg-white/10 rounded-md px-3   text-md  "
+                className="hover:text-black px-3   text-md  "
               >
                 Galeries
               </Link>
               <Link
                 href="/videos"
-                className="hover:bg-white/10 rounded-md px-3  text-md  "
+                className="hover:text-black px-3  text-md  "
               >
                 Videos
               </Link>
 
               <Link
                 href="/info"
-                className="hover:bg-white/10 rounded-md px-3  "
+                className="hover:text-black px-3  "
               >
                 Info
               </Link>
@@ -56,9 +56,9 @@ const NavMenu = () => {
             <span className="sr-only">Open main menu</span>
             {isOpen ? (
               <svg
-                className="block h-6 w-6 -mb-20 -ml-2"
+                className="block h-6 w-6 mt-24 -mb-24 -ml-4"
                 viewBox="0 0 24 24"
-                fill="none"
+                fill="white"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
@@ -71,7 +71,7 @@ const NavMenu = () => {
                   {' '}
                   <path
                     d="M19 5L4.99998 19M5.00001 5L19 19"
-                    stroke="#ffffff"
+                    stroke="#9ca3af"
                     strokeWidth="1.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -89,22 +89,22 @@ const NavMenu = () => {
                 viewBox="0 0 100.00 100.00"
                 enableBackground="new 0 0 100 100"
                 xmlSpace="preserve"
-                fill="#eee"
-                stroke="#eee"
+                fill="#9ca3af"
+                stroke="#9ca3af"
               >
                 <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                 <g
                   id="SVGRepo_tracerCarrier"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  stroke="#ffffff"
+                  stroke="#9ca3af"
                   strokeWidth="1.6"
                 ></g>
                 <g id="SVGRepo_iconCarrier">
                   <g id="Hamburguer">
                     <path
-                      fill="none"
-                      stroke="#ffffff"
+                      fill="white"
+                      stroke="#9ca3af"
                       strokeWidth="2.1"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -114,8 +114,8 @@ const NavMenu = () => {
                     <g>
                       {' '}
                       <line
-                        fill="none"
-                        stroke="#ffffff"
+                        fill="white"
+                        stroke="#9ca3af"
                         strokeWidth="2.1"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -126,8 +126,8 @@ const NavMenu = () => {
                         y2="50"
                       ></line>{' '}
                       <line
-                        fill="none"
-                        stroke="#ffffff"
+                        fill="white"
+                        stroke="#9ca3af"
                         strokeWidth="2.1"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -138,8 +138,8 @@ const NavMenu = () => {
                         y2="42"
                       ></line>{' '}
                       <line
-                        fill="none"
-                        stroke="#ffffff"
+                        fill="white"
+                        stroke="#9ca3af"
                         strokeWidth="2.1"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -159,11 +159,11 @@ const NavMenu = () => {
       </div>
 
       <div
-        className={`${isOpen ? 'block bg-gradient-to-b from-transparent via-[#545964] to-[#545964] w-screen pt-12 -ml-4 -mb-4' : 'hidden'} md:hidden`}
+        className={`${isOpen ? 'block bg-gradient-to-b from-transparent via-white to-white w-screen pt-24 -ml-4 -mb-4' : 'hidden'} md:hidden`}
         id="mobile-menu"
         onClick={toggleMenu}
       >
-        <div className="text-white px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <div className="text-gray-500 px-2 pt-2 pb-3 space-y-1 sm:px-3">
           <Link
             href="/posts"
             className=" block px-3 py-2  text-xl  "

@@ -87,7 +87,7 @@ const MobileScroll = ({ images,  title }: ImageGalleryProps) => {
               objectFit="contain"
             />
             <button
-              className="absolute -top-12 right-0 text-white  p-2 hover:bg-opacity-70"
+              className="absolute -top-12 right-0 text-gray-500  p-2 hover:bg-opacity-70"
               onClick={closeModal}
             >
               ✕

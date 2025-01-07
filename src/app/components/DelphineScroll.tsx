@@ -120,7 +120,7 @@ export function DelphineScroll({ images, title }: HorizontalGalleryProps) {
                 objectFit="contain"
               />
               <button
-                className="absolute top-5 -right-12 text-white border-[1px] rounded-full p-1 px-2 hover:bg-[#818895]"
+                className="absolute top-5 -right-12 text-gray-500 border-[1px] rounded-full p-1 px-2 hover:bg-[#818895]"
                 onClick={closeModal}
               >
                 ✕
@@ -136,7 +136,7 @@ export function DelphineScroll({ images, title }: HorizontalGalleryProps) {
       <Modal />
       <section
         ref={triggerRef}
-        className="w-full h-full pt-16 overflow-hidden bg-[#545964] pl-[28vw]"
+        className="w-full h-full pt-16 overflow-hidden bg-white pl-[28vw]"
       >
         <div
           ref={sectionRef}
@@ -176,7 +176,7 @@ export function DelphineScroll({ images, title }: HorizontalGalleryProps) {
                 {/* Render a text box if the current index is in textBoxIndices */}
                 {shouldInsertTextBox && (
                   <div
-                    className="flex items-center justify-center text-white p-8 text-justify "
+                    className="flex items-center justify-center text-gray-500 p-8 text-justify "
                     style={{
                       
                       width: `${dimensions.height}px`,

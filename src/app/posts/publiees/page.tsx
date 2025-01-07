@@ -18,9 +18,9 @@ export default async function PublieesPage() {
   });
 
   return (
-    <div className="h-full md:min-h-[80vh] pb-20 bg-[#545964] max-w-[98vw] pt-16 ">
+    <div className="h-full md:min-h-[80vh] pb-20 bg-white max-w-[98vw] pt-16 ">
       {/* Top Menu with Post Titles */}
-      <nav className=" text-white pt-4 px-4 top-0 z-60 ">
+      <nav className=" text-gray-500 pt-4 px-4 top-0 z-60 ">
         <ul className="flex flex-col md:flex-row md:flex-wrap gap-x-7 justify-center ">
           {posts.map((post, index) => (
             <li key={index}>

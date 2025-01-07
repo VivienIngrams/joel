@@ -45,7 +45,7 @@ export const DelphineMobileScroll = ({ images, title }: ImageGalleryProps) => {
                 objectFit="contain"
               />
               <button
-                className="absolute top-4 right-4 text-white bg-gray-800 rounded-full p-2 hover:bg-opacity-80"
+                className="absolute top-4 right-4 text-gray-500 bg-gray-800 rounded-full p-2 hover:bg-opacity-80"
                 onClick={closeModal}
               >
                 ✕
@@ -87,7 +87,7 @@ export const DelphineMobileScroll = ({ images, title }: ImageGalleryProps) => {
 
             {/* Conditionally Render Text Box */}
             {shouldInsertTextBox && textBoxTexts[textBoxIndex]?.content && (
-              <div className="mt-4 text-white text-justify">
+              <div className="mt-4 text-gray-500 text-justify">
                 <div
                   className={textBoxTexts[textBoxIndex]?.className || 'text-base'}
                   dangerouslySetInnerHTML={{

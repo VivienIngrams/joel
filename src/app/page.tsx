@@ -38,7 +38,7 @@ export default async function HomePage() {
 
           {/* Title and Subtitle */}
           <div className="fixed left-1/2 -translate-x-1/2 md:translate-x-0 bottom-2 md:left-10 md:top-6 text-center">
-            <h1 className="text-center md:text-left text-white text-[50px] md:text-[60px] uppercase tracking-tighter leading-[40px]">
+            <h1 className="text-center md:text-left text-gray-500 text-[50px] md:text-[60px] uppercase tracking-tighter leading-[40px]">
               <span className="text-6xl leading-[40px] md:text-7xl tracking-[-0.9rem] ">
                 J
               </span>{' '}
@@ -48,7 +48,7 @@ export default async function HomePage() {
               </span>
               ardeau
             </h1>
-            <h2 className="text-white text-2xl md:text-3xl font-light leading-normal md:-mt-2">
+            <h2 className="text-gray-500 text-2xl md:text-3xl font-light leading-normal md:-mt-2">
               Artiste Auteur
             </h2>
           </div>

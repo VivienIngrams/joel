@@ -104,7 +104,7 @@ export function HorizontalScroll({ images, title, subtitles }: HorizontalGallery
                 objectFit="contain"
               />
               <button
-                className="absolute top-5 -right-12 text-white rounded-full p-1 px-2 hover:bg-[#545964]"
+                className="absolute top-5 -right-12 text-gray-500 rounded-full p-1 px-2 hover:bg-white"
                 onClick={closeModal}
               >
                 ✕
@@ -120,7 +120,7 @@ export function HorizontalScroll({ images, title, subtitles }: HorizontalGallery
       <Modal />
       <section
         ref={triggerRef}
-        className="w-full h-full pt-16 overflow-hidden bg-[#545964] pl-[28vw]"
+        className="w-full h-full pt-16 overflow-hidden bg-white pl-[28vw]"
       >
         <div
           ref={sectionRef}
@@ -152,7 +152,7 @@ export function HorizontalScroll({ images, title, subtitles }: HorizontalGallery
                   className="mt-24 object-cover"
                 />
                 {subtitles && subtitles[index] && (
-                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-black/10 text-white text-center uppercase text-2xl p-2 ">
+                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-black/10 text-gray-500 text-center uppercase text-2xl p-2 ">
                     {subtitles[index]}
                   </div>
                 )}
