@@ -36,8 +36,8 @@ const ImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) => {
     const calculateDimensions = () => {
       const windowWidth = window.innerWidth
       const numberOfImages = images.length
-      const containerWidth = windowWidth - 150 // Padding
-      const marginsWidth = (numberOfImages - 1) * 64 // Total margins between images
+      const containerWidth = windowWidth - 380 // Padding
+      const marginsWidth = (numberOfImages - 1) * 96 // Total margins between images
 
       const imageWidth = (containerWidth - marginsWidth) / numberOfImages
 
@@ -66,23 +66,23 @@ const ImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) => {
     <div className="mx-auto max-w-full">
       {/* Title Section with custom middle line */}
       <div
-        className="-mb-2 mt-16 mx-auto relative"
+        className=" mt-24 mx-auto relative"
         style={{ width: `${dimensions[0].container}px` }}
       >
         <Link href={`/posts/${slug}`}>
-          <div className="relative text-center">
+          <div className="relative text-center ">
             {/* White Line Spanning Full Width */}
-            <span className="absolute left-0 right-0 bottom-1/2 transform translate-y-2px] bg-white h-[1px] z-5"></span>
+            <span className="absolute left-0 right-0 bottom-1/2 transform translate-y-2px] bg-gray-400  h-[1px] z-5"></span>
 
             {/* Title with Grey Background covering only text width */}
-            <h1 className="text-gray-500 upper  font-light text-3xl lg:text-4xl inline-block relative z-11 px-1 my-4 bg-white">
+            <h1 className="text-gray-500 hover:text-black upper  font-light text-3xl lg:text-4xl inline-block relative z-11 px-1 my-4 bg-white">
               {title}
             </h1>
           </div>
         </Link>
       </div>
       {/* Image Gallery */}
-      <div className="flex justify-center space-x-16 mb-4 max-w-full">
+      <div className="flex justify-center space-x-24 mb-4 max-w-full">
         {images.map((image, index) => (
           <Link key={index} href={`/posts/${slug}`}>
             <div

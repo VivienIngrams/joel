@@ -40,7 +40,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
         className={`${
           isHomePage
             ? 'hidden' 
-            : 'fixed  top-0 z-50 h-8 w-full md:h-16 pb-16 pt-6 bg-gradient-to-t from-transparent via-white to-white flex flex-col items-center justify-center'
+            : 'fixed  top-0 z-50 h-8 w-full md:h-16 pb-4 pt-6 bg-white flex flex-col items-center justify-center'
         }`}
       >
         {isProjetsPage && !isPublieesSousPage && !isProjetsSousPage && (
@@ -80,8 +80,8 @@ export default function Container({ children }: { children: React.ReactNode }) {
   )}
 
         <Link href={isHomePage ? '/posts' : '/'}>
-          <h1 className={`${isHomePage ? 'hidden' : 'text-gray-500 hover:text-black uppercase text-2xl md:text-3xl text-center'}`}>
-           <span className='text-3xl  md:text-[38px] tracking-[-0.4rem] md:tracking-[-0.4rem]'>J</span> oël <span className='text-3xl md:text-[38px] tracking-[-0.05rem]'>B</span>ardeau
+          <h1 className={`${isHomePage ? 'hidden' : 'text-gray-500 hover:text-black uppercase text-2xl md:text-4xl text-center'}`}>
+           <span className='text-3xl  md:text-[45px] tracking-[-0.4rem] md:tracking-[-0.6rem]'>J</span> oël <span className='text-3xl md:text-[45px] tracking-[-0.06rem]'>B</span>ardeau
           </h1>
         </Link>
       </div>

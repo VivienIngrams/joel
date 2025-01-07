@@ -20,12 +20,12 @@ export default async function PublieesPage() {
   return (
     <div className="h-full md:min-h-[80vh] pb-20 bg-white max-w-[98vw] pt-16 ">
       {/* Top Menu with Post Titles */}
-      <nav className=" text-gray-500 pt-4 px-4 top-0 z-60 ">
+      <nav className="fixed bg-gradient-to-t py-12 from-transparent via-white to-white text-gray-500 pt-4 px-4 top-16 w-full z-10 ">
         <ul className="flex flex-col md:flex-row md:flex-wrap gap-x-7 justify-center ">
           {posts.map((post, index) => (
             <li key={index}>
               <Link href={`/posts/${post.slug.current}`}
-                className="hover:underline leading-4  md:text-xl ">
+                className="hover:text-black leading-4  md:text-xl ">
                   {post.title}
                
               </Link>

@@ -17,12 +17,11 @@ export default async function PostsPage() {
 
   // Define custom slug order
   const customOrder = [
+    'autoportraits',
     'survol',
     'hors-d-age',
-    'derision',
     'respiration',
-    'moi-vu-par-elles-eux',
-    'autoportraits',
+    'derision',
     'publiees',
     'projets',
    
@@ -43,12 +42,12 @@ export default async function PostsPage() {
   return (
     <div className="h-full md:min-h-[80vh] pb-20 bg-white max-w-full pt-16 ">
       {/* Top Menu with Post Titles */}
-      <nav className=" text-gray-500 pt-4 px-4 top-0 z-60 ">
-        <ul className="flex flex-col md:flex-row md:flex-wrap gap-x-7 justify-center ">
+      <nav className="fixed bg-gradient-to-t py-6 from-transparent via-white to-white text-gray-500 pt-4 px-4 top-8 w-full z-10 ">
+        <ul className="flex flex-col md:flex-row md:flex-wrap py-6 gap-x-7 justify-center ">
           {sortedPosts.map((post, index) => (
             <li key={index}>
               <Link href={`/posts/${post.slug.current}`}
-                className="hover:underline leading-4  md:text-xl ">
+                className="hover:text-black leading-4  md:text-xl ">
                   {post.title}
                
               </Link>

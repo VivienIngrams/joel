@@ -5,7 +5,7 @@ import { type SanityClient } from 'next-sanity'
 
 // Query to fetch all posts with defined slugs, ordered by creation date
 export const postsQuery = groq`
-  *[_type == "post" && slug.current in ["survol", "hors-d-age", "respiration", "autoportraits", "moi-vu-par-elles-eux", "derision", "publiees", "projets"]] {
+  *[_type == "post" && slug.current in ["survol", "hors-d-age", "respiration", "autoportraits", "derision", "publiees", "projets"]] {
    
     title,
     slug,
@@ -27,7 +27,7 @@ export async function getPosts(
   return posts
 }
 export const publieesPostsQuery = groq`
-  *[_type == "post" && slug.current in ["mathilde", "johanna", "delphine"]] {
+  *[_type == "post" && slug.current in ["mathilde", "johanna", "vibrations" ]] {
     _id,
     _createdAt,
     title,
@@ -45,7 +45,7 @@ export async function getPublieesPosts(
   return posts
 }
 export const projetsPostsQuery = groq`
-  *[_type == "post" && slug.current in ["dante-extraits", "vibrations", "memento"]] {
+  *[_type == "post" && slug.current in ["dante-extraits", "memento"]] {
     _id,
     _createdAt,
     title,

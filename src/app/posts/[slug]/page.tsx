@@ -17,7 +17,7 @@ export default async function PostPage({
   // Fetch the post by slug
   const post: Post | null = await getPost(client, params.slug, {
     next: {
-      revalidate: 30,
+      revalidate: 10,
     },
   })
 console.log(post.subtitles)
@@ -30,7 +30,7 @@ console.log(post.subtitles)
     <div className="min-h-[80vh] md:h-full w-screen flex flex-col justify-center md:justify-start md:flex-row">
       {/* Right arrow in corner */}
       <div className="hidden md:flex absolute bottom-[15%] left-[31%] h-16 w-20 flex-col items-center justify-center z-40">
-        <div className="pb-2 text-2xl">scroll</div>
+        <div className="pb-2 text-white text-2xl">scroll</div>
         <svg
           fill="#ffffff"
           height="50px"

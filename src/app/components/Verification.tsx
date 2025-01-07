@@ -44,7 +44,7 @@ const Verification = () => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white p-6 rounded-md text-center max-w-xs sm:max-w-sm w-full mx-4">
+      <div className="bg-white text-gray-500 p-6 rounded-md text-center max-w-xs sm:max-w-sm w-full mx-4">
         <h2 className="text-xl md:text-3xl font-bold mb-4">Avertissement</h2>
         <p className="mb-4">Ce site contient des images de nudité.</p>
         <p className="mb-4 font-bold">Avez-vous plus de 18 ans ?</p>
@@ -58,7 +58,7 @@ const Verification = () => {
             </button>
           )}
           <button
-            className="bg-[#454648] text-gray-500 py-2 px-6 m-2 rounded"
+            className="bg-[#454648] text-white py-2 px-6 m-2 rounded"
             onClick={() => handleAgeConfirmation(false)}
           >
             <span className="font-bold">Non,</span> j&apos;ai moins de 18 ans
