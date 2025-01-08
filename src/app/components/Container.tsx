@@ -4,7 +4,8 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { AiOutlineMail } from "react-icons/ai";
 import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa'
-import { IoIosArrowRoundBack } from 'react-icons/io'
+import { TiArrowBackOutline } from "react-icons/ti";
+
 
 import NavMenu from './NavMenu'
 
@@ -40,12 +41,12 @@ export default function Container({ children }: { children: React.ReactNode }) {
         className={`${
           isHomePage
             ? 'hidden' 
-            : 'fixed  top-0 z-50 h-12 w-full md:h-16 pb-4 pt-6 bg-white flex flex-col items-center justify-center'
+            : 'fixed  top-0 z-50 h-16 w-full md:h-20 py-6 bg-white flex flex-col items-center justify-center'
         }`}
       >
         {isProjetsPage && !isPublieesSousPage && !isProjetsSousPage && (
   <Link href="/posts" className="h-12 absolute top-3 md:top-4 left-4">
-    <IoIosArrowRoundBack className="text-gray-500 hover:text-black text-[2.5rem] md:text-[3.5rem]" />
+    <TiArrowBackOutline className="text-black hover:text-gray-500 text-[1.5rem] md:text-[2.5rem]" />
   </Link>
 )}
 
@@ -54,7 +55,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
     href="/posts/publiees"
     className="h-12 absolute top-3 md:top-4 left-3 md:left-4"
   >
-    <IoIosArrowRoundBack className="text-gray-500 hover:text-black text-[2.5rem] md:text-[3.5rem]" />
+    <TiArrowBackOutline className="text-black hover:text-gray-500 text-[1.5rem] md:text-[2.5rem]" />
   </Link>
 )}
 
@@ -63,7 +64,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
     href="/posts/projets"
     className="h-12 absolute top-3 md:top-4 left-3 md:left-5"
   >
-    <IoIosArrowRoundBack className="text-gray-500 hover:text-black text-[2.5rem] md:text-[3.5rem]" />
+    <TiArrowBackOutline className="text-black hover:text-gray-500 text-[1.5rem] md:text-[2.5rem]" />
   </Link>
 )}
 
@@ -75,13 +76,13 @@ export default function Container({ children }: { children: React.ReactNode }) {
       href="/posts"
       className="h-10 absolute top-3 md:top-4 left-3 md:left-4"
     >
-      <IoIosArrowRoundBack className="text-gray-500 hover:text-black text-[2.5rem] md:text-[3.5rem]" />
+      <TiArrowBackOutline className="text-black hover:text-gray-500 text-[1.5rem]  md:text-[2.5rem]" />
     </Link>
   )}
 
         <Link href={isHomePage ? '/posts' : '/'}>
-          <h1 className={`${isHomePage ? 'hidden' : 'text-gray-500 hover:text-black uppercase text-2xl md:text-4xl text-center'}`}>
-           <span className='text-3xl  md:text-[45px] tracking-[-0.4rem] md:tracking-[-0.6rem]'>J</span> oël <span className='text-3xl md:text-[45px] tracking-[-0.06rem]'>B</span>ardeau
+          <h1 className={`${isHomePage ? 'hidden' : 'text-black font-bold hover:text-gray-500 uppercase text-2xl md:text-4xl text-center'}`}>
+           <span className='text-3xl  md:text-[45px]   tracking-[-0.4rem] md:tracking-[-0.7rem]'>J</span> oël <span className='text-3xl  md:text-[45px] tracking-[-0.06rem]'>B</span>ardeau
           </h1>
         </Link>
       </div>
@@ -99,7 +100,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
         <div>
           <Link href="https://vivieningrams.com">
           <p
-            className={`  text-gray-500 hover:text-black xs:tracking-normal z-55 leading-loose w-[150px] pt-2 ${
+            className={`  text-black hover:text-gray-500 xs:tracking-normal z-55 leading-loose w-[150px] pt-2 ${
               isHomePage && ' '
             }  ${isInfoPage ?  'absolute right-0 md:left-4 bottom-0 block h-10 w-30 text-neutral-400 text-[12px] ' : 'hidden'}`}
           >
@@ -120,7 +121,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
                   isHomePage ? 'hidden' : 'block'
                 }`}
               >
-              <AiOutlineMail className="text-gray-500 hover:text-black text-[20px] md:text-[24px]" />
+              <AiOutlineMail className="text-black hover:text-gray-500 text-[20px] md:text-[24px]" />
               </Link>
               
             </div>

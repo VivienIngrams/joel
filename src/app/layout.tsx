@@ -1,14 +1,13 @@
 import './globals.css'
 
 import type { Metadata } from "next";
-import { Arsenal, Barlow, DM_Serif_Text, Oswald, Ubuntu } from "next/font/google";
+import { Arsenal, Barlow,  Crimson_Text,  Overpass, Cinzel, } from "next/font/google";
 
 import Container from './components/Container';
 
 const arsenal = Arsenal({  variable: '--font-family-arsenal',  weight: [   "400",  "700" ], style: ["normal", "italic"], subsets: ["latin"],  });
 const barlow = Barlow({  variable: '--font-family-barlow',  weight: [ "100", "200",  "400",  "700" ], style: ["normal", "italic"], subsets: ["latin"],  });
-const oswald = Oswald({  variable: '--font-family-oswald',  weight: [  "400",  "700" ], style: ["normal"], subsets: ["latin"],  });
-const ubuntu = Ubuntu({  variable: '--font-family-sherif',  weight: [  "400", "700"  ], style: ["normal"], subsets: ["latin"],  });
+const cinzel = Cinzel({  variable: '--font-family-cinzel',  weight: [  "800", "500",   "400", "700", "900" ], style: ["normal"], subsets: ["latin"],  });
 
 export const metadata: Metadata = {
   title: "Joël Bardeau",
@@ -21,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${barlow.variable} ${ubuntu.variable}`}>
-      <body className={`h-full bg-white font-ubuntu `}
+    <html lang="en" className={`${barlow.variable} ${arsenal.variable} ${cinzel.variable}`}>
+      <body className={`h-full bg-white font-cinzel `}
     >
       <Container>{children}</Container></body>
     </html>

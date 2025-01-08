@@ -14,10 +14,10 @@ const NavMenu = () => {
   }
 
   return (
-    <nav className="absolute w-full z-50   tracking-tight uppercase">
+    <nav className="absolute w-full z-50 text-black font-semibold tracking-tight ">
       <div
         className={`w-full flex items-start justify-start md:justify-center text-lg  ${
-          isHomePage ? 'hidden' : 'md:text-2xl tracking-wide font-light '
+          isHomePage ? 'hidden' : 'md:text-2xl tracking-wide  '
         }`}
       >
         <div className="flex items-center">
@@ -25,20 +25,20 @@ const NavMenu = () => {
             <div className=" flex items-baseline ">
               <Link
                 href="/posts"
-                className="hover:text-black px-3   text-md  "
+                className="hover:text-gray-500 px-3   text-md  "
               >
                 Galeries
               </Link>
               <Link
                 href="/videos"
-                className="hover:text-black px-3  text-md  "
+                className="hover:text-gray-500 px-3  text-md  "
               >
                 Videos
               </Link>
 
               <Link
                 href="/info"
-                className="hover:text-black px-3  "
+                className="hover:text-gray-500 px-3  "
               >
                 Info
               </Link>
@@ -163,7 +163,7 @@ const NavMenu = () => {
         id="mobile-menu"
         onClick={toggleMenu}
       >
-        <div className="text-gray-500 px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <div className="text-black px-2 pt-2 pb-3 space-y-1 sm:px-3">
           <Link
             href="/posts"
             className=" block px-3 py-2  text-xl  "

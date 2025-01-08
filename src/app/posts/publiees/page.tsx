@@ -18,21 +18,22 @@ export default async function PublieesPage() {
   });
 
   return (
-    <div className="h-full md:min-h-[80vh] pb-20 bg-white max-w-[98vw] pt-28 md:pt-16 ">
+    <div className="h-full md:min-h-[80vh] pb-20 bg-white font-cinzel max-w-[98vw] pt-28 md:pt-16 ">
       {/* Top Menu with Post Titles */}
-      <nav className="fixed bg-gradient-to-t py-12 from-transparent via-white to-white text-gray-500 pt-4 px-4 top-11 w-full z-10 ">
-        <ul className="flex flex-col md:flex-row md:flex-wrap gap-x-7 justify-center ">
-          {posts.map((post, index) => (
-            <li key={index}>
-              <Link href={`/posts/${post.slug.current}`}
-                className="hover:text-black leading-4  md:text-xl ">
-                  {post.title}
-               
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <nav className="fixed bg-gradient-to-t  from-transparent via-white to-white text-gray-500 md:py-6 px-4 top-8 w-full z-10">
+  <ul className="flex flex-row flex-wrap pt-8 pb-16 md:py-6 gap-x-7 justify-center">
+    {posts.map((post, index) => (
+      <li key={index}>
+        <Link
+          href={`/posts/${post.slug.current}`}
+          className="hover:text-black font-medium leading-2 md:text-xl"
+        >
+          {post.title}
+        </Link>
+      </li>
+    ))}
+  </ul>
+</nav>
       {/* Render ImageGallery for each post */}
 
 

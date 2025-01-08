@@ -50,7 +50,7 @@ body {
 h1 {
   font-size: 25px; /* Default size for small screens */
 
-  font-weight: 400;
+  font-weight: 500;
 
   @screen md {
     font-size: 32px; /* Medium screens */
