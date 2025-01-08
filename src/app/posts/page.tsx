@@ -11,7 +11,7 @@ export default async function PostsPage() {
 
   const posts: Post[] = await getPosts(client, {
     next: {
-      revalidate: 412
+      revalidate: 12
     },
   })
 

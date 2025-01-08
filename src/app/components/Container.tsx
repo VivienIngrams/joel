@@ -46,7 +46,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
       >
         {isProjetsPage && !isPublieesSousPage && !isProjetsSousPage && (
   <Link href="/posts" className="h-12 absolute top-3 md:top-4 left-4">
-    <TiArrowBackOutline className="text-black hover:text-gray-500 text-[1.5rem] md:text-[2.5rem]" />
+    <TiArrowBackOutline className="text-gray-500 hover:text-black text-[1.5rem] md:text-[2.5rem]" />
   </Link>
 )}
 
@@ -55,7 +55,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
     href="/posts/publiees"
     className="h-12 absolute top-3 md:top-4 left-3 md:left-4"
   >
-    <TiArrowBackOutline className="text-black hover:text-gray-500 text-[1.5rem] md:text-[2.5rem]" />
+    <TiArrowBackOutline className="text-gray-500 hover:text-black text-[1.5rem] md:text-[2.5rem]" />
   </Link>
 )}
 
@@ -64,7 +64,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
     href="/posts/projets"
     className="h-12 absolute top-3 md:top-4 left-3 md:left-5"
   >
-    <TiArrowBackOutline className="text-black hover:text-gray-500 text-[1.5rem] md:text-[2.5rem]" />
+    <TiArrowBackOutline className="text-gray-500 hover:text-black text-[1.5rem] md:text-[2.5rem]" />
   </Link>
 )}
 
@@ -76,7 +76,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
       href="/posts"
       className="h-10 absolute top-3 md:top-4 left-3 md:left-4"
     >
-      <TiArrowBackOutline className="text-black hover:text-gray-500 text-[1.5rem]  md:text-[2.5rem]" />
+      <TiArrowBackOutline className="text-gray-500 hover:text-black text-[1.5rem]  md:text-[2.5rem]" />
     </Link>
   )}
 
@@ -100,7 +100,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
         <div>
           <Link href="https://vivieningrams.com">
           <p
-            className={`  text-black hover:text-gray-500 xs:tracking-normal z-55 leading-loose w-[150px] pt-2 ${
+            className={`  text-gray-500 md:text-black xs:tracking-normal z-55 leading-loose w-[150px] pt-2 ${
               isHomePage && ' '
             }  ${isInfoPage ?  'absolute right-0 md:left-4 bottom-0 block h-10 w-30 text-neutral-400 text-[12px] ' : 'hidden'}`}
           >
@@ -121,7 +121,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
                   isHomePage ? 'hidden' : 'block'
                 }`}
               >
-              <AiOutlineMail className="text-black hover:text-gray-500 text-[20px] md:text-[24px]" />
+              <AiOutlineMail className="text-gray-500 hover:text-black text-[20px] md:text-[24px]" />
               </Link>
               
             </div>
