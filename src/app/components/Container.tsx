@@ -45,7 +45,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
         }`}
       >
         {isProjetsPage && !isPublieesSousPage && !isProjetsSousPage && (
-  <Link href="/posts" className="h-12 absolute top-3 md:top-4 left-5">
+  <Link href="/posts" className="h-12 absolute top-3 md:top-4 left-3 md:left-5">
     <PiArrowBendUpLeftLight className="text-gray-500 hover:text-black text-[1.5rem] md:text-[2.5rem]" />
   </Link>
 )}
@@ -53,7 +53,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
 {isPublieesSousPage && !isProjetsSousPage && (
   <Link
     href="/posts/publiees"
-    className="h-12 absolute top-3 md:top-4 left-3 md:left-5"
+    className="h-12 absolute top-3 md:top-4 left-2 md:left-5"
   >
     <PiArrowBendUpLeftLight className="text-gray-500 hover:text-black text-[1.5rem] md:text-[2.5rem]" />
   </Link>
@@ -62,7 +62,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
 {isProjetsSousPage && !isPublieesSousPage && (
   <Link
     href="/posts/projets"
-    className="h-12 absolute top-3 md:top-4 left-3 md:left-5"
+    className="h-12 absolute top-3 md:top-4 left-2 md:left-5"
   >
     <PiArrowBendUpLeftLight className="text-gray-500 hover:text-black text-[1.5rem] md:text-[2.5rem]" />
   </Link>
@@ -74,15 +74,15 @@ export default function Container({ children }: { children: React.ReactNode }) {
   !isProjetsPage && (
     <Link
       href="/posts"
-      className="h-10 absolute top-3 md:top-4 left-3 md:left-5"
+      className="h-10 absolute top-3 md:top-4 left-2 md:left-5"
     >
       <PiArrowBendUpLeftLight className="text-gray-500 hover:text-black text-[1.5rem]  md:text-[2.5rem]" />
     </Link>
   )}
 
         <Link href={isHomePage ? '/posts' : '/'}>
-          <h1 className={`${isHomePage ? 'hidden' : 'text-black font-montserrat uppercase font-light hover:text-gray-500 text-2xl tracking-[-0.rem] md:text-5xl text-center'}`}>
-           <span className='text-3xl font-lighter md:text-[55px]   tracking-[-0.8rem] md:tracking-[-1rem]'>J</span> oël <span className='text-3xl  md:text-[55px] font-lighter tracking-[-0.1rem]'>B</span>ardeau
+          <h1 className={`${isHomePage ? 'hidden' : 'text-black font-montserrat uppercase font-normal md:font-light hover:text-gray-500 text-3xl tracking-[-0.rem] md:text-5xl text-center'}`}>
+           <span className='text-4xl font-light md:font-lighter md:text-[55px]   tracking-[-0.6rem] md:tracking-[-1rem]'>J</span> oël <span className='text-4xl  md:text-[55px] font-light md:font-lighter tracking-[-0.1rem]'>B</span>ardeau
           </h1>
         </Link>
       </div>
@@ -100,9 +100,9 @@ export default function Container({ children }: { children: React.ReactNode }) {
         <div>
           <Link href="https://vivieningrams.com">
           <p
-            className={`  text-gray-500 md:text-black xs:tracking-normal z-55 font-barlow leading-loose w-[150px] pt-2 ${
+            className={`font-arsenal  text-gray-500 hover:text-black xs:tracking-normal z-55  leading-loose w-[180px] pt-2 ${
               isHomePage && ' '
-            }  ${isInfoPage ?  'absolute right-0 md:left-5 bottom-0 block h-10 w-30 text-neutral-400 text-[12px] ' : 'hidden'}`}
+            }  ${isInfoPage ?  'absolute right-0 md:left-5 bottom-0 block h-10 w-30   text-[12px] ' : 'hidden'}`}
           >
             Website by Vivien Ingrams
           </p></Link>

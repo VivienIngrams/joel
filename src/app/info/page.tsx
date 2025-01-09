@@ -14,7 +14,7 @@ export default function InfoPage() {
           href="mailto:info@joelbardeau.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-4xl md:text-4xl font-cinzel mt-20 mb-4 md:mt-0 hover:text-black"
+          className="text-3xl md:text-4xl font-cinzel mt-20 mb-4 md:mt-0 hover:text-black"
         >
           Contact
         </Link>

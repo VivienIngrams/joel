@@ -14,13 +14,13 @@ const NavMenu = () => {
   }
 
   return (
-    <nav className="absolute w-full z-50 text-black font-semibold tracking-tight ">
+    <nav className="absolute w-full z-50 text-black font-medium tracking-tight ">
       <div
         className={`w-full flex items-start justify-start md:justify-center text-lg  ${
           isHomePage ? 'hidden' : 'md:text-2xl tracking-wide  '
         }`}
       >
-        <div className="flex items-center">
+        <div className="flex items-center md:-ml-12">
           <div className="hidden md:block">
             <div className=" flex items-baseline ">
               <Link
