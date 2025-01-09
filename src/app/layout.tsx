@@ -6,7 +6,7 @@ import { Arsenal,  Cinzel, Montserrat, } from "next/font/google";
 import Container from './components/Container';
 
 const arsenal = Arsenal({  variable: '--font-family-arsenal',  weight: [   "400",  "700" ], style: ["normal", "italic"], subsets: ["latin"],  });
-const montserrat = Montserrat({  variable: '--font-family-montserrat',  weight: ["300", "400", "500", "600", "700" ], style: ["normal"], subsets: ["latin"],  });
+const montserrat = Montserrat({  variable: '--font-family-montserrat',  weight: ["200", "300", "400", "500", "600", "700" ], style: ["normal"], subsets: ["latin"],  });
 const cinzel = Cinzel({  variable: '--font-family-cinzel',  weight: [  "800", "500",   "400", "700", "900" ], style: ["normal"], subsets: ["latin"],  });
 
 export const metadata: Metadata = {
