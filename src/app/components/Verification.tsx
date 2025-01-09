@@ -43,7 +43,7 @@ const Verification = () => {
   }
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-black font-arsenal bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white text-gray-500 p-6 rounded-md text-center max-w-xs sm:max-w-sm w-full mx-4">
         <h2 className="text-xl md:text-3xl font-bold mb-4">Avertissement</h2>
         <p className="mb-4">Ce site contient des images de nudité.</p>

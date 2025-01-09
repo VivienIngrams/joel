@@ -11,7 +11,7 @@ module.exports = {
       fontFamily: {
         cinzel: ['var(--font-family-cinzel)'],
         arsenal: ['var(--font-family-arsenal)'],
-        barlow: ['var(--font-family-barlow)'],
+        montserrat: ['var(--font-family-montserrat)'],
       },
         backgroundImage: {
           'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

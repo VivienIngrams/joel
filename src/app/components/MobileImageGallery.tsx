@@ -63,7 +63,7 @@ const MobileImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) 
       <div className="relative text-center ml-4 mt-6 ">
         <Link href={`/posts/${slug}`}>
           <div className="relative">
-            {/* White Line Spanning Full Width */}
+            {/* grey Line Spanning Full Width */}
             <span className="absolute left-0 right-0 bottom-1/2 transform  bg-gray-400 h-[1px] z-5"></span>
 
           

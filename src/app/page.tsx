@@ -15,44 +15,46 @@ export default async function HomePage() {
       cache: 'no-store',
     },
   })
+
   return (
     <>
       {/* Age Verification Popup */}
       <Verification />
 
-      {/* Entire Page Clickable */}
+      {/* Entire Page Clickable */}    
+   
       <Link
         href="/posts"
         className="block relative h-[100vh] w-full overflow-hidden"
       >
         <section className="relative h-full w-full flex flex-col justify-start md:justify-center items-start">
-          <Image
+          
+        <Image
             className="object-cover object-[56%] md:object-bottom"
-            src={urlForImage(homePageData.mainImages[0]).width(1920).height(1080).quality(80).url() || ''}
+            src={urlForImage(homePageData.mainImages[0]).url() || ''}
             layout="fill"
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 100vw"
+            sizes="100vw"
             alt="Home Page Background"
-            priority
           />
 
           {/* Title and Subtitle */}
-          <div className="font-cinzel font-black fixed left-1/2 -translate-x-1/2 text-black bottom-[42%] md:bottom-[51%] text-center">
-            <h1 className="text-center md:text-left text-[50px] md:text-[100px] uppercase tracking-tighter leading-[40px]">
-              <span className="text-6xl leading-[40px] md:text-9xl tracking-[-1rem] md:tracking-[-2rem]">
+          <div className="fixed md:min-w-full left-1/2 -translate-x-1/2 text-black  font-montserrat bottom-[40%] md:bottom-[52%]  text-center">
+            <h1 className=" font-medium text-[50px] md:text-[100px] uppercase tracking-[-0.4rem] leading-[40px]">
+              <span className="text-6xl font-normal leading-[40px] md:text-9xl tracking-[-2rem] ">
                 J
               </span>{' '}
               oël{' '}
-              <span className="text-6xl leading-[40px] md:text-9xl tracking-[-0.25rem] md:tracking-[-0.5rem]">
+              <span className="text-6xl font-normal leading-[40px] md:text-9xl tracking-[-0.6rem]">
                 B
               </span>
               ardeau
             </h1>
-            <h2 className="text-2xl md:text-4xl font-light leading-normal md:-mt-3">
+            <h2 className=" text-2xl md:text-3xl font-cinzel leading-normal md:-mt-2">
               Artiste Auteur
             </h2>
           </div>
         </section>
       </Link>
     </>
-  );
+  )
 }

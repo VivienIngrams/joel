@@ -28,7 +28,7 @@ export function HorizontalScroll({ images, title, subtitles }: HorizontalGallery
   // Set dimensions of images based on aspect ratio
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const height = window.innerHeight * 0.78
+      const height = window.innerHeight * 0.75
       let totalImagesWidth = 0
 
       images.forEach((image) => {
@@ -120,7 +120,7 @@ export function HorizontalScroll({ images, title, subtitles }: HorizontalGallery
       <Modal />
       <section
         ref={triggerRef}
-        className="w-full h-full pt-16 overflow-hidden bg-white pl-[28vw]"
+        className="w-full h-full pt-24 overflow-hidden bg-white pl-[28vw]"
       >
         <div
           ref={sectionRef}
