@@ -8,6 +8,7 @@ module.exports = {
   ],
   theme: {
     extend: {
+      
       fontFamily: {
         cinzel: ['var(--font-family-cinzel)'],
         arsenal: ['var(--font-family-arsenal)'],

@@ -100,7 +100,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
         <div>
           <Link href="https://vivieningrams.com">
           <p
-            className={`font-arsenal  text-gray-500 hover:text-black xs:tracking-normal z-55  leading-loose w-[180px] pt-2 ${
+            className={`font-arsenal  text-gray-500 hover:text-black xs:tracking-normal z-55  leading-loose w-[150px] pt-2 ${
               isHomePage && ' '
             }  ${isInfoPage ?  'absolute right-0 md:left-5 bottom-0 block h-10 w-30   text-[12px] ' : 'hidden'}`}
           >
