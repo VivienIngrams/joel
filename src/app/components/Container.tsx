@@ -1,13 +1,15 @@
 'use client'
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useState } from 'react'; // Import useState
 import { AiOutlineMail } from "react-icons/ai";
-import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa'
+import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa';
 import { PiArrowBendUpLeftLight } from "react-icons/pi";
 
+import ContactForm from './ContactForm';
+import NavMenu from './NavMenu';
 
-import NavMenu from './NavMenu'
 
 export default function Container({ children }: { children: React.ReactNode }) {
   const path = usePathname()
@@ -29,6 +31,17 @@ export default function Container({ children }: { children: React.ReactNode }) {
   const isSousPage =
     path.startsWith('/posts/') && !isProjetsSousPage && !isPublieesSousPage // Exclude Projets and Publiees subpages
   const isStudioPage = path.startsWith('/studio') // Check if the path starts with /studio
+
+    // State for managing the contact form visibility
+    const [isFormOpen, setIsFormOpen] = useState(false);
+
+    const openForm = () => {
+      setIsFormOpen(true); // Show the form
+    };
+  
+    const closeForm = () => {
+      setIsFormOpen(false); // Hide the form
+    }; 
 
   if (isStudioPage) {
     // If it's the /studio path, return only the children without the container
@@ -113,21 +126,36 @@ export default function Container({ children }: { children: React.ReactNode }) {
           {!isInfoPage && !isHomePage && (
             <div className="flex items-end gap-x-3">
               <div className="flex gap-x-3">
+                {/* Replace with your Socials component */}
                 <Socials />
               </div>
-              <Link
-                href="mailto:info@joelbardeau.com"
-                className={` ${
+              <button
+                onClick={openForm}
+                className={`${
                   isHomePage ? 'hidden' : 'block'
                 }`}
               >
-              <AiOutlineMail className="text-gray-500 hover:text-black text-[20px] md:text-[24px]" />
-              </Link>
-              
+                <AiOutlineMail className="text-gray-500 hover:text-black text-[20px] md:text-[24px]" />
+              </button>
             </div>
           )}
         </div>
       </footer>
+          {/* Contact Form Modal */}
+          {isFormOpen && (
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
+            <button
+              onClick={closeForm}
+              className="text-gray-500 hover:text-gray-700 float-right"
+            >
+             X
+            </button>
+            <ContactForm />
+          </div>
+        </div>
+      )}
+    
     </div>
   )
 }

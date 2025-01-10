@@ -1,28 +1,28 @@
 'use client'
 
-import { useState } from 'react'; // Import useState
+import { useState } from 'react' // Import useState
 import Image from 'next/image'
 import Link from 'next/link'
-import { AiOutlineMail } from "react-icons/ai";
+import { AiOutlineMail } from 'react-icons/ai'
 
-import ContactForm from '../components/ContactForm';
-import { Socials } from '../components/Container';
+import ContactForm from '../components/ContactForm'
+import { Socials } from '../components/Container'
 
 export default function InfoPage() {
-  const [isFormOpen, setIsFormOpen] = useState(false); // State to track form visibility
+  const [isFormOpen, setIsFormOpen] = useState(false) // State to track form visibility
 
   const openForm = () => {
-    setIsFormOpen(true); // Set the form to visible
-  };
+    setIsFormOpen(true) // Set the form to visible
+  }
 
   const closeForm = () => {
-    setIsFormOpen(false); // Set the form to hidden
-  };
+    setIsFormOpen(false) // Set the form to hidden
+  }
 
   return (
     <div className="min-h-screen md:grid md:grid-cols-3 bg-white text-gray-500 md:mx-[10vw]">
       <div className="md:min-h-screen flex flex-col md:items-center md:justify-center px-6 md:ml-[30%] md:py-12">
-        <button 
+        <button
           onClick={openForm}
           className="text-2xl md:text-4xl font-cinzel mt-20 mb-4 md:mt-0 hover:text-black  hover:scale-105 ease-in duration-600 border-2 rounded-lg shadow-md p-2 bg-gray-100"
         >
@@ -32,11 +32,11 @@ export default function InfoPage() {
         {isFormOpen && (
           <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
             <div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
-              <button 
+              <button
                 onClick={closeForm}
                 className="text-gray-500 hover:text-gray-700 float-right"
               >
-                Close
+                X
               </button>
               <ContactForm />
             </div>
@@ -45,12 +45,11 @@ export default function InfoPage() {
 
         <div className="flex items-end gap-x-4">
           <Socials />
-          <Link
-            href="mailto:info@joelbardeau.com"
-            className={`hover:text-neutral-400`}
+          <button
+            onClick={openForm}   className=" "
           >
-            <AiOutlineMail className="text-gray-500 text-[20px] md:text-[24px]" />
-          </Link>
+            <AiOutlineMail className="text-gray-500 hover:text-black text-[20px] md:text-[24px]" />
+          </button>
         </div>
       </div>
       <div className="flex items-center justify-start md:justify-center">
@@ -89,5 +88,5 @@ export default function InfoPage() {
         </p>
       </div>
     </div>
-  );
+  )
 }
