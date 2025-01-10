@@ -18,7 +18,7 @@ function PostContent({ post }: PostContentProps) {
   }
 
   return (
-    <div className="w-full h-full  relative md:fixed md:max-w-[25vw] min-[1800px]:max-w-[23vw] md:top-0 md:left-0 md:bg-white pt-16 pb-6 md:py-16 px-4 md:pl-7 z-40">
+    <div className="w-full h-full  relative md:fixed md:max-w-[25vw] min-[1800px]:max-w-[23vw] md:top-0 md:left-0 md:bg-white pt-24 pb-6 md:py-16 px-4 md:pl-7 z-40">
       {/* Gradient Space */}
       <div className="hidden md:block absolute top-0 left-[25vw] min-[1800px]:left-[23vw] md:w-[5vw] bg-gradient-to-r from-white via-white/70 to-transparent h-full"></div>
       <div className="md:h-[80vh] flex flex-col justify-start md:justify-center">

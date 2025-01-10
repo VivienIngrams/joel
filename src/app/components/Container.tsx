@@ -41,11 +41,11 @@ export default function Container({ children }: { children: React.ReactNode }) {
         className={`${
           isHomePage
             ? 'hidden' 
-            : 'fixed  top-0 z-50 h-16 w-full md:h-24 py-6 bg-white flex flex-col items-center justify-center'
+            : 'fixed  top-0 z-50 h-24 w-full md:h-24 py-6 bg-gradient-to-b from-white via-white to-white/20 flex flex-col items-center justify-center'
         }`}
       >
         {isProjetsPage && !isPublieesSousPage && !isProjetsSousPage && (
-  <Link href="/posts" className="h-12 absolute top-3 md:top-4 left-3 md:left-5">
+  <Link href="/posts" className="h-12 absolute top-1 md:top-4 left-2 md:left-5">
     <PiArrowBendUpLeftLight className="text-gray-500 hover:text-black text-[1.5rem] md:text-[2.5rem]" />
   </Link>
 )}
@@ -53,7 +53,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
 {isPublieesSousPage && !isProjetsSousPage && (
   <Link
     href="/posts/publiees"
-    className="h-12 absolute top-3 md:top-4 left-2 md:left-5"
+    className="h-12 absolute top-1 md:top-4 left-2 md:left-5"
   >
     <PiArrowBendUpLeftLight className="text-gray-500 hover:text-black text-[1.5rem] md:text-[2.5rem]" />
   </Link>
@@ -62,7 +62,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
 {isProjetsSousPage && !isPublieesSousPage && (
   <Link
     href="/posts/projets"
-    className="h-12 absolute top-3 md:top-4 left-2 md:left-5"
+    className="h-12 absolute top-1 md:top-4 left-2 md:left-5"
   >
     <PiArrowBendUpLeftLight className="text-gray-500 hover:text-black text-[1.5rem] md:text-[2.5rem]" />
   </Link>
@@ -74,7 +74,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
   !isProjetsPage && (
     <Link
       href="/posts"
-      className="h-10 absolute top-3 md:top-4 left-2 md:left-5"
+      className="h-10 absolute top-1 md:top-4 left-2 md:left-5"
     >
       <PiArrowBendUpLeftLight className="text-gray-500 hover:text-black text-[1.5rem]  md:text-[2.5rem]" />
     </Link>

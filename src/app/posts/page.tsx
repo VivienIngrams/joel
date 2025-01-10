@@ -42,7 +42,7 @@ export default async function PostsPage() {
     <div className="h-full md:min-h-[80vh] pb-20 font-cinzel font-bold bg-white max-w-full pt-40 md:pt-16 ">
       {/* Top Menu with Post Titles */}
       <nav className="fixed bg-gradient-to-t  from-transparent via-white to-white text-gray-500 md:py-6 px-4 top-12 w-full z-10">
-        <ul className="flex flex-row flex-wrap pt-8 pb-16 md:py-6 gap-x-7 justify-center">
+        <ul className="flex flex-row flex-wrap pt-10 pb-16 md:py-6 gap-x-7 justify-center">
           {sortedPosts.map((post, index) => (
             <li key={index}>
               <Link

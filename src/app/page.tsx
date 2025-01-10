@@ -39,17 +39,17 @@ export default async function HomePage() {
 
           {/* Title and Subtitle */}
           <div className="fixed md:min-w-full left-1/2 -translate-x-1/2 text-black  font-montserrat bottom-[42%] md:bottom-[52%]  text-center">
-            <h1 className="font-normal md:font-medium text-[50px] md:text-[100px] uppercase tracking-[-0.2rem] md:tracking-[-0.4rem] leading-[40px]">
-              <span className="text-[62px] font-light md:font-normal leading-[40px] md:text-9xl tracking-[-1rem] md:tracking-[-2rem] ">
+            <h1 className="font-normal text-[50px] md:text-[100px] uppercase tracking-[-0.2rem] md:tracking-[-0.4rem] leading-[40px]">
+              <span className="text-[62px] font-light leading-[40px] md:text-[135px] tracking-[-1rem] md:tracking-[-2rem] ">
                 J
               </span>{' '}
               oël{' '}
-              <span className="text-[61px] font-light md:font-normal leading-[40px] md:text-9xl tracking-[-0.3rem] md:tracking-[-0.6rem]">
+              <span className="text-[62px] font-light  leading-[40px] md:text-[135px] tracking-[-0.3rem] md:tracking-[-0.6rem]">
                 B
               </span>
               ardeau
             </h1>
-            <h2 className=" text-2xl md:text-3xl font-cinzel leading-normal md:-mt-2">
+            <h2 className=" text-2xl md:text-3xl font-cinzel leading-normal mt-4">
               Artiste Auteur
             </h2>
           </div>
