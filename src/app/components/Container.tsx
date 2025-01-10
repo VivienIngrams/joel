@@ -82,7 +82,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
 
         <Link href={isHomePage ? '/posts' : '/'}>
           <h1 className={`${isHomePage ? 'hidden' : 'text-black font-montserrat uppercase font-normal md:font-light hover:text-gray-500 text-3xl tracking-[-0.rem] md:text-5xl text-center'}`}>
-           <span className='text-4xl font-light md:font-lighter md:text-[55px]   tracking-[-0.6rem] md:tracking-[-1rem]'>J</span> oël <span className='text-4xl  md:text-[55px] font-light md:font-lighter tracking-[-0.1rem]'>B</span>ardeau
+           <span className='text-[40px] font-light md:font-lighter md:text-[55px]   tracking-[-0.65rem] md:tracking-[-1rem]'>J</span> oël <span className='text-[40px]  md:text-[55px] font-light md:font-lighter tracking-[-0.05rem]'>B</span>ardeau
           </h1>
         </Link>
       </div>

@@ -31,7 +31,7 @@ export async function POST(request) {
 
     const mail = await transporter.sendMail({
       from: email,
-      to: 'vivieningrams@hotmail.com',
+      to: 'info@joelbardeau.com',
       subject: `Form submission: ${subject}`,
       html: `
         <p>Name: ${name} </p>
