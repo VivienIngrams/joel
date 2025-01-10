@@ -41,7 +41,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
         className={`${
           isHomePage
             ? 'hidden' 
-            : 'fixed  top-0 z-50 h-24 w-full md:h-24 py-6 bg-gradient-to-b from-white via-white to-white/20 flex flex-col items-center justify-center'
+            : 'fixed  top-0 z-50 h-24 w-full md:h-24 py-6 bg-gradient-to-b from-white via-white to-white/10 flex flex-col items-center justify-center'
         }`}
       >
         {isProjetsPage && !isPublieesSousPage && !isProjetsSousPage && (
