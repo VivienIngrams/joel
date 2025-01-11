@@ -5,12 +5,11 @@ import { type SanityClient } from 'next-sanity'
 
 // Query to fetch all posts with defined slugs, ordered by creation date
 export const postsQuery = groq`
-  *[_type == "post" && slug.current in ["survol", "hors-d-age", "respiration", "autoportraits", "derision", "publiees", "projets"]] {
+  *[_type == "post" && slug.current in ["survol", "hors-d-age", "respiration", "images-du-jour", "autoportraits", "derision", "collaborations", "projets"]] {
    
     title,
     slug,
     mainImages, 
-   
     layout,
   } | order(
     _createdAt desc
@@ -26,7 +25,7 @@ export async function getPosts(
 
   return posts
 }
-export const publieesPostsQuery = groq`
+export const collaborationsPostsQuery = groq`
   *[_type == "post" && slug.current in ["mathilde", "johanna", "vibrations" ]] {
     _id,
     _createdAt,
@@ -37,11 +36,11 @@ export const publieesPostsQuery = groq`
     layout,
   } | order(_createdAt desc)
 `
-export async function getPublieesPosts(
+export async function getCollaborationsPosts(
   client: SanityClient,
   options = {},
 ): Promise<Post[]> {
-  const posts = await client.fetch(publieesPostsQuery, options)
+  const posts = await client.fetch(collaborationsPostsQuery, options)
   return posts
 }
 export const projetsPostsQuery = groq`

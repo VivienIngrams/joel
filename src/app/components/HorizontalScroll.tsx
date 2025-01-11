@@ -28,7 +28,7 @@ export function HorizontalScroll({ images, title, subtitles }: HorizontalGallery
   // Set dimensions of images based on aspect ratio
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const height = window.innerHeight * 0.75
+      const height = window.innerHeight * 0.73
       let totalImagesWidth = 0
 
       images.forEach((image) => {
@@ -94,7 +94,7 @@ export function HorizontalScroll({ images, title, subtitles }: HorizontalGallery
             }}
             onClick={handleClickOutside}
           >
-            <div className="relative w-auto h-auto max-w-[90vw] max-h-[99vh] flex items-center justify-center">
+            <div  onClick={closeModal} className="relative w-auto h-auto max-w-[90vw] max-h-[99vh] flex items-center justify-center">
               <Image
                 src={selectedImage}
                 alt={title}
@@ -105,7 +105,7 @@ export function HorizontalScroll({ images, title, subtitles }: HorizontalGallery
               />
               <button
                 className="absolute top-5 -right-12 text-gray-500 rounded-full p-1 px-2 hover:bg-white"
-                onClick={closeModal}
+               
               >
                 ✕
               </button>
@@ -120,7 +120,7 @@ export function HorizontalScroll({ images, title, subtitles }: HorizontalGallery
       <Modal />
       <section
         ref={triggerRef}
-        className="w-full h-full pt-24 overflow-hidden bg-white pl-[28vw]"
+        className="w-full h-full pt-28 overflow-hidden bg-white pl-[28vw]"
       >
         <div
           ref={sectionRef}
@@ -152,7 +152,7 @@ export function HorizontalScroll({ images, title, subtitles }: HorizontalGallery
                   className="mt-24 object-cover"
                 />
                 {subtitles && subtitles[index] && (
-                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-black/10 text-gray-500 text-center uppercase text-2xl p-2 ">
+                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-white text-center uppercase text-2xl p-2 ">
                     {subtitles[index]}
                   </div>
                 )}

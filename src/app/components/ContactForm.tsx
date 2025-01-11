@@ -25,8 +25,8 @@ const ContactForm: React.FC = () => {
     }
   }
   return (
-    <form onSubmit={handleSubmit} className="font-cinzel">
-      <div className="grid md:grid-cols-2 gap-4 w-full py-1">
+    <form onSubmit={handleSubmit} className="font-cinzel w-full">
+     
         <div className="flex flex-col">
           <label htmlFor="name" className="uppercase text-sm py-1">
             Name
@@ -38,11 +38,11 @@ const ContactForm: React.FC = () => {
             required
             minLength={3}
             maxLength={150}
-            className="font-arsenal border-2  rounded border-stone-400 p-3"
+            className="font-arsenal border-2  rounded border-stone-400 p-1"
             type="text"
           />
         </div>
-      </div>
+     
       <div className="flex flex-col py-1">
         <label htmlFor="email" className="uppercase text-sm py-1">
           Email
@@ -54,7 +54,7 @@ const ContactForm: React.FC = () => {
           required
           minLength={8}
           maxLength={150}
-          className="font-arsenal border-2  rounded border-stone-400 p-3"
+          className="font-arsenal border-2  rounded border-stone-400 p-1"
           type="email"
         />
       </div>
@@ -66,7 +66,7 @@ const ContactForm: React.FC = () => {
           id="subject"
           name="subject"
           autoComplete="off"
-          className="font-arsenal border-2  rounded border-stone-400 p-3"
+          className="font-arsenal border-2  rounded border-stone-400 p-1"
           type="text"
         />
       </div>
@@ -81,13 +81,13 @@ const ContactForm: React.FC = () => {
           required
           minLength={20}
           maxLength={600}
-          className="font-arsenal border-2 rounded border-stone-400 p-3"
+          className="font-arsenal border-2 rounded border-stone-400 p-1"
           rows={5}
         />
       </div>
       <button
         type="submit"
-        className=" mt-2 hover:text-black  hover:scale-105 ease-in duration-600 border-2 rounded-lg shadow-md p-2 bg-gray-100"
+        className=" mt-4 hover:text-black  hover:scale-105 ease-in duration-600 border-2 rounded-lg shadow-md p-2 bg-gray-100"
         >
         Send Message
       </button>

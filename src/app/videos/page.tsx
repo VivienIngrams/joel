@@ -36,8 +36,8 @@ const videoList = [
   
   const StaticVideos: React.FC = () => {
     return (
-      <div className="min-h-screen py-24 w-full md:w-[85vw] font-cinzel mx-auto flex flex-col items-center justify-center gap-y-8">
-      <h1 className="text-2xl md:text-4xl  w-full text-left   pl-8 md:pl-16 md:mb-8">
+      <div  className="min-h-screen py-24 w-full md:w-[85vw] font-cinzel mx-auto flex flex-col items-center justify-center gap-y-8">
+      <h1 className="relative text-2xl md:text-4xl  w-full text-left   pl-8 md:pl-16" style={{ zIndex: 50 }}>
       Videos
         </h1>
         <div className="grid w-full grid-cols-1 lg:grid-cols-2 gap-y-8 ">

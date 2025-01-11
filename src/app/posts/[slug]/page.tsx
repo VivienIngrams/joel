@@ -5,7 +5,7 @@ import MobileScroll from '~/app/components/MobileScroll'
 import PostContent from '~/app/components/PostContent'
 import { readToken } from '~/sanity/lib/sanity.api'
 import { getClient } from '~/sanity/lib/sanity.client'
-import { getPost, type Post } from '~/sanity/lib/sanity.queries'
+import { getPost, type Post, getPosts } from '~/sanity/lib/sanity.queries'
 
 export default async function PostPage({
   params,
@@ -24,6 +24,35 @@ console.log(post.subtitles)
   // Handle case where no post is found
   if (!post) {
     return <p>No post found.</p>
+  }
+ const posts: Post[] = await getPosts(client, {
+    next: {
+      revalidate: 2
+    },
+  })
+
+  // Define custom slug order
+  const customOrder = [
+    'autoportraits',
+    'survol',
+    'hors-d-age',
+    'respiration',
+    'derision',
+    'collaborations',
+    'projets',
+    'images-du-jour',
+  ]
+
+  // Sort posts succinctly
+  const sortedPosts = posts.sort(
+    (a, b) =>
+      customOrder.indexOf(a.slug.current) -
+        customOrder.indexOf(b.slug.current) ||
+      new Date(b._createdAt).getTime() - new Date(a._createdAt).getTime(),
+  )
+
+  if (!sortedPosts || sortedPosts.length === 0) {
+    return <p>No posts found.</p>
   }
 
   return (
@@ -63,11 +92,13 @@ console.log(post.subtitles)
           </g>
         </svg>
       </div>
-      {/* Post Content on the Left */}
+
+
+      {/* Post Texts */}
       <PostContent post={post} />
       {/* // Mobile View */}
-      <div className="h-full w-full md:hidden mb-20">
-        <MobileScroll images={post.images} title={post.title} />
+      <div className="h-full w-full md:hidden mb-28">
+        <MobileScroll images={post.images} title={post.title} subtitles={post.subtitles}/>
       </div>
       {/* Horizontal Scrolling Image Gallery on the Right */}
       <div className="hidden md:block md:flex-grow md:pl-4 h-full">

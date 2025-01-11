@@ -16,8 +16,8 @@ const NavMenu = () => {
   return (
     <nav className="absolute w-full z-50 text-black font-medium tracking-tight ">
       <div
-        className={`w-full flex items-start justify-start md:justify-center text-lg  ${
-          isHomePage ? 'hidden' : 'md:text-2xl tracking-wide  '
+        className={`w-full flex items-start justify-start md:justify-center  ${
+          isHomePage ? 'hidden' : 'md:text-lg tracking-wide  '
         }`}
       >
         <div className="flex items-center md:-ml-12">
@@ -25,22 +25,21 @@ const NavMenu = () => {
             <div className=" flex items-baseline ">
               <Link
                 href="/posts"
-                className="hover:text-gray-500 px-3   text-md  "
+                className="hover:text-gray-500 px-3    "
               >
                 Galeries
               </Link>
               <Link
                 href="/videos"
-                className="hover:text-gray-500 px-3  text-md  "
+                className="hover:text-gray-500 px-3  "
               >
                 Videos
               </Link>
-
-              <Link
-                href="/info"
-                className="hover:text-gray-500 px-3  "
-              >
-                Info
+              <Link href="/bio" className="hover:text-gray-500 px-3  ">
+                Bio
+              </Link>
+              <Link href="/contact" className="hover:text-gray-500 px-3  ">
+                Contact
               </Link>
             </div>
           </div>
@@ -163,24 +162,18 @@ const NavMenu = () => {
         id="mobile-menu"
         onClick={toggleMenu}
       >
-        <div className="text-black px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <Link
-            href="/posts"
-            className=" block px-3 py-2  text-xl  "
-          >
+        <div className="text-black px-2 pt-2 pb-3 space-y-1 text-md sm:px-3">
+          <Link href="/posts" className=" block px-3 py-1 ">
             Galeries
           </Link>
-          <Link
-            href="/videos"
-            className=" block px-3 py-2  text-xl  "
-          >
+          <Link href="/videos" className=" block px-3 py-1 ">
             Videos
           </Link>
-          <Link
-            href="/info"
-            className=" block px-3 py-2  text-xl  "
-          >
-            Info
+          <Link href="/bio" className=" block px-3 py-1 ">
+            Bio
+          </Link>
+          <Link href="/contact" className=" block px-3 py-1 ">
+            Contact
           </Link>
         </div>
       </div>

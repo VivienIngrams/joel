@@ -5,6 +5,7 @@ import { readToken } from '~/sanity/lib/sanity.api'
 import { getClient } from '~/sanity/lib/sanity.client'
 import { getPosts, type Post } from '~/sanity/lib/sanity.queries'
 
+
 // Fetch data on the server side for all posts
 export default async function PostsPage() {
   const client = getClient({ token: readToken })
@@ -22,8 +23,9 @@ export default async function PostsPage() {
     'hors-d-age',
     'respiration',
     'derision',
-    'publiees',
+    'collaborations',
     'projets',
+    'images-du-jour',
   ]
 
   // Sort posts succinctly
@@ -40,21 +42,6 @@ export default async function PostsPage() {
 
   return (
     <div className="h-full md:min-h-[80vh] pb-20 font-cinzel font-bold bg-white max-w-full pt-40 md:pt-16 ">
-      {/* Top Menu with Post Titles */}
-      <nav className="fixed bg-gradient-to-t  from-transparent via-white to-white text-gray-500 md:py-6 px-4 top-12 w-full z-10">
-        <ul className="flex flex-row flex-wrap pt-10 pb-16 md:py-6 gap-x-7 justify-center">
-          {sortedPosts.map((post, index) => (
-            <li key={index}>
-              <Link
-                href={`/posts/${post.slug.current}`}
-                className="hover:text-black font-medium leading-2 text-sm md:text-xl"
-              >
-                {post.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
 
       {/* Render ImageGallery for each post */}
       {sortedPosts.map((post) => (
