@@ -3,41 +3,23 @@
 import React, { useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
+
 const ContactForm: React.FC = () => {
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '';
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [isVerified, setIsVerified] = useState(false);
 
-  async function handleCaptchaSubmission(token: string | null) {
-    console.log('reCAPTCHA token:', token);
-
-    try {
-      if (token) {
-        const response = await fetch('/api', {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ token }),
-        });
-  
-        if (!response.ok) {
-          throw new Error(`Failed reCAPTCHA verification: ${response.status}`);
-        }
-        setIsVerified(true);
-      }
-    } catch (error) {
-      console.error('reCAPTCHA submission error:', error);
+  const handleCaptchaChange = (token: string | null) => {
+    // Check if the token exists (user completed the CAPTCHA)
+    if (token) {
+      setIsVerified(true);
+    } else {
       setIsVerified(false);
     }
-  }
-
-  const handleCaptchaChange = (token: string | null) => {
-    handleCaptchaSubmission(token);
   };
 
   const handleCaptchaExpired = () => {
+    // Mark as unverified if the CAPTCHA expires
     setIsVerified(false);
   };
 
@@ -50,12 +32,22 @@ const ContactForm: React.FC = () => {
     }
 
     const formData = new FormData(event.currentTarget);
-    console.log(...formData.entries());
+    const token = recaptchaRef.current?.getValue(); // Get the reCAPTCHA token
 
     try {
       const response = await fetch('/api', {
         method: 'POST',
-        body: formData,
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token,
+          name: formData.get('name'),
+          email: formData.get('email'),
+          subject: formData.get('subject'),
+          message: formData.get('message'),
+        }),
       });
 
       if (!response.ok) {
@@ -65,6 +57,7 @@ const ContactForm: React.FC = () => {
       const responseData = await response.json();
       console.log(responseData);
       alert('Message successfully sent');
+      recaptchaRef.current?.reset(); // Reset reCAPTCHA after successful submission
     } catch (error) {
       console.error(error);
       alert('Error, please try resubmitting the form');
@@ -72,7 +65,13 @@ const ContactForm: React.FC = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="font-cinzel w-full">
+    <form
+      method="post"
+      action="/api"
+      encType="multipart/form-data"
+      onSubmit={handleSubmit}
+      className="font-cinzel w-full"
+    >
       <div className="flex flex-col">
         <label htmlFor="name" className="uppercase text-sm py-1">
           Name

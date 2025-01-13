@@ -19,42 +19,28 @@ const Bio = () => {
       </div>
       <div className="xl:min-h-screen flex flex-col justify-center text-lg xl:text-xl text-left max-w-2xl px-6 pb-16 xl:pl-4 xl:py-12">
         <p className="mb-4">
-          Jeune homme, j’ai suivi les cours classiques de dessin aux
-          Beaux-Arts et pratiqué assidûment la photographie argentique.
+          Jeune homme j&apos;ai suivi les cours classiques de dessin aux Beaux-Arts et pratiqué assidûment la photographie argentique.
         </p>
         <p className="mb-4">
-          Puis, j’ai entamé une carrière dans le monde médico-chirurgical.
+          Puis une carrière dans le monde médico-chirurgical.
         </p>
         <p className="mb-4">
-          Aujourd’hui, avec plus de 30 expositions à mon actif, mes travaux sont
-          présents aux murs de nombreux collectionneurs.
+          Depuis 2005 la photographie est devenue mon quotidien.
         </p>
         <p className="italic">
-          « Ma démarche est principalement tournée vers l’humain.
+          «De par mon passé professionnel je ne considère le corps que comme une enveloppe.
         </p>
         <p className="italic">
-          À travers son enveloppe, j’aime chercher et explorer le MOI des
-          êtres.
+          Se libérer des masques que la société nous pousse à porter par une ‘’mise à nu’’ de sa propre image est un chemin vers la sérénité.
         </p>
-        <p className="italic mb-6">
-          Depuis 2005, la photographie est devenue mon quotidien.
-        </p>
-        <p className="mb-4">
-          « De par mon passé professionnel, je considère le corps seulement comme
-          une enveloppe. Se libérer des masques que la société nous pousse à porter,
-          par une ‘’mise à nu’’ de sa propre image, est un chemin vers la sérénité.
-        </p>
-        <p className="mb-4">
+        <p className="italic">
           Extraire le corps vital en le détachant du corps esthétique.
         </p>
-        <p className="mb-4">
-          À travers mes créations, j’invite le visiteur à déposer ses masques et à
-          questionner son intimité.
+        <p className="italic">
+          Au travers de mes créations j’invite le visiteur à déposer ses masques et à questionner son intime.
         </p>
-        <p className="mb-4">
-          Mon travail en autoportraits est une introspection à la fois thérapeutique
-          et artistique. Je ne cherche en aucune manière à choquer, mais simplement
-          à proposer un voyage au-delà de la surface visible.
+        <p className="italic mb-4">
+          Mon travail en autoportraits est une introspection à la fois thérapeutique et artistique, je ne cherche en aucune manière à choquer, je cherche juste à proposer un voyage au delà de la surface visible».
         </p>
         <p className="mb-4">
           Mes travaux sont présents aux murs de nombreux collectionneurs.
