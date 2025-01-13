@@ -1,6 +1,11 @@
 'use client'
 
+import ReCAPTCHA from 'react-google-recaptcha'
+
 const ContactForm: React.FC = () => {
+
+  const KEY = process.env.RECAPTCHA_SECRET;
+
   async function handleSubmit(event: any) {
     event.preventDefault()
 
@@ -91,6 +96,7 @@ const ContactForm: React.FC = () => {
         >
         Send Message
       </button>
+      <ReCAPTCHA size="normal" sitekey={KEY} />
     </form>
   )
 }

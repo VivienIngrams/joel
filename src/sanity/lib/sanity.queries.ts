@@ -34,7 +34,7 @@ export const collaborationsPostsQuery = groq`
     excerpt,
     mainImages, 
     layout,
-  } | order(_createdAt desc)
+  } 
 `
 export async function getCollaborationsPosts(
   client: SanityClient,
