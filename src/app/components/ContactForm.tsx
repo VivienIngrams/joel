@@ -1,64 +1,72 @@
 'use client'
 
-import ReCAPTCHA from 'react-google-recaptcha'
-
+import React, { useState } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
+ 
 const ContactForm: React.FC = () => {
+  const site_key = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+  
+  const [captchaValue, setCaptchaValue] = useState<string | null>(null);
 
-  const secret_key = process.env.RECAPTCHA_SECRET;
+  const handleCaptchaChange = (value: string | null) => {
+    setCaptchaValue(value); // Store the captcha response
+  };
 
-  async function handleSubmit(event: any) {
-    event.preventDefault()
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
 
-    const formData = new FormData(event.target)
-    console.log(formData)
+    if (!captchaValue) {
+      alert("Please complete the ReCAPTCHA before submitting.");
+      return;
+    }
+
+    const formData = new FormData(event.currentTarget);
+
+    // Append the captcha response
+    formData.append('g-recaptcha-response', captchaValue);
+
     try {
-      const response = await fetch('/api', {
-        method: 'post',
-
+      const response = await fetch('/api/new', {
+        method: 'POST',
         body: formData,
-      })
+      });
 
       if (!response.ok) {
-        throw new Error(`response status: ${response.status}`)
+        throw new Error(`response status: ${response.status}`);
       }
-      const responseData = await response.json()
-      console.log(responseData)
-      alert('Message successfully sent')
+
+      const responseData = await response.json();
+      console.log(responseData);
+      alert('Message successfully sent');
     } catch (err) {
-      console.error(err)
-      alert('Error, please try resubmitting the form')
+      console.error(err);
+      alert('Error, please try resubmitting the form');
     }
   }
+
   return (
-    <form   method='post'
-    action='/api/new'
-    encType='multipart/form-data'
-    onSubmit={handleSubmit}
-    // onSubmit={event => {
-    //   if (ReCAPTCHA.getResponse() === '') {
-    //     event.preventDefault()
-    //     alert("Please click <I'm not a robot> before sending the message")
-    //   }
-    //    handleSubmit
-    // }}  
-    className="font-cinzel w-full">
-     
-        <div className="flex flex-col">
-          <label htmlFor="name" className="uppercase text-sm py-1">
-            Name
-          </label>
-          <input
-            id="name"
-            name="name"
-            autoComplete="off"
-            required
-            minLength={3}
-            maxLength={150}
-            className="font-arsenal border-2  rounded border-stone-400 p-1"
-            type="text"
-          />
-        </div>
-     
+    <form
+      method="post"
+      encType="multipart/form-data"
+      onSubmit={handleSubmit}
+      className="font-cinzel w-full"
+    >
+      <div className="flex flex-col">
+        <label htmlFor="name" className="uppercase text-sm py-1">
+          Name
+        </label>
+        <input
+          id="name"
+          name="name"
+          autoComplete="off"
+          required
+          minLength={3}
+          maxLength={150}
+          className="font-arsenal border-2  rounded border-stone-400 p-1"
+          type="text"
+        />
+      </div>
+
       <div className="flex flex-col py-1">
         <label htmlFor="email" className="uppercase text-sm py-1">
           Email
@@ -74,6 +82,7 @@ const ContactForm: React.FC = () => {
           type="email"
         />
       </div>
+
       <div className="flex flex-col py-1">
         <label htmlFor="subject" className="uppercase text-sm py-1">
           Subject
@@ -86,6 +95,7 @@ const ContactForm: React.FC = () => {
           type="text"
         />
       </div>
+
       <div className="flex flex-col py-1">
         <label htmlFor="message" className="uppercase text-sm py-1">
           Message
@@ -101,15 +111,21 @@ const ContactForm: React.FC = () => {
           rows={5}
         />
       </div>
+
+      <ReCAPTCHA
+        sitekey={site_key}
+        onChange={handleCaptchaChange}
+        className="py-2"
+      />
+
       <button
         type="submit"
-        className=" mt-4 hover:text-black  hover:scale-105 ease-in duration-600 border-2 rounded-lg shadow-md p-2 bg-gray-100"
-        >
+        className="mt-4 hover:text-black hover:scale-105 ease-in duration-600 border-2 rounded-lg shadow-md p-2 bg-gray-100"
+      >
         Send Message
       </button>
-      <ReCAPTCHA size="normal" sitekey="6Lc9MLYqAAAAAJCVSGpU632xhfSLqMBfRr7CDOk1" />
     </form>
-  )
-}
+  );
+};
 
-export default ContactForm
+export default ContactForm;

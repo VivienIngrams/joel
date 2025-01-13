@@ -1,72 +1,52 @@
+import { NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
 
-import { NextRequest,NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+const validateCaptcha = (responseKey) => {
+  return new Promise((resolve) => {
+    const secret_key = process.env.RECAPTCHA_SECRET;
 
-// Handles POST requests to /api
+    const url = `https://www.google.com/recaptcha/api/siteverify?secret=${secret_key}&response=${responseKey}`;
 
-export async function POST(request) {
-  const username = process.env.USER;
-  const password = process.env.PASS;
+    fetch(url, { method: 'POST' })
+      .then((res) => res.json())
+      .then((googleResponse) => {
+        resolve(googleResponse.success);
+      })
+      .catch((err) => {
+        console.error('Captcha validation error:', err);
+        resolve(false);
+      });
+  });
+};
 
-  
+export async function POST(req) {
+  const { name, email, message, subject, 'g-recaptcha-response': captchaResponse } = Object.fromEntries(await req.formData());
+
+  if (!(await validateCaptcha(captchaResponse))) {
+    return NextResponse.json({ error: 'Invalid ReCAPTCHA' }, { status: 400 });
+  }
+
   try {
-    const formData = await request.formData();
-    const name = formData.get("name");
-    const email = formData.get("email");
-    const message = formData.get("message");
-    const subject = formData.get("subject");
-    console.log(name, email, message, subject);
-
-
     const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
+      host: 'smtp.gmail.com',
       port: 465,
       secure: true,
-      tls : { rejectUnauthorized: false },
       auth: {
-        user: username,
-        pass: password,
+        user: process.env.USER,
+        pass: process.env.PASS,
       },
     });
 
-    const mail = await transporter.sendMail({
+    await transporter.sendMail({
       from: email,
-      to: 'info@joelbardeau.com',
+      to: 'vivingrams@gmail.com',
       subject: `Form submission: ${subject}`,
-      html: `
-        <p>Name: ${name} </p>
-             <p>Email: ${email} </p>
-        <p>Message: ${message} </p>
-      `,
+      html: `<p>Name: ${name}</p><p>Email: ${email}</p><p>Message: ${message}</p>`,
     });
 
-    return NextResponse.json({ message: "Success: email was sent" });
+    return NextResponse.json({ message: 'Success: email was sent' });
   } catch (error) {
     console.error(error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
-}
-
-const validateCaptcha = (response_key) => {
-  return new Promise((resolve, reject) => {
-    const secret_key = process.env.RECAPTCHA_SECRET
-
-    const url = `https://www.google.com/recaptcha/api/siteverify?secret=${secret_key}&response=${response_key}`
-
-    fetch(url, {
-      method: 'post'
-    })
-      .then((response) => response.json())
-      .then((google_response) => {
-        if (google_response.success == true) {
-          resolve(true)
-        } else {
-          resolve(false)
-        }
-      })
-      .catch((err) => {
-        console.log(err)
-        resolve(false)
-      })
-  })
 }
