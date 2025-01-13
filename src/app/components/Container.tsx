@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
-import { LanguageProvider } from '~/utils'
+
 
 import BackButton from './BackButton'
 import Footer from './Footer'
@@ -78,7 +78,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="max-w-screen h-full font-ubuntu">
-      <LanguageProvider>
+     
         <div
           className={`${
             isHomePage
@@ -126,7 +126,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
 
         {/* Footer */}
         <Footer isHomePage={isHomePage} isContactPage={isContactPage} />
-      </LanguageProvider>
+      
     </div>
   )
 }

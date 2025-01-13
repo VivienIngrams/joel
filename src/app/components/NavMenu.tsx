@@ -171,7 +171,7 @@ const NavMenu = () => {
           onClick={toggleLanguage}
           className="fixed mt-4 right-4 p-1 text-xs text-black  z-55 border-[1px] border-gray-300 z-12"
         >
-          {language === 'en' ? 'PT' : 'EN'}
+          {language === 'en' ? 'FR' : 'EN'}
         </button>
         <div className="text-black px-2 pt-2 pb-3 space-y-1 text-md sm:px-3">
           <Link href="/posts" className=" block px-3 py-1 ">

@@ -6,9 +6,16 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
+      name: 'title_en',
+      title: 'Title (English)',
       type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'title',
+      title: 'Titre (French)',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'slug',
@@ -21,14 +28,19 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'excerpt_en',
+      title: 'Excerpt (English)',
+      type: 'blockContent',
+    }),
+    defineField({
       name: 'excerpt',
-      title: 'Excerpt',
+      title: 'Extrait (Français)',
       type: 'blockContent',
     }),
     {
       name: 'mainImages',
       type: 'array',
-      title: 'Image(s) pour Posts Page',
+      title: 'Image(s) for Post Page',
       of: [
         {
           type: 'image',
@@ -55,7 +67,7 @@ export default defineType({
     {
       name: 'images',
       type: 'array',
-      title: 'All images',
+      title: 'All Images',
       of: [
         {
           type: 'image',
@@ -75,9 +87,9 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'title',
+      title: 'title_en',
       author: 'author.name',
-      media: 'mainImage',
+      media: 'mainImages.0', // Preview the first image
     },
     prepare(selection) {
       const { author } = selection

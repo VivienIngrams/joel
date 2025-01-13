@@ -1,9 +1,10 @@
-import Link from 'next/link'
+
 import ImageGallery from '~/app/components/ImageGallery'
 import MobileImageGallery from '~/app/components/MobileImageGallery'
 import { readToken } from '~/sanity/lib/sanity.api'
 import { getClient } from '~/sanity/lib/sanity.client'
 import { getPosts, type Post } from '~/sanity/lib/sanity.queries'
+
 
 
 // Fetch data on the server side for all posts
@@ -15,7 +16,8 @@ export default async function PostsPage() {
       revalidate: 2
     },
   })
-
+ 
+  
   // Define custom slug order
   const customOrder = [
     'autoportraits',

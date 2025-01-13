@@ -1,13 +1,12 @@
 import type { PortableTextBlock } from '@portabletext/types'
-import type { ImageAsset, Slug } from '@sanity/types'
 import groq from 'groq'
 import { type SanityClient } from 'next-sanity'
 
 // Query to fetch all posts with defined slugs, ordered by creation date
 export const postsQuery = groq`
   *[_type == "post" && slug.current in ["survol", "hors-d-age", "respiration", "images-du-jour", "autoportraits", "derision", "collaborations", "projets"]] {
-   
     title,
+    title_en,
     slug,
     mainImages, 
     layout,
@@ -29,9 +28,11 @@ export const collaborationsPostsQuery = groq`
   *[_type == "post" && slug.current in ["mathilde", "johanna", "vibrations" ]] {
     _id,
     _createdAt,
-    title,
+     title,
+    title_en,
     slug,
     excerpt,
+    excerpt_en,
     mainImages, 
     layout,
   } 
@@ -48,8 +49,10 @@ export const projetsPostsQuery = groq`
     _id,
     _createdAt,
     title,
+    title_en,
     slug,
     excerpt,
+    excerpt_en,
      subtitles,
     mainImages, 
     layout,
@@ -69,9 +72,11 @@ export async function getProjetsPosts(
 export const postBySlugQuery = groq`
   *[_type == "post" && slug.current == $slug][0] {
     _id,
-    title,
-    excerpt,
+     title,
+    title_en,
     slug,
+    excerpt,
+    excerpt_en,
     subtitles,
     images[]{
       ...,
@@ -103,8 +108,10 @@ export type Post = {
   _createdAt: string
   mainImages: any[] // Ensure this is required if you always expect it
   title: string
+  title_en?: string
   subtitles?: string[]
   excerpt?: PortableTextBlock[]
+  excerpt_en?: PortableTextBlock[]
   layout: 'portrait' | 'square' | 'landscape'
   images?: any[]
 }
@@ -131,8 +138,10 @@ export async function getDelphinePage(client: SanityClient, options = {}) {
 export const delphineQuery = groq`
  *[_type == "post" && slug.current in ["delphine"]][0] {
       title,
+    title_en,
     slug,
     excerpt,
+    excerpt_en,
     images[]{
       ...,
       "aspectRatio": asset->metadata.dimensions.aspectRatio
