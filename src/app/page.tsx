@@ -27,10 +27,10 @@ export default async function HomePage() {
         href="/posts"
         className="block relative h-[100vh] w-full overflow-hidden"
       >
-        <section className="relative h-full w-full flex flex-col justify-start md:justify-center items-start">
+        <section className="relative h-full w-full flex flex-col justify-start xl:justify-center items-start">
           
         <Image
-            className="object-cover object-[56%] md:object-bottom"
+            className="object-cover object-[56%] xl:object-bottom"
             src={urlForImage(homePageData.mainImages[0]).url() || ''}
             layout="fill"
             sizes="(max-width: 768px) 500vw, (max-width: 1200px) 50vw, 100vw"
@@ -38,18 +38,18 @@ export default async function HomePage() {
           />
 
           {/* Title and Subtitle */}
-          <div className="fixed md:min-w-full left-1/2 -translate-x-1/2 text-black  font-montserrat bottom-[42%] md:bottom-[52%]  text-center">
-            <h1 className="font-normal text-[50px] md:text-[100px] uppercase tracking-[-0.2rem] md:tracking-[-0.4rem] leading-[40px]">
-              <span className="text-[62px] font-light leading-[40px] md:text-[135px] tracking-[-1rem] md:tracking-[-2rem] ">
+          <div className="fixed xl:min-w-full left-1/2 -translate-x-1/2 text-black  font-montserrat bottom-[42%] xl:bottom-[52%]  text-center">
+            <h1 className="font-normal text-[50px] xl:text-[100px] uppercase tracking-[-0.2rem] xl:tracking-[-0.4rem] leading-[40px]">
+              <span className="text-[62px] font-light leading-[40px] xl:text-[135px] tracking-[-1rem] xl:tracking-[-2rem] ">
                 J
               </span>{' '}
               oël{' '}
-              <span className="text-[62px] font-light  leading-[40px] md:text-[135px] tracking-[-0.3rem] md:tracking-[-0.6rem]">
+              <span className="text-[62px] font-light  leading-[40px] xl:text-[135px] tracking-[-0.3rem] xl:tracking-[-0.6rem]">
                 B
               </span>
               ardeau
             </h1>
-            <h2 className=" text-2xl md:text-3xl font-cinzel leading-normal mt-4">
+            <h2 className=" text-2xl xl:text-3xl font-cinzel leading-normal mt-4">
               Artiste Auteur
             </h2>
           </div>

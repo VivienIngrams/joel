@@ -56,9 +56,9 @@ console.log(post.subtitles)
   }
 
   return (
-    <div className="min-h-[80vh] md:h-full w-screen flex flex-col justify-center md:justify-start md:flex-row">
+    <div className="min-h-[80vh] xl:h-full w-screen flex flex-col justify-center xl:justify-start xl:flex-row">
       {/* Right arrow in corner */}
-      <div className="hidden md:flex absolute bottom-[15%] left-[31%] h-16 w-20 flex-col items-center justify-center z-40">
+      <div className="hidden xl:flex absolute bottom-[15%] left-[31%] h-16 w-20 flex-col items-center justify-center z-40">
         <div className="pb-2 text-white text-2xl">scroll</div>
         <svg
           fill="#ffffff"
@@ -97,11 +97,11 @@ console.log(post.subtitles)
       {/* Post Texts */}
       <PostContent post={post} />
       {/* // Mobile View */}
-      <div className="h-full w-full lg:hidden mb-28">
+      <div className="h-full w-full xl:hidden mb-28">
         <MobileScroll images={post.images} title={post.title} subtitles={post.subtitles}/>
       </div>
       {/* Horizontal Scrolling Image Gallery on the Right */}
-      <div className="hidden lg:block md:flex-grow md:pl-4 h-full">
+      <div className="hidden xl:block xl:flex-grow xl:pl-4 h-full">
         <HorizontalScroll images={post.images} title={post.title} subtitles={post.subtitles}/>
       </div>
     </div>

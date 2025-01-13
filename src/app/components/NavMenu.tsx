@@ -16,12 +16,12 @@ const NavMenu = () => {
   return (
     <nav className="absolute w-full z-50 text-black font-medium tracking-tight ">
       <div
-        className={`w-full flex items-start justify-start md:justify-center  ${
-          isHomePage ? 'hidden' : 'md:text-lg tracking-wide  '
+        className={`w-full flex items-start justify-start  md:justify-center  ${
+          isHomePage ? 'hidden' : 'xl:text-lg tracking-wide  '
         }`}
       >
-        <div className="flex items-center md:-ml-12">
-          <div className="hidden md:block">
+        <div className="flex items-center  md:-ml-12">
+          <div className="hidden  md:block">
             <div className=" flex items-baseline ">
               <Link
                 href="/posts"
@@ -44,7 +44,7 @@ const NavMenu = () => {
             </div>
           </div>
         </div>
-        <div className="-mr-2 flex md:hidden">
+        <div className="-mr-2 flex  md:hidden">
           <button
             onClick={toggleMenu}
             type="button"
@@ -158,7 +158,7 @@ const NavMenu = () => {
       </div>
 
       <div
-        className={`${isOpen ? 'block bg-gradient-to-b from-transparent via-white to-white w-screen pt-24 -ml-4 -mb-4' : 'hidden'} md:hidden`}
+        className={`${isOpen ? 'block bg-gradient-to-b from-transparent via-white to-white w-screen pt-24 -ml-4 -mb-4' : 'hidden'}  md:hidden`}
         id="mobile-menu"
         onClick={toggleMenu}
       >

@@ -5,9 +5,9 @@ import React from 'react'
 
 const Bio = () => {
   return (
-    <div className="min-h-screen pt-12 md:grid md:grid-cols-2 bg-white text-gray-500 md:mx-[10vw]">
-      <div className="flex items-center justify-start md:justify-center">
-        <div className="relative md:min-h-screen flex flex-col items-center md:justify-center h-[300px] md:h-[500px] w-[200px] md:w-[300px] m-6 md:m-0">
+    <div className="min-h-screen pt-12 xl:grid xl:grid-cols-2 bg-white text-gray-500 xl:mx-[10vw]">
+      <div className="flex items-center justify-start xl:justify-center">
+        <div className="relative xl:min-h-screen flex flex-col items-center xl:justify-center h-[300px] xl:h-[500px] w-[200px] xl:w-[300px] m-6 xl:m-0">
           <Image
             src="/joel portrait.jpg"
             className="object-contain"
@@ -17,7 +17,7 @@ const Bio = () => {
           />
         </div>
       </div>
-      <div className="md:min-h-screen flex flex-col justify-center text-lg md:text-xl text-left max-w-2xl px-6 pb-16 md:pl-4 md:py-12">
+      <div className="xl:min-h-screen flex flex-col justify-center text-lg xl:text-xl text-left max-w-2xl px-6 pb-16 xl:pl-4 xl:py-12">
         <p className="mb-4">
           Jeune homme, j’ai suivi les cours classiques de dessin aux
           Beaux-Arts et pratiqué assidûment la photographie argentique.

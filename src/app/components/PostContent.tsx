@@ -18,12 +18,12 @@ function PostContent({ post }: PostContentProps) {
   }
 
   return (
-    <div className="w-full h-full  relative md:fixed md:max-w-[25vw] min-[1800px]:max-w-[23vw] md:top-0 md:left-0 md:bg-white pt-44 pb-6 md:py-16 px-4 md:pl-7 z-40">
+    <div className="w-full h-full  relative xl:fixed xl:max-w-[25vw] min-[1800px]:max-w-[23vw] xl:top-0 xl:left-0 xl:bg-white pt-44 pb-6 xl:py-16 px-4 xl:pl-7 z-40">
       {/* Gradient Space */}
-      <div className="hidden md:block absolute top-0 left-[25vw] min-[1800px]:left-[23vw] md:w-[5vw] bg-gradient-to-r from-white via-white/70 to-transparent h-full"></div>
-      <div className="md:h-[80vh] flex flex-col justify-start md:justify-center">
+      <div className="hidden xl:block absolute top-0 left-[24vw] min-[1800px]:left-[23vw] xl:w-[5vw] bg-gradient-to-r from-white via-white/70 to-transparent h-full"></div>
+      <div className="xl:h-[80vh] flex flex-col justify-start xl:justify-center">
         {/* Title */}
-        <h1 className="text-2xl md:text-4xl font-cinzel font-medium tracking-tighter md:-mt-4">
+        <h1 className="text-2xl xl:text-4xl font-cinzel font-medium tracking-tighter xl:-mt-4">
           {post.title}
         </h1>
 

@@ -41,13 +41,13 @@ export default async function PostsPage() {
   }
 
   return (
-    <div className="h-full md:min-h-[80vh] pb-20 font-cinzel font-bold bg-white max-w-full pt-40 md:pt-16 ">
+    <div className="h-full xl:min-h-[80vh] pb-20 font-cinzel font-bold bg-white max-w-full pt-40 xl:pt-16 ">
 
       {/* Render ImageGallery for each post */}
       {sortedPosts.map((post) => (
         <div key={post._id} className=" ">
           {/* Show on mobile screens */}
-          <div className=" pb-6 md:hidden">
+          <div className=" pb-6 xl:hidden">
             <MobileImageGallery
               images={post.mainImages}
               layout={post.layout}
@@ -56,7 +56,7 @@ export default async function PostsPage() {
             />
           </div>
           {/* Show on desktop screens */}
-          <div className="hidden md:block">
+          <div className="hidden xl:block">
             <ImageGallery
               images={post.mainImages}
               layout={post.layout}

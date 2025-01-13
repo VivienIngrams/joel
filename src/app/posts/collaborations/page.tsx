@@ -38,7 +38,7 @@ export default async function CollaborationsPage() {
   }
 
   return (
-    <div className="h-full md:min-h-[80vh] pb-20 bg-white font-cinzel max-w-[98vw] pt-32 md:pt-16 ">
+    <div className="h-full xl:min-h-[80vh] pb-20 bg-white font-cinzel max-w-[98vw] pt-32 xl:pt-16 ">
        
       {/* Render ImageGallery for each post */}
 
@@ -46,7 +46,7 @@ export default async function CollaborationsPage() {
       {posts.map((post, index) => (
         <div key={index}>
           {/* Show on mobile screens */}
-          <div className="pb-6 md:hidden">
+          <div className="pb-6 xl:hidden">
             <MobileImageGallery 
               images={post.mainImages} 
               layout={post.layout} 
@@ -55,7 +55,7 @@ export default async function CollaborationsPage() {
             />
           </div>
           {/* Show on desktop screens */}
-          <div className="hidden md:block">
+          <div className="hidden xl:block">
             <ImageGallery 
               images={post.mainImages} 
               layout={post.layout} 
