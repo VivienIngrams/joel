@@ -20,13 +20,23 @@ const validateCaptcha = (responseKey) => {
 };
 
 export async function POST(req) {
-  const { name, email, message, subject, 'g-recaptcha-response': captchaResponse } = Object.fromEntries(await req.formData());
-
-  if (!(await validateCaptcha(captchaResponse))) {
-    return NextResponse.json({ error: 'Invalid ReCAPTCHA' }, { status: 400 });
-  }
-
   try {
+    const formData = Object.fromEntries(await req.formData());
+    const { name, email, message, subject, 'g-recaptcha-response': captchaResponse } = formData;
+
+    // Log request data
+    console.log('Form data:', formData);
+
+    // Validate ReCAPTCHA
+    if (!(await validateCaptcha(captchaResponse))) {
+      console.error('Invalid ReCAPTCHA response');
+      return NextResponse.json({ error: 'Invalid ReCAPTCHA' }, { status: 400 });
+    }
+
+    // Log ReCAPTCHA success
+    console.log('ReCAPTCHA validated successfully');
+
+    // Email sending logic
     const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 465,
@@ -39,14 +49,15 @@ export async function POST(req) {
 
     await transporter.sendMail({
       from: email,
-      to: 'vivingrams@gmail.com',
+      to: 'info@joelbardeau.com',
       subject: `Form submission: ${subject}`,
       html: `<p>Name: ${name}</p><p>Email: ${email}</p><p>Message: ${message}</p>`,
     });
 
+    console.log('Email sent successfully');
     return NextResponse.json({ message: 'Success: email was sent' });
   } catch (error) {
-    console.error(error);
+    console.error('Server error:', error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
