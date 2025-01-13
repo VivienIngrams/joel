@@ -19,26 +19,45 @@ const Bio = () => {
       </div>
       <div className="md:min-h-screen flex flex-col justify-center text-lg md:text-xl text-left max-w-2xl px-6 pb-16 md:pl-4 md:py-12">
         <p className="mb-4">
-          Jeune homme j&apos;ai suivi les cours classiques de dessin aux
+          Jeune homme, j’ai suivi les cours classiques de dessin aux
           Beaux-Arts et pratiqué assidûment la photographie argentique.
         </p>
         <p className="mb-4">
-          Puis une carrière dans le monde médico-chirurgical.
+          Puis, j’ai entamé une carrière dans le monde médico-chirurgical.
         </p>
         <p className="mb-4">
-          Aujourd&apos;hui plus de 30 expositions au compteur, mes travaux sont
+          Aujourd’hui, avec plus de 30 expositions à mon actif, mes travaux sont
           présents aux murs de nombreux collectionneurs.
         </p>
         <p className="italic">
-          «Ma démarche est tournée principalement vers l&apos;humain.
+          « Ma démarche est principalement tournée vers l’humain.
         </p>
         <p className="italic">
-          Au travers de son enveloppe j&apos;aime chercher et creuser le MOI des
+          À travers son enveloppe, j’aime chercher et explorer le MOI des
           êtres.
         </p>
         <p className="italic mb-6">
-          Mon travail en autoportraits est une forme d&apos;introspection à la
-          fois thérapeutique et artistique».
+          Depuis 2005, la photographie est devenue mon quotidien.
+        </p>
+        <p className="mb-4">
+          « De par mon passé professionnel, je considère le corps seulement comme
+          une enveloppe. Se libérer des masques que la société nous pousse à porter,
+          par une ‘’mise à nu’’ de sa propre image, est un chemin vers la sérénité.
+        </p>
+        <p className="mb-4">
+          Extraire le corps vital en le détachant du corps esthétique.
+        </p>
+        <p className="mb-4">
+          À travers mes créations, j’invite le visiteur à déposer ses masques et à
+          questionner son intimité.
+        </p>
+        <p className="mb-4">
+          Mon travail en autoportraits est une introspection à la fois thérapeutique
+          et artistique. Je ne cherche en aucune manière à choquer, mais simplement
+          à proposer un voyage au-delà de la surface visible.
+        </p>
+        <p className="mb-4">
+          Mes travaux sont présents aux murs de nombreux collectionneurs.
         </p>
       </div>
     </div>

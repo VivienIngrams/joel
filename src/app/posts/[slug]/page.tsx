@@ -97,11 +97,11 @@ console.log(post.subtitles)
       {/* Post Texts */}
       <PostContent post={post} />
       {/* // Mobile View */}
-      <div className="h-full w-full md:hidden mb-28">
+      <div className="h-full w-full lg:hidden mb-28">
         <MobileScroll images={post.images} title={post.title} subtitles={post.subtitles}/>
       </div>
       {/* Horizontal Scrolling Image Gallery on the Right */}
-      <div className="hidden md:block md:flex-grow md:pl-4 h-full">
+      <div className="hidden lg:block md:flex-grow md:pl-4 h-full">
         <HorizontalScroll images={post.images} title={post.title} subtitles={post.subtitles}/>
       </div>
     </div>

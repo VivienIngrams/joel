@@ -62,6 +62,8 @@ async function verifyReCAPTCHA(token: string | null): Promise<boolean> {
         },
       }
     );
+    console.log('reCAPTCHA API response:', response.data); // Add this line to log the full response
+    
 
     if (response.data.success) {
       return true;

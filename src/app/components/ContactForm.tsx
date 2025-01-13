@@ -9,6 +9,8 @@ const ContactForm: React.FC = () => {
   const [isVerified, setIsVerified] = useState(false);
 
   async function handleCaptchaSubmission(token: string | null) {
+    console.log('reCAPTCHA token:', token);
+
     try {
       if (token) {
         const response = await fetch('/api', {
