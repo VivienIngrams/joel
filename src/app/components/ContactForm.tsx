@@ -33,13 +33,15 @@ const ContactForm: React.FC = () => {
     <form   method='post'
     action='/api/new'
     encType='multipart/form-data'
-    onSubmit={event => {
-      // if (ReCAPTCHA.getResponse() === '') {
-      //   event.preventDefault()
-      //   alert("Please click <I'm not a robot> before sending the message")
-      // }
-       handleSubmit
-    }}  className="font-cinzel w-full">
+    onSubmit={handleSubmit}
+    // onSubmit={event => {
+    //   if (ReCAPTCHA.getResponse() === '') {
+    //     event.preventDefault()
+    //     alert("Please click <I'm not a robot> before sending the message")
+    //   }
+    //    handleSubmit
+    // }}  
+    className="font-cinzel w-full">
      
         <div className="flex flex-col">
           <label htmlFor="name" className="uppercase text-sm py-1">
