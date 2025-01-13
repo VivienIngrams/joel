@@ -1,29 +1,55 @@
-'use client'
+'use client';
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
- 
-const ContactForm: React.FC = () => {
-  const site_key = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
-  
-  const [captchaValue, setCaptchaValue] = useState<string | null>(null);
 
-  const handleCaptchaChange = (value: string | null) => {
-    setCaptchaValue(value); // Store the captcha response
+const ContactForm: React.FC = () => {
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '';
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [isVerified, setIsVerified] = useState(false);
+
+  async function handleCaptchaSubmission(token: string | null) {
+    try {
+      if (token) {
+        const response = await fetch('/api', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ token }),
+        });
+
+        if (!response.ok) {
+          throw new Error(`Failed reCAPTCHA verification: ${response.status}`);
+        }
+
+        setIsVerified(true);
+      }
+    } catch (error) {
+      console.error(error);
+      setIsVerified(false);
+    }
+  }
+
+  const handleCaptchaChange = (token: string | null) => {
+    handleCaptchaSubmission(token);
+  };
+
+  const handleCaptchaExpired = () => {
+    setIsVerified(false);
   };
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    if (!captchaValue) {
-      alert("Please complete the ReCAPTCHA before submitting.");
+    if (!isVerified) {
+      alert("Please complete the reCAPTCHA verification before submitting.");
       return;
     }
 
     const formData = new FormData(event.currentTarget);
-
-    // Append the captcha response
-    formData.append('g-recaptcha-response', captchaValue);
+    console.log(...formData.entries());
 
     try {
       const response = await fetch('/api', {
@@ -32,25 +58,20 @@ const ContactForm: React.FC = () => {
       });
 
       if (!response.ok) {
-        throw new Error(`response status: ${response.status}`);
+        throw new Error(`Form submission failed: ${response.status}`);
       }
 
       const responseData = await response.json();
       console.log(responseData);
       alert('Message successfully sent');
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
       alert('Error, please try resubmitting the form');
     }
   }
 
   return (
-    <form
-      method="post"
-      encType="multipart/form-data"
-      onSubmit={handleSubmit}
-      className="font-cinzel w-full"
-    >
+    <form onSubmit={handleSubmit} className="font-cinzel w-full">
       <div className="flex flex-col">
         <label htmlFor="name" className="uppercase text-sm py-1">
           Name
@@ -62,7 +83,7 @@ const ContactForm: React.FC = () => {
           required
           minLength={3}
           maxLength={150}
-          className="font-arsenal border-2  rounded border-stone-400 p-1"
+          className="font-arsenal border-2 rounded border-stone-400 p-1"
           type="text"
         />
       </div>
@@ -78,7 +99,7 @@ const ContactForm: React.FC = () => {
           required
           minLength={8}
           maxLength={150}
-          className="font-arsenal border-2  rounded border-stone-400 p-1"
+          className="font-arsenal border-2 rounded border-stone-400 p-1"
           type="email"
         />
       </div>
@@ -91,7 +112,7 @@ const ContactForm: React.FC = () => {
           id="subject"
           name="subject"
           autoComplete="off"
-          className="font-arsenal border-2  rounded border-stone-400 p-1"
+          className="font-arsenal border-2 rounded border-stone-400 p-1"
           type="text"
         />
       </div>
@@ -112,15 +133,19 @@ const ContactForm: React.FC = () => {
         />
       </div>
 
-      <ReCAPTCHA
-        sitekey={site_key}
-        onChange={handleCaptchaChange}
-        className="py-2"
-      />
+      <div className="flex flex-col py-2">
+        <ReCAPTCHA
+          sitekey={siteKey}
+          ref={recaptchaRef}
+          onChange={handleCaptchaChange}
+          onExpired={handleCaptchaExpired}
+        />
+      </div>
 
       <button
         type="submit"
         className="mt-4 hover:text-black hover:scale-105 ease-in duration-600 border-2 rounded-lg shadow-md p-2 bg-gray-100"
+        disabled={!isVerified}
       >
         Send Message
       </button>
