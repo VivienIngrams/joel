@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
+import { useLanguage } from '~/utils'
+
 const NavMenu = () => {
   const [isOpen, setIsOpen] = useState(false)
   const path = usePathname()
@@ -12,9 +14,17 @@ const NavMenu = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen)
   }
+  const { language, toggleLanguage } = useLanguage()
 
   return (
     <nav className="absolute w-full z-50 text-black font-medium tracking-tight ">
+      {/* Language Switcher Button */}
+      <button
+        onClick={toggleLanguage}
+        className="z-12 hidden md:block md:fixed bottom-3 left-3 p-1  text-xs text-black  border-[1px] border-gray-300 "
+      >
+        {language === 'en' ? 'FR' : 'EN'}
+      </button>
       <div
         className={`w-full flex items-start justify-start  md:justify-center  ${
           isHomePage ? 'hidden' : 'xl:text-lg tracking-wide  '
@@ -23,16 +33,10 @@ const NavMenu = () => {
         <div className="flex items-center  md:-ml-12">
           <div className="hidden  md:block">
             <div className=" flex items-baseline ">
-              <Link
-                href="/posts"
-                className="hover:text-gray-500 px-3    "
-              >
+              <Link href="/posts" className="hover:text-gray-500 px-3    ">
                 Galeries
               </Link>
-              <Link
-                href="/videos"
-                className="hover:text-gray-500 px-3  "
-              >
+              <Link href="/videos" className="hover:text-gray-500 px-3  ">
                 Videos
               </Link>
               <Link href="/bio" className="hover:text-gray-500 px-3  ">
@@ -162,6 +166,13 @@ const NavMenu = () => {
         id="mobile-menu"
         onClick={toggleMenu}
       >
+        {/* Language Toggle Button */}
+        <button
+          onClick={toggleLanguage}
+          className="fixed mt-4 right-4 p-1 text-xs text-black  z-55 border-[1px] border-gray-300 z-12"
+        >
+          {language === 'en' ? 'PT' : 'EN'}
+        </button>
         <div className="text-black px-2 pt-2 pb-3 space-y-1 text-md sm:px-3">
           <Link href="/posts" className=" block px-3 py-1 ">
             Galeries

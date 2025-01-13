@@ -2,13 +2,13 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react'; // Import useState
-import { AiOutlineMail } from "react-icons/ai";
-import { PiArrowBendUpLeftLight } from "react-icons/pi";
+import { useState } from 'react';
 
-import ContactForm from './ContactForm';
+import { LanguageProvider } from '~/utils';
+
+import BackButton from './BackButton';
 import NavMenu from './NavMenu';
-import { Socials } from './Socials';
+import Socials  from './Socials';
 import SubMenu from './SubMenu';
 
 
@@ -77,6 +77,7 @@ const isCollaborationsPage = path === '/posts/collaborations'
 
   return (
     <div className="max-w-screen h-full font-ubuntu">
+              <LanguageProvider>
       <div
         className={`${
           isHomePage
@@ -86,41 +87,13 @@ const isCollaborationsPage = path === '/posts/collaborations'
       >
        
 
-        {(isProjetsPage || isCollaborationsPage)  && !isCollaborationsSousPage && !isProjetsSousPage && (
-  <Link href="/posts" className="h-12 absolute top-1 md:top-4 left-2 md:left-5">
-    <PiArrowBendUpLeftLight className="text-gray-500 hover:text-black text-[1.5rem] md:text-[2.5rem]" />
-  </Link>
-)}
-
-{isCollaborationsSousPage && !isProjetsSousPage && (
-  <Link
-    href="/posts/collaborations"
-    className="h-12 absolute top-1 md:top-4 left-2 md:left-5"
-  >
-    <PiArrowBendUpLeftLight className="text-gray-500 hover:text-black text-[1.5rem] md:text-[2.5rem]" />
-  </Link>
-)}
-
-{isProjetsSousPage && !isCollaborationsSousPage && (
-  <Link
-    href="/posts/projets"
-    className="h-12 absolute top-1 md:top-4 left-2 md:left-5"
-  >
-    <PiArrowBendUpLeftLight className="text-gray-500 hover:text-black text-[1.5rem] md:text-[2.5rem]" />
-  </Link>
-)}
-
-{isSousPage &&
-  !isProjetsSousPage &&
-  !isCollaborationsSousPage &&
-  !isProjetsPage && (
-    <Link
-      href="/posts"
-      className="h-10 absolute top-1 md:top-4 left-2 md:left-5"
-    >
-      <PiArrowBendUpLeftLight className="text-gray-500 hover:text-black text-[1.5rem]  md:text-[2.5rem]" />
-    </Link>
-  )}
+       <BackButton
+              show={(isProjetsPage || isCollaborationsPage) && !isCollaborationsSousPage && !isProjetsSousPage}
+              href="/posts"
+            />
+            <BackButton show={isCollaborationsSousPage} href="/posts/collaborations" />
+            <BackButton show={isProjetsSousPage} href="/posts/projets" />
+            <BackButton show={isSousPage} href="/posts" />
     {(isGaleriePage || isSousPage || isProjetsSousPage || isProjetsPage || isCollaborationsSousPage || isCollaborationsPage) && (
        <SubMenu posts={posts}/> 
       )}
@@ -164,33 +137,13 @@ const isCollaborationsPage = path === '/posts/collaborations'
                 {/* Replace with your Socials component */}
                 <Socials />
               </div>
-              <button
-                onClick={openForm}
-                className={`${
-                  isHomePage ? 'hidden' : 'block'
-                }`}
-              >
-                <AiOutlineMail className="text-gray-500 hover:text-black text-[20px] md:text-[24px]" />
-              </button>
+             
             </div>
           )}
         </div>
       </footer>
-          {/* Contact Form Modal */}
-          {isFormOpen && (
-        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
-            <button
-              onClick={closeForm}
-              className="text-gray-500 hover:text-gray-700 float-right"
-            >
-             X
-            </button>
-            <ContactForm />
-          </div>
-        </div>
-      )}
-    
+          
+    </LanguageProvider>
     </div>
   )
 }

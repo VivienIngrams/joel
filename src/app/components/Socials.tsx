@@ -25,7 +25,7 @@ const socialLinks: Social[] = [
     },
   ]
   
-  export function Socials() {
+  export default function Socials() {
     return (
       <>
         {socialLinks.map(({ label, Icon, href }) => (
