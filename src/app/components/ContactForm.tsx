@@ -19,15 +19,14 @@ const ContactForm: React.FC = () => {
           },
           body: JSON.stringify({ token }),
         });
-
+  
         if (!response.ok) {
           throw new Error(`Failed reCAPTCHA verification: ${response.status}`);
         }
-
         setIsVerified(true);
       }
     } catch (error) {
-      console.error(error);
+      console.error('reCAPTCHA submission error:', error);
       setIsVerified(false);
     }
   }

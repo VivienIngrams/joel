@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
 
     console.log(`Received form data: ${name}, ${email}, ${subject}`);
 
-    // Verify ReCAPTCHA
+    // Verify reCAPTCHA
     const isHuman = await verifyReCAPTCHA(token);
     if (!isHuman) {
       return new Response(
@@ -42,13 +42,12 @@ export async function POST(request: NextRequest) {
   }
 }
 
-
-// Function to verify ReCAPTCHA token
+// Function to verify reCAPTCHA token
 async function verifyReCAPTCHA(token: string | null): Promise<boolean> {
   const secretKey = process.env.RECAPTCHA_SECRET_KEY;
 
   if (!token || !secretKey) {
-    console.error("ReCAPTCHA token or secret key missing");
+    console.error("Token or secret key missing");
     return false;
   }
 
@@ -64,10 +63,14 @@ async function verifyReCAPTCHA(token: string | null): Promise<boolean> {
       }
     );
 
-    console.log("ReCAPTCHA verification response:", response.data);
-    return response.data.success;
+    if (response.data.success) {
+      return true;
+    } else {
+      console.error('reCAPTCHA verification failed', response.data);
+      return false;
+    }
   } catch (error) {
-    console.error("Error verifying ReCAPTCHA:", error);
+    console.error('Error verifying reCAPTCHA:', error);
     return false;
   }
 }
