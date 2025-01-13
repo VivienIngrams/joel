@@ -17,6 +17,26 @@ export default async function CollaborationsPage() {
           },
   });
 
+  
+  // Define custom slug order
+  const customOrder = [
+    'vibrations',
+    'mathilde',
+    'johanna'
+  ]
+
+  // Sort posts succinctly
+  const sortedPosts = posts.sort(
+    (a, b) =>
+      customOrder.indexOf(a.slug.current) -
+        customOrder.indexOf(b.slug.current) ||
+      new Date(b._createdAt).getTime() - new Date(a._createdAt).getTime(),
+  )
+
+  if (!sortedPosts || sortedPosts.length === 0) {
+    return <p>No posts found.</p>
+  }
+
   return (
     <div className="h-full md:min-h-[80vh] pb-20 bg-white font-cinzel max-w-[98vw] pt-32 md:pt-16 ">
        

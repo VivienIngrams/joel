@@ -4,7 +4,7 @@ import ReCAPTCHA from 'react-google-recaptcha'
 
 const ContactForm: React.FC = () => {
 
-  const KEY = process.env.RECAPTCHA_SECRET;
+  const secret_key = process.env.RECAPTCHA_SECRET;
 
   async function handleSubmit(event: any) {
     event.preventDefault()
@@ -30,7 +30,16 @@ const ContactForm: React.FC = () => {
     }
   }
   return (
-    <form onSubmit={handleSubmit} className="font-cinzel w-full">
+    <form   method='post'
+    action='/api/new'
+    encType='multipart/form-data'
+    onSubmit={event => {
+      // if (ReCAPTCHA.getResponse() === '') {
+      //   event.preventDefault()
+      //   alert("Please click <I'm not a robot> before sending the message")
+      // }
+       handleSubmit
+    }}  className="font-cinzel w-full">
      
         <div className="flex flex-col">
           <label htmlFor="name" className="uppercase text-sm py-1">
@@ -96,7 +105,7 @@ const ContactForm: React.FC = () => {
         >
         Send Message
       </button>
-      <ReCAPTCHA size="normal" sitekey={KEY} />
+      <ReCAPTCHA size="normal" sitekey="6Lc9MLYqAAAAAJCVSGpU632xhfSLqMBfRr7CDOk1" />
     </form>
   )
 }
