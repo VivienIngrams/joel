@@ -26,7 +26,7 @@ const ContactForm: React.FC = () => {
     formData.append('g-recaptcha-response', captchaValue);
 
     try {
-      const response = await fetch('/api/new', {
+      const response = await fetch('/api', {
         method: 'POST',
         body: formData,
       });
