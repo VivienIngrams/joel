@@ -1,36 +1,41 @@
 'use client'
 
+import { createContext, ReactNode, useContext, useEffect,useState } from 'react';
 
-import { createContext, ReactNode,useContext, useState } from 'react';
-
-export function formatDate(date: string) {
-  return new Date(date).toLocaleDateString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  })
-}
-
-
-
-// Define the language types
 type Language = 'en' | 'fr';
 
 interface LanguageContextProps {
-  language: Language; // Current language
-  toggleLanguage: () => void; // Function to toggle language
+  language: Language;
+  toggleLanguage: () => void;
 }
 
-// Create the context
 const LanguageContext = createContext<LanguageContextProps | undefined>(undefined);
 
-// Create a provider component
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguage] = useState<Language>('fr'); // Default to Portuguese
+  const [language, setLanguage] = useState<Language>('fr'); // Default to 'fr'
+console.log(language)
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('language');
+    if (savedLanguage === 'en' || savedLanguage === 'fr') {
+      setLanguage(savedLanguage);
+    }
+  }, []);
 
   const toggleLanguage = () => {
-    setLanguage((prev) => (prev === 'en' ? 'fr' : 'en'));
+    setLanguage((prev) => {
+      const newLanguage = prev === 'en' ? 'fr' : 'en';
+      document.cookie = `language=${newLanguage}; path=/`; // Save in cookies
+      return newLanguage;
+    });
   };
+  
+
+  useEffect(() => {
+    // Save the language preference in localStorage on mount
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('language', language);
+    }
+  }, [language]);
 
   return (
     <LanguageContext.Provider value={{ language, toggleLanguage }}>
@@ -39,7 +44,6 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-// Hook for consuming the context
 export const useLanguage = (): LanguageContextProps => {
   const context = useContext(LanguageContext);
   if (!context) {
