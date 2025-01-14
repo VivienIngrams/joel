@@ -1,4 +1,5 @@
 import { cookies } from 'next/headers'; // For reading cookies
+
 import ImageGallery from '~/app/components/ImageGallery';
 import MobileImageGallery from '~/app/components/MobileImageGallery';
 import { readToken } from '~/sanity/lib/sanity.api';
@@ -12,8 +13,8 @@ export default async function PostsPage() {
   const cookieStore = cookies();
   const language = cookieStore.get('language')?.value || 'fr';
 
-  const posts: Post[] = await getPosts(client, {
-    next: { revalidate: 2 },
+  const posts: Post[] = await getPosts(client, language, {
+    next: { revalidate: 10 },
   });
 
   const customOrder = [

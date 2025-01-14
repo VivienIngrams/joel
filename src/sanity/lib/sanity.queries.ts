@@ -18,12 +18,22 @@ export const postsQuery = groq`
 // Function to fetch all posts
 export async function getPosts(
   client: SanityClient,
-  options = {},
+  language: string |'en' | 'fr' = 'fr', // default language is 'fr'
+  options = {}
 ): Promise<Post[]> {
+  // Construct the query based on the selected language
   const posts = await client.fetch(postsQuery, options)
 
-  return posts
+  // Map through the posts and return the correct language-based title and excerpt
+  const languagePosts = posts.map((post) => ({
+    ...post,
+    title: language === 'en' ? post.title_en || post.title : post.title,
+    excerpt: language === 'en' ? post.excerpt_en || post.excerpt : post.excerpt,
+  }))
+
+  return languagePosts
 }
+
 export const collaborationsPostsQuery = groq`
   *[_type == "post" && slug.current in ["mathilde", "johanna", "vibrations" ]] {
     _id,

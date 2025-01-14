@@ -1,10 +1,12 @@
+// app/layout.tsx (or similar file)
+
 import './globals.css'
 
 import type { Metadata } from 'next'
 import { Arsenal, Cinzel, Montserrat } from 'next/font/google'
 
 import Container from './components/Container'
-import { LanguageProvider } from '~/utils'
+import { LanguageProvider } from './components/context/LanguageProvider'
 
 const arsenal = Arsenal({
   variable: '--font-family-arsenal',
@@ -34,13 +36,13 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
-}>) {
+}>) {  
   return (
     <html
-      lang="en"
+      lang="en" // Default to 'en' initially; language will be dynamically set in client-side code
       className={`${montserrat.variable} ${arsenal.variable} ${cinzel.variable}`}
     >
-      <body className={`h-full bg-white font-cinzel `}>
+      <body className="h-full bg-white font-cinzel">
         <LanguageProvider>
           <Container>{children}</Container>
         </LanguageProvider>

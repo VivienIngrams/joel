@@ -4,55 +4,51 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
-import { useLanguage } from '~/utils'
+import { useLanguage } from './context/LanguageProvider'
+import LanguageSwitcher from './LanguageSwitcher'
 
 const NavMenu = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const { language, toggleLanguage } = useLanguage()
   const path = usePathname()
   const isHomePage = path === '/'
 
   const toggleMenu = () => {
     setIsOpen(!isOpen)
   }
-  const { language, toggleLanguage } = useLanguage()
 
   return (
-    <nav className="absolute w-full z-50 text-black font-medium tracking-tight ">
+    <nav className="absolute w-full z-50 text-black font-medium tracking-tight">
       {/* Language Switcher Button */}
-      <button
-        onClick={toggleLanguage}
-        className="z-12 hidden md:block md:fixed bottom-3 left-3 p-1  text-xs text-black  border-[1px] border-gray-300 "
-      >
-        {language === 'en' ? 'FR' : 'EN'}
-      </button>
+
+      <LanguageSwitcher />
       <div
-        className={`w-full flex items-start justify-start  md:justify-center  ${
-          isHomePage ? 'hidden' : 'xl:text-lg tracking-wide  '
-        }`}
+        className={`w-full flex items-start justify-start md:justify-center ${isHomePage ? 'hidden' : 'xl:text-lg tracking-wide'}`}
       >
-        <div className="flex items-center  md:-ml-12">
-          <div className="hidden  md:block">
-            <div className=" flex items-baseline ">
-              <Link href="/posts" className="hover:text-gray-500 px-3    ">
+        <div className="flex items-center md:-ml-12">
+          <div className="hidden md:block">
+            <div className="flex items-baseline">
+              <Link href="/posts" className="hover:text-gray-500 px-3">
                 Galeries
               </Link>
-              <Link href="/videos" className="hover:text-gray-500 px-3  ">
+              <Link href="/videos" className="hover:text-gray-500 px-3">
                 Videos
               </Link>
-              <Link href="/bio" className="hover:text-gray-500 px-3  ">
+              <Link href="/bio" className="hover:text-gray-500 px-3">
                 Bio
               </Link>
-              <Link href="/contact" className="hover:text-gray-500 px-3  ">
+              <Link href="/contact" className="hover:text-gray-500 px-3">
                 Contact
               </Link>
             </div>
           </div>
         </div>
-        <div className="-mr-2 flex  md:hidden">
+
+        <div className="-mr-2 flex md:hidden">
           <button
             onClick={toggleMenu}
             type="button"
-            className="inline-flex  "
+            className="inline-flex"
             aria-controls="mobile-menu"
             aria-expanded="false"
           >
@@ -71,14 +67,13 @@ const NavMenu = () => {
                   strokeLinejoin="round"
                 ></g>
                 <g id="SVGRepo_iconCarrier">
-                  {' '}
                   <path
                     d="M19 5L4.99998 19M5.00001 5L19 19"
                     stroke="#9ca3af"
                     strokeWidth="1.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                  ></path>{' '}
+                  ></path>
                 </g>
               </svg>
             ) : (
@@ -113,9 +108,8 @@ const NavMenu = () => {
                       strokeLinejoin="round"
                       strokeMiterlimit="10"
                       d=" M33.791,33.604c4.528-4.528,10.462-6.791,16.396-6.791c5.934,0,11.868,2.264,16.396,6.791c4.527,4.527,6.79,10.459,6.791,16.392 c0.001,5.936-2.263,11.872-6.791,16.4c-9.055,9.055-23.737,9.055-32.792,0S24.736,42.659,33.791,33.604z"
-                    ></path>{' '}
+                    ></path>
                     <g>
-                      {' '}
                       <line
                         fill="white"
                         stroke="#9ca3af"
@@ -127,7 +121,7 @@ const NavMenu = () => {
                         y1="50"
                         x2="42.187"
                         y2="50"
-                      ></line>{' '}
+                      ></line>
                       <line
                         fill="white"
                         stroke="#9ca3af"
@@ -139,7 +133,7 @@ const NavMenu = () => {
                         y1="42"
                         x2="42.187"
                         y2="42"
-                      ></line>{' '}
+                      ></line>
                       <line
                         fill="white"
                         stroke="#9ca3af"
@@ -151,25 +145,24 @@ const NavMenu = () => {
                         y1="58"
                         x2="42.187"
                         y2="58"
-                      ></line>{' '}
-                    </g>{' '}
-                  </g>{' '}
+                      ></line>
+                    </g>
+                  </g>
                 </g>
               </svg>
-            )}{' '}
+            )}
           </button>
         </div>
       </div>
 
       <div
-        className={`${isOpen ? 'block bg-gradient-to-b from-transparent via-white to-white w-screen pt-24 -ml-4 -mb-4' : 'hidden'}  md:hidden`}
+        className={`${isOpen ? 'block bg-gradient-to-b from-transparent via-white to-white w-screen pt-24 -ml-4 -mb-4' : 'hidden'} md:hidden`}
         id="mobile-menu"
         onClick={toggleMenu}
       >
-        {/* Language Toggle Button */}
         <button
           onClick={toggleLanguage}
-          className="fixed mt-4 right-4 p-1 text-xs text-black  z-55 border-[1px] border-gray-300 z-12"
+          className="fixed mt-4 right-4 p-1 text-xs text-black z-55 border-[1px] border-gray-300 z-12"
         >
           {language === 'en' ? 'FR' : 'EN'}
         </button>
