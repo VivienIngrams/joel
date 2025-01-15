@@ -6,14 +6,14 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'title_en',
-      title: 'Title (English)',
+      name: 'title',
+      title: 'Titre (French)',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'title',
-      title: 'Titre (French)',
+      name: 'title_en',
+      title: 'Title (English)',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
