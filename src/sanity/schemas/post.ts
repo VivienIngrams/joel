@@ -87,7 +87,7 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'title_en',
+      title: 'title',
       author: 'author.name',
       media: 'mainImages.0', // Preview the first image
     },

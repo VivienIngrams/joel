@@ -152,7 +152,7 @@ export function HorizontalScroll({ images, title, subtitles }: HorizontalGallery
                   className="mt-24 object-cover"
                 />
                 {subtitles && subtitles[index] && (
-                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-white text-center uppercase text-2xl p-2 ">
+                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-white text-center text-xl p-2 ">
                     {subtitles[index]}
                   </div>
                 )}
