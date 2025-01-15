@@ -1,20 +1,32 @@
-import Link from 'next/link'
+import { cookies } from 'next/headers'; // For reading cookies
+import ImageGallery from '~/app/components/ImageGallery';
+import MobileImageGallery from '~/app/components/MobileImageGallery';
+import { readToken } from '~/sanity/lib/sanity.api';
+import { getClient } from '~/sanity/lib/sanity.client';
+import { getProjetsPosts, type Post } from '~/sanity/lib/sanity.queries';
 
-import ImageGallery from '~/app/components/ImageGallery'
-import MobileImageGallery from '~/app/components/MobileImageGallery'
-import { readToken } from '~/sanity/lib/sanity.api'
-import { getClient } from '~/sanity/lib/sanity.client'
-import { getProjetsPosts, type Post } from '~/sanity/lib/sanity.queries'
-
-// Fetch data on the server side for all posts
 export default async function ProjetsPage() {
-  const client = getClient({ token: readToken })
+  const client = getClient({ token: readToken });
 
-  const posts: Post[] = await getProjetsPosts(client, {
+  // Get language from cookies (fallback to 'fr')
+  const cookieStore = cookies();
+  const language = cookieStore.get('language')?.value || 'fr';
+
+  const posts: Post[] = await getProjetsPosts(client, language, {
     next: {
       revalidate: 100,
     },
-  })
+  });
+
+  const sortedPosts = posts.map((post) => ({
+    ...post,
+    title: language === 'en' ? post.title_en || post.title : post.title,
+    excerpt: language === 'en' ? post.excerpt_en || post.excerpt : post.excerpt,
+  }));
+
+  if (!sortedPosts || sortedPosts.length === 0) {
+    return <p>No posts found.</p>;
+  }
 
   return (
     <div className="h-full xl:min-h-[80vh] pb-20 font-cinzel bg-white max-w-[98vw] pt-20 xl:pt-16 ">

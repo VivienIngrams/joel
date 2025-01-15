@@ -1,35 +1,41 @@
-import { notFound } from 'next/navigation'
-
-import HorizontalScroll from '~/app/components/HorizontalScroll'
-import MobileScroll from '~/app/components/MobileScroll'
-import PostContent from '~/app/components/PostContent'
-import { readToken } from '~/sanity/lib/sanity.api'
-import { getClient } from '~/sanity/lib/sanity.client'
-import { getPost, type Post, getPosts } from '~/sanity/lib/sanity.queries'
+import { notFound } from 'next/navigation';
+import { cookies } from 'next/headers'; // For reading cookies
+import HorizontalScroll from '~/app/components/HorizontalScroll';
+import MobileScroll from '~/app/components/MobileScroll';
+import PostContent from '~/app/components/PostContent';
+import { readToken } from '~/sanity/lib/sanity.api';
+import { getClient } from '~/sanity/lib/sanity.client';
+import { getPost, type Post, getPosts } from '~/sanity/lib/sanity.queries';
 
 export default async function PostPage({
   params,
 }: {
-  params: { slug: string }
+  params: { slug: string };
 }) {
-  const client = getClient({ token: readToken })
+  const client = getClient({ token: readToken });
+
+  // Get language from cookies (fallback to 'fr')
+  const cookieStore = cookies();
+  const language = cookieStore.get('language')?.value || 'fr';
 
   // Fetch the post by slug
-  const post: Post | null = await getPost(client, params.slug, {
+  const post: Post | null = await getPost(client, params.slug, language, {
     next: {
       revalidate: 10,
     },
-  })
-console.log(post.subtitles)
+  });
+
   // Handle case where no post is found
   if (!post) {
-    return <p>No post found.</p>
+    return <p>No post found.</p>;
   }
- const posts: Post[] = await getPosts(client, {
+
+  // Fetch all posts to determine sorting order
+  const posts: Post[] = await getPosts(client, language, {
     next: {
-      revalidate: 2
+      revalidate: 2,
     },
-  })
+  });
 
   // Define custom slug order
   const customOrder = [
@@ -41,18 +47,23 @@ console.log(post.subtitles)
     'collaborations',
     'projets',
     'images-du-jour',
-  ]
+  ];
 
-  // Sort posts succinctly
-  const sortedPosts = posts.sort(
-    (a, b) =>
-      customOrder.indexOf(a.slug.current) -
-        customOrder.indexOf(b.slug.current) ||
-      new Date(b._createdAt).getTime() - new Date(a._createdAt).getTime(),
-  )
+  // Sort posts dynamically
+  const sortedPosts = posts
+    .map((p) => ({
+      ...p,
+      title: language === 'en' ? p.title_en || p.title : p.title,
+      excerpt: language === 'en' ? p.excerpt_en || p.excerpt : p.excerpt,
+    }))
+    .sort(
+      (a, b) =>
+        customOrder.indexOf(a.slug.current) - customOrder.indexOf(b.slug.current) ||
+        new Date(b._createdAt).getTime() - new Date(a._createdAt).getTime(),
+    );
 
   if (!sortedPosts || sortedPosts.length === 0) {
-    return <p>No posts found.</p>
+    return <p>No posts found.</p>;
   }
 
   return (

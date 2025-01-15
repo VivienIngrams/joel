@@ -1,40 +1,41 @@
-import Link
- from 'next/link';
-
+import { cookies } from 'next/headers'; // For reading cookies
 import ImageGallery from '~/app/components/ImageGallery';
 import MobileImageGallery from '~/app/components/MobileImageGallery';
 import { readToken } from '~/sanity/lib/sanity.api';
 import { getClient } from '~/sanity/lib/sanity.client';
 import { getCollaborationsPosts, type Post } from '~/sanity/lib/sanity.queries';
-// Fetch data on the server side for all posts
+
 export default async function CollaborationsPage() {
   const client = getClient({ token: readToken });
 
-  const posts: Post[] = await getCollaborationsPosts(client, {
+  // Get language from cookies (fallback to 'fr')
+  const cookieStore = cookies();
+  const language = cookieStore.get('language')?.value || 'fr';
+
+  const posts: Post[] = await getCollaborationsPosts(client, language, {
     next: {
       revalidate: 10,
-  
-          },
+    },
   });
 
-  
   // Define custom slug order
-  const customOrder = [
-    'vibrations',
-    'mathilde',
-    'johanna'
-  ]
+  const customOrder = ['vibrations', 'mathilde', 'johanna'];
 
-  // Sort posts succinctly
-  const sortedPosts = posts.sort(
-    (a, b) =>
-      customOrder.indexOf(a.slug.current) -
-        customOrder.indexOf(b.slug.current) ||
-      new Date(b._createdAt).getTime() - new Date(a._createdAt).getTime(),
-  )
+  // Sort posts dynamically with language support
+  const sortedPosts = posts
+    .map((post) => ({
+      ...post,
+      title: language === 'en' ? post.title_en || post.title : post.title,
+      excerpt: language === 'en' ? post.excerpt_en || post.excerpt : post.excerpt,
+    }))
+    .sort(
+      (a, b) =>
+        customOrder.indexOf(a.slug.current) - customOrder.indexOf(b.slug.current) ||
+        new Date(b._createdAt).getTime() - new Date(a._createdAt).getTime(),
+    );
 
   if (!sortedPosts || sortedPosts.length === 0) {
-    return <p>No posts found.</p>
+    return <p>No posts found.</p>;
   }
 
   return (

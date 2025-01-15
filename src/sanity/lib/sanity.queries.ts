@@ -10,6 +10,8 @@ export const postsQuery = groq`
     slug,
     mainImages, 
     layout,
+    excerpt,
+    excerpt_en
   } | order(
     _createdAt desc
   )
@@ -18,7 +20,7 @@ export const postsQuery = groq`
 // Function to fetch all posts
 export async function getPosts(
   client: SanityClient,
-  language: string |'en' | 'fr' = 'fr', // default language is 'fr'
+  language: string | 'en' | 'fr' = 'fr', // default language is 'fr'
   options = {}
 ): Promise<Post[]> {
   // Construct the query based on the selected language
@@ -35,25 +37,36 @@ export async function getPosts(
 }
 
 export const collaborationsPostsQuery = groq`
-  *[_type == "post" && slug.current in ["mathilde", "johanna", "vibrations" ]] {
+  *[_type == "post" && slug.current in ["mathilde", "johanna", "vibrations"]] {
     _id,
     _createdAt,
-     title,
+    title,
     title_en,
     slug,
     excerpt,
     excerpt_en,
     mainImages, 
     layout,
-  } 
+  }
 `
+
 export async function getCollaborationsPosts(
   client: SanityClient,
-  options = {},
+  language: string | 'en' | 'fr' = 'fr',
+  options = {}
 ): Promise<Post[]> {
   const posts = await client.fetch(collaborationsPostsQuery, options)
-  return posts
+
+  // Map through the posts and return the correct language-based title and excerpt
+  const languagePosts = posts.map((post) => ({
+    ...post,
+    title: language === 'en' ? post.title_en || post.title : post.title,
+    excerpt: language === 'en' ? post.excerpt_en || post.excerpt : post.excerpt,
+  }))
+
+  return languagePosts
 }
+
 export const projetsPostsQuery = groq`
   *[_type == "post" && slug.current in ["dante-extraits", "memento"]] {
     _id,
@@ -63,7 +76,7 @@ export const projetsPostsQuery = groq`
     slug,
     excerpt,
     excerpt_en,
-     subtitles,
+    subtitles,
     mainImages, 
     layout,
   } | order(_createdAt desc)
@@ -71,24 +84,32 @@ export const projetsPostsQuery = groq`
 
 export async function getProjetsPosts(
   client: SanityClient,
-  options = {},
+  language: string | 'en' | 'fr' = 'fr',
+  options = {}
 ): Promise<Post[]> {
   const posts = await client.fetch(projetsPostsQuery, options)
 
-  return posts
+  // Map through the posts and return the correct language-based title and excerpt
+  const languagePosts = posts.map((post) => ({
+    ...post,
+    title: language === 'en' ? post.title_en || post.title : post.title,
+    excerpt: language === 'en' ? post.excerpt_en || post.excerpt : post.excerpt,
+  }))
+
+  return languagePosts
 }
 
 // Query to fetch a single post by slug
 export const postBySlugQuery = groq`
   *[_type == "post" && slug.current == $slug][0] {
     _id,
-     title,
+    title,
     title_en,
     slug,
     excerpt,
     excerpt_en,
     subtitles,
-    images[]{
+    images[] {
       ...,
       "aspectRatio": asset->metadata.dimensions.aspectRatio
     }
@@ -99,11 +120,17 @@ export const postBySlugQuery = groq`
 export async function getPost(
   client: SanityClient,
   slug: string,
-  options = {},
+  language: string | 'en' | 'fr' = 'fr', // default language is 'fr'
+  options = {}
 ): Promise<Post> {
   const post = await client.fetch(postBySlugQuery, { slug }, options)
 
-  return post
+  // Return the correct language-based title and excerpt
+  return {
+    ...post,
+    title: language === 'en' ? post.title_en || post.title : post.title,
+    excerpt: language === 'en' ? post.excerpt_en || post.excerpt : post.excerpt,
+  }
 }
 
 // Query to fetch all slugs for posts
@@ -139,22 +166,4 @@ export async function getHomePage(client: SanityClient, options = {}) {
   return homePage
 }
 
-// Function to fetch the home page data
-export async function getDelphinePage(client: SanityClient, options = {}) {
-  const delphinePage = await client.fetch(delphineQuery, options)
-  return delphinePage
-}
-// Query to fetch the home page data
-export const delphineQuery = groq`
- *[_type == "post" && slug.current in ["delphine"]][0] {
-      title,
-    title_en,
-    slug,
-    excerpt,
-    excerpt_en,
-    images[]{
-      ...,
-      "aspectRatio": asset->metadata.dimensions.aspectRatio
-    }
-  } 
-`
+
