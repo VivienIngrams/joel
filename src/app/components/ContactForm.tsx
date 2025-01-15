@@ -3,36 +3,52 @@
 import React, { useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
+const languageTexts = {
+  en: {
+    name: "Name",
+    email: "Email",
+    subject: "Subject",
+    message: "Message",
+    sendMessage: "Send Message",
+    recaptchaError: "Please complete the reCAPTCHA verification before submitting.",
+    formSuccess: "Message successfully sent",
+    formError: "Error, please try resubmitting the form",
+  },
+  fr: {
+    name: "Nom",
+    email: "Courriel",
+    subject: "Sujet",
+    message: "Message",
+    sendMessage: "Envoyer",
+    recaptchaError: "Veuillez compléter la vérification reCAPTCHA avant d'envoyer.",
+    formSuccess: "Message envoyé avec succès",
+    formError: "Erreur, veuillez réessayer d'envoyer le formulaire",
+  },
+};
 
-const ContactForm: React.FC = () => {
+const ContactForm: React.FC<{ language: string }> = ({ language }) => {
+  const texts = languageTexts[language] || languageTexts.en;
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '';
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [isVerified, setIsVerified] = useState(false);
 
   const handleCaptchaChange = (token: string | null) => {
-    // Check if the token exists (user completed the CAPTCHA)
-    if (token) {
-      setIsVerified(true);
-    } else {
-      setIsVerified(false);
-    }
+    if (token) setIsVerified(true);
+    else setIsVerified(false);
   };
 
-  const handleCaptchaExpired = () => {
-    // Mark as unverified if the CAPTCHA expires
-    setIsVerified(false);
-  };
+  const handleCaptchaExpired = () => setIsVerified(false);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (!isVerified) {
-      alert("Please complete the reCAPTCHA verification before submitting.");
+      alert(texts.recaptchaError);
       return;
     }
 
     const formData = new FormData(event.currentTarget);
-    const token = recaptchaRef.current?.getValue(); // Get the reCAPTCHA token
+    const token = recaptchaRef.current?.getValue();
 
     try {
       const response = await fetch('/api', {
@@ -50,17 +66,15 @@ const ContactForm: React.FC = () => {
         }),
       });
 
-      if (!response.ok) {
-        throw new Error(`Form submission failed: ${response.status}`);
-      }
+      if (!response.ok) throw new Error(`Form submission failed: ${response.status}`);
 
       const responseData = await response.json();
       console.log(responseData);
-      alert('Message successfully sent');
-      recaptchaRef.current?.reset(); // Reset reCAPTCHA after successful submission
+      alert(texts.formSuccess);
+      recaptchaRef.current?.reset();
     } catch (error) {
       console.error(error);
-      alert('Error, please try resubmitting the form');
+      alert(texts.formError);
     }
   }
 
@@ -74,7 +88,7 @@ const ContactForm: React.FC = () => {
     >
       <div className="flex flex-col">
         <label htmlFor="name" className="uppercase text-sm py-1">
-          Name
+          {texts.name}
         </label>
         <input
           id="name"
@@ -90,7 +104,7 @@ const ContactForm: React.FC = () => {
 
       <div className="flex flex-col py-1">
         <label htmlFor="email" className="uppercase text-sm py-1">
-          Email
+          {texts.email}
         </label>
         <input
           id="email"
@@ -106,7 +120,7 @@ const ContactForm: React.FC = () => {
 
       <div className="flex flex-col py-1">
         <label htmlFor="subject" className="uppercase text-sm py-1">
-          Subject
+          {texts.subject}
         </label>
         <input
           id="subject"
@@ -119,7 +133,7 @@ const ContactForm: React.FC = () => {
 
       <div className="flex flex-col py-1">
         <label htmlFor="message" className="uppercase text-sm py-1">
-          Message
+          {texts.message}
         </label>
         <textarea
           id="message"
@@ -147,7 +161,7 @@ const ContactForm: React.FC = () => {
         className="mt-4 hover:text-black hover:scale-105 ease-in duration-600 border-2 rounded-lg shadow-md p-2 bg-gray-100"
         disabled={!isVerified}
       >
-        Send Message
+        {texts.sendMessage}
       </button>
     </form>
   );
