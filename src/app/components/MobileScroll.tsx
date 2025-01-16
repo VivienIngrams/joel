@@ -67,7 +67,7 @@ const MobileScroll = ({ images,  title, subtitles }: ImageGalleryProps) => {
                   loading="lazy" // Ensure lazy loading
                 />
                 {subtitles && subtitles[index] && (
-                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-white text-center uppercase text-xl p-2 ">
+                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-white text-center  text-lg p-2 ">
                     {subtitles[index]}
                   </div>
                 )}
