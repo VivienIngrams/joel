@@ -5,12 +5,14 @@ import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
 import BackButton from './BackButton'
+import { useLanguage } from './context/LanguageProvider'
 import Footer from './Footer'
 import LanguageSwitcher from './LanguageSwitcher'
 import SubMenu from './SubMenu'
 
 export default function Container({ children }: { children: React.ReactNode }) {
   const path = usePathname()
+    const { language, toggleLanguage } = useLanguage()
   const isHomePage = path === '/'
   const isContactPage = path === '/contact'
   const isGaleriePage = path === '/posts'
@@ -53,19 +55,19 @@ export default function Container({ children }: { children: React.ReactNode }) {
   let posts = []
   if (isGaleriePage || isSousPage) {
     posts = [
-      { href: '/posts/autoportraits', title: 'Autoportraits' },
-      { href: '/posts/survol', title: 'Survol' },
-      { href: '/posts/hors-d-age', title: 'Hors-d’âge' },
-      { href: '/posts/respiration', title: 'Respiration' },
-      { href: '/posts/derision', title: 'Dérision' },
+      { href: '/posts/autoportraits', title: 'Autoportraits', title_en: 'Self Portraits' },
+      { href: '/posts/survol', title: 'Survol', title_en: 'Glimpse' },
+      { href: '/posts/hors-d-age', title: 'Hors-d’âge', title_en: 'Timeless' },
+      { href: '/posts/respiration', title: 'Respiration', title_en: 'Breath' },
+      { href: '/posts/derision', title: 'Dérision', title_en: 'Derision' },
       { href: '/posts/collaborations', title: 'Collaborations' },
-      { href: '/posts/projets', title: 'Projets Actuels' },
-      { href: '/posts/images-du-jour', title: 'Images du Jour' },
+      { href: '/posts/projets', title: 'Projets Actuels', title_en: 'Current Projects' },
+      { href: '/posts/images-du-jour', title: 'Images du Jour', title_en: 'Photos of the Day' },
     ]
   } else if (isProjetsSousPage || isProjetsPage) {
     posts = [
-      { href: '/posts/memento', title: 'Memento' },
-      { href: '/posts/dante-extraits', title: 'Dante Extraits' },
+      { href: '/posts/memento', title: 'Memento Mori', title_en: 'Memento Mori' },
+      { href: '/posts/dante-extraits', title: 'Dante Extraits', title_en: 'Dante Excerpts' },
     ]
   } else if (isCollaborationsSousPage || isCollaborationsPage) {
     posts = [
@@ -119,7 +121,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
               ardeau
             </h1>
           </Link>
-          <div className='hidden md:block'>
+          <div className='hidden md:block fixed top-4 right-6'>
           <LanguageSwitcher/></div>
         </div>
 

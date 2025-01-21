@@ -9,7 +9,7 @@ const LanguageSwitcher = () => {
     <div>
       <button
         onClick={toggleLanguage}
-        className="absolute md:fixed top-3 right-3 md:top-5 md:right-5 z-50 hover:scale-105 ease-in duration-600"
+        className="z-50 hover:scale-105 ease-in duration-600"
       >
         {language === 'en' ? (
           // French Flag

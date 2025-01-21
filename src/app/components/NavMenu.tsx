@@ -152,11 +152,10 @@ const NavMenu = () => {
       </div>
 
       <div
-        className={`${isOpen ? 'block bg-gradient-to-b from-transparent via-white to-white w-screen pt-24 -ml-4 mb-4' : 'hidden'} md:hidden`}
+        className={`${isOpen ? 'block bg-gradient-to-b from-transparent via-white to-white w-screen pt-24 -ml-4' : 'hidden'} md:hidden`}
         id="mobile-menu"
         onClick={toggleMenu}
       >
-        <LanguageSwitcher/>
         <div className="text-black px-2 pt-2 pb-3 space-y-1 text-md sm:px-3">
           <Link href="/posts" className=" block px-3 py-1 ">
             Galeries
@@ -170,6 +169,9 @@ const NavMenu = () => {
           <Link href="/contact" className=" block px-3 py-1 ">
             Contact
           </Link>
+          <div className="px-3 ">
+          <LanguageSwitcher/>
+</div>
         </div>
       </div>
     </nav>
