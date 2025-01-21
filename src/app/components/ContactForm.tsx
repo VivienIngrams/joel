@@ -1,54 +1,61 @@
-'use client';
+'use client'
 
-import React, { useRef, useState } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
+import React, { useRef, useState } from 'react'
+import { useEffect } from 'react'
+import ReCAPTCHA from 'react-google-recaptcha'
 
 const languageTexts = {
   en: {
-    name: "Name",
-    email: "Email",
-    subject: "Subject",
-    message: "Message",
-    sendMessage: "Send Message",
-    recaptchaError: "Please complete the reCAPTCHA verification before submitting.",
-    formSuccess: "Message successfully sent",
-    formError: "Error, please try resubmitting the form",
+    name: 'Name',
+    email: 'Email',
+    subject: 'Subject',
+    message: 'Message',
+    sendMessage: 'Send Message',
+    recaptchaError:
+      'Please complete the reCAPTCHA verification before submitting.',
+    formSuccess: 'Message successfully sent',
+    formError: 'Error, please try resubmitting the form',
   },
   fr: {
-    name: "Nom",
-    email: "Courriel",
-    subject: "Sujet",
-    message: "Message",
-    sendMessage: "Envoyer",
-    recaptchaError: "Veuillez compléter la vérification reCAPTCHA avant d'envoyer.",
-    formSuccess: "Message envoyé avec succès",
+    name: 'Nom',
+    email: 'Courriel',
+    subject: 'Sujet',
+    message: 'Message',
+    sendMessage: 'Envoyer',
+    recaptchaError:
+      "Veuillez compléter la vérification reCAPTCHA avant d'envoyer.",
+    formSuccess: 'Message envoyé avec succès',
     formError: "Erreur, veuillez réessayer d'envoyer le formulaire",
   },
-};
+}
 
 const ContactForm: React.FC<{ language: string }> = ({ language }) => {
-  const texts = languageTexts[language] || languageTexts.en;
-  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '';
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
-  const [isVerified, setIsVerified] = useState(false);
+  const texts = languageTexts[language] || languageTexts.en
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''
+  const recaptchaRef = useRef<ReCAPTCHA>(null)
+  const [isVerified, setIsVerified] = useState(false)
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleCaptchaChange = (token: string | null) => {
-    if (token) setIsVerified(true);
-    else setIsVerified(false);
-  };
+    if (token) setIsVerified(true)
+    else setIsVerified(false)
+  }
 
-  const handleCaptchaExpired = () => setIsVerified(false);
+  const handleCaptchaExpired = () => setIsVerified(false)
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+    event.preventDefault()
 
     if (!isVerified) {
-      alert(texts.recaptchaError);
-      return;
+      alert(texts.recaptchaError)
+      return
     }
 
-    const formData = new FormData(event.currentTarget);
-    const token = recaptchaRef.current?.getValue();
+    const formData = new FormData(event.currentTarget)
+    const token = recaptchaRef.current?.getValue()
 
     try {
       const response = await fetch('/api', {
@@ -64,17 +71,18 @@ const ContactForm: React.FC<{ language: string }> = ({ language }) => {
           subject: formData.get('subject'),
           message: formData.get('message'),
         }),
-      });
+      })
 
-      if (!response.ok) throw new Error(`Form submission failed: ${response.status}`);
+      if (!response.ok)
+        throw new Error(`Form submission failed: ${response.status}`)
 
-      const responseData = await response.json();
-      console.log(responseData);
-      alert(texts.formSuccess);
-      recaptchaRef.current?.reset();
+      const responseData = await response.json()
+      console.log(responseData)
+      alert(texts.formSuccess)
+      recaptchaRef.current?.reset()
     } catch (error) {
-      console.error(error);
-      alert(texts.formError);
+      console.error(error)
+      alert(texts.formError)
     }
   }
 
@@ -92,6 +100,7 @@ const ContactForm: React.FC<{ language: string }> = ({ language }) => {
         </label>
         <input
           id="name"
+          autoFocus={false}
           name="name"
           autoComplete="off"
           required
@@ -146,25 +155,27 @@ const ContactForm: React.FC<{ language: string }> = ({ language }) => {
           rows={5}
         />
       </div>
-
-      <div className="flex flex-col py-2">
-        <ReCAPTCHA
-          sitekey={siteKey}
-          ref={recaptchaRef}
-          onChange={handleCaptchaChange}
-          onExpired={handleCaptchaExpired}
-        />
+      <div className="md:grid grid-cols-2">
+        <div className="flex flex-col py-2">
+          <ReCAPTCHA
+            sitekey={siteKey}
+            ref={recaptchaRef}
+            onChange={handleCaptchaChange}
+            onExpired={handleCaptchaExpired}
+          />
+        </div>
+        <div className='flex md:items-start md:justify-end'>
+          <button
+            type="submit"
+            className="mt-2 hover:text-black hover:scale-105 ease-in duration-600 border-2 rounded-lg shadow-md p-2 bg-gray-100"
+            disabled={!isVerified}
+          >
+            {texts.sendMessage}
+          </button>
+        </div>
       </div>
-
-      <button
-        type="submit"
-        className="mt-4 hover:text-black hover:scale-105 ease-in duration-600 border-2 rounded-lg shadow-md p-2 bg-gray-100"
-        disabled={!isVerified}
-      >
-        {texts.sendMessage}
-      </button>
     </form>
-  );
-};
+  )
+}
 
-export default ContactForm;
+export default ContactForm
