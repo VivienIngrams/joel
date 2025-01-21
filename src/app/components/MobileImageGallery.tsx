@@ -73,7 +73,7 @@ const MobileImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) 
           </div>
         </Link>
       </div>
-        <div className=" flex flex-row ml-4 overflow-y-scroll no-scrollbar space-x-8"> {/* Flex container for images */} 
+        <div className=" flex flex-row ml-4 overflow-y-scroll no-scrollbar space-x-8 pr-4"> {/* Flex container for images */} 
           {images.map((image, index) => (
             <Link key={index} href={`/posts/${slug}`}>
               <div

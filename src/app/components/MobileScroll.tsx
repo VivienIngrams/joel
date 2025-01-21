@@ -48,7 +48,7 @@ const MobileScroll = ({ images,  title, subtitles }: ImageGalleryProps) => {
           return (
             <div key={index} className="relative flex-shrink-0">
               {/* Clickable Image */}
-              <div className="relative flex-shrink-0"
+              <div className="relative flex-shrink-0 mr-6"
                 style={{
                   width: `${imgWidth}px`, // Set width to the calculated width
                   height: `${containerHeight}px`, // Fixed height
