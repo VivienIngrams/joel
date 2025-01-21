@@ -156,7 +156,7 @@ const ContactForm: React.FC<{ language: string }> = ({ language }) => {
         />
       </div>
       <div className="md:grid grid-cols-2">
-        <div className="flex flex-col py-2">
+        <div className="flex flex-col py-4">
           <ReCAPTCHA
             sitekey={siteKey}
             ref={recaptchaRef}
@@ -167,7 +167,7 @@ const ContactForm: React.FC<{ language: string }> = ({ language }) => {
         <div className='flex md:items-start md:justify-end'>
           <button
             type="submit"
-            className="mt-2 hover:text-black hover:scale-105 ease-in duration-600 border-2 rounded-lg shadow-md p-2 bg-gray-100"
+            className="md:mt-4 hover:text-black hover:scale-105 ease-in duration-600 border-2 rounded-lg shadow-md p-2 bg-gray-100"
             disabled={!isVerified}
           >
             {texts.sendMessage}
