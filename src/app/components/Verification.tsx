@@ -14,13 +14,13 @@ const Verification = () => {
 
   const { language } = useLanguage(); // Access the current language
 
-  // useEffect(() => {
-  //   const hasVerifiedAge = sessionStorage.getItem('hasVerifiedAge');
+  useEffect(() => {
+    const hasVerifiedAge = sessionStorage.getItem('hasVerifiedAge');
 
-  //   if (hasVerifiedAge === 'true') {
-  //     setShowPopup(false);
-  //   }
-  // }, []);
+    if (hasVerifiedAge === 'true') {
+      setShowPopup(false);
+    }
+  }, []);
 
   const handleAgeConfirmation = (isAdult: boolean) => {
     if (isAdult) {
