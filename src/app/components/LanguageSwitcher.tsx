@@ -1,50 +1,55 @@
-'use client';
+'use client'
 
-import { useLanguage } from './context/LanguageProvider';
+import { useLanguage } from './context/LanguageProvider'
 
 const LanguageSwitcher = () => {
-  const { language, toggleLanguage } = useLanguage();
+  const { language, toggleLanguage } = useLanguage()
 
   return (
     <div>
       <button
         onClick={toggleLanguage}
-        className="hidden md:block md:fixed bottom-3 left-3 p-2 "
+        className="absolute md:fixed top-3 right-3 md:top-5 md:right-5 z-50 hover:scale-105 ease-in duration-600"
       >
         {language === 'en' ? (
           // French Flag
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 36 24" // Adjusted aspect ratio
-            width="24" // Uniform size
-            height="16" // Uniform size
+            width="24"
+            height="12"
+            id="flag-icons-fr"
+            viewBox="0 0 640 480"
           >
-            <rect width="12" height="24" fill="#002395" />
-            <rect x="12" width="12" height="24" fill="#FFFFFF" />
-            <rect x="24" width="12" height="24" fill="#ED2939" />
+            <path fill="#fff" d="M0 0h640v480H0z" />
+            <path fill="#000091" d="M0 0h213.3v480H0z" />
+            <path fill="#e1000f" d="M426.7 0H640v480H426.7z" />
           </svg>
         ) : (
           // British Flag
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 60 36" // Adjusted aspect ratio
-            width="24" // Uniform size
-            height="16" // Uniform size
+            viewBox="0 0 60 30"
+            width="20"
+            height="12"
           >
-            <rect width="60" height="36" fill="#00247D" />
+            <clipPath id="t">
+              <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z" />
+            </clipPath>
+            <path d="M0,0 v30 h60 v-30 z" fill="#00247d" />
+            <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6" />
             <path
-              fill="#FFFFFF"
-              d="M0 15h60v6H0zM27 0h6v36h-6zM5 0L55 36h-7L5 6zM55 0L5 36h7L55 6z"
+              d="M0,0 L60,30 M60,0 L0,30"
+              clip-path="url(#t)"
+              stroke="#cf142b"
+              stroke-width="4"
             />
-            <path
-              fill="#CF142B"
-              d="M0 16h60v4H0zM28 0h4v36h-4zM6 0L54 36h-4L6 4zM54 0L6 36h4L54 4z"
-            />
+            <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10" />
+            <path d="M30,0 v30 M0,15 h60" stroke="#cf142b" stroke-width="6" />
           </svg>
         )}
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default LanguageSwitcher;
+export default LanguageSwitcher

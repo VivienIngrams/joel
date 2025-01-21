@@ -4,10 +4,9 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
-
-
 import BackButton from './BackButton'
 import Footer from './Footer'
+import LanguageSwitcher from './LanguageSwitcher'
 import SubMenu from './SubMenu'
 
 export default function Container({ children }: { children: React.ReactNode }) {
@@ -120,6 +119,8 @@ export default function Container({ children }: { children: React.ReactNode }) {
               ardeau
             </h1>
           </Link>
+          <div className='hidden md:block'>
+          <LanguageSwitcher/></div>
         </div>
 
         <main className="w-full font-arsenal">{children}</main>

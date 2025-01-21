@@ -4,12 +4,10 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
-import { useLanguage } from './context/LanguageProvider'
 import LanguageSwitcher from './LanguageSwitcher'
 
 const NavMenu = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const { language, toggleLanguage } = useLanguage()
   const path = usePathname()
   const isHomePage = path === '/'
 
@@ -19,9 +17,7 @@ const NavMenu = () => {
 
   return (
     <nav className="absolute w-full z-50 text-black font-medium tracking-tight">
-      {/* Language Switcher Button */}
-
-      <LanguageSwitcher />
+     
       <div
         className={`w-full flex items-start justify-start md:justify-center ${isHomePage ? 'hidden' : 'xl:text-lg tracking-wide'}`}
       >
@@ -156,16 +152,11 @@ const NavMenu = () => {
       </div>
 
       <div
-        className={`${isOpen ? 'block bg-gradient-to-b from-transparent via-white to-white w-screen pt-24 -ml-4 -mb-4' : 'hidden'} md:hidden`}
+        className={`${isOpen ? 'block bg-gradient-to-b from-transparent via-white to-white w-screen pt-24 -ml-4 mb-4' : 'hidden'} md:hidden`}
         id="mobile-menu"
         onClick={toggleMenu}
       >
-        <button
-          onClick={toggleLanguage}
-          className="fixed mt-4 right-4 p-1 text-xs text-black z-55 border-[1px] border-gray-300 z-12"
-        >
-          {language === 'en' ? 'FR' : 'EN'}
-        </button>
+        <LanguageSwitcher/>
         <div className="text-black px-2 pt-2 pb-3 space-y-1 text-md sm:px-3">
           <Link href="/posts" className=" block px-3 py-1 ">
             Galeries
