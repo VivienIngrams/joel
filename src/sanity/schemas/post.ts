@@ -2,12 +2,12 @@ import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'post',
-  title: 'Post',
+  title: 'Projets',
   type: 'document',
   fields: [
     defineField({
       name: 'title',
-      title: 'Titre (French)',
+      title: 'Titre (Français)',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
@@ -40,7 +40,7 @@ export default defineType({
     {
       name: 'mainImages',
       type: 'array',
-      title: 'Image(s) for Post Page',
+      title: 'Images pour la page Galeries (2 à 5)',
       of: [
         {
           type: 'image',
@@ -52,13 +52,13 @@ export default defineType({
     },
     {
       name: 'layout',
-      title: 'Image Layout',
+      title: 'Format image pour page Galeries',
       type: 'string',
       options: {
         list: [
-          { title: 'Square', value: 'square' },
+          { title: 'Carré', value: 'square' },
           { title: 'Portrait', value: 'portrait' },
-          { title: 'Landscape', value: 'landscape' },
+          { title: 'Paysage', value: 'landscape' },
           { title: 'Panorama', value: 'panorama' },
         ],
         layout: 'radio', // Radio button selection
@@ -67,7 +67,7 @@ export default defineType({
     {
       name: 'images',
       type: 'array',
-      title: 'All Images',
+      title: 'Images de la page individuelle du projet',
       of: [
         {
           type: 'image',
@@ -79,7 +79,7 @@ export default defineType({
     },
     {
       name: 'subtitles',
-      title: 'Subtitles',
+      title: 'Sous-titres',
       type: 'array',
       of: [{ type: 'string' }], // Array of strings
       description: 'Optional subtitles for images. Each subtitle corresponds to an image in the same order.',
