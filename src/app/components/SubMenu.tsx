@@ -11,7 +11,7 @@ const SubMenu = ({ posts }) => {
   const { language } = useLanguage(); // Access the language from context
 console.log(posts)
   return (
-    <nav className="fixed font-cinzel bg-white text-gray-500 px-4 top-16 md:top-14 w-full z-20">
+    <nav className="fixed font-cinzel bg-white text-gray-500 px-4 top-16 md:top-14 w-full z-50">
       {/* Gradient bar */}
       <div className="absolute -bottom-3 left-0 w-full h-4 bg-gradient-to-b from-white to-transparent"></div>
       <ul className="flex flex-row flex-wrap pt-4 gap-x-7 justify-center">
