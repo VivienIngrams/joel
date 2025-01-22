@@ -1,4 +1,3 @@
-import { notFound } from 'next/navigation';
 import { cookies } from 'next/headers'; // For reading cookies
 import HorizontalScroll from '~/app/components/HorizontalScroll';
 import MobileScroll from '~/app/components/MobileScroll';

@@ -21,22 +21,28 @@ export default function Footer({ isHomePage, isContactPage }: { isHomePage: bool
             : 'bg-gradient-to-t from-white to-transparent'
         }`}
       ></div>
-      <div>
-        <Link href="https://vivieningrams.com">
-          <p
-            className={`font-arsenal text-gray-500 hover:text-black xs:tracking-normal z-55 leading-loose w-[140px] pt-2 ${
-              isHomePage && ' '
-            }  ${
-              isContactPage
-                ? 'absolute right-0 md:left-12 bottom-12 md:bottom-1 block h-10 w-30 text-[12px]'
-                : 'hidden'
-            }`}
-          >
-            Website by Vivien Ingrams
-          </p>
+
+      {/* Website Link */}
+      <div
+        className={` ${
+          isContactPage ? 'block' : 'hidden'
+        }`}
+      >
+        <Link
+          href="https://vivieningrams.com"
+          className={`font-arsenal text-gray-500 hover:text-black tracking-normal leading-loose ${
+            isContactPage
+              ? 'fixed right-4 bottom-12 md:relative md:left-2 md:bottom-0 text-[12px]'
+              : ''
+          }`}
+        >
+          Website by Vivien Ingrams
         </Link>
       </div>
+
       <NavMenu />
+
+      {/* Social Icons */}
       <div className="z-50">
         {!isHomePage && (
           <div className="flex items-end mb-2 gap-x-3">
