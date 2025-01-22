@@ -2,9 +2,10 @@ import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'home',
-  title: 'Home Page',
+  title: 'Image Première Page',
   type: 'document',
   fields: [
+    { name: 'title', title: 'Titre', type: 'string' },
     {
       name: 'mainImages',
       type: 'array',
