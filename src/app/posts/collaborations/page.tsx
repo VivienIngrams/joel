@@ -3,7 +3,7 @@ import ImageGallery from '~/app/components/ImageGallery';
 import MobileImageGallery from '~/app/components/MobileImageGallery';
 import { readToken } from '~/sanity/lib/sanity.api';
 import { getClient } from '~/sanity/lib/sanity.client';
-import { getCollaborationsPosts, type Post } from '~/sanity/lib/sanity.queries';
+import { getPosts, type Post } from '~/sanity/lib/sanity.queries';
 
 export default async function CollaborationsPage() {
   const client = getClient({ token: readToken });
@@ -12,7 +12,7 @@ export default async function CollaborationsPage() {
   const cookieStore = cookies();
   const language = cookieStore.get('language')?.value || 'fr';
 
-  const posts: Post[] = await getCollaborationsPosts(client, language, {
+  const posts: Post[] = await getPosts(client, 'collaborations', language, {
     next: {
       revalidate: 10,
     },

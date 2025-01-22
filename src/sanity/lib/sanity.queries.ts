@@ -2,73 +2,10 @@ import type { PortableTextBlock } from '@portabletext/types'
 import groq from 'groq'
 import { type SanityClient } from 'next-sanity'
 
-// Query to fetch all posts with defined slugs, ordered by creation date
-export const postsQuery = groq`
-  *[_type == "post" && slug.current in ["survol", "hors-d-age", "respiration", "images-du-jour", "autoportraits", "derision", "collaborations", "projets"]] {
-    title,
-    title_en,
-    slug,
-    mainImages, 
-    layout,
-    excerpt,
-    excerpt_en
-  } | order(
-    _createdAt desc
-  )
-`
 
-// Function to fetch all posts
-export async function getPosts(
-  client: SanityClient,
-  language: string | 'en' | 'fr' = 'fr', // default language is 'fr'
-  options = {}
-): Promise<Post[]> {
-  // Construct the query based on the selected language
-  const posts = await client.fetch(postsQuery, options)
-
-  // Map through the posts and return the correct language-based title and excerpt
-  const languagePosts = posts.map((post) => ({
-    ...post,
-    title: language === 'en' ? post.title_en || post.title : post.title,
-    excerpt: language === 'en' ? post.excerpt_en || post.excerpt : post.excerpt,
-  }))
-
-  return languagePosts
-}
-
-export const collaborationsPostsQuery = groq`
-  *[_type == "post" && slug.current in ["mathilde", "johanna", "vibrations"]] {
-    _id,
-    _createdAt,
-    title,
-    title_en,
-    slug,
-    excerpt,
-    excerpt_en,
-    mainImages, 
-    layout,
-  }
-`
-
-export async function getCollaborationsPosts(
-  client: SanityClient,
-  language: string | 'en' | 'fr' = 'fr',
-  options = {}
-): Promise<Post[]> {
-  const posts = await client.fetch(collaborationsPostsQuery, options)
-
-  // Map through the posts and return the correct language-based title and excerpt
-  const languagePosts = posts.map((post) => ({
-    ...post,
-    title: language === 'en' ? post.title_en || post.title : post.title,
-    excerpt: language === 'en' ? post.excerpt_en || post.excerpt : post.excerpt,
-  }))
-
-  return languagePosts
-}
-
-export const projetsPostsQuery = groq`
-  *[_type == "post" && slug.current in ["dante-extraits", "memento"]] {
+// GROQ query to fetch posts by section
+const postsBySectionQuery = (section: string) => groq`
+  *[_type == "post" && section == $section] {
     _id,
     _createdAt,
     title,
@@ -77,19 +14,22 @@ export const projetsPostsQuery = groq`
     excerpt,
     excerpt_en,
     subtitles,
-    mainImages, 
-    layout,
+    mainImages,
+    layout
   } | order(_createdAt desc)
 `
 
-export async function getProjetsPosts(
+// Generic function to fetch posts by section
+export async function getPosts(
   client: SanityClient,
-  language: string | 'en' | 'fr' = 'fr',
+  section: 'gallery' | 'projets-actuels' | 'collaborations', // Limit to valid sections
+  language: 'en' | 'fr' | string = 'fr',
   options = {}
 ): Promise<Post[]> {
-  const posts = await client.fetch(projetsPostsQuery, options)
+  // Fetch posts for the given section
+  const posts = await client.fetch(postsBySectionQuery(section), options)
 
-  // Map through the posts and return the correct language-based title and excerpt
+  // Map through the posts and localize the content
   const languagePosts = posts.map((post) => ({
     ...post,
     title: language === 'en' ? post.title_en || post.title : post.title,
@@ -143,12 +83,13 @@ export type Post = {
   _id: string
   slug: { current: string }
   _createdAt: string
-  mainImages: any[] // Ensure this is required if you always expect it
+  mainImages: any[] 
   title: string
   title_en?: string
   subtitles?: string[]
   excerpt?: PortableTextBlock[]
   excerpt_en?: PortableTextBlock[]
+  section?: 'gallery' | 'projets-actuels' | 'collaborations'
   layout: 'portrait' | 'square' | 'landscape'
   images?: any[]
 }

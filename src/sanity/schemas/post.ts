@@ -19,7 +19,7 @@ export default defineType({
     }),
     defineField({
       name: 'slug',
-      title: 'Slug',
+      title: 'Cliquez sur le bouton Generate',
       type: 'slug',
       validation: (Rule) => Rule.required(),
       options: {
@@ -27,20 +27,25 @@ export default defineType({
         maxLength: 96,
       },
     }),
-    defineField({
-      name: 'excerpt_en',
-      title: 'Excerpt (English)',
-      type: 'blockContent',
-    }),
-    defineField({
-      name: 'excerpt',
-      title: 'Extrait (Français)',
-      type: 'blockContent',
-    }),
+    {
+      name: 'section',
+      title: 'Sur quelle page veux-tu rajouter ce projet?',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Page principale Galeries', value: 'gallery' },
+          { title: 'Collaborations', value: 'collaborations' },
+          { title: 'Projets actuels', value: 'projets-actuels' },
+      
+        ],
+        layout: 'radio', 
+      },
+      initialValue: 'gallery', 
+    },
     {
       name: 'mainImages',
       type: 'array',
-      title: 'Images pour la page Galeries (2 à 5)',
+      title: 'Images (2 à 5) pour la page Galeries ',
       of: [
         {
           type: 'image',
@@ -64,6 +69,16 @@ export default defineType({
         layout: 'radio', // Radio button selection
       },
     },
+    defineField({
+      name: 'excerpt_en',
+      title: 'Text (English)',
+      type: 'blockContent',
+    }),
+    defineField({
+      name: 'excerpt',
+      title: 'Texte (Français)',
+      type: 'blockContent',
+    }),
     {
       name: 'images',
       type: 'array',

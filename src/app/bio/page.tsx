@@ -50,15 +50,6 @@ const Bio = async () => {
     exhibitions: biography[language]?.exhibitions || biography['fr'].exhibitions,
   };
   
-
-  if (!currentContent) {
-    return (
-      <div>
-        Error: Biography content is not available for the selected language.
-      </div>
-    )
-  }
-
   const titles = {
     artisticTraining:
       language === 'fr' ? 'Formations artistiques' : 'Artistic Training',
