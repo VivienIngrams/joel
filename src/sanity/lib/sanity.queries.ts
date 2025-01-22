@@ -54,6 +54,7 @@ export const postBySlugQuery = groq`
     title,
     title_en,
     slug,
+    section,
     excerpt,
     excerpt_en,
     subtitles,

@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers'; // For reading cookies
-
 import ImageGallery from '~/app/components/ImageGallery';
 import MobileImageGallery from '~/app/components/MobileImageGallery';
+import SubMenu from '~/app/components/SubMenu';
 import { readToken } from '~/sanity/lib/sanity.api';
 import { getClient } from '~/sanity/lib/sanity.client';
 import { getPosts, type Post } from '~/sanity/lib/sanity.queries';
@@ -45,7 +45,16 @@ export default async function PostsPage() {
   }
 
   return (
+ <>
+      <SubMenu
+        posts={sortedPosts.map((post) => ({
+          href: `/posts/${post.slug.current}`,
+          title: post.title,
+          title_en: post.title_en,
+        }))}
+      />
     <div className="h-full xl:min-h-[80vh] pb-20 font-cinzel font-bold bg-white max-w-full pt-40 xl:pt-16">
+
       {sortedPosts.map((post) => (
         <div key={post._id} className=" ">
           <div className="pb-6 xl:hidden">
@@ -67,5 +76,6 @@ export default async function PostsPage() {
         </div>
       ))}
     </div>
+    </>
   );
 }

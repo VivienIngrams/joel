@@ -3,14 +3,13 @@
 import React from 'react';
 import Link from 'next/link';
 import { useLanguage } from './context/LanguageProvider';
+import { Post } from '~/sanity/lib/sanity.queries';
 
-interface SubMenuProps {
-  posts: { href: string; title: string; title_en?: string }[];
-}
 
-const SubMenu: React.FC<SubMenuProps> = ({ posts }) => {
+
+const SubMenu = ({ posts }) => {
   const { language } = useLanguage(); // Access the language from context
-
+console.log(posts)
   return (
     <nav className="fixed font-cinzel bg-white text-gray-500 px-4 top-16 md:top-14 w-full z-20">
       {/* Gradient bar */}

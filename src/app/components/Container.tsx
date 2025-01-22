@@ -2,20 +2,20 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
+
 
 import BackButton from './BackButton'
-import { useLanguage } from './context/LanguageProvider'
+
 import Footer from './Footer'
 import LanguageSwitcher from './LanguageSwitcher'
-import SubMenu from './SubMenu'
+
 
 export default function Container({ children }: { children: React.ReactNode }) {
   const path = usePathname()
-    const { language, toggleLanguage } = useLanguage()
+
   const isHomePage = path === '/'
   const isContactPage = path === '/contact'
-  const isGaleriePage = path === '/posts'
+
   const isCollaborationsPage = path === '/posts/collaborations'
   const isProjetsPage = path === '/posts/projets'
   const isCollaborationsSousPage = [
@@ -35,47 +35,11 @@ export default function Container({ children }: { children: React.ReactNode }) {
     !isCollaborationsPage // Exclude Projets and Collaborations subpages
   const isStudioPage = path.startsWith('/studio') // Check if the path starts with /studio
 
-  // State for managing the contact form visibility
-  const [isFormOpen, setIsFormOpen] = useState(false)
-
-  const openForm = () => {
-    setIsFormOpen(true) // Show the form
-  }
-
-  const closeForm = () => {
-    setIsFormOpen(false) // Hide the form
-  }
-
   if (isStudioPage) {
     // If it's the /studio path, return only the children without the container
     return <>{children}</>
   }
 
-  // Logic for determining the posts to display in SubMenu
-  let posts = []
-  if (isGaleriePage || isSousPage) {
-    posts = [
-      { href: '/posts/autoportraits', title: 'Autoportraits', title_en: 'Self Portraits' },
-      { href: '/posts/survol', title: 'Survol', title_en: 'Glimpse' },
-      { href: '/posts/hors-d-age', title: 'Hors-d’âge', title_en: 'Timeless' },
-      { href: '/posts/respiration', title: 'Respiration', title_en: 'Breath' },
-      { href: '/posts/derision', title: 'Dérision', title_en: 'Derision' },
-      { href: '/posts/collaborations', title: 'Collaborations' },
-      { href: '/posts/projets', title: 'Projets Actuels', title_en: 'Current Projects' },
-      { href: '/posts/images-du-jour', title: 'Images du Jour', title_en: 'Photos of the Day' },
-    ]
-  } else if (isProjetsSousPage || isProjetsPage) {
-    posts = [
-      { href: '/posts/memento', title: 'Memento Mori', title_en: 'Memento Mori' },
-      { href: '/posts/dante-extraits', title: 'Dante Extraits', title_en: 'Dante Excerpts' },
-    ]
-  } else if (isCollaborationsSousPage || isCollaborationsPage) {
-    posts = [
-      { href: '/posts/vibrations', title: 'VIBRATION(S)' },
-      { href: '/posts/mathilde', title: 'Mathilde Cudeville' },
-      { href: '/posts/johanna', title: 'Johanna Senpau' },
-    ]
-  }
 
   return (
     <div className="max-w-screen h-full font-ubuntu">
@@ -101,12 +65,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
           />
           <BackButton show={isProjetsSousPage} href="/posts/projets" />
           <BackButton show={isSousPage} href="/posts" />
-          {(isGaleriePage ||
-            isSousPage ||
-            isProjetsSousPage ||
-            isProjetsPage ||
-            isCollaborationsSousPage ||
-            isCollaborationsPage) && <SubMenu posts={posts} />}
+      
           <Link href={isHomePage ? '/posts' : '/'}>
             <h1
               className={`${isHomePage ? 'hidden' : 'text-black font-montserrat uppercase font-normal  hover:text-gray-500 text-3xl tracking-[-0.rem] text-center md:pb-4'}`}
