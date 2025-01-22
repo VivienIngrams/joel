@@ -5,9 +5,11 @@ import React from 'react'
 import { getClient } from '~/sanity/lib/sanity.client'
 import { readToken } from '~/sanity/lib/sanity.api'
 import { getBioPage } from '~/sanity/lib/sanity.queries'
+import { PortableText } from '@portabletext/react'
+import { PortableTextBlock } from '@portabletext/types'
 
 interface BiographyContent {
-  biographyText: any[]
+  biographyText: PortableTextBlock[] // Ensure this is an array of PortableTextBlocks
   artisticTraining: string[]
   organizer: string[]
   exhibitions: string[]
@@ -48,7 +50,7 @@ const Bio = async () => {
     artisticTraining: biography[language]?.artisticTraining || biography['fr'].artisticTraining,
     organizer: biography[language]?.organizer || biography['fr'].organizer,
     exhibitions: biography[language]?.exhibitions || biography['fr'].exhibitions,
-  };
+  }
   
   const titles = {
     artisticTraining:
@@ -81,11 +83,10 @@ const Bio = async () => {
           </div>
         </div>
         <div className="xl:h-[80vh] flex flex-col justify-center text-lg xl:text-xl text-left max-w-2xl px-6 pb-16 xl:pl-4 xl:py-12">
-          {currentContent.biographyText.map((block, index) => (
-            <p key={index}>
-              {block.children.map((child) => child.text).join(' ')}
-            </p>
-          ))}
+          {/* Render Biography Text using PortableText */}
+          <div>
+            <PortableText value={currentContent.biographyText} />
+          </div>
         </div>
       </div>
 
@@ -114,9 +115,11 @@ const Bio = async () => {
               {titles.organizer}
             </h2>
             <ul>
-              {currentContent.organizer.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
+            {currentContent.biographyText.map((block, index) => (
+              <div key={index} className="mb-4">
+                <PortableText value={[block]} />
+              </div>
+            ))}
             </ul>
           </div>
         )}
