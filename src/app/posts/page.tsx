@@ -13,7 +13,7 @@ export default async function PostsPage() {
   const cookieStore = cookies();
   const language = cookieStore.get('language')?.value || 'fr';
 
-  const posts: Post[] = await getPosts(client, language, {
+  const posts: Post[] = await getPosts(client, 'gallery', language, {
     next: { revalidate: 10 },
   });
 

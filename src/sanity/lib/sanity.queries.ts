@@ -11,6 +11,7 @@ const postsBySectionQuery = (section: string) => groq`
     title,
     title_en,
     slug,
+   
     excerpt,
     excerpt_en,
     subtitles,
@@ -26,19 +27,26 @@ export async function getPosts(
   language: 'en' | 'fr' | string = 'fr',
   options = {}
 ): Promise<Post[]> {
-  // Fetch posts for the given section
-  const posts = await client.fetch(postsBySectionQuery(section), options)
+  try {
+    // Fetch posts for the given section
+    const posts = await client.fetch(postsBySectionQuery(section), {
+      section, // Pass the section parameter here
+      ...options, // Spread other options if any
+    })
 
-  // Map through the posts and localize the content
-  const languagePosts = posts.map((post) => ({
-    ...post,
-    title: language === 'en' ? post.title_en || post.title : post.title,
-    excerpt: language === 'en' ? post.excerpt_en || post.excerpt : post.excerpt,
-  }))
+    // Map through the posts and localize the content
+    const languagePosts = posts.map((post) => ({
+      ...post,
+      title: language === 'en' ? post.title_en || post.title : post.title,
+      excerpt: language === 'en' ? post.excerpt_en || post.excerpt : post.excerpt,
+    }))
 
-  return languagePosts
+    return languagePosts
+  } catch (error) {
+    console.error('Error fetching posts by section:', error)
+    throw error
+  }
 }
-
 // Query to fetch a single post by slug
 export const postBySlugQuery = groq`
   *[_type == "post" && slug.current == $slug][0] {

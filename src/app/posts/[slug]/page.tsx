@@ -4,7 +4,7 @@ import MobileScroll from '~/app/components/MobileScroll';
 import PostContent from '~/app/components/PostContent';
 import { readToken } from '~/sanity/lib/sanity.api';
 import { getClient } from '~/sanity/lib/sanity.client';
-import { getPost, type Post, getPosts } from '~/sanity/lib/sanity.queries';
+import { getPost, type Post } from '~/sanity/lib/sanity.queries';
 
 export default async function PostPage({
   params,
@@ -27,42 +27,6 @@ export default async function PostPage({
   // Handle case where no post is found
   if (!post) {
     return <p>No post found.</p>;
-  }
-
-  // Fetch all posts to determine sorting order
-  const posts: Post[] = await getPosts(client, language, {
-    next: {
-      revalidate: 2,
-    },
-  });
-
-  // Define custom slug order
-  const customOrder = [
-    'autoportraits',
-    'survol',
-    'hors-d-age',
-    'respiration',
-    'derision',
-    'collaborations',
-    'projets',
-    'images-du-jour',
-  ];
-
-  // Sort posts dynamically
-  const sortedPosts = posts
-    .map((p) => ({
-      ...p,
-      title: language === 'en' ? p.title_en || p.title : p.title,
-      excerpt: language === 'en' ? p.excerpt_en || p.excerpt : p.excerpt,
-    }))
-    .sort(
-      (a, b) =>
-        customOrder.indexOf(a.slug.current) - customOrder.indexOf(b.slug.current) ||
-        new Date(b._createdAt).getTime() - new Date(a._createdAt).getTime(),
-    );
-
-  if (!sortedPosts || sortedPosts.length === 0) {
-    return <p>No posts found.</p>;
   }
 
   return (
