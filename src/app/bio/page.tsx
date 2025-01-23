@@ -85,7 +85,11 @@ const Bio = async () => {
         <div className="xl:h-[80vh] flex flex-col justify-center text-lg xl:text-xl text-left max-w-2xl px-6 pb-16 xl:pl-4 xl:py-12">
           {/* Render Biography Text using PortableText */}
           <div>
-            <PortableText value={currentContent.biographyText} />
+          {currentContent.biographyText.map((block, index) => (
+              <div key={index} className="mb-1">
+                <PortableText value={[block]} />
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -115,11 +119,9 @@ const Bio = async () => {
               {titles.organizer}
             </h2>
             <ul>
-            {currentContent.biographyText.map((block, index) => (
-              <div key={index} className="mb-4">
-                <PortableText value={[block]} />
-              </div>
-            ))}
+            {currentContent.organizer.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
             </ul>
           </div>
         )}
