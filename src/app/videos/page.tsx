@@ -7,6 +7,13 @@ const StaticVideos = async () => {
   const client = getClient({ token: readToken })
   const videos = await getVideos(client)
 
+  console.log(videos) // For debugging
+
+  if (!Array.isArray(videos)) {
+    console.error('Videos is not an array:', videos)
+    return <div>Error loading videos</div>
+  }
+  
   const extractVideoId = (url: string): string => {
     const match = url.match(/[?&]v=([^&]+)/)
     return match ? match[1] : ''

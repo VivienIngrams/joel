@@ -154,25 +154,26 @@ youtubeUrl: string
 // GROQ query to fetch videos
 const videosQuery = groq`
   *[_type == "videoPage"][0] {
-  title,
-  videos[] {
     title,
-    youtubeUrl
+    "videos": videos[] {
+      title,
+      youtubeUrl
+    }
   }
-}`
+`
+
 
   // Function to fetch videos
-export async function getVideos(
-  client: SanityClient,
-  options = {}
-): Promise<Video[]> {
-  try {
-    // Fetch videos
-    const videos = await client.fetch(videosQuery, options)
-
-    return videos
-  } catch (error) {
-    console.error('Error fetching videos:', error)
-    throw error
+  export async function getVideos(
+    client: SanityClient,
+    options = {}
+  ): Promise<Video[]> {
+    try {
+      const result = await client.fetch(videosQuery, options)
+      return result.videos || []
+    } catch (error) {
+      console.error('Error fetching videos:', error)
+      throw error
+    }
   }
-}
+  
