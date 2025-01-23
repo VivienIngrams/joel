@@ -148,7 +148,7 @@ export async function getBioPage(client: SanityClient, options = {}) {
 
 export type Video = {
 title: string
-youtubeUrl: string
+videoId: string
 }
 
 // GROQ query to fetch videos
@@ -157,7 +157,7 @@ const videosQuery = groq`
     title,
     "videos": videos[] {
       title,
-      youtubeUrl
+      videoId
     }
   }
 `

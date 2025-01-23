@@ -24,15 +24,15 @@ export default defineType({
                 type: 'string',
               },
               {
-                name: 'youtubeUrl',
-                title: 'YouTube URL (copier adresse de la page du vidéo sur Youtube et coller ici)',
+                name: 'videoId',
+                title: 'Copiez e collez ici la dernière partie de l adresse de la page du vidéo sur Youtube, qui suit "v="... Par exemple, pour https://www.youtube.com/watch?v=vr-43dDHWSA il faut le code vr-43dDHWSA)',
                 type: 'string',
               }
             ],
             preview: {
               select: {
                 title: 'title',
-                media: 'youtubeUrl'
+                media: 'videoId'
               },
             
             }
