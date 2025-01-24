@@ -45,7 +45,7 @@ export default defineType({
     {
       name: 'mainImages',
       type: 'array',
-      title: 'Images (2 à 5) pour la page Galeries ',
+      title: 'Images (2 à 5) pour représenter le projet (dans Galéries/Collaborations/Projets Actuels) ',
       of: [
         {
           type: 'image',
@@ -57,7 +57,7 @@ export default defineType({
     },
     {
       name: 'layout',
-      title: 'Format image pour page Galeries',
+      title: 'Format image pour page principale',
       type: 'string',
       options: {
         list: [
@@ -82,7 +82,7 @@ export default defineType({
     {
       name: 'images',
       type: 'array',
-      title: 'Images de la page individuelle du projet',
+      title: 'Toutes les images du projet',
       of: [
         {
           type: 'image',
