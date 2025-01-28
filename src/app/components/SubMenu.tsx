@@ -3,13 +3,12 @@
 import React from 'react';
 import Link from 'next/link';
 import { useLanguage } from './context/LanguageProvider';
-import { Post } from '~/sanity/lib/sanity.queries';
 
 
 
 const SubMenu = ({ posts }) => {
   const { language } = useLanguage(); // Access the language from context
-console.log(posts)
+
   return (
     <nav className="fixed font-cinzel bg-white text-gray-500 px-4 top-16 md:top-14 w-full z-50">
       {/* Gradient bar */}
