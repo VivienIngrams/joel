@@ -16,7 +16,7 @@ const NavMenu = () => {
   }
 
   return (
-    <nav className="absolute w-full md:w-[80%] md:ml-[10%] z-50 text-black font-medium tracking-tight">
+    <nav className="absolute md:w-[80%] md:ml-[10%] z-50 text-black font-medium tracking-tight">
      
       <div
         className={`w-full flex items-start justify-start md:justify-center ${isHomePage ? 'hidden' : 'xl:text-lg tracking-wide'}`}

@@ -18,7 +18,7 @@ const StaticVideos = async () => {
   // Add the problematic video manually
   const hardcodedVideo = {
     videoId: "1NGeiLDDWzo",
-    title: "hypnokinetic",
+    title: "Hypnokinetic",
   };
 
   const allVideos = [...safeVideos, hardcodedVideo];

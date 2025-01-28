@@ -29,10 +29,12 @@ export default function Footer({
       ></div>
 
       {/* Website Link */}
-      <div className={` `}>
+      <div className="relative z-60"> {/* Added relative positioning to ensure the link is on top */}
         <Link
           href="https://vivieningrams.com"
-          className={`${isContactPage ? 'block' : 'hidden'} font-arsenal text-gray-500 hover:text-black tracking-normal leading-loose text-[12px] ml-12 md:ml-2 mb-1  }`}
+          className={`${
+            isContactPage ? 'block' : 'hidden'
+          } font-arsenal text-gray-500 hover:text-black tracking-normal leading-loose text-[12px] ml-12 md:ml-2 mb-1`}
         >
           Website by Vivien Ingrams
         </Link>
@@ -41,7 +43,7 @@ export default function Footer({
       <NavMenu />
 
       {/* Social Icons */}
-      <div className=" z-50">
+      <div className="z-50">
         {!isHomePage && (
           <div className="flex items-end mb-2 gap-x-3">
             <div className="flex gap-x-3">
