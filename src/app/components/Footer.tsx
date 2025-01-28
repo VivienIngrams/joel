@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import NavMenu from './NavMenu'
 import Socials from './Socials'
-import { useLanguage } from './context/LanguageProvider';
+import { useLanguage } from './context/LanguageProvider'
 
 export default function Footer({
   isHomePage,
@@ -12,13 +12,13 @@ export default function Footer({
   isHomePage: boolean
   isContactPage: boolean
 }) {
-  const { language } = useLanguage();
+  const { language } = useLanguage()
 
   // Text translations
   const text = {
     en: 'Website by Vivien Ingrams',
     fr: 'Site web par Vivien Ingrams',
-  };
+  }
 
   return (
     <footer
@@ -41,6 +41,8 @@ export default function Footer({
       <div className="relative z-60">
         <Link
           href="https://vivieningrams.com"
+          target="_blank"
+          rel="noopener noreferrer"
           className={`${
             isContactPage ? 'block' : 'hidden'
           } font-arsenal text-gray-500 hover:text-black tracking-normal leading-loose text-[12px] ml-12 md:ml-2 mb-1`}

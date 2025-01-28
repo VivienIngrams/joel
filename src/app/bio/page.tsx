@@ -31,7 +31,7 @@ const Bio = async () => {
 
   // Fetch the bio data
   const bioDataArray: BioData[] | null = await getBioPage(client, {
-    next: { revalidate: 10 },
+    next: { revalidate: 60 },
   })
 
   if (!bioDataArray || bioDataArray.length === 0) {
@@ -86,7 +86,7 @@ const Bio = async () => {
           {/* Render Biography Text using PortableText */}
           <div>
           {currentContent.biographyText.map((block, index) => (
-              <div key={index} className="mb-1">
+              <div key={index} className="mb-2">
                 <PortableText value={[block]} />
               </div>
             ))}

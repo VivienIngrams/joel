@@ -15,8 +15,8 @@ const LanguageSwitcher = () => {
           // French Flag
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="12"
+            width="28"
+            height="16"
             id="flag-icons-fr"
             viewBox="0 0 640 480"
           >
@@ -28,9 +28,9 @@ const LanguageSwitcher = () => {
           // British Flag
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 60 30"
-            width="20"
-            height="12"
+            viewBox="0 0 60 40"
+            width="28"
+            height="20"
           >
             <clipPath id="t">
               <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z" />
