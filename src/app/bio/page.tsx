@@ -99,7 +99,7 @@ const Bio = async () => {
       </div>
 
       {/* Content Sections */}
-      <div className="mt-6 md:mt-12 2xl:mt-24 xl:col-span-2 text-left px-6 pb-16 xl:pb-24 xl:mx-auto xl:max-w-5xl">
+      <div className="mt-12 2xl:mt-24 xl:col-span-2 text-left px-6 pb-16 xl:pb-24 xl:mx-auto xl:max-w-5xl">
         {currentContent.artisticTraining?.length > 0 && (
           <div>
             <h2 className="text-xl xl:text-2xl font-bold mb-6">

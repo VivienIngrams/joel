@@ -49,7 +49,7 @@ export default async function HomePage() {
               </span>
               ardeau
             </h1>
-            <h2 className=" text-2xl xl:text-3xl font-cinzel leading-normal mt-4">
+            <h2 className=" text-2xl xl:text-3xl font-cinzel leading-normal -mt-1 md:mt-4">
               Artiste Auteur
             </h2>
           </div>
