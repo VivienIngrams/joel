@@ -39,12 +39,38 @@ export default async function PostPage({
   if (!posts || posts.length === 0) {
     return <p>No related posts found.</p>;
   }
+  const customOrder = [
+    'autoportraits',
+    'survol',
+    'hors-d-age',
+    'respiration',
+    'derision',
+    'collaborations',
+    'projets',
+    ,
+  ]; 
+
+  const sortedPosts = posts
+  .map((post) => ({
+    ...post,
+    title: language === 'en' ? post.title_en || post.title : post.title,
+    excerpt: language === 'en' ? post.excerpt_en || post.excerpt : post.excerpt,
+  }))
+  .sort(
+    (a, b) =>
+      customOrder.indexOf(a.slug.current) - customOrder.indexOf(b.slug.current) ||
+      new Date(b._createdAt).getTime() - new Date(a._createdAt).getTime(),
+  );
+
+if (!sortedPosts || sortedPosts.length === 0) {
+  return <p>No posts found.</p>;
+}
 
   return (
     <>
       {/* SubMenu with related posts */}
       <SubMenu
-        posts={posts.map((relatedPost) => ({
+        posts={sortedPosts.map((relatedPost) => ({
           href: `/posts/${relatedPost.slug.current}`,
           title: relatedPost.title,
           title_en: relatedPost.title_en,
