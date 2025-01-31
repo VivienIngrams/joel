@@ -32,7 +32,7 @@ export default async function PostPage({
 
   // Fetch related posts from the same section
   const posts: Post[] = await getPosts(client, post.section, language, {
-    next: { revalidate: 10 },
+    next: { revalidate: 66 },
   });
 
   // Handle case where no related posts are found

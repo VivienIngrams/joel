@@ -5,14 +5,13 @@ import { type SanityClient } from 'next-sanity'
 
 // GROQ query to fetch posts by section
 const postsBySectionQuery = (section: string) => groq`
-  *[_type == "post" && section == $section] {
+  *[_type == "post" && section == $section && !(_id in path("drafts.**"))] {
     _id,
     _createdAt,
     title,
     title_en,
     slug,
-   
-    excerpt,
+       excerpt,
     excerpt_en,
     subtitles,
     mainImages,
@@ -49,7 +48,7 @@ export async function getPosts(
 }
 // Query to fetch a single post by slug
 export const postBySlugQuery = groq`
-  *[_type == "post" && slug.current == $slug][0] {
+  *[_type == "post" && slug.current == $slug && !(_id in path("drafts.**"))][0] {
     _id,
     title,
     title_en,

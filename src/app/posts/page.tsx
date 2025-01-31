@@ -14,9 +14,10 @@ export default async function PostsPage() {
   const language = cookieStore.get('language')?.value || 'fr';
 
   const posts: Post[] = await getPosts(client, 'gallery', language, {
-    next: { revalidate: 10 },
+    next: { revalidate: 33 },
   });
-
+console.log(posts
+)
   const customOrder = [
     'autoportraits',
     'survol',
@@ -25,7 +26,7 @@ export default async function PostsPage() {
     'derision',
     'collaborations',
     'projets',
-    'images-du-jour',
+    ,
   ];
 
   const sortedPosts = posts
