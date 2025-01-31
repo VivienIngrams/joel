@@ -70,13 +70,25 @@ export async function getPost(
   language: string | 'en' | 'fr' = 'fr', // default language is 'fr'
   options = {}
 ): Promise<Post> {
-  const post = await client.fetch(postBySlugQuery, { slug }, options)
+  try {
+    const post = await sanityFetch<Post>({
+      query: postBySlugQuery,
+      qParams: { slug, ...options },
+    });
 
-  // Return the correct language-based title and excerpt
-  return {
-    ...post,
-    title: language === 'en' ? post.title_en || post.title : post.title,
-    excerpt: language === 'en' ? post.excerpt_en || post.excerpt : post.excerpt,
+    if (!post) {
+      throw new Error(`Post with slug "${slug}" not found`);
+    }
+
+    // Return the correct language-based title and excerpt
+    return {
+      ...post,
+      title: language === 'en' ? post.title_en || post.title : post.title,
+      excerpt: language === 'en' ? post.excerpt_en || post.excerpt : post.excerpt,
+    };
+  } catch (error) {
+    console.error('Error fetching post by slug:', error);
+    throw error;
   }
 }
 
