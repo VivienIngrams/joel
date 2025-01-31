@@ -16,7 +16,7 @@ export default async function CollaborationsPage() {
 
   const posts: Post[] = await getPosts(client, 'collaborations', language, {
     next: {
-      revalidate: 10,
+      revalidate: 99,
     },
   });
 

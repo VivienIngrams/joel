@@ -37,7 +37,7 @@ export async function sanityFetch<QueryResponse>({
 }): Promise<QueryResponse> {
   const client = getClient();
   return client.fetch<QueryResponse>(query, qParams, {
-    cache: "force-cache",  // Cache the result for forced revalidation
+    cache: "no-cache",  // Cache the result for forced revalidation
     next: { tags },  // Pass tags for revalidation
   });
 }

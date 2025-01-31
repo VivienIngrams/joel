@@ -4,7 +4,7 @@ import MobileImageGallery from '~/app/components/MobileImageGallery';
 import SubMenu from '~/app/components/SubMenu';
 import { readToken } from '~/sanity/lib/sanity.api';
 import { getClient } from '~/sanity/lib/sanity.client';
-import { getPosts, type Post } from '~/sanity/lib/sanity.queries';
+import {  getPosts, type Post } from '~/sanity/lib/sanity.queries';
 
 export default async function PostsPage() {
   const client = getClient({ token: readToken });
@@ -12,12 +12,11 @@ export default async function PostsPage() {
   // Get language from cookies (fallback to 'fr')
   const cookieStore = cookies();
   const language = cookieStore.get('language')?.value || 'fr';
-
+ 
   const posts: Post[] = await getPosts(client, 'gallery', language, {
-    next: { revalidate: 33 },
+    next: { revalidate: 99 }
   });
-console.log(posts
-)
+
   const customOrder = [
     'autoportraits',
     'survol',

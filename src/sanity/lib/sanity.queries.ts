@@ -5,19 +5,19 @@ import { type SanityClient } from 'next-sanity'
 
 // GROQ query to fetch posts by section
 const postsBySectionQuery = (section: string) => groq`
-  *[_type == "post" && section == $section && !(_id in path("drafts.**"))] {
-    _id,
-    _createdAt,
-    title,
-    title_en,
-    slug,
-       excerpt,
-    excerpt_en,
-    subtitles,
-    mainImages,
-    layout
-  } | order(_createdAt desc)
-`
+*[_type == "post" && section == $section && slug.current != "images-du-jour" ] {
+  _id,
+  _createdAt,
+  _publishedAt,
+  title,
+  title_en,
+  slug,
+  excerpt,
+  excerpt_en,
+  subtitles,
+  mainImages,
+  layout
+}`
 
 // Generic function to fetch posts by section
 export async function getPosts(
@@ -25,6 +25,7 @@ export async function getPosts(
   section: 'gallery' | 'projets-actuels' | 'collaborations', // Limit to valid sections
   language: 'en' | 'fr' | string = 'fr',
   options = {}
+  
 ): Promise<Post[]> {
   try {
     // Fetch posts for the given section
@@ -48,7 +49,7 @@ export async function getPosts(
 }
 // Query to fetch a single post by slug
 export const postBySlugQuery = groq`
-  *[_type == "post" && slug.current == $slug && !(_id in path("drafts.**"))][0] {
+  *[_type == "post" && slug.current == $slug ][0] {
     _id,
     title,
     title_en,
@@ -89,6 +90,7 @@ export const postSlugsQuery = groq`
 export type Post = {
   _type: 'post'
   _id: string
+  _publishedAt: string
   slug: { current: string }
   _createdAt: string
   mainImages: any[] 
