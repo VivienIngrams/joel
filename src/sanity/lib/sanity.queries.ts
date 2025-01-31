@@ -2,13 +2,14 @@ import type { PortableTextBlock } from '@portabletext/types'
 import groq from 'groq'
 import { type SanityClient } from 'next-sanity'
 
+import { sanityFetch } from './sanity.client'
+
 
 // GROQ query to fetch posts by section
 const postsBySectionQuery = (section: string) => groq`
-*[_type == "post" && section == $section && slug.current != "images-du-jour" ] {
+*[_type == "post" && section == $section ]  {
   _id,
   _createdAt,
-  _publishedAt,
   title,
   title_en,
   slug,
@@ -19,34 +20,31 @@ const postsBySectionQuery = (section: string) => groq`
   layout
 }`
 
-// Generic function to fetch posts by section
 export async function getPosts(
   client: SanityClient,
-  section: 'gallery' | 'projets-actuels' | 'collaborations', // Limit to valid sections
+  section: 'gallery' | 'projets-actuels' | 'collaborations',
   language: 'en' | 'fr' | string = 'fr',
   options = {}
-  
 ): Promise<Post[]> {
   try {
-    // Fetch posts for the given section
-    const posts = await client.fetch(postsBySectionQuery(section), {
-      section, // Pass the section parameter here
-      ...options, // Spread other options if any
-    })
+    const posts = await sanityFetch<Post[]>({
+      query: postsBySectionQuery(section),
+      qParams: { section, ...options },
+    });
 
-    // Map through the posts and localize the content
     const languagePosts = posts.map((post) => ({
       ...post,
       title: language === 'en' ? post.title_en || post.title : post.title,
       excerpt: language === 'en' ? post.excerpt_en || post.excerpt : post.excerpt,
-    }))
+    }));
 
-    return languagePosts
+    return languagePosts;
   } catch (error) {
-    console.error('Error fetching posts by section:', error)
-    throw error
+    console.error('Error fetching posts by section:', error);
+    throw error;
   }
 }
+
 // Query to fetch a single post by slug
 export const postBySlugQuery = groq`
   *[_type == "post" && slug.current == $slug ][0] {

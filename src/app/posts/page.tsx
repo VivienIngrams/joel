@@ -1,4 +1,5 @@
 import { cookies } from 'next/headers'; // For reading cookies
+
 import ImageGallery from '~/app/components/ImageGallery';
 import MobileImageGallery from '~/app/components/MobileImageGallery';
 import SubMenu from '~/app/components/SubMenu';
@@ -14,9 +15,9 @@ export default async function PostsPage() {
   const language = cookieStore.get('language')?.value || 'fr';
  
   const posts: Post[] = await getPosts(client, 'gallery', language, {
-    next: { revalidate: 99 }
+    next: { revalidate: 600 }
   });
-
+console.log(posts)
   const customOrder = [
     'autoportraits',
     'survol',

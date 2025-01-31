@@ -21,7 +21,7 @@ export default async function PostPage({
   // Fetch the individual post by its slug
   const post: Post | null = await getPost(client, params.slug, language, {
     next: {
-      revalidate: 10,
+      revalidate: 60,
     },
   });
 
@@ -32,7 +32,7 @@ export default async function PostPage({
 
   // Fetch related posts from the same section
   const posts: Post[] = await getPosts(client, post.section, language, {
-    next: { revalidate: 99 },
+    next: { revalidate: 60 },
   });
 
   // Handle case where no related posts are found

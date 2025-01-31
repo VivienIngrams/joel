@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useEffect,useState } from 'react';
+
 import { useLanguage } from './context/LanguageProvider'; // Import the LanguageProvider context
 import LanguageSwitcher from './LanguageSwitcher'; // Import the LanguageSwitcher component
 

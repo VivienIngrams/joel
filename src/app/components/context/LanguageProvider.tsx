@@ -15,9 +15,9 @@ export const useLanguage = () => {
 const getLanguageFromCookies = () => {
   if (typeof document !== 'undefined') {
     const match = document.cookie.match(/language=([^;]+)/);
-    return match ? match[1] : 'en'; // Default to 'en'
+    return match ? match[1] : 'fr'; // Default to 'en'
   }
-  return 'en'; // Fallback if document is undefined (e.g., server-side)
+  return 'fr'; // Fallback if document is undefined (e.g., server-side)
 };
 
 // Helper function to set language in cookies
@@ -26,7 +26,7 @@ const setLanguageInCookies = (language) => {
 };
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState('fr');
 
   // Set the language after initial render
   useEffect(() => {

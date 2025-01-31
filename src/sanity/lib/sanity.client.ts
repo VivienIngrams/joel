@@ -29,15 +29,13 @@ export function getClient(preview?: { token: string }): SanityClient {
 export async function sanityFetch<QueryResponse>({
   query,
   qParams,
-  tags,
+
 }: {
   query: string;
   qParams?: QueryParams;
-  tags: string[];  // Ensure tags are passed for revalidation
 }): Promise<QueryResponse> {
   const client = getClient();
   return client.fetch<QueryResponse>(query, qParams, {
-    cache: "no-cache",  // Cache the result for forced revalidation
-    next: { tags },  // Pass tags for revalidation
+    cache: "no-cache",
   });
 }
