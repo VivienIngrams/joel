@@ -2,6 +2,7 @@
 
 import './globals.css'
 
+import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
 import { Arsenal, Cinzel, Montserrat } from 'next/font/google'
 
@@ -36,7 +37,7 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
-}>) {  
+}>) {
   return (
     <html
       lang="en" // Default to 'en' initially; language will be dynamically set in client-side code
@@ -44,7 +45,10 @@ export default function RootLayout({
     >
       <body className="h-full bg-white font-cinzel">
         <LanguageProvider>
-          <Container>{children}</Container>
+          <Container>
+            {children}
+            <Analytics />
+          </Container>
         </LanguageProvider>
       </body>
     </html>
