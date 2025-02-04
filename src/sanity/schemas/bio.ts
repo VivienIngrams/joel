@@ -7,6 +7,11 @@ const localizedContentSchema = {
   
     {
       name: 'biographyText',
+      title: 'Première paragraphe de texte (sous la photo de profile, et à gauche sur ordinateur)',
+      type: 'blockContent',
+    },
+    {
+      name: 'biographyText2',
       title: 'Texte biographie',
       type: 'blockContent',
     },

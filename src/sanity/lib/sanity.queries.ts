@@ -136,12 +136,18 @@ export const bioQuery = groq`*[_type == "bioContent"]{
       biographyText[]{
         ... 
       },
+      biographyText2[]{
+        ... 
+      },
       artisticTraining,
       organizer,
       exhibitions
     },
     en {
       biographyText[]{
+        ... 
+      },
+      biographyText2[]{
         ... 
       },
       artisticTraining,

@@ -10,6 +10,7 @@ import { PortableTextBlock } from '@portabletext/types'
 
 interface BiographyContent {
   biographyText: PortableTextBlock[] // Ensure this is an array of PortableTextBlocks
+  biographyText2: PortableTextBlock[] // Ensure this is an array of PortableTextBlocks
   artisticTraining: string[]
   organizer: string[]
   exhibitions: string[]
@@ -46,12 +47,17 @@ const Bio = async () => {
   }
 
   const currentContent = {
-    biographyText: biography[language]?.biographyText || biography['fr'].biographyText,
-    artisticTraining: biography[language]?.artisticTraining || biography['fr'].artisticTraining,
+    biographyText:
+      biography[language]?.biographyText || biography['fr'].biographyText,
+    biographyText2:
+      biography[language]?.biographyText2 || biography['fr'].biographyText2,
+    artisticTraining:
+      biography[language]?.artisticTraining || biography['fr'].artisticTraining,
     organizer: biography[language]?.organizer || biography['fr'].organizer,
-    exhibitions: biography[language]?.exhibitions || biography['fr'].exhibitions,
+    exhibitions:
+      biography[language]?.exhibitions || biography['fr'].exhibitions,
   }
-  
+
   const titles = {
     artisticTraining:
       language === 'fr' ? 'Formations artistiques' : 'Artistic Training',
@@ -69,8 +75,8 @@ const Bio = async () => {
     <div>
       {/* Header Section */}
       <div className="xl:h-[75vh] pt-12 xl:grid xl:grid-cols-2 bg-white text-gray-500 xl:mx-[10vw]">
-        <div className="flex items-center justify-start xl:justify-center">
-          <div className="relative flex flex-col items-center xl:justify-center h-[300px] xl:h-[500px] w-[200px] xl:w-[300px] m-6 xl:m-0">
+        <div className="flex flex-col items-center justify-start xl:justify-center">
+          <div className="relative flex flex-col items-center xl:justify-start h-[300px]  w-[200px] m-6">
             {imageUrl && (
               <Image
                 src={imageUrl}
@@ -81,12 +87,22 @@ const Bio = async () => {
               />
             )}
           </div>
+          <div className=" flex flex-col justify-center  xl:text-center max-w-[800px] px-6 xl:px-16">
+            {/* Render Biography Text 1 using PortableText */}
+            <div>
+              {currentContent.biographyText.map((block, index) => (
+                <div key={index} className="mb-2 ">
+                  <PortableText value={[block]} />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-        <div className="xl:h-[80vh] flex flex-col justify-center text-lg xl:text-xl text-left max-w-2xl px-6 pb-16 xl:pl-4 xl:py-12">
-          {/* Render Biography Text using PortableText */}
+        <div className="xl:h-[88vh] flex flex-col justify-center  text-left max-w-[800px] p-6 xl:p-12 ">
+          {/* Render Biography Text 2 using PortableText */}
           <div>
-          {currentContent.biographyText.map((block, index) => (
-              <div key={index} className="mb-2">
+            {currentContent.biographyText2.map((block, index) => (
+              <div key={index} className="mb-2 ">
                 <PortableText value={[block]} />
               </div>
             ))}
@@ -94,7 +110,7 @@ const Bio = async () => {
         </div>
       </div>
 
-      <div className="xl:h-[15vh] flex justify-center items-center text-center">
+      <div className="xl:h-[15vh] flex justify-center items-end text-center">
         <BsChevronDoubleDown className="text-2xl" />
       </div>
 
@@ -119,7 +135,7 @@ const Bio = async () => {
               {titles.organizer}
             </h2>
             <ul>
-            {currentContent.organizer.map((item, index) => (
+              {currentContent.organizer.map((item, index) => (
                 <li key={index}>{item}</li>
               ))}
             </ul>
