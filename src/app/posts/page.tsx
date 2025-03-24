@@ -57,7 +57,7 @@ console.log(posts)
     <div className="h-full xl:min-h-[80vh] pb-20 font-cinzel font-bold bg-white max-w-full pt-40 xl:pt-16">
 
       {sortedPosts.map((post) => (
-        <div key={post._id} className=" ">
+        <div key={post._id}>
           <div className="pb-6 xl:hidden">
             <MobileImageGallery
               images={post.mainImages}
