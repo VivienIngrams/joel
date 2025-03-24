@@ -9,6 +9,7 @@ const LanguageSwitcher = () => {
     <div>
       <button
         onClick={toggleLanguage}
+        aria-label="Toggle Language"
         className="z-50 hover:scale-105 ease-in duration-600"
       >
         {language === 'en' ? (
