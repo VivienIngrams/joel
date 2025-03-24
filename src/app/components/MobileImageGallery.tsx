@@ -31,6 +31,7 @@ const MobileImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) 
   };
 
   useEffect(() => {
+    
     const calculateDimensions = () => {
       const windowWidth = window.innerWidth * 0.8; // Set width to 80vw
       const newDimensions = images.map(() => {
@@ -82,14 +83,19 @@ const MobileImageGallery = ({ images, layout, slug, title }: ImageGalleryProps) 
                   height: `${dimensions[index].height}px`, // Set height to the calculated height
                 }}
               >
-                <Image
+                
+                 <Image
                   src={urlForImage(image).url() as string}
                   alt={image.alt || title}
                   fill
                   sizes="80vw"
-                  className="object-cover shadow-lg shadow-gray-800  "
-                  loading="lazy" // Ensure lazy loading
+                  className={`object-cover shadow-lg shadow-gray-800 ${
+                    index === 0 ? 'first-image' : ''
+                  }`}
+                  priority={index === 0} // Add priority to the first image
+                  loading={index === 0 ? 'eager' : 'lazy'} // Eager load for the first image
                 />
+                
               </div>
             </Link>
           ))}
